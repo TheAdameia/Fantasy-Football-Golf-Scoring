@@ -1,0 +1,7 @@
+1. Classes of "player": QB, WR, RB, TE, DEF, K
+2. Golf rules: lowest score wins
+3. A pick must have accumulated a non-zero number of fantasy points (positive or negative) in the previous week to be valid for the next week. For the first week, the pick must be in the top Z ranking.
+4. To prevent this from becoming a hunt for rookies who get subbed in once and then don't get any play the following week and to keep things interesting, players will still have the same roster size (15 players, but can be modified if desired) and will only be able to select from the top Z players as determined by the fantasy rankings, where Z = X (number of players in the league) * y (roster size plus 5)
+5. Injured, suspended, or otherwise unavailable pick cannot be played.
+6. Players will incur a penalty if any of their pick slots cannot be filled.
+7. A slot must be filled if it is possible with the player's roster.
