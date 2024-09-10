@@ -9,3 +9,6 @@
 9. Injury slots remain the same as normal fantasy football (2 slots for injured/unavailable picks).
 10. After the league begins, the pool of non-rostered, available picks will be C players sorted by fantasy points from highest to lowest, where C = Z - (total number of rostered picks, including picks in injury roster slots).
 11. All defense will be included in available picks at all times (draft and free agency during the league). Defense is exempt from Rule 3.
+
+
+Need "backup slots" for picks to autofill if a questionable player can't play
