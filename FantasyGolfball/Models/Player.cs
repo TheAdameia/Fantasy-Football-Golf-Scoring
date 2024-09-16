@@ -9,7 +9,4 @@ public class Player
     public string PlayerLastName { get; set; }
     public int PositionId { get; set; }
     public int XRank { get; set; }
-    public double CurrentWeekPoints { get; set; }
-    public double LastWeekPoints { get; set; }
-    public double TotalSeasonPoints { get; set; }
 }
