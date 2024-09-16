@@ -11,4 +11,5 @@
 11. All defense will be included in available picks at all times (draft and free agency during the league). Defense is exempt from Rule 3.
 
 
-Need "backup slots" for picks to autofill if a questionable player can't play
+Need "backup slots" for picks to autofill if a questionable player can't play.
+For the moment, I'm ignoring that bye weeks exist for testing purposes.
