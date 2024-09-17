@@ -1,0 +1,1131 @@
+// Quarterbacks
+new Player
+{
+    PlayerId = 1,
+    PlayerFirstName = "Jake",
+    PlayerLastName = "Mason",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 2,
+    PlayerFirstName = "Evan",
+    PlayerLastName = "Carter",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 3,
+    PlayerFirstName = "Derek",
+    PlayerLastName = "Henderson",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 4,
+    PlayerFirstName = "Marcus",
+    PlayerLastName = "Wells",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 5,
+    PlayerFirstName = "Tyler",
+    PlayerLastName = "Nash",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 6,
+    PlayerFirstName = "Brad",
+    PlayerLastName = "McKinney",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 7,
+    PlayerFirstName = "Chris",
+    PlayerLastName = "Johnson",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 8,
+    PlayerFirstName = "Brandon",
+    PlayerLastName = "Richards",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 9,
+    PlayerFirstName = "Kyle",
+    PlayerLastName = "Foster",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 10,
+    PlayerFirstName = "Matt",
+    PlayerLastName = "Griffin",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 11,
+    PlayerFirstName = "Trevor",
+    PlayerLastName = "Burns",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 12,
+    PlayerFirstName = "Grant",
+    PlayerLastName = "Hunter",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 13,
+    PlayerFirstName = "Dylan",
+    PlayerLastName = "Reed",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 14,
+    PlayerFirstName = "Nick",
+    PlayerLastName = "Evans",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 15,
+    PlayerFirstName = "Scott",
+    PlayerLastName = "Bailey",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 16,
+    PlayerFirstName = "Troy",
+    PlayerLastName = "Farmer",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 17,
+    PlayerFirstName = "Zach",
+    PlayerLastName = "Lowe",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 18,
+    PlayerFirstName = "Hunter",
+    PlayerLastName = "Murphy",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 19,
+    PlayerFirstName = "Austin",
+    PlayerLastName = "Patterson",
+    PositionId = 1,
+},
+new Player
+{
+    PlayerId = 20,
+    PlayerFirstName = "Caleb",
+    PlayerLastName = "Harrison",
+    PositionId = 1,
+},
+
+// Tight Ends
+new Player
+{
+    PlayerId = 21,
+    PlayerFirstName = "Ryan",
+    PlayerLastName = "Fitzgerald",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 22,
+    PlayerFirstName = "Mason",
+    PlayerLastName = "Scott",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 23,
+    PlayerFirstName = "Jordan",
+    PlayerLastName = "Brooks",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 24,
+    PlayerFirstName = "Jason",
+    PlayerLastName = "Douglas",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 25,
+    PlayerFirstName = "Alex",
+    PlayerLastName = "Cooper",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 26,
+    PlayerFirstName = "Chase",
+    PlayerLastName = "Garrett",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 27,
+    PlayerFirstName = "Cody",
+    PlayerLastName = "Thompson",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 28,
+    PlayerFirstName = "Landon",
+    PlayerLastName = "Pearson",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 29,
+    PlayerFirstName = "Jared",
+    PlayerLastName = "Dunn",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 30,
+    PlayerFirstName = "Drew",
+    PlayerLastName = "Cross",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 31,
+    PlayerFirstName = "Colin",
+    PlayerLastName = "Shelby",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 32,
+    PlayerFirstName = "Garrett",
+    PlayerLastName = "Coleman",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 33,
+    PlayerFirstName = "Bryce",
+    PlayerLastName = "Fowler",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 34,
+    PlayerFirstName = "Clay",
+    PlayerLastName = "Sanders",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 35,
+    PlayerFirstName = "Isaac",
+    PlayerLastName = "McLean",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 36,
+    PlayerFirstName = "Cole",
+    PlayerLastName = "Washington",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 37,
+    PlayerFirstName = "Blake",
+    PlayerLastName = "Morris",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 38,
+    PlayerFirstName = "Nate",
+    PlayerLastName = "Bryant",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 39,
+    PlayerFirstName = "Jesse",
+    PlayerLastName = "Holmes",
+    PositionId = 4,
+},
+new Player
+{
+    PlayerId = 40,
+    PlayerFirstName = "Connor",
+    PlayerLastName = "Davis",
+    PositionId = 4,
+},
+
+// Kickers
+new Player
+{
+    PlayerId = 41,
+    PlayerFirstName = "Lucas",
+    PlayerLastName = "Smith",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 42,
+    PlayerFirstName = "Noah",
+    PlayerLastName = "Johnson",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 43,
+    PlayerFirstName = "Ethan",
+    PlayerLastName = "Williams",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 44,
+    PlayerFirstName = "Logan",
+    PlayerLastName = "Jones",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 45,
+    PlayerFirstName = "Mason",
+    PlayerLastName = "Brown",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 46,
+    PlayerFirstName = "Oliver",
+    PlayerLastName = "Davis",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 47,
+    PlayerFirstName = "Liam",
+    PlayerLastName = "Miller",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 48,
+    PlayerFirstName = "Jacob",
+    PlayerLastName = "Wilson",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 49,
+    PlayerFirstName = "James",
+    PlayerLastName = "Moore",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 50,
+    PlayerFirstName = "Benjamin",
+    PlayerLastName = "Taylor",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 51,
+    PlayerFirstName = "Henry",
+    PlayerLastName = "Anderson",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 52,
+    PlayerFirstName = "Owen",
+    PlayerLastName = "Thomas",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 53,
+    PlayerFirstName = "William",
+    PlayerLastName = "Jackson",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 54,
+    PlayerFirstName = "Elijah",
+    PlayerLastName = "White",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 55,
+    PlayerFirstName = "Jackson",
+    PlayerLastName = "Harris",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 56,
+    PlayerFirstName = "Gabriel",
+    PlayerLastName = "Clark",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 57,
+    PlayerFirstName = "Sebastian",
+    PlayerLastName = "Rodriguez",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 58,
+    PlayerFirstName = "Daniel",
+    PlayerLastName = "Lewis",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 59,
+    PlayerFirstName = "Nathan",
+    PlayerLastName = "Walker",
+    PositionId = 5,
+},
+new Player
+{
+    PlayerId = 60,
+    PlayerFirstName = "Ethan",
+    PlayerLastName = "Adams",
+    PositionId = 5,
+},
+
+// Wide Receivers
+new Player
+{
+    PlayerId = 61,
+    PlayerFirstName = "Aiden",
+    PlayerLastName = "Miller",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 62,
+    PlayerFirstName = "Liam",
+    PlayerLastName = "Brown",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 63,
+    PlayerFirstName = "Alexander",
+    PlayerLastName = "Jones",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 64,
+    PlayerFirstName = "Joseph",
+    PlayerLastName = "Garcia",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 65,
+    PlayerFirstName = "Samuel",
+    PlayerLastName = "Martinez",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 66,
+    PlayerFirstName = "Matthew",
+    PlayerLastName = "Hernandez",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 67,
+    PlayerFirstName = "David",
+    PlayerLastName = "Lopez",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 68,
+    PlayerFirstName = "Andrew",
+    PlayerLastName = "Gonzalez",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 69,
+    PlayerFirstName = "Joshua",
+    PlayerLastName = "Wilson",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 70,
+    PlayerFirstName = "Christopher",
+    PlayerLastName = "Perez",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 71,
+    PlayerFirstName = "Thomas",
+    PlayerLastName = "Taylor",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 72,
+    PlayerFirstName = "John",
+    PlayerLastName = "Anderson",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 73,
+    PlayerFirstName = "James",
+    PlayerLastName = "Thomas",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 74,
+    PlayerFirstName = "Brian",
+    PlayerLastName = "Jackson",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 75,
+    PlayerFirstName = "Nicholas",
+    PlayerLastName = "White",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 76,
+    PlayerFirstName = "Justin",
+    PlayerLastName = "Harris",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 77,
+    PlayerFirstName = "Aaron",
+    PlayerLastName = "Clark",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 78,
+    PlayerFirstName = "Zachary",
+    PlayerLastName = "Lewis",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 79,
+    PlayerFirstName = "Paul",
+    PlayerLastName = "Walker",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 80,
+    PlayerFirstName = "Eric",
+    PlayerLastName = "Young",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 81,
+    PlayerFirstName = "Sean",
+    PlayerLastName = "King",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 82,
+    PlayerFirstName = "Ray",
+    PlayerLastName = "Scott",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 83,
+    PlayerFirstName = "Derek",
+    PlayerLastName = "Adams",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 84,
+    PlayerFirstName = "Kevin",
+    PlayerLastName = "Baker",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 85,
+    PlayerFirstName = "Tony",
+    PlayerLastName = "Collins",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 86,
+    PlayerFirstName = "Cameron",
+    PlayerLastName = "Cox",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 87,
+    PlayerFirstName = "Adam",
+    PlayerLastName = "Stewart",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 88,
+    PlayerFirstName = "Kyle",
+    PlayerLastName = "Turner",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 89,
+    PlayerFirstName = "Greg",
+    PlayerLastName = "Hughes",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 90,
+    PlayerFirstName = "Mike",
+    PlayerLastName = "Ramirez",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 91,
+    PlayerFirstName = "Patrick",
+    PlayerLastName = "Ross",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 92,
+    PlayerFirstName = "Alex",
+    PlayerLastName = "Powell",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 93,
+    PlayerFirstName = "Steven",
+    PlayerLastName = "Griffin",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 94,
+    PlayerFirstName = "Bill",
+    PlayerLastName = "Brooks",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 95,
+    PlayerFirstName = "Daniel",
+    PlayerLastName = "Kelly",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 96,
+    PlayerFirstName = "Rob",
+    PlayerLastName = "Foster",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 97,
+    PlayerFirstName = "Jeff",
+    PlayerLastName = "Reed",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 98,
+    PlayerFirstName = "Phil",
+    PlayerLastName = "Patterson",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 99,
+    PlayerFirstName = "Larry",
+    PlayerLastName = "Burns",
+    PositionId = 2,
+},
+new Player
+{
+    PlayerId = 100,
+    PlayerFirstName = "Jackson",
+    PlayerLastName = "Wilson",
+    PositionId = 2,
+},
+
+// Running Backs
+new Player
+{
+    PlayerId = 101,
+    PlayerFirstName = "Owen",
+    PlayerLastName = "Taylor",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 102,
+    PlayerFirstName = "Logan",
+    PlayerLastName = "Lee",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 103,
+    PlayerFirstName = "Dylan",
+    PlayerLastName = "Perez",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 104,
+    PlayerFirstName = "Aiden",
+    PlayerLastName = "Gonzalez",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 105,
+    PlayerFirstName = "Elijah",
+    PlayerLastName = "Mitchell",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 106,
+    PlayerFirstName = "Henry",
+    PlayerLastName = "Carter",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 107,
+    PlayerFirstName = "Ethan",
+    PlayerLastName = "Torres",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 108,
+    PlayerFirstName = "Alexander",
+    PlayerLastName = "Evans",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 109,
+    PlayerFirstName = "Logan",
+    PlayerLastName = "Edwards",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 110,
+    PlayerFirstName = "Jackson",
+    PlayerLastName = "Collins",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 111,
+    PlayerFirstName = "Landon",
+    PlayerLastName = "Morris",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 112,
+    PlayerFirstName = "Bryson",
+    PlayerLastName = "Murphy",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 113,
+    PlayerFirstName = "Parker",
+    PlayerLastName = "Powell",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 114,
+    PlayerFirstName = "Jameson",
+    PlayerLastName = "Sullivan",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 115,
+    PlayerFirstName = "Bentley",
+    PlayerLastName = "Bryant",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 116,
+    PlayerFirstName = "Carson",
+    PlayerLastName = "Newton",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 117,
+    PlayerFirstName = "Braxton",
+    PlayerLastName = "Lambert",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 118,
+    PlayerFirstName = "Tucker",
+    PlayerLastName = "Cruz",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 119,
+    PlayerFirstName = "Zane",
+    PlayerLastName = "Owen",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 120,
+    PlayerFirstName = "Rowan",
+    PlayerLastName = "Knight",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 121,
+    PlayerFirstName = "Harrison",
+    PlayerLastName = "Lane",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 122,
+    PlayerFirstName = "Weston",
+    PlayerLastName = "Hicks",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 123,
+    PlayerFirstName = "Finley",
+    PlayerLastName = "Abbott",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 124,
+    PlayerFirstName = "Sullivan",
+    PlayerLastName = "Reeves",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 125,
+    PlayerFirstName = "Reid",
+    PlayerLastName = "Jenkins",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 126,
+    PlayerFirstName = "Archer",
+    PlayerLastName = "Gibson",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 127,
+    PlayerFirstName = "Rhys",
+    PlayerLastName = "Parks",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 128,
+    PlayerFirstName = "Knox",
+    PlayerLastName = "Greene",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 129,
+    PlayerFirstName = "Brody",
+    PlayerLastName = "Austin",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 130,
+    PlayerFirstName = "Cade",
+    PlayerLastName = "Wells",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 131,
+    PlayerFirstName = "Theo",
+    PlayerLastName = "Wagner",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 132,
+    PlayerFirstName = "Sterling",
+    PlayerLastName = "Rice",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 133,
+    PlayerFirstName = "Jude",
+    PlayerLastName = "Hayes",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 134,
+    PlayerFirstName = "Crosby",
+    PlayerLastName = "Houston",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 135,
+    PlayerFirstName = "Porter",
+    PlayerLastName = "Hale",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 136,
+    PlayerFirstName = "Beckham",
+    PlayerLastName = "Wallace",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 137,
+    PlayerFirstName = "Judah",
+    PlayerLastName = "Leonard",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 138,
+    PlayerFirstName = "Griffin",
+    PlayerLastName = "Todd",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 139,
+    PlayerFirstName = "Phoenix",
+    PlayerLastName = "Webb",
+    PositionId = 3,
+},
+new Player
+{
+    PlayerId = 140,
+    PlayerFirstName = "Dawson",
+    PlayerLastName = "Sanders",
+    PositionId = 3,
+},
+
+// Defense
+new Player
+{
+    PlayerId = 141,
+    PlayerFirstName = "Denver",
+    PlayerLastName = "Thunderbirds",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 142,
+    PlayerFirstName = "Atlanta",
+    PlayerLastName = "Vipers",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 143,
+    PlayerFirstName = "Houston",
+    PlayerLastName = "Ironhounds",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 144,
+    PlayerFirstName = "Chicago",
+    PlayerLastName = "Stallions",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 145,
+    PlayerFirstName = "Seattle",
+    PlayerLastName = "Warhawks",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 146,
+    PlayerFirstName = "Orlando",
+    PlayerLastName = "Cyclones",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 147,
+    PlayerFirstName = "Nashville",
+    PlayerLastName = "Guardians",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 148,
+    PlayerFirstName = "Portland",
+    PlayerLastName = "Lumberjacks",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 149,
+    PlayerFirstName = "Las Vegas",
+    PlayerLastName = "Outlaws",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 150,
+    PlayerFirstName = "Kansas City",
+    PlayerLastName = "Redtails",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 151,
+    PlayerFirstName = "Phoenix",
+    PlayerLastName = "Firestorm",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 152,
+    PlayerFirstName = "Brooklyn",
+    PlayerLastName = "Sentinels",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 153,
+    PlayerFirstName = "Miami",
+    PlayerLastName = "Hurricanes",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 154,
+    PlayerFirstName = "San Diego",
+    PlayerLastName = "Tritons",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 155,
+    PlayerFirstName = "Detroit",
+    PlayerLastName = "Phantoms",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 156,
+    PlayerFirstName = "Carolina",
+    PlayerLastName = "Cobras",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 157,
+    PlayerFirstName = "New Jersey",
+    PlayerLastName = "Rampage",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 158,
+    PlayerFirstName = "St. Louis",
+    PlayerLastName = "Renegades",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 159,
+    PlayerFirstName = "Oklahoma City",
+    PlayerLastName = "Mustangs",
+    PositionId = 6,
+},
+new Player
+{
+    PlayerId = 160,
+    PlayerFirstName = "Cincinnati",
+    PlayerLastName = "Scorpions",
+    PositionId = 6,
+},

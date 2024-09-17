@@ -45,7 +45,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             FirstName = "Admina",
             LastName = "Strator",
-            Address = "101 Main Street",
         });
         // left this in here as an example for myself
         modelBuilder.Entity<Bike>().HasData(new Bike[]
@@ -66,22 +65,99 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 OwnerId = 1,
                 BikeTypeId = 3
             },
-            new Bike
+        });
+        modelBuilder.Entity<Position>().HasData(new Position[]
+        {
+            new Position
             {
-                Id = 3,
-                Brand = "Cannondale",
-                Color = "Purple",
-                OwnerId = 2,
-                BikeTypeId = 2
+                PositionId = 1,
+                PositionShort = "QB",
+                PositionLong = "Quarterback"
             },
-            new Bike
+            new Position
             {
-                Id = 4,
-                Brand = "Giant",
-                Color = "Green",
-                OwnerId = 3,
-                BikeTypeId = 1
+                PositionId = 2,
+                PositionShort = "WR",
+                PositionLong = "Wide Receiver"
             },
+            new Position
+            {
+                PositionId = 3,
+                PositionShort = "RB",
+                PositionLong = "Running Back"
+            },
+            new Position
+            {
+                PositionId = 4,
+                PositionShort = "TE",
+                PositionLong = "Tight End"
+            },
+            new Position
+            {
+                PositionId = 5,
+                PositionShort = "K",
+                PositionLong = "Kicker"
+            },
+            new Position
+            {
+                PositionId = 6,
+                PositionShort = "DEF",
+                PositionLong = "Defense"
+            }
+        });
+        modelBuilder.Entity<Status>().HasData(new Status[
+            new Status
+            {
+                StatusId = 1,
+                StatusType = "Green",
+                ViableToPlay = true,
+                RequiresBackup = false
+            },
+            new Status
+            {
+                StatusId = 2,
+                StatusType = "IR",
+                ViableToPlay = false,
+                RequiresBackup = true
+            },
+            new Status
+            {
+                StatusId = 3,
+                StatusType = "O",
+                ViableToPlay = false,
+                RequiresBackup = true
+            },
+            new Status
+            {
+                StatusId = 4,
+                StatusType = "Q",
+                ViableToPlay = true,
+                RequiresBackup = true
+            },
+            new Status
+            {
+                StatusId = 5,
+                StatusType = "D",
+                ViableToPlay = true,
+                RequiresBackup = true
+            },
+            new Status
+            {
+                StatusId = 6,
+                StatusType = "SSPD",
+                ViableToPlay = false,
+                RequiresBackup = true
+            }
+        ]);
+        modelBuilder.Entity<Player>().HasData(new Player[]
+        {
+            new Player
+            {
+                PlayerId = 1,
+                PlayerFirstName = "Bob",
+                PlayerLastName = "McCarthy",
+                PositionId = "QB",
+            }
         });
     }
 }

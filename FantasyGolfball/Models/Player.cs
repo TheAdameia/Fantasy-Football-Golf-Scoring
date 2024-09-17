@@ -8,5 +8,4 @@ public class Player
     public string PlayerFirstName { get; set;}
     public string PlayerLastName { get; set; }
     public int PositionId { get; set; }
-    public int XRank { get; set; }
 }
