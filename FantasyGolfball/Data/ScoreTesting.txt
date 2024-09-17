@@ -1,0 +1,719 @@
+new Scoring
+{
+    ScoringId = 1,
+    PlayerId = 1,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 6.4F
+}
+
+new Scoring
+{
+    ScoringId = 2,
+    PlayerId = 1,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 12.2F
+}
+
+new Scoring
+{
+    ScoringId = 3,
+    PlayerId = 1,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 17.7F
+}
+
+new Scoring
+{
+    ScoringId = 4,
+    PlayerId = 1,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = -3.4F
+}
+
+new Scoring
+{
+    ScoringId = 5,
+    PlayerId = 2,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 14.8F
+}
+
+new Scoring
+{
+    ScoringId = 6,
+    PlayerId = 2,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = -0.9F
+}
+
+new Scoring
+{
+    ScoringId = 7,
+    PlayerId = 2,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 18.2F
+}
+
+new Scoring
+{
+    ScoringId = 8,
+    PlayerId = 2,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 17.1F
+}
+
+new Scoring
+{
+    ScoringId = 9,
+    PlayerId = 3,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 11.4F
+}
+
+new Scoring
+{
+    ScoringId = 10,
+    PlayerId = 3,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 12.5F
+}
+
+new Scoring
+{
+    ScoringId = 11,
+    PlayerId = 3,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 21.0F
+}
+
+new Scoring
+{
+    ScoringId = 12,
+    PlayerId = 3,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 24.5F
+}
+
+new Scoring
+{
+    ScoringId = 13,
+    PlayerId = 4,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = -0.7F
+}
+
+new Scoring
+{
+    ScoringId = 14,
+    PlayerId = 4,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 14.7F
+}
+
+new Scoring
+{
+    ScoringId = 15,
+    PlayerId = 4,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 9.1F
+}
+
+new Scoring
+{
+    ScoringId = 16,
+    PlayerId = 4,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 22.8F
+}
+
+new Scoring
+{
+    ScoringId = 17,
+    PlayerId = 5,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = -4.3F
+}
+
+new Scoring
+{
+    ScoringId = 18,
+    PlayerId = 5,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 21.7F
+}
+
+new Scoring
+{
+    ScoringId = 19,
+    PlayerId = 5,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 24.6F
+}
+
+new Scoring
+{
+    ScoringId = 20,
+    PlayerId = 5,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 18.6F
+}
+
+new Scoring
+{
+    ScoringId = 21,
+    PlayerId = 6,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 22.5F
+}
+
+new Scoring
+{
+    ScoringId = 22,
+    PlayerId = 6,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = -0.6F
+}
+
+new Scoring
+{
+    ScoringId = 23,
+    PlayerId = 6,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 13.2F
+}
+
+new Scoring
+{
+    ScoringId = 24,
+    PlayerId = 6,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 3.4F
+}
+
+new Scoring
+{
+    ScoringId = 25,
+    PlayerId = 7,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 6.0F
+}
+
+new Scoring
+{
+    ScoringId = 26,
+    PlayerId = 7,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 22.1F
+}
+
+new Scoring
+{
+    ScoringId = 27,
+    PlayerId = 7,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 23.2F
+}
+
+new Scoring
+{
+    ScoringId = 28,
+    PlayerId = 7,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 15.5F
+}
+
+new Scoring
+{
+    ScoringId = 29,
+    PlayerId = 8,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 0.8F
+}
+
+new Scoring
+{
+    ScoringId = 30,
+    PlayerId = 8,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 18.7F
+}
+
+new Scoring
+{
+    ScoringId = 31,
+    PlayerId = 8,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 1.7F
+}
+
+new Scoring
+{
+    ScoringId = 32,
+    PlayerId = 8,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 2.7F
+}
+
+new Scoring
+{
+    ScoringId = 33,
+    PlayerId = 9,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 5.9F
+}
+
+new Scoring
+{
+    ScoringId = 34,
+    PlayerId = 9,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 10.8F
+}
+
+new Scoring
+{
+    ScoringId = 35,
+    PlayerId = 9,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 14.9F
+}
+
+new Scoring
+{
+    ScoringId = 36,
+    PlayerId = 9,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 18.9F
+}
+
+new Scoring
+{
+    ScoringId = 37,
+    PlayerId = 10,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 2.4F
+}
+
+new Scoring
+{
+    ScoringId = 38,
+    PlayerId = 10,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 7.1F
+}
+
+new Scoring
+{
+    ScoringId = 39,
+    PlayerId = 10,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 15.3F
+}
+
+new Scoring
+{
+    ScoringId = 40,
+    PlayerId = 10,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 13.2F
+}
+
+new Scoring
+{
+    ScoringId = 41,
+    PlayerId = 11,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = -3.6F
+}
+
+new Scoring
+{
+    ScoringId = 42,
+    PlayerId = 11,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 2.8F
+}
+
+new Scoring
+{
+    ScoringId = 43,
+    PlayerId = 11,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 2.5F
+}
+
+new Scoring
+{
+    ScoringId = 44,
+    PlayerId = 11,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 1.3F
+}
+
+new Scoring
+{
+    ScoringId = 45,
+    PlayerId = 12,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 20.2F
+}
+
+new Scoring
+{
+    ScoringId = 46,
+    PlayerId = 12,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 23.2F
+}
+
+new Scoring
+{
+    ScoringId = 47,
+    PlayerId = 12,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 19.1F
+}
+
+new Scoring
+{
+    ScoringId = 48,
+    PlayerId = 12,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 16.2F
+}
+
+new Scoring
+{
+    ScoringId = 49,
+    PlayerId = 13,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 6.4F
+}
+
+new Scoring
+{
+    ScoringId = 50,
+    PlayerId = 13,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 11.9F
+}
+
+new Scoring
+{
+    ScoringId = 51,
+    PlayerId = 13,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 3.4F
+}
+
+new Scoring
+{
+    ScoringId = 52,
+    PlayerId = 13,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 20.4F
+}
+
+new Scoring
+{
+    ScoringId = 53,
+    PlayerId = 14,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 1.3F
+}
+
+new Scoring
+{
+    ScoringId = 54,
+    PlayerId = 14,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 8.2F
+}
+
+new Scoring
+{
+    ScoringId = 55,
+    PlayerId = 14,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 5.6F
+}
+
+new Scoring
+{
+    ScoringId = 56,
+    PlayerId = 14,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 8.0F
+}
+
+new Scoring
+{
+    ScoringId = 57,
+    PlayerId = 15,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 0.8F
+}
+
+new Scoring
+{
+    ScoringId = 58,
+    PlayerId = 15,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 3.9F
+}
+
+new Scoring
+{
+    ScoringId = 59,
+    PlayerId = 15,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 22.6F
+}
+
+new Scoring
+{
+    ScoringId = 60,
+    PlayerId = 15,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 9.6F
+}
+
+new Scoring
+{
+    ScoringId = 61,
+    PlayerId = 16,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 12.7F
+}
+
+new Scoring
+{
+    ScoringId = 62,
+    PlayerId = 16,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = -1.4F
+}
+
+new Scoring
+{
+    ScoringId = 63,
+    PlayerId = 16,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 17.3F
+}
+
+new Scoring
+{
+    ScoringId = 64,
+    PlayerId = 16,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = 3.1F
+}
+
+new Scoring
+{
+    ScoringId = 65,
+    PlayerId = 17,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 12.6F
+}
+
+new Scoring
+{
+    ScoringId = 66,
+    PlayerId = 17,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 2.2F
+}
+
+new Scoring
+{
+    ScoringId = 67,
+    PlayerId = 17,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 18.1F
+}
+
+new Scoring
+{
+    ScoringId = 68,
+    PlayerId = 17,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = -4.3F
+}
+
+new Scoring
+{
+    ScoringId = 69,
+    PlayerId = 18,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 23.4F
+}
+
+new Scoring
+{
+    ScoringId = 70,
+    PlayerId = 18,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 2.4F
+}
+
+new Scoring
+{
+    ScoringId = 71,
+    PlayerId = 18,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 15.3F
+}
+
+new Scoring
+{
+    ScoringId = 72,
+    PlayerId = 18,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = -4.9F
+}
+
+new Scoring
+{
+    ScoringId = 73,
+    PlayerId = 19,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 13.6F
+}
+
+new Scoring
+{
+    ScoringId = 74,
+    PlayerId = 19,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 19.0F
+}
+
+new Scoring
+{
+    ScoringId = 75,
+    PlayerId = 19,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 21.5F
+}
+
+new Scoring
+{
+    ScoringId = 76,
+    PlayerId = 19,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = -2.5F
+}
+
+new Scoring
+{
+    ScoringId = 77,
+    PlayerId = 20,
+    SeasonYear = 2024,
+    SeasonWeek = 1,
+    Points = 19.3F
+}
+
+new Scoring
+{
+    ScoringId = 78,
+    PlayerId = 20,
+    SeasonYear = 2024,
+    SeasonWeek = 2,
+    Points = 20.2F
+}
+
+new Scoring
+{
+    ScoringId = 79,
+    PlayerId = 20,
+    SeasonYear = 2024,
+    SeasonWeek = 3,
+    Points = 22.5F
+}
+
+new Scoring
+{
+    ScoringId = 80,
+    PlayerId = 20,
+    SeasonYear = 2024,
+    SeasonWeek = 4,
+    Points = -0.5F
+}

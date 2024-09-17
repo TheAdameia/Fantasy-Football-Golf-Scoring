@@ -46,26 +46,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             FirstName = "Admina",
             LastName = "Strator",
         });
-        // left this in here as an example for myself
-        modelBuilder.Entity<Bike>().HasData(new Bike[]
-        {
-            new Bike
-            {
-                Id = 1,
-                Brand = "Schwinn",
-                Color = "Blue",
-                OwnerId = 1,
-                BikeTypeId = 1
-            },
-            new Bike
-            {
-                Id = 2,
-                Brand = "Huffy",
-                Color = "Red",
-                OwnerId = 1,
-                BikeTypeId = 3
-            },
-        });
         modelBuilder.Entity<Position>().HasData(new Position[]
         {
             new Position
@@ -159,5 +139,16 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PositionId = "QB",
             }
         });
+        modelBuilder.Entity<Scoring>().HasData(new Scoring[]
+        {
+            new Scoring
+            {
+                ScoringId = 1,
+                PlayerId = 1,
+                SeasonYear = 2024,
+                SeasonWeek = 1,
+                Points = 5.1F
+            }
+        })
     }
 }
