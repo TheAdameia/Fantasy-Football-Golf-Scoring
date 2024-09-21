@@ -19,8 +19,26 @@ public class ScoringController : ControllerBase
 
     [HttpGet]
     // [Authorize]
-    public IActionResult Get()
+    public IActionResult GetAll()
     {
         return Ok(_dbContext.Scorings.ToList());
+    }
+
+    [HttpGet("{id}")]
+    // [Authorize]
+    public IActionResult GetOne(int id)
+    {
+        return Ok(_dbContext.Scorings
+        .SingleOrDefault(s => s.ScoringId == id));
+    }
+
+    [HttpPost]
+    // [Authorize]
+    public IActionResult Post(Scoring scoring)
+    {
+        _dbContext.Scorings.Add(scoring);
+        _dbContext.SaveChanges();
+
+        return Created($"api/scoring/{scoring.ScoringId}", scoring);
     }
 }
