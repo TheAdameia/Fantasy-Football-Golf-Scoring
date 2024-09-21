@@ -3,6 +3,11 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 
+const Placeholder = () => {
+  return <h1>Testing, attention please!</h1>;
+};
+
+
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
     <Routes>

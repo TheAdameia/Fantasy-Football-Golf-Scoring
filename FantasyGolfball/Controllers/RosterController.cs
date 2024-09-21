@@ -22,7 +22,7 @@ public class RosterController : ControllerBase
     public IActionResult GetByUserAndLeague(int userId, int leagueId)
     {
         return Ok(_dbContext.Rosters
-        .Where(r => r.UserId == userId && r.leagueId == leagueId)
+        .Where(r => r.UserId == userId && r.LeagueId == leagueId)
         .ToList());
     }
 }
