@@ -7,9 +7,16 @@ namespace FantasyGolfball.Data;
 public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
-    public DbSet<Bike> Bikes { get; set; }
     public DbSet<UserProfile> UserProfiles { get; set; }
-
+    public DbSet<League> Leagues { get; set; }
+    public DbSet<Matchup> Matchups { get; set; }
+    public DbSet<Player> Players { get; set; }
+    public DbSet<PlayerStatus> PlayerStatuses { get; set; }
+    public DbSet<Position> Positions { get; set; }
+    public DbSet<Roster> Rosters { get; set; }
+    public DbSet<RosterPlayer> RosterPlayers { get; set; }
+    public DbSet<Scoring> Scorings { get; set; }
+    public DbSet<Status> Statuses { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -43,8 +50,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
         {
             Id = 1,
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-            FirstName = "Admina",
-            LastName = "Strator",
         });
         modelBuilder.Entity<Position>().HasData(new Position[]
         {
@@ -85,7 +90,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PositionLong = "Defense"
             }
         });
-        modelBuilder.Entity<Status>().HasData(new Status[
+        modelBuilder.Entity<Status>().HasData(new Status[]
+        {
             new Status
             {
                 StatusId = 1,
@@ -128,7 +134,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 ViableToPlay = false,
                 RequiresBackup = true
             }
-        ]);
+        });
         modelBuilder.Entity<Player>().HasData(new Player[]
         {
             new Player
@@ -7023,6 +7029,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 SeasonWeek = 4,
                 Points = 12.1F
             },
-        })
+        });
     }
 }
