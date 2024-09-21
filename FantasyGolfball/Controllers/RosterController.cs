@@ -8,22 +8,21 @@ namespace FantasyGolfball.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 
-public class RosterPlayerController : ControllerBase
+public class RosterController : ControllerBase
 {
     private FantasyGolfballDbContext _dbContext;
 
-    public RosterPlayerController(FantasyGolfballDbContext context)
+    public RosterController(FantasyGolfballDbContext context)
     {
         _dbContext = context;
     }
 
     [HttpGet]
     // [Authorize]
-    public IActionResult GetPlayersByRoster(int rosterId)
+    public IActionResult GetByUserAndLeague(int userId, int leagueId)
     {
-        return Ok(_dbContext.RosterPlayers
-        .Where(rp => rp.RosterId == rosterId)
-        .Include(rp => rp.PlayerId)
+        return Ok(_dbContext.Rosters
+        .Where(r => r.UserId == userId && r.leagueId == leagueId)
         .ToList());
     }
 }
