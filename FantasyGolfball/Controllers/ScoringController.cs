@@ -41,4 +41,36 @@ public class ScoringController : ControllerBase
 
         return Created($"api/scoring/{scoring.ScoringId}", scoring);
     }
+
+    [HttpPut("{id}")]
+    // [Authorize]
+    public IActionResult Put(Scoring scoring)
+    {
+        Scoring scoreToUpdate = _dbContext.Scorings
+        .SingleOrDefault(s => s.ScoringId == scoring.ScoringId);
+
+        if (scoreToUpdate == null)
+        {
+            return NotFound();
+        }
+
+        scoreToUpdate.Points = scoring.Points;
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    // [Authorize]
+    public IActionResult Delete(int id)
+    {
+        Scoring scoreToDelete = _dbContext.Scorings.SingleOrDefault(s => s.ScoringId == id);
+        if (scoreToDelete == null)
+        {
+            return NotFound();
+        }
+
+        _dbContext.Scorings.Remove(scoreToDelete);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
 }
