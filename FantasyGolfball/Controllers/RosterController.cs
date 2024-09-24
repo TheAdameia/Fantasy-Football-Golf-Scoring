@@ -33,6 +33,8 @@ public class RosterController : ControllerBase
         _dbContext.Rosters.Add(roster);
         _dbContext.SaveChanges();
 
-        return Created($"api/rosters/{roster.RosterId}", roster)
+        return Created($"api/rosters/{roster.RosterId}", roster);
     }
+
+    // The PUT for rosters is going to have to be similar to my items PUT from my warehouse project.
 }
