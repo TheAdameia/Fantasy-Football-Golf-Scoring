@@ -19,8 +19,58 @@ public class ScoringController : ControllerBase
 
     [HttpGet]
     // [Authorize]
-    public IActionResult Get()
+    public IActionResult GetAll()
     {
         return Ok(_dbContext.Scorings.ToList());
+    }
+
+    [HttpGet("{id}")]
+    // [Authorize]
+    public IActionResult GetOne(int id)
+    {
+        return Ok(_dbContext.Scorings
+        .SingleOrDefault(s => s.ScoringId == id));
+    }
+
+    [HttpPost]
+    // [Authorize]
+    public IActionResult Post(Scoring scoring)
+    {
+        _dbContext.Scorings.Add(scoring);
+        _dbContext.SaveChanges();
+
+        return Created($"api/scoring/{scoring.ScoringId}", scoring);
+    }
+
+    [HttpPut("{id}")]
+    // [Authorize]
+    public IActionResult Put(Scoring scoring)
+    {
+        Scoring scoreToUpdate = _dbContext.Scorings
+        .SingleOrDefault(s => s.ScoringId == scoring.ScoringId);
+
+        if (scoreToUpdate == null)
+        {
+            return NotFound();
+        }
+
+        scoreToUpdate.Points = scoring.Points;
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    // [Authorize]
+    public IActionResult Delete(int id)
+    {
+        Scoring scoreToDelete = _dbContext.Scorings.SingleOrDefault(s => s.ScoringId == id);
+        if (scoreToDelete == null)
+        {
+            return NotFound();
+        }
+
+        _dbContext.Scorings.Remove(scoreToDelete);
+        _dbContext.SaveChanges();
+        return NoContent();
     }
 }
