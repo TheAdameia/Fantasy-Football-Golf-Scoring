@@ -33,6 +33,6 @@ public class PlayerStatusController : ControllerBase
         _dbContext.PlayerStatuses.Add(playerStatus);
         _dbContext.SaveChanges();
 
-        return Created(playerStatus)
+        return Created($"api/playerstatus/{playerStatus.PlayerStatusId}", playerStatus);
     }
 }

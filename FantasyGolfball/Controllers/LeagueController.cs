@@ -28,19 +28,20 @@ public class LeagueController : ControllerBase
         return Created($"api/leagues/{league.LeagueId}", league);
     }
 
-    [HttpGet]
-    // [Authorize]
-    public IActionResult GetByUser(int userId)
-    {
-        // return Ok(_dbContext.Leagues
-        // .Where(l => l.))
-        // expand it to solve it?
-    }
+    // [HttpGet] // needs to also have distinct route
+    // // [Authorize]
+    // public IActionResult GetByUser(int userId)
+    // {
+    //     // return Ok(_dbContext.Leagues
+    //     // .Where(l => l.))
+    //     // expand it to solve it?
+    // }
 
-    [HttpGet]
+    [HttpGet("{leagueId}")]
     // [Authorize]
     public IActionResult GetByLeagueId(int leagueId)
     {
-        
+        return Ok(_dbContext.Leagues
+        .SingleOrDefault(l => l.LeagueId == leagueId));
     }
 }
