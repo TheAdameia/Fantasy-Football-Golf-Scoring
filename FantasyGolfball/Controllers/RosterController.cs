@@ -56,6 +56,8 @@ public class RosterController : ControllerBase
                 }
             }).ToList()
         };
+
+        return Ok(rosterFullExpand);
     }
 
     [HttpPost]
@@ -68,5 +70,4 @@ public class RosterController : ControllerBase
         return Created($"api/rosters/{roster.RosterId}", roster);
     }
 
-    // The PUT for rosters is going to have to be similar to my items PUT from my warehouse project.
 }

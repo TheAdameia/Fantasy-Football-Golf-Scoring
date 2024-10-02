@@ -6,6 +6,7 @@ new Player
     PlayerFirstName = "Jake",
     PlayerLastName = "Mason",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -13,6 +14,7 @@ new Player
     PlayerFirstName = "Evan",
     PlayerLastName = "Carter",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -20,6 +22,7 @@ new Player
     PlayerFirstName = "Derek",
     PlayerLastName = "Henderson",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -27,6 +30,7 @@ new Player
     PlayerFirstName = "Marcus",
     PlayerLastName = "Wells",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -34,6 +38,7 @@ new Player
     PlayerFirstName = "Tyler",
     PlayerLastName = "Nash",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -41,6 +46,7 @@ new Player
     PlayerFirstName = "Brad",
     PlayerLastName = "McKinney",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -48,6 +54,7 @@ new Player
     PlayerFirstName = "Chris",
     PlayerLastName = "Johnson",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -55,6 +62,7 @@ new Player
     PlayerFirstName = "Brandon",
     PlayerLastName = "Richards",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -62,6 +70,7 @@ new Player
     PlayerFirstName = "Kyle",
     PlayerLastName = "Foster",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -69,6 +78,7 @@ new Player
     PlayerFirstName = "Matt",
     PlayerLastName = "Griffin",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -76,6 +86,7 @@ new Player
     PlayerFirstName = "Trevor",
     PlayerLastName = "Burns",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -83,6 +94,7 @@ new Player
     PlayerFirstName = "Grant",
     PlayerLastName = "Hunter",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -90,6 +102,7 @@ new Player
     PlayerFirstName = "Dylan",
     PlayerLastName = "Reed",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -97,6 +110,7 @@ new Player
     PlayerFirstName = "Nick",
     PlayerLastName = "Evans",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -104,6 +118,7 @@ new Player
     PlayerFirstName = "Scott",
     PlayerLastName = "Bailey",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -111,6 +126,7 @@ new Player
     PlayerFirstName = "Troy",
     PlayerLastName = "Farmer",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -118,6 +134,7 @@ new Player
     PlayerFirstName = "Zach",
     PlayerLastName = "Lowe",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -125,6 +142,7 @@ new Player
     PlayerFirstName = "Hunter",
     PlayerLastName = "Murphy",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -132,6 +150,7 @@ new Player
     PlayerFirstName = "Austin",
     PlayerLastName = "Patterson",
     PositionId = 1,
+    StatusId = 1,
 },
 new Player
 {
@@ -139,6 +158,7 @@ new Player
     PlayerFirstName = "Caleb",
     PlayerLastName = "Harrison",
     PositionId = 1,
+    StatusId = 1,
 },
 
 // Tight Ends
@@ -148,6 +168,7 @@ new Player
     PlayerFirstName = "Ryan",
     PlayerLastName = "Fitzgerald",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -155,6 +176,7 @@ new Player
     PlayerFirstName = "Mason",
     PlayerLastName = "Scott",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -162,6 +184,7 @@ new Player
     PlayerFirstName = "Jordan",
     PlayerLastName = "Brooks",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -169,6 +192,7 @@ new Player
     PlayerFirstName = "Jason",
     PlayerLastName = "Douglas",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -176,6 +200,7 @@ new Player
     PlayerFirstName = "Alex",
     PlayerLastName = "Cooper",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -183,6 +208,7 @@ new Player
     PlayerFirstName = "Chase",
     PlayerLastName = "Garrett",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -190,6 +216,7 @@ new Player
     PlayerFirstName = "Cody",
     PlayerLastName = "Thompson",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -197,6 +224,7 @@ new Player
     PlayerFirstName = "Landon",
     PlayerLastName = "Pearson",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -204,6 +232,7 @@ new Player
     PlayerFirstName = "Jared",
     PlayerLastName = "Dunn",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -211,6 +240,7 @@ new Player
     PlayerFirstName = "Drew",
     PlayerLastName = "Cross",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -218,6 +248,7 @@ new Player
     PlayerFirstName = "Colin",
     PlayerLastName = "Shelby",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -225,6 +256,7 @@ new Player
     PlayerFirstName = "Garrett",
     PlayerLastName = "Coleman",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -232,6 +264,7 @@ new Player
     PlayerFirstName = "Bryce",
     PlayerLastName = "Fowler",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -239,6 +272,7 @@ new Player
     PlayerFirstName = "Clay",
     PlayerLastName = "Sanders",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -246,6 +280,7 @@ new Player
     PlayerFirstName = "Isaac",
     PlayerLastName = "McLean",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -253,6 +288,7 @@ new Player
     PlayerFirstName = "Cole",
     PlayerLastName = "Washington",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -260,6 +296,7 @@ new Player
     PlayerFirstName = "Blake",
     PlayerLastName = "Morris",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -267,6 +304,7 @@ new Player
     PlayerFirstName = "Nate",
     PlayerLastName = "Bryant",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -274,6 +312,7 @@ new Player
     PlayerFirstName = "Jesse",
     PlayerLastName = "Holmes",
     PositionId = 4,
+    StatusId = 1,
 },
 new Player
 {
@@ -281,6 +320,7 @@ new Player
     PlayerFirstName = "Connor",
     PlayerLastName = "Davis",
     PositionId = 4,
+    StatusId = 1,
 },
 
 // Kickers
@@ -290,6 +330,7 @@ new Player
     PlayerFirstName = "Lucas",
     PlayerLastName = "Smith",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -297,6 +338,7 @@ new Player
     PlayerFirstName = "Noah",
     PlayerLastName = "Johnson",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -304,6 +346,7 @@ new Player
     PlayerFirstName = "Ethan",
     PlayerLastName = "Williams",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -311,6 +354,7 @@ new Player
     PlayerFirstName = "Logan",
     PlayerLastName = "Jones",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -318,6 +362,7 @@ new Player
     PlayerFirstName = "Mason",
     PlayerLastName = "Brown",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -325,6 +370,7 @@ new Player
     PlayerFirstName = "Oliver",
     PlayerLastName = "Davis",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -332,6 +378,7 @@ new Player
     PlayerFirstName = "Liam",
     PlayerLastName = "Miller",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -339,6 +386,7 @@ new Player
     PlayerFirstName = "Jacob",
     PlayerLastName = "Wilson",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -346,6 +394,7 @@ new Player
     PlayerFirstName = "James",
     PlayerLastName = "Moore",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -353,6 +402,7 @@ new Player
     PlayerFirstName = "Benjamin",
     PlayerLastName = "Taylor",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -360,6 +410,7 @@ new Player
     PlayerFirstName = "Henry",
     PlayerLastName = "Anderson",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -367,6 +418,7 @@ new Player
     PlayerFirstName = "Owen",
     PlayerLastName = "Thomas",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -374,6 +426,7 @@ new Player
     PlayerFirstName = "William",
     PlayerLastName = "Jackson",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -381,6 +434,7 @@ new Player
     PlayerFirstName = "Elijah",
     PlayerLastName = "White",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -388,6 +442,7 @@ new Player
     PlayerFirstName = "Jackson",
     PlayerLastName = "Harris",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -395,6 +450,7 @@ new Player
     PlayerFirstName = "Gabriel",
     PlayerLastName = "Clark",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -402,6 +458,7 @@ new Player
     PlayerFirstName = "Sebastian",
     PlayerLastName = "Rodriguez",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -409,6 +466,7 @@ new Player
     PlayerFirstName = "Daniel",
     PlayerLastName = "Lewis",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -416,6 +474,7 @@ new Player
     PlayerFirstName = "Nathan",
     PlayerLastName = "Walker",
     PositionId = 5,
+    StatusId = 1,
 },
 new Player
 {
@@ -423,6 +482,7 @@ new Player
     PlayerFirstName = "Ethan",
     PlayerLastName = "Adams",
     PositionId = 5,
+    StatusId = 1,
 },
 
 // Wide Receivers
@@ -432,6 +492,7 @@ new Player
     PlayerFirstName = "Aiden",
     PlayerLastName = "Miller",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -439,6 +500,7 @@ new Player
     PlayerFirstName = "Liam",
     PlayerLastName = "Brown",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -446,6 +508,7 @@ new Player
     PlayerFirstName = "Alexander",
     PlayerLastName = "Jones",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -453,6 +516,7 @@ new Player
     PlayerFirstName = "Joseph",
     PlayerLastName = "Garcia",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -460,6 +524,7 @@ new Player
     PlayerFirstName = "Samuel",
     PlayerLastName = "Martinez",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -467,6 +532,7 @@ new Player
     PlayerFirstName = "Matthew",
     PlayerLastName = "Hernandez",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -474,6 +540,7 @@ new Player
     PlayerFirstName = "David",
     PlayerLastName = "Lopez",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -481,6 +548,7 @@ new Player
     PlayerFirstName = "Andrew",
     PlayerLastName = "Gonzalez",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -488,6 +556,7 @@ new Player
     PlayerFirstName = "Joshua",
     PlayerLastName = "Wilson",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -495,6 +564,7 @@ new Player
     PlayerFirstName = "Christopher",
     PlayerLastName = "Perez",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -502,6 +572,7 @@ new Player
     PlayerFirstName = "Thomas",
     PlayerLastName = "Taylor",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -509,6 +580,7 @@ new Player
     PlayerFirstName = "John",
     PlayerLastName = "Anderson",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -516,6 +588,7 @@ new Player
     PlayerFirstName = "James",
     PlayerLastName = "Thomas",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -523,6 +596,7 @@ new Player
     PlayerFirstName = "Brian",
     PlayerLastName = "Jackson",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -530,6 +604,7 @@ new Player
     PlayerFirstName = "Nicholas",
     PlayerLastName = "White",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -537,6 +612,7 @@ new Player
     PlayerFirstName = "Justin",
     PlayerLastName = "Harris",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -544,6 +620,7 @@ new Player
     PlayerFirstName = "Aaron",
     PlayerLastName = "Clark",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -551,6 +628,7 @@ new Player
     PlayerFirstName = "Zachary",
     PlayerLastName = "Lewis",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -558,6 +636,7 @@ new Player
     PlayerFirstName = "Paul",
     PlayerLastName = "Walker",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -565,6 +644,7 @@ new Player
     PlayerFirstName = "Eric",
     PlayerLastName = "Young",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -572,6 +652,7 @@ new Player
     PlayerFirstName = "Sean",
     PlayerLastName = "King",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -579,6 +660,7 @@ new Player
     PlayerFirstName = "Ray",
     PlayerLastName = "Scott",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -586,6 +668,7 @@ new Player
     PlayerFirstName = "Derek",
     PlayerLastName = "Adams",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -593,6 +676,7 @@ new Player
     PlayerFirstName = "Kevin",
     PlayerLastName = "Baker",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -600,6 +684,7 @@ new Player
     PlayerFirstName = "Tony",
     PlayerLastName = "Collins",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -607,6 +692,7 @@ new Player
     PlayerFirstName = "Cameron",
     PlayerLastName = "Cox",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -614,6 +700,7 @@ new Player
     PlayerFirstName = "Adam",
     PlayerLastName = "Stewart",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -621,6 +708,7 @@ new Player
     PlayerFirstName = "Kyle",
     PlayerLastName = "Turner",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -628,6 +716,7 @@ new Player
     PlayerFirstName = "Greg",
     PlayerLastName = "Hughes",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -635,6 +724,7 @@ new Player
     PlayerFirstName = "Mike",
     PlayerLastName = "Ramirez",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -642,6 +732,7 @@ new Player
     PlayerFirstName = "Patrick",
     PlayerLastName = "Ross",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -649,6 +740,7 @@ new Player
     PlayerFirstName = "Alex",
     PlayerLastName = "Powell",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -656,6 +748,7 @@ new Player
     PlayerFirstName = "Steven",
     PlayerLastName = "Griffin",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -663,6 +756,7 @@ new Player
     PlayerFirstName = "Bill",
     PlayerLastName = "Brooks",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -670,6 +764,7 @@ new Player
     PlayerFirstName = "Daniel",
     PlayerLastName = "Kelly",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -677,6 +772,7 @@ new Player
     PlayerFirstName = "Rob",
     PlayerLastName = "Foster",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -684,6 +780,7 @@ new Player
     PlayerFirstName = "Jeff",
     PlayerLastName = "Reed",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -691,6 +788,7 @@ new Player
     PlayerFirstName = "Phil",
     PlayerLastName = "Patterson",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -698,6 +796,7 @@ new Player
     PlayerFirstName = "Larry",
     PlayerLastName = "Burns",
     PositionId = 2,
+    StatusId = 1,
 },
 new Player
 {
@@ -705,6 +804,7 @@ new Player
     PlayerFirstName = "Jackson",
     PlayerLastName = "Wilson",
     PositionId = 2,
+    StatusId = 1,
 },
 
 // Running Backs
@@ -714,6 +814,7 @@ new Player
     PlayerFirstName = "Owen",
     PlayerLastName = "Taylor",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -721,6 +822,7 @@ new Player
     PlayerFirstName = "Logan",
     PlayerLastName = "Lee",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -728,6 +830,7 @@ new Player
     PlayerFirstName = "Dylan",
     PlayerLastName = "Perez",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -735,6 +838,7 @@ new Player
     PlayerFirstName = "Aiden",
     PlayerLastName = "Gonzalez",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -742,6 +846,7 @@ new Player
     PlayerFirstName = "Elijah",
     PlayerLastName = "Mitchell",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -749,6 +854,7 @@ new Player
     PlayerFirstName = "Henry",
     PlayerLastName = "Carter",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -756,6 +862,7 @@ new Player
     PlayerFirstName = "Ethan",
     PlayerLastName = "Torres",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -763,6 +870,7 @@ new Player
     PlayerFirstName = "Alexander",
     PlayerLastName = "Evans",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -770,6 +878,7 @@ new Player
     PlayerFirstName = "Logan",
     PlayerLastName = "Edwards",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -777,6 +886,7 @@ new Player
     PlayerFirstName = "Jackson",
     PlayerLastName = "Collins",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -784,6 +894,7 @@ new Player
     PlayerFirstName = "Landon",
     PlayerLastName = "Morris",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -791,6 +902,7 @@ new Player
     PlayerFirstName = "Bryson",
     PlayerLastName = "Murphy",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -798,6 +910,7 @@ new Player
     PlayerFirstName = "Parker",
     PlayerLastName = "Powell",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -805,6 +918,7 @@ new Player
     PlayerFirstName = "Jameson",
     PlayerLastName = "Sullivan",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -812,6 +926,7 @@ new Player
     PlayerFirstName = "Bentley",
     PlayerLastName = "Bryant",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -819,6 +934,7 @@ new Player
     PlayerFirstName = "Carson",
     PlayerLastName = "Newton",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -826,6 +942,7 @@ new Player
     PlayerFirstName = "Braxton",
     PlayerLastName = "Lambert",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -833,6 +950,7 @@ new Player
     PlayerFirstName = "Tucker",
     PlayerLastName = "Cruz",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -840,6 +958,7 @@ new Player
     PlayerFirstName = "Zane",
     PlayerLastName = "Owen",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -847,6 +966,7 @@ new Player
     PlayerFirstName = "Rowan",
     PlayerLastName = "Knight",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -854,6 +974,7 @@ new Player
     PlayerFirstName = "Harrison",
     PlayerLastName = "Lane",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -861,6 +982,7 @@ new Player
     PlayerFirstName = "Weston",
     PlayerLastName = "Hicks",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -868,6 +990,7 @@ new Player
     PlayerFirstName = "Finley",
     PlayerLastName = "Abbott",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -875,6 +998,7 @@ new Player
     PlayerFirstName = "Sullivan",
     PlayerLastName = "Reeves",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -882,6 +1006,7 @@ new Player
     PlayerFirstName = "Reid",
     PlayerLastName = "Jenkins",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -889,6 +1014,7 @@ new Player
     PlayerFirstName = "Archer",
     PlayerLastName = "Gibson",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -896,6 +1022,7 @@ new Player
     PlayerFirstName = "Rhys",
     PlayerLastName = "Parks",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -903,6 +1030,7 @@ new Player
     PlayerFirstName = "Knox",
     PlayerLastName = "Greene",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -910,6 +1038,7 @@ new Player
     PlayerFirstName = "Brody",
     PlayerLastName = "Austin",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -917,6 +1046,7 @@ new Player
     PlayerFirstName = "Cade",
     PlayerLastName = "Wells",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -924,6 +1054,7 @@ new Player
     PlayerFirstName = "Theo",
     PlayerLastName = "Wagner",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -931,6 +1062,7 @@ new Player
     PlayerFirstName = "Sterling",
     PlayerLastName = "Rice",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -938,6 +1070,7 @@ new Player
     PlayerFirstName = "Jude",
     PlayerLastName = "Hayes",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -945,6 +1078,7 @@ new Player
     PlayerFirstName = "Crosby",
     PlayerLastName = "Houston",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -952,6 +1086,7 @@ new Player
     PlayerFirstName = "Porter",
     PlayerLastName = "Hale",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -959,6 +1094,7 @@ new Player
     PlayerFirstName = "Beckham",
     PlayerLastName = "Wallace",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -966,6 +1102,7 @@ new Player
     PlayerFirstName = "Judah",
     PlayerLastName = "Leonard",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -973,6 +1110,7 @@ new Player
     PlayerFirstName = "Griffin",
     PlayerLastName = "Todd",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -980,6 +1118,7 @@ new Player
     PlayerFirstName = "Phoenix",
     PlayerLastName = "Webb",
     PositionId = 3,
+    StatusId = 1,
 },
 new Player
 {
@@ -987,6 +1126,7 @@ new Player
     PlayerFirstName = "Dawson",
     PlayerLastName = "Sanders",
     PositionId = 3,
+    StatusId = 1,
 },
 
 // Defense
@@ -996,6 +1136,7 @@ new Player
     PlayerFirstName = "Denver",
     PlayerLastName = "Thunderbirds",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1003,6 +1144,7 @@ new Player
     PlayerFirstName = "Atlanta",
     PlayerLastName = "Vipers",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1010,6 +1152,7 @@ new Player
     PlayerFirstName = "Houston",
     PlayerLastName = "Ironhounds",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1017,6 +1160,7 @@ new Player
     PlayerFirstName = "Chicago",
     PlayerLastName = "Stallions",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1024,6 +1168,7 @@ new Player
     PlayerFirstName = "Seattle",
     PlayerLastName = "Warhawks",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1031,6 +1176,7 @@ new Player
     PlayerFirstName = "Orlando",
     PlayerLastName = "Cyclones",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1038,6 +1184,7 @@ new Player
     PlayerFirstName = "Nashville",
     PlayerLastName = "Guardians",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1045,6 +1192,7 @@ new Player
     PlayerFirstName = "Portland",
     PlayerLastName = "Lumberjacks",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1052,6 +1200,7 @@ new Player
     PlayerFirstName = "Las Vegas",
     PlayerLastName = "Outlaws",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1059,6 +1208,7 @@ new Player
     PlayerFirstName = "Kansas City",
     PlayerLastName = "Redtails",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1066,6 +1216,7 @@ new Player
     PlayerFirstName = "Phoenix",
     PlayerLastName = "Firestorm",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1073,6 +1224,7 @@ new Player
     PlayerFirstName = "Brooklyn",
     PlayerLastName = "Sentinels",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1080,6 +1232,7 @@ new Player
     PlayerFirstName = "Miami",
     PlayerLastName = "Hurricanes",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1087,6 +1240,7 @@ new Player
     PlayerFirstName = "San Diego",
     PlayerLastName = "Tritons",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1094,6 +1248,7 @@ new Player
     PlayerFirstName = "Detroit",
     PlayerLastName = "Phantoms",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1101,6 +1256,7 @@ new Player
     PlayerFirstName = "Carolina",
     PlayerLastName = "Cobras",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1108,6 +1264,7 @@ new Player
     PlayerFirstName = "New Jersey",
     PlayerLastName = "Rampage",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1115,6 +1272,7 @@ new Player
     PlayerFirstName = "St. Louis",
     PlayerLastName = "Renegades",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1122,6 +1280,7 @@ new Player
     PlayerFirstName = "Oklahoma City",
     PlayerLastName = "Mustangs",
     PositionId = 6,
+    StatusId = 1,
 },
 new Player
 {
@@ -1129,4 +1288,5 @@ new Player
     PlayerFirstName = "Cincinnati",
     PlayerLastName = "Scorpions",
     PositionId = 6,
+    StatusId = 1,
 },
