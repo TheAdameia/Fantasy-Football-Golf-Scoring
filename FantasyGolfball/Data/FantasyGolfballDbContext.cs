@@ -11,7 +11,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<League> Leagues { get; set; }
     public DbSet<Matchup> Matchups { get; set; }
     public DbSet<Player> Players { get; set; }
-    public DbSet<PlayerStatus> PlayerStatuses { get; set; }
     public DbSet<Position> Positions { get; set; }
     public DbSet<Roster> Rosters { get; set; }
     public DbSet<RosterPlayer> RosterPlayers { get; set; }
