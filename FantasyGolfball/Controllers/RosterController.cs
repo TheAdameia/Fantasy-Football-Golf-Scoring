@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
+using FantasyGolfball.Models.DTOs;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -21,10 +22,40 @@ public class RosterController : ControllerBase
     // [Authorize]
     public IActionResult GetByUserAndLeague(int userId, int leagueId)
     {
-        return Ok(_dbContext.Rosters
-        .Where(r => r.UserId == userId && r.LeagueId == leagueId)
-        // .Include(r => ) I need to make a DTO for this because a roster doesn't contain a list
-        .ToList());
+        if (userId == 0 || leagueId == 0)
+        {
+            return BadRequest("One or both IDs are 0");
+        }
+
+        Roster roster = _dbContext.Rosters
+            .Include(r => r.RosterPlayers)
+                .ThenInclude(rp => rp.Player)
+            .SingleOrDefault(r => r.UserId == userId && r.LeagueId == leagueId);
+
+        if (roster == null)
+        {
+            return NotFound();
+        }
+
+        RosterFullExpandDTO rosterFullExpand = new RosterFullExpandDTO
+        {
+            RosterId = roster.RosterId,
+            LeagueId = roster.LeagueId,
+            RosterPlayers = roster.RosterPlayers.Select(rp => new RosterPlayerFullExpandDTO
+            {
+                RosterPlayerId = rp.RosterPlayerId,
+                PlayerId = rp.PlayerId,
+                RosterId = rp.RosterId,
+                Player = new PlayerFullExpandDTO
+                {
+                    PlayerId = rp.Player.PlayerId,
+                    PlayerFirstName = rp.Player.PlayerFirstName,
+                    PlayerLastName = rp.Player.PlayerLastName,
+                    StatusId = rp.Player.StatusId,
+                    PositionId = rp.Player.PositionId
+                }
+            }).ToList()
+        };
     }
 
     [HttpPost]

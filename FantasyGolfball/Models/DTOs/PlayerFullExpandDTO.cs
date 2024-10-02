@@ -10,5 +10,5 @@ public class PlayerFullExpandDTO
     public string PlayerFirstName { get; set;}
     public string PlayerLastName { get; set; }
     public int PositionId { get; set; }
-    public List<PlayerStatusDTO> playerStati { get; set; }
+    public int StatusId { get; set; }
 }

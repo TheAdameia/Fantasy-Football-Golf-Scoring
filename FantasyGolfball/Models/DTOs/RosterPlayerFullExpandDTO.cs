@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FantasyGolfball.Models.DTOs;
 
-public class PlayerStatusDTO
+public class RosterPlayerFullExpandDTO
 {
     [Key]
-    public int PlayerStatusId { get; set; }
+    public int RosterPlayerId { get; set; }
     public int PlayerId { get; set; }
-    public int StatusId { get; set; }
+    public PlayerFullExpandDTO Player { get; set; }
+    public int RosterId { get; set; }
 }

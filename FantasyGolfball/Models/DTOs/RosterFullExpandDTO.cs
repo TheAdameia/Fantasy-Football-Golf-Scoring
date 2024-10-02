@@ -8,6 +8,5 @@ public class RosterFullExpandDTO
     [Key]
     public int RosterId { get; set; }
     public int LeagueId { get; set; }
-    public int UserId { get; set; }
-    public List<PlayerFullExpandDTO> Players { get; set; }
+    public List<RosterPlayerFullExpandDTO> RosterPlayers { get; set; }
 }

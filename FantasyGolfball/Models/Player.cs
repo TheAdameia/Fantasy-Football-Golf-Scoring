@@ -8,4 +8,6 @@ public class Player
     public string PlayerFirstName { get; set;}
     public string PlayerLastName { get; set; }
     public int PositionId { get; set; }
+    public int StatusId { get; set; }
+    public ICollection<RosterPlayer> RosterPlayers { get; set; }
 }
