@@ -23,6 +23,7 @@ public class RosterController : ControllerBase
     {
         return Ok(_dbContext.Rosters
         .Where(r => r.UserId == userId && r.LeagueId == leagueId)
+        // .Include(r => ) I need to make a DTO for this because a roster doesn't contain a list
         .ToList());
     }
 
