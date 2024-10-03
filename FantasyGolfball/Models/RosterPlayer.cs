@@ -7,6 +7,7 @@ public class RosterPlayer
     public int RosterPlayerId { get; set; }
     public int PlayerId { get; set; }
     public int RosterId { get; set; }
+    public string RosterPosition { get; set; }
     public Roster Roster { get; set; }
     public Player Player { get; set; }
 }

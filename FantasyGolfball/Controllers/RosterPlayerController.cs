@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
+using FantasyGolfball.Models.DTOs;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -17,7 +18,7 @@ public class RosterPlayerController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
+    [HttpGet] 
     // [Authorize]
     public IActionResult GetPlayersByRoster(int rosterId)
     {
@@ -25,5 +26,22 @@ public class RosterPlayerController : ControllerBase
         .Where(rp => rp.RosterId == rosterId)
         .Include(rp => rp.PlayerId)
         .ToList());
+    }
+
+    [HttpPost]
+    // [Authorize]
+    public IActionResult Post(RosterPlayerPOSTDTO rosterPlayerPOSTDTO)
+    {
+        var rosterPlayer = new RosterPlayer
+        {
+            PlayerId = rosterPlayerPOSTDTO.PlayerId,
+            RosterId = rosterPlayerPOSTDTO.RosterId,
+            RosterPosition = rosterPlayerPOSTDTO.RosterPosition
+        };
+        
+        _dbContext.RosterPlayers.Add(rosterPlayer);
+        _dbContext.SaveChanges();
+
+        return Ok();
     }
 }

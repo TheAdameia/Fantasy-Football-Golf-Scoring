@@ -47,6 +47,7 @@ public class RosterController : ControllerBase
                 RosterPlayerId = rp.RosterPlayerId,
                 PlayerId = rp.PlayerId,
                 RosterId = rp.RosterId,
+                RosterPosition = rp.RosterPosition,
                 Player = new PlayerFullExpandDTO
                 {
                     PlayerId = rp.Player.PlayerId,
@@ -69,8 +70,15 @@ public class RosterController : ControllerBase
 
     [HttpPost]
     // [Authorize]
-    public IActionResult Post(Roster roster)
+    public IActionResult Post(RosterPOSTDTO rosterPOSTDTO)
     {
+        var roster = new Roster
+        {
+            RosterId = rosterPOSTDTO.RosterId,
+            LeagueId = rosterPOSTDTO.LeagueId,
+            UserId = rosterPOSTDTO.UserId
+        };
+        
         _dbContext.Rosters.Add(roster);
         _dbContext.SaveChanges();
 
