@@ -30,6 +30,7 @@ public class RosterController : ControllerBase
         Roster roster = _dbContext.Rosters
             .Include(r => r.RosterPlayers)
                 .ThenInclude(rp => rp.Player)
+                    .ThenInclude(p => p.Position)
             .SingleOrDefault(r => r.UserId == userId && r.LeagueId == leagueId);
 
         if (roster == null)
@@ -52,7 +53,13 @@ public class RosterController : ControllerBase
                     PlayerFirstName = rp.Player.PlayerFirstName,
                     PlayerLastName = rp.Player.PlayerLastName,
                     StatusId = rp.Player.StatusId,
-                    PositionId = rp.Player.PositionId
+                    PositionId = rp.Player.PositionId,
+                    Position = new PositionDTO
+                    {
+                        PositionId = rp.Player.Position.PositionId,
+                        PositionShort = rp.Player.Position.PositionShort,
+                        PositionLong = rp.Player.Position.PositionLong
+                    }
                 }
             }).ToList()
         };

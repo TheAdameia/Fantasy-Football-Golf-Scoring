@@ -10,4 +10,5 @@ public class Player
     public int PositionId { get; set; }
     public int StatusId { get; set; }
     public ICollection<RosterPlayer> RosterPlayers { get; set; }
+    public Position Position { get; set; }
 }
