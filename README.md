@@ -17,8 +17,8 @@ The project is currently at the point where the UI and page structure are being 
 
 ## ERD and wireframe
 
-https://miro.com/app/board/uXjVLbeHqSM=/?share_link_id=186772598044
-https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
+Wireframe https://miro.com/app/board/uXjVLbeHqSM=/?share_link_id=186772598044
+ERD https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
 
 ## Disclosures
 I don't own football (does anybody?). All data used is either fabricated for testing purposes or gathered from public sources on the internet. I do not profit from this project.
