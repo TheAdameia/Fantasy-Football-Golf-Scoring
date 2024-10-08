@@ -3,8 +3,11 @@ import { RosterPlayerCard } from "./RosterPlayerCard"
 
 
 export const RosterCard = ({ roster }) => {
-
-
+    
+    if (!roster || !Array.isArray(roster.rosterPlayers)) {
+        return <div>No roster data available</div>;
+    }
+    
     return (
         <div>
             <h4>Stuff goes here. Make it longer so it doesn't look odd</h4>

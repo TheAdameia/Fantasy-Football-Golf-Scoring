@@ -3,13 +3,16 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { RosterPage } from "./roster/RosterPage";
+import { useAppContext } from "../contexts/AppContext";
 
 const Placeholder = () => {
   return <h1>Testing, attention please!</h1>;
 };
 
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+export default function ApplicationViews() {
+  const { loggedInUser, setLoggedInUser } = useAppContext()
+
   return (
     <Routes>
       <Route path="/">

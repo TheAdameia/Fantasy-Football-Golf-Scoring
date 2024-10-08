@@ -11,7 +11,7 @@ export const RosterPlayerCard = ({ rp }) => {
                 {rp.player.playerFirstName + " " + rp.player.playerLastName}
             </td>
             <td>
-                Bye NYI
+                Week 
             </td>
             <td>
                 uhhhh
