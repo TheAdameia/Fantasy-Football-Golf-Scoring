@@ -7,6 +7,8 @@ export const AppProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState();
   // add state for determining week here
 
+  const globalWeek = 1;
+
   useEffect(() => {
     tryGetLoggedInUser().then((user) => {
       setLoggedInUser(user);
@@ -14,7 +16,7 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+    <AppContext.Provider value={{ loggedInUser, setLoggedInUser, globalWeek }}>
       {children}
     </AppContext.Provider>
   );

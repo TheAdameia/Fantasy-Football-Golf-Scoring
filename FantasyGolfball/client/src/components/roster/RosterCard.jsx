@@ -2,7 +2,7 @@ import { Table } from "reactstrap"
 import { RosterPlayerCard } from "./RosterPlayerCard"
 
 
-export const RosterCard = ({ roster }) => {
+export const RosterCard = ({ roster, scores }) => {
     
     if (!roster || !Array.isArray(roster.rosterPlayers)) {
         return <div>No roster data available</div>;
