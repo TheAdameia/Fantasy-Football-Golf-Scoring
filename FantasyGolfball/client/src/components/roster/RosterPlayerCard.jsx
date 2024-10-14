@@ -3,12 +3,15 @@
 export const RosterPlayerCard = ({ rp, scores }) => {
     let playerScore = 0;
 
-    for (scores in scores){
-        if (score.Includes(rp.player.playerId))
-        {
-            playerScore = score.points
+    if (scores != null) {
+        for (const score of scores){
+            if (score.playerId == rp.playerId)
+            {
+                playerScore = score.points
+            }
         }
     }
+    
 
     return (
         <tr>

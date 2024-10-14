@@ -35,10 +35,14 @@ public class ScoringController : ControllerBase
 
     [HttpGet("by-week-and-players")]
     // [Authorize]
-    public IActionResult GetByWeekAndPlayers(int weekId, List<int>playerIds)
+    public IActionResult GetByWeekAndPlayers(int weekId, string playerIds)
     {
+        List<int> playerIdsList = playerIds.Split(',')
+                                            .Select(int.Parse)
+                                            .ToList();
+
         List<Scoring> weekScores = _dbContext.Scorings
-        .Where(s => s.SeasonWeek == weekId && playerIds.Contains(s.PlayerId))
+        .Where(s => s.SeasonWeek == weekId && playerIdsList.Contains(s.PlayerId))
         .ToList();
         
         if (weekScores == null)

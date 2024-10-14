@@ -20,10 +20,11 @@ export const RosterPage = () => {
         const rosterPlayers = roster?.rosterPlayers || []
 
         const playerIds = rosterPlayers.map(p => p.playerId)
+        const playerIdsString = playerIds.join(',')
        
-        // if (playerIds.length > 0) {
-        //     GetByWeekAndPlayers(globalWeek, playerIds).then(setScores)
-        // }
+        if (playerIds.length > 0) {
+            GetByWeekAndPlayers(globalWeek, playerIdsString).then(setScores)
+        }
     }
 
     useEffect(() => {
