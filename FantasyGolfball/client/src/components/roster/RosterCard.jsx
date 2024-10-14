@@ -7,6 +7,8 @@ export const RosterCard = ({ roster, scores }) => {
     if (!roster || !Array.isArray(roster.rosterPlayers)) {
         return <div>No roster data available</div>;
     }
+
+    // I have to wonder if there's a computationally more efficient way to pass scores that sorts them first here.
     
     return (
         <div>
@@ -34,6 +36,7 @@ export const RosterCard = ({ roster, scores }) => {
                             <RosterPlayerCard
                                 rp={rp}
                                 key={`rp-${rp.rosterPlayerId}`}
+                                scores={scores}
                             ></RosterPlayerCard>
                         )
                     })}

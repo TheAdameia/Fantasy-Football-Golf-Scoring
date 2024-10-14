@@ -1,6 +1,14 @@
 
 
-export const RosterPlayerCard = ({ rp }) => {
+export const RosterPlayerCard = ({ rp, scores }) => {
+    let playerScore = 0;
+
+    for (scores in scores){
+        if (score.Includes(rp.player.playerId))
+        {
+            playerScore = score.points
+        }
+    }
 
     return (
         <tr>
@@ -14,7 +22,7 @@ export const RosterPlayerCard = ({ rp }) => {
                 Week 
             </td>
             <td>
-                uhhhh
+                {playerScore}
             </td>
         </tr>
     )
