@@ -36,7 +36,10 @@ export const PlayerCard = ({ player }) => {
                 {player.playerFirstName} {player.playerLastName}
             </td>
             <td>
-                {player.statusId}
+                {player.position.positionShort}
+            </td>
+            <td>
+                {player.status.statusType}
             </td>
             <td>
                 NYI

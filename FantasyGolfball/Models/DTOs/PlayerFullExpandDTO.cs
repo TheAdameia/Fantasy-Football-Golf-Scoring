@@ -12,4 +12,5 @@ public class PlayerFullExpandDTO
     public int PositionId { get; set; }
     public int StatusId { get; set; }
     public PositionDTO Position { get; set; }
+    public StatusDTO Status { get; set; }
 }

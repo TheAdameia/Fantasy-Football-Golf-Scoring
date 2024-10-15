@@ -31,6 +31,9 @@ public class RosterController : ControllerBase
             .Include(r => r.RosterPlayers)
                 .ThenInclude(rp => rp.Player)
                     .ThenInclude(p => p.Position)
+            .Include(r => r.RosterPlayers)
+                .ThenInclude(rp => rp.Player)
+                    .ThenInclude(p => p.Status)
             .SingleOrDefault(r => r.UserId == userId && r.LeagueId == leagueId);
 
         if (roster == null)
@@ -60,6 +63,13 @@ public class RosterController : ControllerBase
                         PositionId = rp.Player.Position.PositionId,
                         PositionShort = rp.Player.Position.PositionShort,
                         PositionLong = rp.Player.Position.PositionLong
+                    },
+                    Status = new StatusDTO
+                    {
+                        StatusId = rp.Player.Status.StatusId,
+                        StatusType = rp.Player.Status.StatusType,
+                        ViableToPlay = rp.Player.Status.ViableToPlay,
+                        RequiresBackup = rp.Player.Status.RequiresBackup
                     }
                 }
             }).ToList()

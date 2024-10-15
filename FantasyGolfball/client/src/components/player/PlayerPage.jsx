@@ -52,6 +52,9 @@ export const PlayerPage = () => {
                             Player
                         </th>
                         <th>
+                            Position
+                        </th>
+                        <th>
                             Status
                         </th>
                         <th>
