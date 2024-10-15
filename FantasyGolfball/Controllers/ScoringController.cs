@@ -53,6 +53,13 @@ public class ScoringController : ControllerBase
         return Ok(weekScores);
     }
 
+    [HttpGet("by-player")]
+    // [Authorize]
+    public IActionResult GetByPlayer(int playerId)
+    {
+        return Ok(_dbContext.Scorings.Where(s => s.PlayerId == playerId).ToList());
+    }
+
     [HttpPost]
     // [Authorize]
     public IActionResult Post(Scoring scoring)

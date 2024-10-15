@@ -35,6 +35,11 @@ return (
                         My Team
                     </NavLink>
                 </NavItem>
+                <NavItem>
+                    <NavLink tag={RRNavLink} to="/player-list">
+                        Player List
+                    </NavLink>
+                </NavItem>
             </Nav>
             </Collapse>
             <Button
