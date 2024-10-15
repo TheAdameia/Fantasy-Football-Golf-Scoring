@@ -1,11 +1,12 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace FantasyGolfball.Models;
+namespace FantasyGolfball.Models.DTOs;
 
-public class Position
+public class PositionDTO
 {
+    [Key]
     public int PositionId { get; set; }
     public string PositionShort { get; set; }
     public string PositionLong { get; set; }
-    public ICollection<Player> Players { get; set;}
 }

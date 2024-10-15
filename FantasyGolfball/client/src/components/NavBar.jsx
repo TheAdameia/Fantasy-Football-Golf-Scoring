@@ -11,9 +11,11 @@ NavbarBrand,
 NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
+import { useAppContext } from "../contexts/AppContext";
 
-export default function NavBar({ loggedInUser, setLoggedInUser }) {
+export default function NavBar() {
 const [open, setOpen] = useState(false);
+const { loggedInUser, setLoggedInUser } = useAppContext();
 
 const toggleNavbar = () => setOpen(!open);
 
@@ -27,7 +29,13 @@ return (
         <>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
-            <Nav navbar></Nav>
+            <Nav navbar>
+                <NavItem>
+                    <NavLink tag={RRNavLink} to="/roster">
+                        My Team
+                    </NavLink>
+                </NavItem>
+            </Nav>
             </Collapse>
             <Button
             color="primary"

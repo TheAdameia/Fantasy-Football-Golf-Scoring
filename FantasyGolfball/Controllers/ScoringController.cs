@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
+using FantasyGolfball.Models.DTOs;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -30,6 +31,26 @@ public class ScoringController : ControllerBase
     {
         return Ok(_dbContext.Scorings
         .SingleOrDefault(s => s.ScoringId == id));
+    }
+
+    [HttpGet("by-week-and-players")]
+    // [Authorize]
+    public IActionResult GetByWeekAndPlayers(int weekId, string playerIds)
+    {
+        List<int> playerIdsList = playerIds.Split(',')
+                                            .Select(int.Parse)
+                                            .ToList();
+
+        List<Scoring> weekScores = _dbContext.Scorings
+        .Where(s => s.SeasonWeek == weekId && playerIdsList.Contains(s.PlayerId))
+        .ToList();
+        
+        if (weekScores == null)
+        {
+            return BadRequest("No scores found");
+        }
+
+        return Ok(weekScores);
     }
 
     [HttpPost]
