@@ -3,6 +3,7 @@ import { RosterCard } from "./RosterCard"
 import { GetByUserAndLeague } from "../../managers/rosterManager"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByWeekAndPlayers } from "../../managers/scoringManager"
+import { Button, ButtonDropdown } from "reactstrap"
 
 
 export const RosterPage = () => {
@@ -38,8 +39,13 @@ export const RosterPage = () => {
     return (
         <div>
             <h2>User team</h2>
-            <div>Add, drop, create trade buttons go here</div>
-            <div>Select other rosters goes to the side</div>
+            <div>Add, drop, create trade buttons go here
+                <Button>Drop a player</Button>
+                <Button>Create a trade</Button>
+            </div>
+            <div>Select other rosters goes to the side
+                <ButtonDropdown>Other Rosters</ButtonDropdown>
+            </div>
             <RosterCard roster={roster} scores={scores}/>
         </div>
     )
