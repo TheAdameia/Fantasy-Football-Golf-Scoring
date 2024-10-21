@@ -30,7 +30,7 @@ export const PlayerPage = () => {
             const foundPlayers = players.filter(player => 
                 player.playerLastName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                 player.playerFirstName.toLowerCase().includes(searchTerm.toLowerCase())
-            )
+            ) // I realize that if you type a full name in this won't work. I will have to adjust the full name to be a calculated property later.
 
             switch(positionFilter) {
                 case "Any":
@@ -82,8 +82,17 @@ export const PlayerPage = () => {
                         <option value="K">K</option>
                         <option value="DEF">DEF</option>
                     </select>
+                    <label>Stats</label>
+                    <select name="stats" id="stats">
+                        <option value="This week">This Week</option>
+                        <option value="Season Total">Season Total</option>
+                        <option value="Season Average">Season Average</option>
+                    </select>
                 </div>
-                <div>Checkboxes: include my team, include other team</div>
+                <div>Checkboxes: include my team, include other team
+                    <input type="checkbox" id="my-team" name="Include my team"/>
+                    <input type="checkbox" id="other-teams" name="Include other teams"/>
+                </div>
             </div>
             <Table>
                 <thead>
