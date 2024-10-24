@@ -6,7 +6,6 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState();
   // add state for determining week here
-
   const globalWeek = 1;
 
   useEffect(() => {

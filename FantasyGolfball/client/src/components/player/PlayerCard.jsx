@@ -50,6 +50,9 @@ export const PlayerCard = ({ player }) => {
             <td>
                 {seasonTotal ? seasonTotal : 0}
             </td>
+            <td>
+                Add/drop button goes here
+            </td>
         </tr>
     )
 }

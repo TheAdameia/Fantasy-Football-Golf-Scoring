@@ -11,6 +11,7 @@ export const PlayerPage = () => {
     const [filteredPlayers, setFilteredPlayers] = useState()
     const [searchTerm, setSearchTerm] = useState("")
     const [positionFilter, setPositionFilter] = useState("Any")
+    const [playerSlice, setPlayerSlice] = useState({sliceStart: 0, sliceEnd: 24})
     const { globalWeek } = useAppContext()
 
     const getAndSetPlayers = () => {
@@ -19,6 +20,22 @@ export const PlayerPage = () => {
     
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
+    }
+
+    const handleSliceChange = (taco) => { // Does taco need to be a state variable?
+        let tempPlayerSlice = {...playerSlice}
+        if (taco == true)
+        {
+            tempPlayerSlice.sliceStart + 25
+            tempPlayerSlice.sliceEnd + 25
+            setPlayerSlice(tempPlayerSlice)
+        } else {
+            if (tempPlayerSlice.sliceStart > 0) {
+                tempPlayerSlice.sliceStart - 25
+                tempPlayerSlice.sliceEnd - 25
+                setPlayerSlice(tempPlayerSlice)
+            }
+        }
     }
 
     useEffect(() => {
@@ -94,6 +111,11 @@ export const PlayerPage = () => {
                     <input type="checkbox" id="other-teams" name="Include other teams"/>
                 </div>
             </div>
+            <div>
+                <label>{playerSlice.sliceStart} - {playerSlice.sliceEnd}</label>
+                <button>Previous</button>
+                <button>Next</button>
+            </div>
             <Table>
                 <thead>
                     <tr>
@@ -118,10 +140,13 @@ export const PlayerPage = () => {
                         <th>
                             Season Total Points
                         </th>
+                        <th>
+                            Actions
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredPlayers ? filteredPlayers.slice(0, 24).map((player) => {
+                    {filteredPlayers ? filteredPlayers.slice(playerSlice.sliceStart, playerSlice.sliceEnd).map((player) => {
                         return (
                             <PlayerCard 
                                 player={player}
