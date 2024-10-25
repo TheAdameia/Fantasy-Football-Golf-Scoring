@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { RosterPage } from "./roster/RosterPage";
 import { useAppContext } from "../contexts/AppContext";
+import { PlayerPage } from "./player/PlayerPage";
 
 const Placeholder = () => {
   return <h1>Testing, attention please!</h1>;
@@ -30,6 +31,14 @@ export default function ApplicationViews() {
           <AuthorizedRoute loggedInUser={loggedInUser}>
             <RosterPage />
           </AuthorizedRoute>}
+        />
+        <Route 
+          path="player-list"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <PlayerPage />
+            </AuthorizedRoute>
+          }
         />
         <Route
           path="login"

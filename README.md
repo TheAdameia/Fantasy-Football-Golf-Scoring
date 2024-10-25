@@ -10,6 +10,7 @@ Fantasy Golfball is a proof of concept fantasy football creation that is meant t
 - EFC
 - PSQL
 - reactstrap
+- Context API
 - CSS
 
 ## Where is the project at now and where is it going?
