@@ -2,46 +2,41 @@ import { useEffect, useState } from "react"
 import { Table } from "reactstrap"
 import { useAppContext } from "../../contexts/AppContext"
 import { SearchBar } from "../SearchBar"
-import { GetAllPlayers } from "../../managers/playerManager"
 import { PlayerCard } from "./PlayerCard"
 
 
 export const PlayerPage = () => {
-    const [players, setPlayers] = useState()
     const [filteredPlayers, setFilteredPlayers] = useState()
     const [searchTerm, setSearchTerm] = useState("")
     const [positionFilter, setPositionFilter] = useState("Any")
     const [playerSlice, setPlayerSlice] = useState({sliceStart: 0, sliceEnd: 24})
-    const { globalWeek } = useAppContext()
+    const { globalWeek, players } = useAppContext()
 
-    const getAndSetPlayers = () => {
-        GetAllPlayers().then(setPlayers)
-    }
     
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
     }
 
-    const handleSliceChange = (taco) => { // Does taco need to be a state variable?
+    const handleSliceChange = (taco) => {
         let tempPlayerSlice = {...playerSlice}
+        if (tempPlayerSlice.sliceEnd > filteredPlayers.length && taco == true) {
+            return
+        }
         if (taco == true)
         {
-            tempPlayerSlice.sliceStart + 25
-            tempPlayerSlice.sliceEnd + 25
+            tempPlayerSlice.sliceStart += 25
+            tempPlayerSlice.sliceEnd += 25
             setPlayerSlice(tempPlayerSlice)
         } else {
             if (tempPlayerSlice.sliceStart > 0) {
-                tempPlayerSlice.sliceStart - 25
-                tempPlayerSlice.sliceEnd - 25
+                tempPlayerSlice.sliceStart -= 25
+                tempPlayerSlice.sliceEnd -= 25
                 setPlayerSlice(tempPlayerSlice)
             }
         }
     }
 
-    useEffect(() => {
-        getAndSetPlayers()
-    }, [])
-
+    
     useEffect(() => {
         if (players){
             const foundPlayers = players.filter(player => 
@@ -88,7 +83,6 @@ export const PlayerPage = () => {
                 <div>Search bar (name)</div>
                 <SearchBar setSearchTerm={setSearchTerm}/>
                 <div>
-                    Dropdowns: position, stats
                     <label>Position</label>
                     <select name="position" id="position" onChange={handlePositionChange}>
                         <option value="Any">Any</option>
@@ -113,8 +107,12 @@ export const PlayerPage = () => {
             </div>
             <div>
                 <label>{playerSlice.sliceStart} - {playerSlice.sliceEnd}</label>
-                <button>Previous</button>
-                <button>Next</button>
+                <button
+                    onClick={() => handleSliceChange(false)}
+                >Previous</button>
+                <button
+                    onClick={() => handleSliceChange(true)}
+                >Next</button>
             </div>
             <Table>
                 <thead>

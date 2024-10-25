@@ -6,7 +6,7 @@ export const PlayerCard = ({ player }) => {
     const [scores, setScores] = useState()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
-    const { globalWeek } = useAppContext()
+    const { globalWeek, roster } = useAppContext()
 
     const getAndSetScores = () => {
         GetByPlayer(player.playerId).then(setScores)
@@ -52,6 +52,7 @@ export const PlayerCard = ({ player }) => {
             </td>
             <td>
                 Add/drop button goes here
+                {/* {roster.includes(player) ? <button>-</button> : <div></div>} */}
             </td>
         </tr>
     )
