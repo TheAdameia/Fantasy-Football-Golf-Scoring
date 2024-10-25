@@ -4,7 +4,7 @@ import { useAppContext } from "../../contexts/AppContext"
 import { SearchBar } from "../SearchBar"
 import { PlayerCard } from "./PlayerCard"
 
-
+// I'm holding off on making the "stats" and "my/other teams" filters functional until I put scores into contextAPI, otherwise the endpoint calls will be horrendous.
 export const PlayerPage = () => {
     const [filteredPlayers, setFilteredPlayers] = useState()
     const [searchTerm, setSearchTerm] = useState("")

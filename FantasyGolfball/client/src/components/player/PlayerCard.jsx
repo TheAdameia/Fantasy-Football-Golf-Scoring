@@ -27,6 +27,12 @@ export const PlayerCard = ({ player }) => {
         }
     }, [scores])
 
+    if (!roster) {
+        return (
+            <tr></tr>
+        )
+    }
+
     return (
         <tr>
             <th>
@@ -52,7 +58,13 @@ export const PlayerCard = ({ player }) => {
             </td>
             <td>
                 Add/drop button goes here
-                {/* {roster.includes(player) ? <button>-</button> : <div></div>} */}
+                {roster && roster.rosterPlayers.some(rp =>
+                    rp.player.playerId === player.playerId) 
+                ? <button>-</button> : <div></div>}
+                {roster && !roster.rosterPlayers.some(rp =>
+                    rp.player.playerId === player.playerId) 
+                ? <button>+</button> : <div></div>}
+                
             </td>
         </tr>
     )

@@ -7,7 +7,7 @@ const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState()
-  const [roster, setRoster] = useState({})
+  const [roster, setRoster] = useState()
   const [players, setPlayers] = useState()
 
 
