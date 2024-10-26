@@ -18,7 +18,7 @@ The project is currently at the point where the UI and page structure are being 
 
 ## ERD and wireframe
 
-Wireframe https://miro.com/app/board/uXjVLbeHqSM=/?share_link_id=186772598044
+Wireframe https://miro.com/app/board/uXjVLbeHqSM=/?share_link_id=186772598044 \
 ERD https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
 
 ## Disclosures
