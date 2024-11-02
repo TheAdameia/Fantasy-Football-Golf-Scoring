@@ -23,17 +23,19 @@ export const LeaguePage = () => {
     return (
         <div>            
             <button
-                onClick={() => handleCreate}
+                onClick={() => handleCreate()}
             >Create a league!</button>
             <h2>List of Leagues</h2>
-            {leagues.map((league) => {
-                return (
-                    <LeagueCard
-                        league={league}
-                        key={`league-${league.leagueId}`}
-                    />
-                )
-            })}
+            <div>
+                {leagues ? leagues.map((league) => {
+                    return (
+                        <LeagueCard
+                            league={league}
+                            key={`league-${league.leagueId}`}
+                        />
+                    )
+                }) : <div>No leagues found</div>}
+            </div>
         </div>
     )
 }

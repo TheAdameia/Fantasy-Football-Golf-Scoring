@@ -29,12 +29,20 @@ export const LeagueForm = () => {
                             setLeagueObject(objectCopy)
                         }}></Input>
                     <Label>Number of players</Label>
+                    <Input
+                        type="select"    
+                    >
+                        <option value={2}>2</option>
+                        <option value={4}>4</option>
+                        <option value={6}>6</option>
+                        <option value={8}>8</option>
+                    </Input>
+                    <Label>Thing 3</Label>
                     <Input></Input>
-                    <Label>League Name</Label>
-                    <Input></Input>
-                    <Label>League Name</Label>
+                    <Label>Thing 4</Label>
                     <Input></Input>
                 </FormGroup>
+                <button>Create League</button>
             </Form>
         </div>
     )

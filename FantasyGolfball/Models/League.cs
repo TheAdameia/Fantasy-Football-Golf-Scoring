@@ -5,5 +5,6 @@ namespace FantasyGolfball.Models;
 public class League
 {
     public int LeagueId { get; set; }
-    public List<UserProfile> Participants { get; set; }
+    // speculative way of storing userIds, storing userprofiles would be a bad idea
+    public List<int> Participants { get; set; }
 }

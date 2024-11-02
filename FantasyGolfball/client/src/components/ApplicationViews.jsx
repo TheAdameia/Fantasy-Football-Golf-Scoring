@@ -48,13 +48,16 @@ export default function ApplicationViews() {
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <LeaguePage />
             </AuthorizedRoute>
-          }>
-            <Route path="/create" element={
-              <AuthorizedRoute loggedInUser={loggedInUser}>
-                <LeagueForm />
-              </AuthorizedRoute>
-            } />
-          </Route>
+          }
+        />
+        <Route 
+          path="league/create"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <LeagueForm />
+            </AuthorizedRoute>
+          }
+        />    
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

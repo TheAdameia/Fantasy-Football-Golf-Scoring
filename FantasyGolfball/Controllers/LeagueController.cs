@@ -17,7 +17,12 @@ public class LeagueController : ControllerBase
         _dbContext = context;
     }
 
-    // So what kind of endpoints will I need here? Post, get (a list) by user, get by ID...
+    [HttpGet]
+    // [Authorize]
+    public IActionResult GetAll()
+    {
+        return Ok(_dbContext.Leagues);
+    }
 
     [HttpPost]
     // [Authorize]
