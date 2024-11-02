@@ -40,6 +40,11 @@ return (
                         Player List
                     </NavLink>
                 </NavItem>
+                <NavItem>
+                    <NavLink tag={RRNavLink} to="/league">
+                        League
+                    </NavLink>
+                </NavItem>
             </Nav>
             </Collapse>
             <Button
