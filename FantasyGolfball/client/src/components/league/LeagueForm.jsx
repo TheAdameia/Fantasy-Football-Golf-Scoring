@@ -8,7 +8,7 @@ export const LeagueForm = () => {
     const [leagueObject, setLeagueObject] = useState({
         name: "",
         playerLimit: 0,
-
+        randomizedDraftOrder: true
     })
 
     // Randomized draft order option (default to yes)
@@ -30,17 +30,30 @@ export const LeagueForm = () => {
                         }}></Input>
                     <Label>Number of players</Label>
                     <Input
-                        type="select"    
+                        type="select"
+                        onChange={(e) => {
+                            const objectCopy = {...leagueObject}
+                            objectCopy.playerLimit = e.target.value
+                            setLeagueObject(objectCopy)
+                        }}
                     >
                         <option value={2}>2</option>
                         <option value={4}>4</option>
                         <option value={6}>6</option>
                         <option value={8}>8</option>
+                        <option value={10}>10</option>
                     </Input>
-                    <Label>Thing 3</Label>
+                    <Label>Let players veto trades</Label>
                     <Input></Input>
-                    <Label>Thing 4</Label>
-                    <Input></Input>
+                    <Label>Randomized Draft Order</Label>
+                    <Input
+                        type="checkbox"
+                        onChange={() => {
+                            const objectCopy = {...leagueObject}
+                            objectCopy.randomizedDraftOrder = !leagueObject.randomizedDraftOrder
+                            setLeagueObject(objectCopy)
+                        }}
+                    ></Input>
                 </FormGroup>
                 <button>Create League</button>
             </Form>
