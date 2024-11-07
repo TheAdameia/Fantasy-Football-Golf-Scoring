@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { GetAllLeagues } from "../../managers/leagueManager"
+import { GetLeaguesWithVacancies } from "../../managers/leagueManager"
 import { LeagueCard } from "./LeagueCard"
 
 
@@ -9,7 +9,7 @@ export const LeaguePage = () => {
     const navigate = useNavigate()
 
     const getAndSetLeagues = () => {
-        GetAllLeagues().then(setLeagues)
+        GetLeaguesWithVacancies().then(setLeagues)
     }
 
     const handleCreate = () => {
@@ -25,7 +25,7 @@ export const LeaguePage = () => {
             <button
                 onClick={() => handleCreate()}
             >Create a league!</button>
-            <h2>List of Leagues</h2>
+            <h2>Leagues looking for players</h2>
             <div>
                 {leagues ? leagues.map((league) => {
                     return (

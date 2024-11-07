@@ -49,4 +49,12 @@ public class LeagueController : ControllerBase
         return Ok(_dbContext.Leagues
         .SingleOrDefault(l => l.LeagueId == leagueId));
     }
+
+    [HttpGet("not-full-leagues")]
+    // [Authorize]
+    public IActionResult GetNotFullLeagues()
+    {
+        return Ok(_dbContext.Leagues
+        .Where(l => l.PlayerLimit > l.Participants.Count()));
+    }
 }
