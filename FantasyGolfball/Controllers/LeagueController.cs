@@ -54,7 +54,32 @@ public class LeagueController : ControllerBase
     // [Authorize]
     public IActionResult GetNotFullLeagues()
     {
-        return Ok(_dbContext.Leagues
-        .Where(l => l.PlayerLimit > l.Participants.Count()));
+        var NotFullLeagues = _dbContext.Leagues
+        // .Where(l => l.PlayerLimit > l.Participants.Count()) need a new way of doing this
+        .Include(l => l.LeagueUsers)
+            .ThenInclude(lu => lu.UserProfile).ToList();
+        
+        LeagueSafeExportDTO leagueExport = new LeagueSafeExportDTO
+        {
+            LeagueId = NotFullLeagues.LeagueId,
+            PlayerLimit = NotFullLeagues.PlayerLimit,
+            RandomizedDraftOrder = NotFullLeagues.RandomizedDraftOrder,
+            UsersVetoTrades = NotFullLeagues.UsersVetoTrades,
+            LeagueName = NotFullLeagues.LeagueName,
+            RequiredFullToStart = NotFullLeagues.RequiredFullToStart,
+            LeagueUsers = NotFullLeagues.LeagueUsers.Select(lu => new LeagueUserSafeExportDTO
+            {
+                LeagueUserId = NotFullLeagues.lu.LeagueUserId,
+                LeagueId = NotFullLeagues.lu.LeagueId,
+                UserId = NotFullLeagues.lu.UserId,
+                UserProfile = new UserProfileSafeExportDTO
+                {
+                    Id = NotFullLeagues.lu.UserProfile.Id,
+                    UserName = NotFullLeagues.lu.UserProfile.UserName
+                }
+            }).ToList()
+        };
+    
+        return Ok(leagueExport);
     }
 }
