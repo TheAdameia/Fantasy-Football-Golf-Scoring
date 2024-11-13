@@ -50,6 +50,27 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             Id = 1,
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
         });
+        modelBuilder.Entity<League>().HasData(new League[]
+        {
+            new League
+            {
+                LeagueId = 1,
+                PlayerLimit = 4,
+                RandomizedDraftOrder = true,
+                UsersVetoTrades = true,
+                LeagueName = "testing league",
+                RequiredFullToStart = true
+            }
+        });
+        modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]
+        {
+            new LeagueUser
+            {
+                LeagueUserId = 1,
+                LeagueId = 1,
+                UserId = 1
+            }
+        });
         modelBuilder.Entity<Position>().HasData(new Position[]
         {
             new Position
