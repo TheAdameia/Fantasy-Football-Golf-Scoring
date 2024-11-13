@@ -1,8 +1,9 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace FantasyGolfball.Models.DTOs;
 
-public class LeagueUser
+public class LeagueUserSafeExportDTO
 {
     [Key]
     public int LeagueUserId { get; set; }

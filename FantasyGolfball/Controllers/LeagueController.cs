@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
+using FantasyGolfball.Models.DTOs;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -55,31 +56,32 @@ public class LeagueController : ControllerBase
     public IActionResult GetNotFullLeagues()
     {
         var NotFullLeagues = _dbContext.Leagues
-        // .Where(l => l.PlayerLimit > l.Participants.Count()) need a new way of doing this
-        .Include(l => l.LeagueUsers)
-            .ThenInclude(lu => lu.UserProfile).ToList();
-        
-        LeagueSafeExportDTO leagueExport = new LeagueSafeExportDTO
-        {
-            LeagueId = NotFullLeagues.LeagueId,
-            PlayerLimit = NotFullLeagues.PlayerLimit,
-            RandomizedDraftOrder = NotFullLeagues.RandomizedDraftOrder,
-            UsersVetoTrades = NotFullLeagues.UsersVetoTrades,
-            LeagueName = NotFullLeagues.LeagueName,
-            RequiredFullToStart = NotFullLeagues.RequiredFullToStart,
-            LeagueUsers = NotFullLeagues.LeagueUsers.Select(lu => new LeagueUserSafeExportDTO
+            // .Where(l => l.PlayerLimit > l.Participants.Count()) need a new way of doing this
+            .Include(l => l.LeagueUsers)
+                .ThenInclude(lu => lu.UserProfile)
+                    .ThenInclude(up => up.IdentityUser)
+            .Select(l => new LeagueSafeExportDTO
             {
-                LeagueUserId = NotFullLeagues.lu.LeagueUserId,
-                LeagueId = NotFullLeagues.lu.LeagueId,
-                UserId = NotFullLeagues.lu.UserId,
-                UserProfile = new UserProfileSafeExportDTO
+                LeagueId = l.LeagueId,
+                PlayerLimit = l.PlayerLimit,
+                RandomizedDraftOrder = l.RandomizedDraftOrder,
+                UsersVetoTrades = l.UsersVetoTrades,
+                LeagueName = l.LeagueName,
+                RequiredFullToStart = l.RequiredFullToStart,
+                LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserSafeExportDTO
                 {
-                    Id = NotFullLeagues.lu.UserProfile.Id,
-                    UserName = NotFullLeagues.lu.UserProfile.UserName
-                }
-            }).ToList()
-        };
-    
-        return Ok(leagueExport);
+                    LeagueUserId = lu.LeagueUserId,
+                    LeagueId = lu.LeagueId,
+                    UserId = lu.UserId,
+                    UserProfile = new UserProfileSafeExportDTO
+                    {
+                        Id = lu.UserProfile.Id,
+                        UserName = lu.UserProfile.IdentityUser.UserName
+                    }
+                }).ToList()
+            })
+            .ToList();
+        
+        return Ok(NotFullLeagues);
     }
 }
