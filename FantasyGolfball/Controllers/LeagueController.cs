@@ -22,13 +22,35 @@ public class LeagueController : ControllerBase
     // [Authorize]
     public IActionResult GetAll()
     {
-        return Ok(_dbContext.Leagues);
+        return Ok(_dbContext.Leagues
+        .Include(l => l.LeagueUsers));
     }
 
     [HttpPost]
     // [Authorize]
-    public IActionResult Post(League league)
+    public IActionResult Post(LeaguePOSTDTO leaguePOSTDTO)
     {
+        var league = new League
+        {
+            PlayerLimit = leaguePOSTDTO.PlayerLimit,
+            RandomizedDraftOrder = leaguePOSTDTO.RandomizedDraftOrder,
+            UsersVetoTrades = leaguePOSTDTO.UsersVetoTrades,
+            LeagueName = leaguePOSTDTO.LeagueName,
+            RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
+
+        };
+
+        var user = _dbContext.UserProfiles.SingleOrDefault(up => leaguePOSTDTO.CreatorId == up.Id);
+        if (user != null)
+        {
+            var leagueUser = new LeagueUser
+            {
+                UserProfileId = user.Id,
+                League = league
+            };
+            league.LeagueUsers = new List<LeagueUser> { leagueUser };
+        }
+
         _dbContext.Leagues.Add(league);
         _dbContext.SaveChanges();
         return Created($"api/leagues/{league.LeagueId}", league);
@@ -72,7 +94,7 @@ public class LeagueController : ControllerBase
                 {
                     LeagueUserId = lu.LeagueUserId,
                     LeagueId = lu.LeagueId,
-                    UserId = lu.UserId,
+                    UserProfileId = lu.UserProfileId,
                     UserProfile = new UserProfileSafeExportDTO
                     {
                         Id = lu.UserProfile.Id,

@@ -1,20 +1,33 @@
 import { Form, FormGroup, Input, Label } from "reactstrap"
 import { useAppContext } from "../../contexts/AppContext"
 import { useState } from "react"
+import { PostLeague } from "../../managers/leagueManager"
+import { useNavigate } from "react-router-dom"
 
 
 export const LeagueForm = () => {
     const { loggedInUser } = useAppContext()
     const [leagueObject, setLeagueObject] = useState({
-        participants: [loggedInUser.id],
+        creatorId: loggedInUser.id,
         leagueName: "",
         playerLimit: 0,
         randomizedDraftOrder: true,
         usersVetoTrades: false,
         requiredFullToStart: true
     })
+    const navigate = useNavigate()
 
     // waiver wire is a big undertaking, hold off until after first closed testing iteration
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const newLeague = {...leagueObject}
+        if (newLeague.leagueName != "" && newLeague.playerLimit != 0) {
+            PostLeague(newLeague).then(() => {
+                navigate("/league")
+            })
+        }
+    }
     
     return (
         <div>
@@ -23,10 +36,10 @@ export const LeagueForm = () => {
                     <Label>League Name</Label>
                     <Input
                         type="text"
-                        value={leagueObject.name}
+                        value={leagueObject.leagueName}
                         onChange={(e) => {
                             const objectCopy = {...leagueObject}
-                            objectCopy.name = e.target.value
+                            objectCopy.leagueName = e.target.value
                             setLeagueObject(objectCopy)
                         }}></Input>
                     <Label>Number of players</Label>
@@ -74,7 +87,9 @@ export const LeagueForm = () => {
                         }}
                     ></Input>
                 </FormGroup>
-                <button>Create League</button>
+                <button
+                    onClick={handleSubmit}
+                >Create League</button>
             </Form>
         </div>
     )

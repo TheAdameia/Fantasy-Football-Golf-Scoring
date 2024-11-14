@@ -68,7 +68,47 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 LeagueUserId = 1,
                 LeagueId = 1,
-                UserId = 1
+                UserProfileId = 1
+            }
+        });
+        modelBuilder.Entity<Roster>().HasData(new Roster[]
+        {
+            new Roster
+            {
+                RosterId = 1,
+                LeagueId = 1,
+                UserId = 1,
+            }
+        });
+        modelBuilder.Entity<RosterPlayer>().HasData(new RosterPlayer[]
+        {
+            new RosterPlayer
+            {
+                RosterPlayerId = 1,
+                PlayerId = 1,
+                RosterId = 1,
+                RosterPosition = "bench"
+            },
+            new RosterPlayer
+            {
+                RosterPlayerId = 2,
+                PlayerId = 21,
+                RosterId = 1,
+                RosterPosition = "bench"
+            },
+            new RosterPlayer
+            {
+                RosterPlayerId = 3,
+                PlayerId = 41,
+                RosterId = 1,
+                RosterPosition = "bench"
+            },
+            new RosterPlayer
+            {
+                RosterPlayerId = 4,
+                PlayerId = 71,
+                RosterId = 1,
+                RosterPosition = "bench"
             }
         });
         modelBuilder.Entity<Position>().HasData(new Position[]

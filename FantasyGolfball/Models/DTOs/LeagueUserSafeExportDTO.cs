@@ -8,6 +8,6 @@ public class LeagueUserSafeExportDTO
     [Key]
     public int LeagueUserId { get; set; }
     public int LeagueId { get; set; }
-    public int UserId { get; set; }
+    public int UserProfileId { get; set; }
     public UserProfileSafeExportDTO UserProfile { get; set; }
 }
