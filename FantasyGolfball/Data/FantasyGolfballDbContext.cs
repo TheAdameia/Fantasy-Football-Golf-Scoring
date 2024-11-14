@@ -50,6 +50,67 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             Id = 1,
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
         });
+        modelBuilder.Entity<League>().HasData(new League[]
+        {
+            new League
+            {
+                LeagueId = 1,
+                PlayerLimit = 4,
+                RandomizedDraftOrder = true,
+                UsersVetoTrades = true,
+                LeagueName = "testing league",
+                RequiredFullToStart = true
+            }
+        });
+        modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]
+        {
+            new LeagueUser
+            {
+                LeagueUserId = 1,
+                LeagueId = 1,
+                UserProfileId = 1
+            }
+        });
+        modelBuilder.Entity<Roster>().HasData(new Roster[]
+        {
+            new Roster
+            {
+                RosterId = 1,
+                LeagueId = 1,
+                UserId = 1,
+            }
+        });
+        modelBuilder.Entity<RosterPlayer>().HasData(new RosterPlayer[]
+        {
+            new RosterPlayer
+            {
+                RosterPlayerId = 1,
+                PlayerId = 1,
+                RosterId = 1,
+                RosterPosition = "bench"
+            },
+            new RosterPlayer
+            {
+                RosterPlayerId = 2,
+                PlayerId = 21,
+                RosterId = 1,
+                RosterPosition = "bench"
+            },
+            new RosterPlayer
+            {
+                RosterPlayerId = 3,
+                PlayerId = 41,
+                RosterId = 1,
+                RosterPosition = "bench"
+            },
+            new RosterPlayer
+            {
+                RosterPlayerId = 4,
+                PlayerId = 71,
+                RosterId = 1,
+                RosterPosition = "bench"
+            }
+        });
         modelBuilder.Entity<Position>().HasData(new Position[]
         {
             new Position

@@ -5,6 +5,8 @@ import Register from "./auth/Register";
 import { RosterPage } from "./roster/RosterPage";
 import { useAppContext } from "../contexts/AppContext";
 import { PlayerPage } from "./player/PlayerPage";
+import { LeaguePage } from "./league/LeaguePage";
+import { LeagueForm } from "./league/LeagueForm";
 
 const Placeholder = () => {
   return <h1>Testing, attention please!</h1>;
@@ -40,6 +42,22 @@ export default function ApplicationViews() {
             </AuthorizedRoute>
           }
         />
+        <Route
+          path="league"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <LeaguePage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route 
+          path="league/create"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <LeagueForm />
+            </AuthorizedRoute>
+          }
+        />    
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}
