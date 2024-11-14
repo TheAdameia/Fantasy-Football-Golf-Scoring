@@ -56,6 +56,16 @@ public class LeagueController : ControllerBase
         return Created($"api/leagues/{league.LeagueId}", league);
     }
 
+    [HttpPut("{Id}")]
+    // [Authorize]
+    public IActionResult JoinLeague()
+    {
+        
+
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
     // [HttpGet] // needs to also have distinct route
     // // [Authorize]
     // public IActionResult GetByUser(int userId)
