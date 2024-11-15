@@ -12,6 +12,12 @@ export const LeagueCard = ({ league }) => {
         event.preventDefault()
         let leagueId = league.leagueId
         let userId = loggedInUser.id
+
+        if (league.leagueUsers.some(u => u.userProfileId == userId)) {
+            window.alert("Already joined that league!")
+            return
+        }
+        
         JoinLeague(leagueId, userId).then(() => {
             navigate("/league")
         })
@@ -31,7 +37,7 @@ export const LeagueCard = ({ league }) => {
                 )
             })}
             <div>League rules:</div>
-            <div>Player Limit {league.playerLimit}, Randomized Draft {league.randomizedDraftOrder}, Veto Trades {league.usersVetoTrades}, Must be full to start {league.requiredFullToStart}</div>
+            <div>Player Limit: {league.playerLimit}, Randomized Draft {league.randomizedDraftOrder}, Veto Trades {league.usersVetoTrades}, Must be full to start {league.requiredFullToStart}</div>
             <Button
                 onClick={handleJoin}
             >Join this league!</Button>

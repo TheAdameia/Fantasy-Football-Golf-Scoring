@@ -109,10 +109,10 @@ public class LeagueController : ControllerBase
     public IActionResult GetNotFullLeagues()
     {
         var NotFullLeagues = _dbContext.Leagues
-            // .Where(l => l.PlayerLimit > l.Participants.Count()) need a new way of doing this
             .Include(l => l.LeagueUsers)
                 .ThenInclude(lu => lu.UserProfile)
                     .ThenInclude(up => up.IdentityUser)
+            .Where(l => l.LeagueUsers.Count < l.PlayerLimit)
             .Select(l => new LeagueSafeExportDTO
             {
                 LeagueId = l.LeagueId,
