@@ -56,12 +56,33 @@ public class LeagueController : ControllerBase
         return Created($"api/leagues/{league.LeagueId}", league);
     }
 
-    [HttpPut("{Id}")]
+    [HttpPut("join-league")]
     // [Authorize]
-    public IActionResult JoinLeague()
+    public IActionResult JoinLeague(int leagueId, int userId)
     {
-        
+        if (leagueId == 0 || userId == 0)
+        {
+            return BadRequest("Bad IDs");
+        }
 
+        League league = _dbContext.Leagues
+        .SingleOrDefault(l => l.LeagueId == leagueId);
+
+        UserProfile user = _dbContext.UserProfiles
+        .SingleOrDefault(u => u.Id == userId);
+
+        if (league == null || user == null)
+        {
+            return BadRequest("no league found or no user found");
+        }
+
+        var leagueUser = new LeagueUser
+        {
+            UserProfileId = user.Id,
+            League = league
+        };
+
+        _dbContext.LeagueUsers.Add(leagueUser);
         _dbContext.SaveChanges();
         return NoContent();
     }

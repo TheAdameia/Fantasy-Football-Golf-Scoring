@@ -1,7 +1,21 @@
 import { Button } from "reactstrap"
+import { JoinLeague } from "../../managers/leagueManager"
+import { useNavigate } from "react-router-dom"
+import { useAppContext } from "../../contexts/AppContext"
 
 
 export const LeagueCard = ({ league }) => {
+    const navigate = useNavigate()
+    const { loggedInUser } = useAppContext()
+
+    const handleJoin = (event) => {
+        event.preventDefault()
+        let leagueId = league.leagueId
+        let userId = loggedInUser.id
+        JoinLeague(leagueId, userId).then(() => {
+            navigate("/league")
+        })
+    }
 
     return (
         <div>
@@ -17,8 +31,10 @@ export const LeagueCard = ({ league }) => {
                 )
             })}
             <div>League rules:</div>
-            <div>Player Limit {league.playerLimit} Randomized Draft {league.randomizedDraftOrder} Veto Trades {league.usersVetoTrades} Must be full to start {league.requiredFullToStart}</div>
-            <Button>Join this league!</Button>
+            <div>Player Limit {league.playerLimit}, Randomized Draft {league.randomizedDraftOrder}, Veto Trades {league.usersVetoTrades}, Must be full to start {league.requiredFullToStart}</div>
+            <Button
+                onClick={handleJoin}
+            >Join this league!</Button>
         </div>
     )
 }
