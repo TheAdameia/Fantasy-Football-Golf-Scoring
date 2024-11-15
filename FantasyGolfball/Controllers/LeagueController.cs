@@ -56,6 +56,37 @@ public class LeagueController : ControllerBase
         return Created($"api/leagues/{league.LeagueId}", league);
     }
 
+    [HttpPut("join-league")]
+    // [Authorize]
+    public IActionResult JoinLeague(int leagueId, int userId)
+    {
+        if (leagueId == 0 || userId == 0)
+        {
+            return BadRequest("Bad IDs");
+        }
+
+        League league = _dbContext.Leagues
+        .SingleOrDefault(l => l.LeagueId == leagueId);
+
+        UserProfile user = _dbContext.UserProfiles
+        .SingleOrDefault(u => u.Id == userId);
+
+        if (league == null || user == null)
+        {
+            return BadRequest("no league found or no user found");
+        }
+
+        var leagueUser = new LeagueUser
+        {
+            UserProfileId = user.Id,
+            League = league
+        };
+
+        _dbContext.LeagueUsers.Add(leagueUser);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
     // [HttpGet] // needs to also have distinct route
     // // [Authorize]
     // public IActionResult GetByUser(int userId)
@@ -78,10 +109,10 @@ public class LeagueController : ControllerBase
     public IActionResult GetNotFullLeagues()
     {
         var NotFullLeagues = _dbContext.Leagues
-            // .Where(l => l.PlayerLimit > l.Participants.Count()) need a new way of doing this
             .Include(l => l.LeagueUsers)
                 .ThenInclude(lu => lu.UserProfile)
                     .ThenInclude(up => up.IdentityUser)
+            .Where(l => l.LeagueUsers.Count < l.PlayerLimit)
             .Select(l => new LeagueSafeExportDTO
             {
                 LeagueId = l.LeagueId,

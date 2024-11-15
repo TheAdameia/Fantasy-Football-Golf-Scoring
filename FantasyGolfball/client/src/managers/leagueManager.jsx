@@ -17,3 +17,10 @@ export const GetLeaguesWithVacancies = () => {
     return fetch(_apiUrl + `/not-full-leagues`)
         .then((res) => res.json())
 }
+
+export const JoinLeague = (leagueId, userId) => {
+    return fetch(_apiUrl + `/join-league?leagueId=${leagueId}&userId=${userId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json"}
+    })
+}
