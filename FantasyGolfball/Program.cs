@@ -14,6 +14,7 @@ builder.Services.AddControllers().AddJsonOptions(opts =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSignalR();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -57,6 +58,9 @@ builder.Services.AddNpgsql<FantasyGolfballDbContext>(builder.Configuration["Fant
 
 
 var app = builder.Build();
+
+// Creating a SignalR hub for testing
+app.MapHub<ChatHub>("/chathub");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
