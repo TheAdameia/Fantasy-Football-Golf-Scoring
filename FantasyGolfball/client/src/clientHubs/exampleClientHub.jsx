@@ -8,7 +8,7 @@ const Chat = () => {
 
     useEffect(() => {
         const newConnection = new signalR.HubConnectionBuilder()
-            .withUrl("https://your-backend-url/chathub")
+            .withUrl("https://your-backend-url/chathub") // have to change this
             .withAutomaticReconnect()
             .build();
 
