@@ -7,6 +7,7 @@ import { useAppContext } from "../contexts/AppContext";
 import { PlayerPage } from "./player/PlayerPage";
 import { LeaguePage } from "./league/LeaguePage";
 import { LeagueForm } from "./league/LeagueForm";
+import Chat from "../clientHubs/exampleClientHub";
 
 const Placeholder = () => {
   return <h1>Testing, attention please!</h1>;
@@ -33,6 +34,14 @@ export default function ApplicationViews() {
           <AuthorizedRoute loggedInUser={loggedInUser}>
             <RosterPage />
           </AuthorizedRoute>}
+        />
+        <Route
+          path="chat"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Chat />
+            </AuthorizedRoute>
+          }
         />
         <Route 
           path="player-list"

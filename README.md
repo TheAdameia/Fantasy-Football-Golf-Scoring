@@ -12,6 +12,7 @@ Fantasy Golfball is a proof of concept fantasy football creation that is meant t
 - reactstrap
 - Context API
 - CSS
+- SignalR
 
 ## Where is the project at now and where is it going?
 The project is currently at the point where the UI and page structure are being fleshed out. After the UI is at a bare minimum level, functionality will be added so that database testing and simulated seasons can begin. Pending that testing and functionality, in-house testing with a group of beta testers will begin. After that, the project will continue development with an eye on becoming a public-facing web service.
