@@ -4,6 +4,7 @@ import { useAppContext } from "../../contexts/AppContext"
 export const DraftPage = () => {
     const { players } = useAppContext()
 
+    // now that I have a rough idea of how this is going to be structured in HTML, I can create more discrete tasks based on the features that this page will have.
     return (
         <div>
             <div>Left side boxes
@@ -17,7 +18,7 @@ export const DraftPage = () => {
             </div>
             <div>Center box
                 <div>Selected player box</div>
-                <div>Player search interface</div>
+                <div>Player search interface and player list</div>
             </div>
         </div>
     )

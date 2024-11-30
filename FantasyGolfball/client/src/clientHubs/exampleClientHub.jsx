@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react"
 import * as signalR from "@microsoft/signalr"
 import { useAppContext } from "../contexts/AppContext"
 
+// this file is adapted from chatgpt and was used for the purpose of learning how to implement SignalR.
 const Chat = () => {
     const [connection, setConnection] = useState(null)
     const [messages, setMessages] = useState([])
@@ -27,8 +28,6 @@ const Chat = () => {
           connection
             .start()
             .then(() => {
-              console.log("Connected!");
-    
               // Set up listener for receiving messages
               connection.on("ReceiveMessage", (user, message) => {
                 setMessages((prevMessages) => [
