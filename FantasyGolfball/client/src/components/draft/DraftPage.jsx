@@ -1,8 +1,6 @@
-import { useAppContext } from "../../contexts/AppContext"
 
 
 export const DraftPage = () => {
-    const { players } = useAppContext()
 
     // now that I have a rough idea of how this is going to be structured in HTML, I can create more discrete tasks based on the features that this page will have.
     return (
