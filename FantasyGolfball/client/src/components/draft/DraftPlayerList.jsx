@@ -1,35 +1,39 @@
 import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
+import { SearchBar } from "../SearchBar"
+import { Table } from "reactstrap"
 
 
 export const DraftPlayerList = () => {
     const { players } = useAppContext()
     // const { scores } = useAppContext() // I don't have this set up yet
     const [remainingPlayers, setRemainingPlayers] = useState() // for determining draft eligibility
-    const [fiteredPlayers, setFilteredPlayers] = useState() // for display
+    const [filteredPlayers, setFilteredPlayers] = useState() // for display
     // using a scroll for the playerlist instead of the slice used in PlayerPage should reduce state overhead
-    const [searchTerm, setSearchTerm] = useState("") // this will have the same first/last search issue as PlayerPage but that's outside of scope
+    const [searchTerm, setSearchTerm] = useState("")
     const [positionFilter, setPositionFilter] = useState("Any")
 
 
-
-    
-
     const handlePlayerDraft = () => {
         // deep copy of remainingPlayers, remove selected player, setRemainingPlayers
+        // remainingPlayers must be set initially but the useEffect should take care of that
     }
     
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
     }
 
+    useEffect(() => {
+        setRemainingPlayers(players)
+        // I don't feel very good about this one because a refresh could bork the whole system. Need something to check if players are already drafted somehow. Maybe storing this as state isn't a good idea?
+    }, [players])
 
     useEffect(() => {
-        if (players){
-            const foundPlayers = players.filter(player => 
+        if (remainingPlayers){
+            const foundPlayers = remainingPlayers.filter(player => 
                 player.playerLastName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                 player.playerFirstName.toLowerCase().includes(searchTerm.toLowerCase())
-            ) // I realize that if you type a full name in this won't work. I will have to adjust the full name to be a calculated property later.
+            ) // inherits name search issue from PlayerPage
 
             switch(positionFilter) {
                 case "Any":
@@ -55,10 +59,71 @@ export const DraftPlayerList = () => {
                     break
             }
         } 
-    }, [searchTerm, players, positionFilter])
+    }, [searchTerm, players, positionFilter, remainingPlayers])
 
+    if (!players) {
+        return (
+            <div>Loading...</div>
+        )
+    }
 
     return (
-        <div></div>
+        <div>
+            <h2>Player List</h2>
+            <div>
+                <div>Search bar (name)</div>
+                <SearchBar setSearchTerm={setSearchTerm}/>
+                <div>
+                    <label>Position</label>
+                    <select name="position" id="position" onChange={handlePositionChange}>
+                        <option value="Any">Any</option>
+                        <option value="QB">QB</option>
+                        <option value="WR">WR</option>
+                        <option value="RB">RB</option>
+                        <option value="TE">TE</option>
+                        <option value="K">K</option>
+                        <option value="DEF">DEF</option>
+                    </select>
+                    <label>Stats</label>
+                    <select name="stats" id="stats">
+                        <option value="This week">This Week</option>
+                        <option value="Season Total">Season Total</option>
+                        <option value="Season Average">Season Average</option>
+                    </select>
+                </div>
+                <div>Checkboxes: include my team, include other team
+                    <input type="checkbox" id="my-team" name="Include my team"/>
+                    <input type="checkbox" id="other-teams" name="Include other teams"/>
+                </div>
+            </div>
+            <Table>
+                <thead>
+                    <tr>
+                        <th>
+                            Rank
+                        </th>
+                        <th>
+                            Player
+                        </th>
+                        <th>
+                            Position
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* {filteredPlayers ? filteredPlayers.map((player) => {
+                        return (
+                            <PlayerCard // going to have to use a different player card
+                                player={player}
+                                key={`player-${player.playerId}`}
+                            />
+                        )
+                    }) : <div>Loading...</div>} */}
+                </tbody>
+            </Table>
+        </div>
     )
 }
