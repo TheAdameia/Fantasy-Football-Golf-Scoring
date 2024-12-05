@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { SearchBar } from "../SearchBar"
 import { Table } from "reactstrap"
+import { DraftPlayerCard } from "./DraftPlayerCard"
 
 
 export const DraftPlayerList = () => {
@@ -91,10 +92,6 @@ export const DraftPlayerList = () => {
                         <option value="Season Average">Season Average</option>
                     </select>
                 </div>
-                <div>Checkboxes: include my team, include other team
-                    <input type="checkbox" id="my-team" name="Include my team"/>
-                    <input type="checkbox" id="other-teams" name="Include other teams"/>
-                </div>
             </div>
             <Table>
                 <thead>
@@ -114,14 +111,14 @@ export const DraftPlayerList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {filteredPlayers ? filteredPlayers.map((player) => {
+                    {filteredPlayers ? filteredPlayers.map((player) => {
                         return (
-                            <PlayerCard // going to have to use a different player card
+                            <DraftPlayerCard
                                 player={player}
                                 key={`player-${player.playerId}`}
                             />
                         )
-                    }) : <div>Loading...</div>} */}
+                    }) : <div>Loading...</div>}
                 </tbody>
             </Table>
         </div>
