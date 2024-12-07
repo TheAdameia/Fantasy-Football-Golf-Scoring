@@ -8,6 +8,7 @@ import { PlayerPage } from "./player/PlayerPage";
 import { LeaguePage } from "./league/LeaguePage";
 import { LeagueForm } from "./league/LeagueForm";
 import Chat from "../clientHubs/exampleClientHub";
+import { DraftPage } from "./draft/DraftPage";
 
 const Placeholder = () => {
   return <h1>Testing, attention please!</h1>;
@@ -66,7 +67,15 @@ export default function ApplicationViews() {
               <LeagueForm />
             </AuthorizedRoute>
           }
-        />    
+        />
+        <Route
+          path="live-draft"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <DraftPage />
+            </AuthorizedRoute>
+          }
+        />
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

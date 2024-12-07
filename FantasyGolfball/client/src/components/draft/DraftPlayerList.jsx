@@ -17,6 +17,7 @@ export const DraftPlayerList = () => {
 
     const handlePlayerDraft = () => {
         // deep copy of remainingPlayers, remove selected player, setRemainingPlayers
+        // this will really need to be handled by signalR because state is impermanent
         // remainingPlayers must be set initially but the useEffect should take care of that
     }
     

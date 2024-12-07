@@ -1,8 +1,10 @@
+import { DraftPlayerList } from "./DraftPlayerList"
 
 
 export const DraftPage = () => {
 
     // now that I have a rough idea of how this is going to be structured in HTML, I can create more discrete tasks based on the features that this page will have.
+    // this page will need to sort users into particular SignalR groups based on the league that's entering the draft stage. I don't know how to do that yet.
     return (
         <div>
             <div>Left side boxes
@@ -16,7 +18,7 @@ export const DraftPage = () => {
             </div>
             <div>Center box
                 <div>Selected player box</div>
-                <div>Player search interface and player list</div>
+                <DraftPlayerList />
             </div>
         </div>
     )
