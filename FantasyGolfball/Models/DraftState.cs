@@ -17,12 +17,14 @@ public class DraftState
 
     public int CurrentUserId => DraftOrder.Peek();
 
-    public void SelectPlayer(int userId, int playerId)
+    public void SelectPlayer(int userId, int playerId, int maxRosterSize)
     {
         if (userId != CurrentUserId)
             throw new InvalidOperationException("Not this user's turn.");
         if (!AvailablePlayers.Contains(playerId))
             throw new InvalidOperationException("Player not available.");
+        if (UserRosters[userId].Count >= maxRosterSize)
+            throw new InvalidOperationException("Cannot exceed maximum roster size.");
 
         AvailablePlayers.Remove(playerId);
         UserRosters[userId].Add(playerId);

@@ -1,26 +1,18 @@
 import { useEffect, useState } from "react"
-import { useAppContext } from "../../contexts/AppContext"
 import { SearchBar } from "../SearchBar"
 import { Table } from "reactstrap"
 import { DraftPlayerCard } from "./DraftPlayerCard"
 
 
 export const DraftPlayerList = () => {
-    const { players } = useAppContext()
-    // const { scores } = useAppContext() // I don't have this set up yet
+    // get score data from DraftContext (eventually)
     const [remainingPlayers, setRemainingPlayers] = useState() // for determining draft eligibility
     const [filteredPlayers, setFilteredPlayers] = useState() // for display
     // using a scroll for the playerlist instead of the slice used in PlayerPage should reduce state overhead
     const [searchTerm, setSearchTerm] = useState("")
     const [positionFilter, setPositionFilter] = useState("Any")
+    // get players from DraftContext and refactor existing code
 
-
-    const handlePlayerDraft = () => {
-        // deep copy of remainingPlayers, remove selected player, setRemainingPlayers
-        // this will really need to be handled by signalR because state is impermanent
-        // remainingPlayers must be set initially but the useEffect should take care of that
-    }
-    
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
     }

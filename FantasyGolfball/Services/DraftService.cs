@@ -40,10 +40,10 @@ public class DraftService
         return _draftStates[leagueId];
     }
 
-    public async Task<DraftState> SelectPlayer(int leagueId, int userId, int playerId)
+    public async Task<DraftState> SelectPlayer(int leagueId, int userId, int playerId, int maxRosterSize)
     {
         var draftState = await GetDraftState(leagueId);
-        draftState.SelectPlayer(userId, playerId);
+        draftState.SelectPlayer(userId, playerId, maxRosterSize);
 
         // save to db
         var roster = await _dbContext.Rosters.FirstOrDefaultAsync(r => r.LeagueId == leagueId && r.UserId == userId);
