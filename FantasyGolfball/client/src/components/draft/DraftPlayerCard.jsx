@@ -23,7 +23,8 @@ export const DraftPlayerCard = ({ player }) => {
                 {player.status.statusType}
             </td>
             <td>
-                Add to queue and draft buttons go here
+                <button>Draft Player</button>
+                <button>Enqueue Player</button>
             </td>
         </tr>
     )

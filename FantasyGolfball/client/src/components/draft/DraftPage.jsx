@@ -1,52 +1,53 @@
 import { createContext, useEffect, useState } from "react"
 import { DraftPlayerList } from "./DraftPlayerList"
 import { HubConnectionBuilder } from "@microsoft/signalr"
+import { mockDraftState } from "./mockDraftState"
 
 export const DraftContext = createContext()
 
 export const DraftPage = () => {
     const [connection, setConnection] = useState(null)
-    const [draftState, setDraftState] = useState(null)
+    const [draftState, setDraftState] = useState(mockDraftState)
     const [currentTurn, setCurrentTurn] = useState(null)
-    const leagueId = 1 // replace with dynamic somehow
-    // now that I have a rough idea of how this is going to be structured in HTML, I can create more discrete tasks based on the features that this page will have.
+    // const leagueId = 1 // replace with dynamic somehow - also contained in mockDraftState
+    
 
     useEffect(() => {
-        // initialize signalR connection
-        const connect = async () => {
-            const newConnection = new HubConnectionBuilder()
-                .withUrl("/draftHub")
-                .build()
+        // uncomment when ready to use real data
+        // const connect = async () => {
+        //     const newConnection = new HubConnectionBuilder()
+        //         .withUrl("/draftHub")
+        //         .build()
         
 
-            newConnection.on("TurnUpdated", (userId) => {
-                console.log("User turn:", userId)
-                setCurrentTurn(userId)
-            })
+        //     newConnection.on("TurnUpdated", (userId) => {
+        //         console.log("User turn:", userId)
+        //         setCurrentTurn(userId)
+        //     })
 
-            newConnection.on("Error", (error) => {
-                console.error("Error:", error)
-            })
+        //     newConnection.on("Error", (error) => {
+        //         console.error("Error:", error)
+        //     })
 
-            try {
-                await newConnection.start()
-                console.log("Connected to draft hub")
+        //     try {
+        //         await newConnection.start()
+        //         console.log("Connected to draft hub")
 
-                // join draft group
-                await newConnection.invoke("JoinDraft", leagueId)
-                setConnection(newConnection)
-            } catch (error) {
-                console.error("Connection failed:", error)
-            }
-        }
-        connect()
+        //         // join draft group
+        //         await newConnection.invoke("JoinDraft", leagueId)
+        //         setConnection(newConnection)
+        //     } catch (error) {
+        //         console.error("Connection failed:", error)
+        //     }
+        // }
+        // connect()
 
-        // cleanup on unmount
-        return () => {
-            if (connection) {
-                connection.stop()
-            }
-        }
+        // // cleanup on unmount
+        // return () => {
+        //     if (connection) {
+        //         connection.stop()
+        //     }
+        // }
     }, []) // runs only on mount
 
 

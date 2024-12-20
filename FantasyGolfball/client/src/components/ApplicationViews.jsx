@@ -37,6 +37,14 @@ export default function ApplicationViews() {
           </AuthorizedRoute>}
         />
         <Route
+          path="mock-draft"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <DraftPage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
           path="chat"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>

@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { SearchBar } from "../SearchBar"
 import { Table } from "reactstrap"
 import { DraftPlayerCard } from "./DraftPlayerCard"
+import { DraftContext } from "./DraftPage"
 
 
 export const DraftPlayerList = () => {
     // get score data from DraftContext (eventually)
-    const [remainingPlayers, setRemainingPlayers] = useState() // for determining draft eligibility
     const [filteredPlayers, setFilteredPlayers] = useState() // for display
     // using a scroll for the playerlist instead of the slice used in PlayerPage should reduce state overhead
     const [searchTerm, setSearchTerm] = useState("")
     const [positionFilter, setPositionFilter] = useState("Any")
-    // get players from DraftContext and refactor existing code
+    const { draftState } = useContext(DraftContext)
 
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
     }
 
-    useEffect(() => {
-        setRemainingPlayers(players)
-        // I don't feel very good about this one because a refresh could bork the whole system. Need something to check if players are already drafted somehow. Maybe storing this as state isn't a good idea?
-    }, [players])
 
     useEffect(() => {
-        if (remainingPlayers){
-            const foundPlayers = remainingPlayers.filter(player => 
+        if (draftState.availablePlayers){
+            const foundPlayers = draftState.availablePlayers.filter(player => 
                 player.playerLastName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                 player.playerFirstName.toLowerCase().includes(searchTerm.toLowerCase())
             ) // inherits name search issue from PlayerPage
@@ -53,9 +49,9 @@ export const DraftPlayerList = () => {
                     break
             }
         } 
-    }, [searchTerm, players, positionFilter, remainingPlayers])
+    }, [searchTerm, positionFilter, draftState.availablePlayers])
 
-    if (!players) {
+    if (!draftState) {
         return (
             <div>Loading...</div>
         )
@@ -80,9 +76,9 @@ export const DraftPlayerList = () => {
                     </select>
                     <label>Stats</label>
                     <select name="stats" id="stats">
-                        <option value="This week">This Week</option>
-                        <option value="Season Total">Season Total</option>
-                        <option value="Season Average">Season Average</option>
+                        <option value="Project Season Average">Projected Season Average</option>
+                        <option value="Season Total">Last Season Total</option>
+                        <option value="Season Average">Last Season Average</option>
                     </select>
                 </div>
             </div>
@@ -90,7 +86,7 @@ export const DraftPlayerList = () => {
                 <thead>
                     <tr>
                         <th>
-                            Rank
+                            Rank (NYI)
                         </th>
                         <th>
                             Player
@@ -111,7 +107,9 @@ export const DraftPlayerList = () => {
                                 key={`player-${player.playerId}`}
                             />
                         )
-                    }) : <div>Loading...</div>}
+                    }) : <tr>
+                            <td>Loading...</td>
+                         </tr>}
                 </tbody>
             </Table>
         </div>
