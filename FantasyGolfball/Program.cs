@@ -87,6 +87,8 @@ app.UseAuthorization();
 
 // Creating a SignalR hub for testing
 app.MapHub<ChatHub>("/chathub");
+// Creating a SignalR hub for live draft
+app.MapHub<LiveDraftHub>("/draftHub");
 
 app.MapControllers();
 
