@@ -5,9 +5,6 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
     // need to source data for previous season scores, if applicable
     const { loggedInUser } = useAppContext()
 
-    // handle adding a player to the queue
-    // handle drafting a player, with error handling for wrong turn
-
     return (
         <tr>
             <th>

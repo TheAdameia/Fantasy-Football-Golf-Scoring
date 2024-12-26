@@ -3,6 +3,7 @@ import { DraftPlayerList } from "./DraftPlayerList"
 import { HubConnectionBuilder } from "@microsoft/signalr"
 import { mockDraftState } from "./mockDraftState"
 import { DraftSelectedPlayerView } from "./DraftSelectedPlayerView"
+import { DraftUserOrder } from "./DraftUserOrder"
 
 export const DraftContext = createContext()
 
@@ -58,7 +59,7 @@ export const DraftPage = () => {
             <div>
                 <div>Left side boxes
                     <div>Top left box - timer, turn indicator, next auto draft</div>
-                    <div>Draft round user order</div>
+                    <DraftUserOrder />
                 </div>
                 <div>Right side boxes
                     <div>Player selection queue</div>
