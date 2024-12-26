@@ -25,8 +25,8 @@ export const DraftSelectedPlayerView = ({ selectedPlayer }) => {
             <div>
                 <div>Last season total</div>
                 <div>Projected points</div>
-                <button onClick={console.log("quack!")}>Enqueue Player</button>
-                <button onClick={console.log("quackerooski!")}>Draft Player</button>
+                <button onClick={() => console.log("quack!")}>Enqueue Player</button>
+                <button onClick={() => console.log("quackerooski!")}>Draft Player</button>
             </div>
         </div>
     )

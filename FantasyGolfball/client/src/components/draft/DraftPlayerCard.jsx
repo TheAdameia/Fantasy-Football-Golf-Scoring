@@ -20,7 +20,7 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
                 {player.status.statusType}
             </td>
             <td>
-                <button onClick={setSelectedPlayer(player)}>View Player</button>
+                <button onClick={() => setSelectedPlayer(player)}>View Player</button>
             </td>
         </tr>
     )
