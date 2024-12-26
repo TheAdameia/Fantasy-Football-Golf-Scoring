@@ -5,7 +5,7 @@ import { DraftPlayerCard } from "./DraftPlayerCard"
 import { DraftContext } from "./DraftPage"
 
 
-export const DraftPlayerList = () => {
+export const DraftPlayerList = ({ setSelectedPlayer }) => {
     // get score data from DraftContext (eventually)
     const [filteredPlayers, setFilteredPlayers] = useState() // for display
     // using a scroll for the playerlist instead of the slice used in PlayerPage should reduce state overhead
@@ -105,6 +105,7 @@ export const DraftPlayerList = () => {
                             <DraftPlayerCard
                                 player={player}
                                 key={`player-${player.playerId}`}
+                                setSelectedPlayer={setSelectedPlayer}
                             />
                         )
                     }) : <tr>

@@ -1,7 +1,7 @@
 import { useAppContext } from "../../contexts/AppContext"
 
 
-export const DraftPlayerCard = ({ player }) => {
+export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
     // need to source data for previous season scores, if applicable
     const { loggedInUser } = useAppContext()
 
@@ -23,8 +23,7 @@ export const DraftPlayerCard = ({ player }) => {
                 {player.status.statusType}
             </td>
             <td>
-                <button>Draft Player</button>
-                <button>Enqueue Player</button>
+                <button onClick={setSelectedPlayer(player)}>View Player</button>
             </td>
         </tr>
     )
