@@ -4,14 +4,17 @@ import { DraftContext } from "./DraftPage"
 
 export const DraftUserOrder = () => {
     const { draftState } = useContext(DraftContext)
-    // given an order of users, generate a snake draft element
-    const rosterSize = 3 // the number of rounds is equal to the roster size which will eventually be included in draftState
-    // when called for, the top result is sliced
-    // the rounds indicator needs to disappear when that round is up
+    // the number of rounds is equal to the roster size which will eventually be included in draftState
+
+    // a more serious rethink will be necessary once real data is being used. This will not function (possibly at all) when that is ported, but I don't have a good enough understanding of the data at the time to make this work.
 
     return (
-        <div>
-
-        </div>
+        <ol>
+            {draftState.userTurnOrder.map((u) => {
+                return (
+                    <li key={u.userId}>{u.name}</li>
+                )
+            })}
+        </ol>
     )
 }
