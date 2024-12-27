@@ -5,6 +5,7 @@ import { mockDraftState } from "./mockDraftState"
 import { DraftSelectedPlayerView } from "./DraftSelectedPlayerView"
 import { DraftUserOrder } from "./DraftUserOrder"
 import "./DraftLayout.css"
+import Chat from "../../clientHubs/exampleClientHub"
 
 export const DraftContext = createContext()
 
@@ -58,16 +59,16 @@ export const DraftPage = () => {
     return (
         <DraftContext.Provider value={{ draftState, currentTurn, connection}}>
             <div className="draft-container">
-                <div className="left-side">Left side boxes
+                <div className="left-side">
                     <div>Top left box - timer, turn indicator, next auto draft</div>
                     <DraftUserOrder />
                 </div>
-                <div className="right-side">Right side boxes
+                <div className="right-side">
                     <div>Player selection queue</div>
                     <div>My team display</div>
-                    <div>Chat</div>
+                    <Chat />
                 </div>
-                <div className="center-box">Center box
+                <div className="center-box">
                     <DraftSelectedPlayerView selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer}/>
                     <DraftPlayerList setSelectedPlayer={setSelectedPlayer}/>
                 </div>

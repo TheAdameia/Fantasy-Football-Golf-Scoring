@@ -61,7 +61,7 @@ const Chat = () => {
 
     return (
         <div style={{ padding: "10px" }}>
-          <h2>Chat Room</h2>
+          <h4>Chat</h4>
     
           {/* I don't plan on using CSS in this fashion, but there are some cool things here that I didn't know existed that I will definitely want for later. */}
           <div
