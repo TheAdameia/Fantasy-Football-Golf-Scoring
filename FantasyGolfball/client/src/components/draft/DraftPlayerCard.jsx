@@ -8,7 +8,7 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
     return (
         <tr>
             <th>
-                Rank
+                
             </th>
             <td>
                 {player.playerFirstName} {player.playerLastName}
@@ -20,7 +20,10 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
                 {player.status.statusType}
             </td>
             <td>
-                <button onClick={() => setSelectedPlayer(player)}>View Player</button>
+                NYI
+            </td>
+            <td>
+                <button onClick={() => setSelectedPlayer(player)}>View</button>
             </td>
         </tr>
     )

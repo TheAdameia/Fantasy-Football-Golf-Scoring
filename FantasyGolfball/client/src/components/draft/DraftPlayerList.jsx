@@ -97,6 +97,9 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
                         <th>
                             Status
                         </th>
+                        <th>
+                            Expected Points
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
