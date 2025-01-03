@@ -6,6 +6,7 @@ import { DraftSelectedPlayerView } from "./DraftSelectedPlayerView"
 import { DraftUserOrder } from "./DraftUserOrder"
 import "./DraftLayout.css"
 import Chat from "../../clientHubs/exampleClientHub"
+import { DraftTimer } from "./DraftTimer"
 
 export const DraftContext = createContext()
 
@@ -60,7 +61,8 @@ export const DraftPage = () => {
         <DraftContext.Provider value={{ draftState, currentTurn, connection}}>
             <div className="draft-container">
                 <div className="left-side">
-                    <div>Top left box - timer, turn indicator, next auto draft</div>
+                    <DraftTimer />
+                    <div>next auto drafted player:</div>
                     <DraftUserOrder />
                 </div>
                 <div className="right-side">

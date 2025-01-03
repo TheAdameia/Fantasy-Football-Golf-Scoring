@@ -72,14 +72,6 @@
     align-items: center;
   }
 
-  /* .button-green {
-    background-color:green;
-  }
-
-  .button-yellow {
-    background-color:yellow;
-  } */
-
   button {
     padding: 8px 12px;
     font-size: 14px;
@@ -98,4 +90,11 @@
   button:disabled {
     background-color: #ddd;
     cursor: not-allowed;
+  }
+
+  .timer {
+    font-size: 30px;
+    font-weight: 700;
+    background-color: #99CCFF;
+    border: 2px groove #1C6EA4;
   }

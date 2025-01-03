@@ -8,9 +8,20 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer }) =
     // handle drafting a player
     // handle enqueueing a player
 
-    if (selectedPlayer == null) { //revise to use empty stat display after CSS implemented
+    if (selectedPlayer == null) {
         return (
-            <div>blank</div>
+            <div className="selected-player-view-grid">
+                <div className="top-row">
+                    <div>None Selected</div>
+                </div>
+                <div className="bottom-row">
+                    <div>Position</div>
+                    <div>Team (NYI)</div>
+                    <div>Bye Week (NYI)</div>
+                    <div>Last season total</div>
+                    <div>Projected points</div>
+                </div>
+            </div>
         )
     }
 
