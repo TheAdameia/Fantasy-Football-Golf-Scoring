@@ -7,6 +7,7 @@ import { DraftUserOrder } from "./DraftUserOrder"
 import "./DraftLayout.css"
 import Chat from "../../clientHubs/exampleClientHub"
 import { DraftTimer } from "./DraftTimer"
+import { DraftPlayerQueue } from "./DraftPlayerQueue"
 
 export const DraftContext = createContext()
 
@@ -15,6 +16,7 @@ export const DraftPage = () => {
     const [draftState, setDraftState] = useState(mockDraftState)
     const [currentTurn, setCurrentTurn] = useState(null)
     const [selectedPlayer, setSelectedPlayer] = useState(null)
+    const [queuedPlayers, setQueuedPlayers] = useState([])
     // const leagueId = 1 // replace with dynamic somehow - also contained in mockDraftState
     
 
@@ -66,12 +68,17 @@ export const DraftPage = () => {
                     <DraftUserOrder />
                 </div>
                 <div className="right-side">
-                    <div>Player selection queue</div>
+                    <DraftPlayerQueue queuedPlayers={queuedPlayers}/>
                     <div>My team display</div>
                     <Chat />
                 </div>
                 <div className="center-box">
-                    <DraftSelectedPlayerView selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer}/>
+                    <DraftSelectedPlayerView 
+                        selectedPlayer={selectedPlayer} 
+                        setSelectedPlayer={setSelectedPlayer}
+                        queuedPlayers={queuedPlayers}
+                        setQueuedPlayers={setQueuedPlayers}
+                    />
                     <DraftPlayerList setSelectedPlayer={setSelectedPlayer}/>
                 </div>
             </div>
