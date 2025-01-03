@@ -4,6 +4,9 @@ import { HubConnectionBuilder } from "@microsoft/signalr"
 import { mockDraftState } from "./mockDraftState"
 import { DraftSelectedPlayerView } from "./DraftSelectedPlayerView"
 import { DraftUserOrder } from "./DraftUserOrder"
+import "./DraftLayout.css"
+import Chat from "../../clientHubs/exampleClientHub"
+import { DraftTimer } from "./DraftTimer"
 
 export const DraftContext = createContext()
 
@@ -56,18 +59,19 @@ export const DraftPage = () => {
 
     return (
         <DraftContext.Provider value={{ draftState, currentTurn, connection}}>
-            <div>
-                <div>Left side boxes
-                    <div>Top left box - timer, turn indicator, next auto draft</div>
+            <div className="draft-container">
+                <div className="left-side">
+                    <DraftTimer />
+                    <div>next auto drafted player:</div>
                     <DraftUserOrder />
                 </div>
-                <div>Right side boxes
+                <div className="right-side">
                     <div>Player selection queue</div>
                     <div>My team display</div>
-                    <div>Chat</div>
+                    <Chat />
                 </div>
-                <div>Center box
-                    <DraftSelectedPlayerView selectedPlayer={selectedPlayer}/>
+                <div className="center-box">
+                    <DraftSelectedPlayerView selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer}/>
                     <DraftPlayerList setSelectedPlayer={setSelectedPlayer}/>
                 </div>
             </div>

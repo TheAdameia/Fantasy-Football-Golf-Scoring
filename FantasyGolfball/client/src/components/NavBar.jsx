@@ -23,7 +23,7 @@ return (
     <div>
     <Navbar color="light" light fixed="true" expand="lg">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-        Fantasy Footgolf
+        Fantasy Golfball
         </NavbarBrand>
         {loggedInUser ? (
         <>

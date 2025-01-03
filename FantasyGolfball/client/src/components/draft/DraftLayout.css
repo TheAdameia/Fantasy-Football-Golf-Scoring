@@ -1,0 +1,100 @@
+.draft-container {
+    display: grid;
+    grid-template-areas:
+      "left-side center-box right-side"
+      "left-side center-box right-side";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 10px;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .left-side {
+    grid-area: left-side;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .right-side {
+    grid-area: right-side;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .center-box {
+    grid-area: center-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .center-box > * {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+  }
+
+  .selected-player-view-grid {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .selected-player-view-grid div {
+    padding: 3px 5px;
+    border-radius: 3px;
+    text-align: center;
+  }
+  
+  .top-row {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .bottom-row {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+
+  .timer {
+    font-size: 30px;
+    font-weight: 700;
+    background-color: #99CCFF;
+    border: 2px groove #1C6EA4;
+  }
