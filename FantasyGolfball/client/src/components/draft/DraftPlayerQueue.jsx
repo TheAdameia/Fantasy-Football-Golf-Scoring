@@ -11,7 +11,14 @@ export const DraftPlayerQueue = ({ queuedPlayers }) => {
             <div>empty layout</div>
         )
     }
+    // does this need to be a react element for this to work?
     return (
-        <div>Quack!</div>
+        <div>
+            {queuedPlayers.map((player) => {
+                return (
+                    <div key={player.playerId}>{player.playerFirstName} {player.playerLastName}</div>
+                )
+            })}
+        </div>
     )
 }
