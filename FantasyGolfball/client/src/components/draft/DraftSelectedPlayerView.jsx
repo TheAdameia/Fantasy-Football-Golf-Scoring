@@ -9,13 +9,18 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
 
     // handle enqueueing a player
     const handleAddPlayerQueue = (addedPlayer) => {
-        let listCopy = {...queuedPlayers}
-        if (listCopy.some(addedPlayer)) {
+        // Ensures queuedPlayers is an array and copies
+        let listCopy = Array.isArray(queuedPlayers) ? [...queuedPlayers] : []
+        
+        // Exits if player is already queued
+        if (listCopy.some(player => player.playerId === addedPlayer.playerId)) {
             return
         }
+    
         listCopy.push(addedPlayer)
         setQueuedPlayers(listCopy)
-    }
+    };
+    
 
     if (selectedPlayer == null) {
         return (
