@@ -20,6 +20,13 @@ export const DraftPage = () => {
     // const leagueId = 1 // replace with dynamic somehow - also contained in mockDraftState
     
 
+    // handle dequeueing a player
+    const deQueuePlayer = (removePlayer) => {
+        let listCopy = [...queuedPlayers]
+        listCopy = listCopy.filter(player => player.playerId !== removePlayer.playerId)
+        setQueuedPlayers(listCopy)
+    }
+
     useEffect(() => {
         // uncomment when ready to use real data
         // const connect = async () => {
@@ -68,7 +75,10 @@ export const DraftPage = () => {
                     <DraftUserOrder />
                 </div>
                 <div className="right-side">
-                    <DraftPlayerQueue queuedPlayers={queuedPlayers}/>
+                    <DraftPlayerQueue 
+                        queuedPlayers={queuedPlayers}
+                        deQueuePlayer={deQueuePlayer}
+                    />
                     <div>My team display</div>
                     <Chat />
                 </div>

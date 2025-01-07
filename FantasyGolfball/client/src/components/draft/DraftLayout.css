@@ -98,3 +98,23 @@
     background-color: #99CCFF;
     border: 2px groove #1C6EA4;
   }
+
+  .queue-container {
+    background-color: lightgrey;
+  }
+
+  .queue-player {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .queue-player-role {
+    font-weight: 600;
+    margin-right: 5px;
+  }
+
+  .queue-player-name {
+    font-weight: 500;
+    margin-right: 5px;
+  }
