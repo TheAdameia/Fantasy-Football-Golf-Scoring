@@ -8,6 +8,7 @@ import "./DraftLayout.css"
 import Chat from "../../clientHubs/exampleClientHub"
 import { DraftTimer } from "./DraftTimer"
 import { DraftPlayerQueue } from "./DraftPlayerQueue"
+import { DraftAutoQueue } from "./DraftAutoQueue"
 
 export const DraftContext = createContext()
 
@@ -71,7 +72,7 @@ export const DraftPage = () => {
             <div className="draft-container">
                 <div className="left-side">
                     <DraftTimer />
-                    <div>next auto drafted player:</div>
+                    <DraftAutoQueue queuedPlayers={queuedPlayers} />
                     <DraftUserOrder />
                 </div>
                 <div className="right-side">
