@@ -17,9 +17,12 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
         setPositionFilter(event.target.value)
     }
 
+    if (!draftState || !draftState.availablePlayers) {
+        return <div>Loading draft state...</div>;
+    }
 
     useEffect(() => {
-        if (draftState.availablePlayers){
+        if (draftState && draftState.availablePlayers !== undefined) {
             const foundPlayers = draftState.availablePlayers.filter(player => 
                 player.playerLastName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                 player.playerFirstName.toLowerCase().includes(searchTerm.toLowerCase())

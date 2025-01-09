@@ -45,15 +45,23 @@ export const DraftPage = () => {
             });
     
             newConnection.on("Error", (error) => {
-                console.error("Error:", error);
+                console.error("Error from SignalR Hub:", error);
+                // Additional logging to catch specific details
+                if (error.includes("DraftStateUpdated")) {
+                    console.error("Error occurred when trying to update draft state:", error);
+                } else if (error.includes("JoinDraft")) {
+                    console.error("Error occurred during JoinDraft invocation:", error);
+                } else {
+                    console.error("General SignalR error:", error);
+                }
             });
+            
     
             try {
                 await newConnection.start();
                 console.log("Connected to draft hub");
     
                 // Join the draft group
-                const leagueId = 1; // Replace with dynamic value if needed
                 await newConnection.invoke("JoinDraft", leagueId);
     
                 setConnection(newConnection);
@@ -66,10 +74,10 @@ export const DraftPage = () => {
     
         return () => {
             if (connection) {
-                connection.stop();
+                connection.stop().catch(error => console.error("Error stopping connection:", error))
             }
         };
-    }, []);
+    }, [connection]);
     
 
 

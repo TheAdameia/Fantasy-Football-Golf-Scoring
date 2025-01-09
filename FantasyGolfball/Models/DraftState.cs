@@ -7,7 +7,7 @@ public class DraftState
     public List<Player> AvailablePlayers { get; private set; }
     public Dictionary<int, List<int>> UserRosters { get; private set; } // UserId -> PlayerIds
 
-    public DraftState(int leagueId, List<int> playerPool, List<int> userOrder)
+    public DraftState(int leagueId, List<Player> playerPool, List<int> userOrder)
     {
         LeagueId = leagueId;
         AvailablePlayers = new List<Player>(playerPool);
