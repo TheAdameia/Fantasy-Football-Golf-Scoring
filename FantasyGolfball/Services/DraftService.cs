@@ -1,3 +1,4 @@
+namespace FantasyGolfball.Services;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
 using Microsoft.EntityFrameworkCore;
@@ -5,17 +6,17 @@ using Microsoft.EntityFrameworkCore;
 public interface IDraftService
 {
     Task<DraftState> GetDraftState(int leagueId);
-    Task<DraftState>SelectPlayer(int leagueId, int userId, int playerId);
+    Task<DraftState> SelectPlayer(int leagueId, int userId, int playerId, int maxRosterSize);
 }
 
-public class DraftService
+public class DraftService : IDraftService
 {
     private readonly FantasyGolfballDbContext _dbContext;
     private readonly Dictionary<int, DraftState> _draftStates = new();
 
     public DraftService(FantasyGolfballDbContext dbContext)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext)); // Ensure dbContext is injected correctly
     }
 
     public async Task<DraftState> GetDraftState(int leagueId)
@@ -54,6 +55,12 @@ public class DraftService
 
         // update db
         var roster = await _dbContext.Rosters.FirstOrDefaultAsync(r => r.LeagueId == leagueId && r.UserId == userId);
+        
+        if (roster == null) 
+        {
+            throw new Exception($"Roster not found for user {userId} in league {leagueId}");
+        }
+
         _dbContext.RosterPlayers.Add(new RosterPlayer
         {
             PlayerId = playerId,
