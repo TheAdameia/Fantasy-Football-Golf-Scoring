@@ -27,13 +27,20 @@ public class DraftService
                 .Include(l => l.LeagueUsers)
                 .FirstOrDefaultAsync(l => l.LeagueId == leagueId);
 
-            var players = await _dbContext.Players
+            if (league == null)
+                throw new Exception($"League {leagueId} not found");
+
+            var availablePlayers = await _dbContext.Players
                 .Where(p => !p.RosterPlayers.Any(rp => rp.Roster.LeagueId == leagueId))
-                .Select(p => p.PlayerId)
+                .Include(p => p.Status)
+                .Include(p => p.Position)
                 .ToListAsync();
             
+            // fetches user ids
             var userIds = league.LeagueUsers.Select(lu => lu.UserProfileId).ToList();
-            _draftStates[leagueId] = new DraftState(leagueId, players, userIds);
+
+            // initializes draft state
+            _draftStates[leagueId] = new DraftState(leagueId, availablePlayers, userIds);
 
         }
 
@@ -45,7 +52,7 @@ public class DraftService
         var draftState = await GetDraftState(leagueId);
         draftState.SelectPlayer(userId, playerId, maxRosterSize);
 
-        // save to db
+        // update db
         var roster = await _dbContext.Rosters.FirstOrDefaultAsync(r => r.LeagueId == leagueId && r.UserId == userId);
         _dbContext.RosterPlayers.Add(new RosterPlayer
         {

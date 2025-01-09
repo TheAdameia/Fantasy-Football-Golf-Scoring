@@ -1,16 +1,16 @@
-
+using FantasyGolfball.Models;
 
 public class DraftState
 {
     public int LeagueId { get; set; }
     public Queue<int> DraftOrder { get; private set; }
-    public List<int> AvailablePlayers { get; private set; }
+    public List<Player> AvailablePlayers { get; private set; }
     public Dictionary<int, List<int>> UserRosters { get; private set; } // UserId -> PlayerIds
 
     public DraftState(int leagueId, List<int> playerPool, List<int> userOrder)
     {
         LeagueId = leagueId;
-        AvailablePlayers = new List<int>(playerPool);
+        AvailablePlayers = new List<Player>(playerPool);
         DraftOrder = new Queue<int>(userOrder);
         UserRosters = userOrder.ToDictionary(id => id, _ => new List<int>());
     }
@@ -21,12 +21,13 @@ public class DraftState
     {
         if (userId != CurrentUserId)
             throw new InvalidOperationException("Not this user's turn.");
-        if (!AvailablePlayers.Contains(playerId))
+        if (!AvailablePlayers.Any(p => p.PlayerId == playerId))
             throw new InvalidOperationException("Player not available.");
         if (UserRosters[userId].Count >= maxRosterSize)
             throw new InvalidOperationException("Cannot exceed maximum roster size.");
 
-        AvailablePlayers.Remove(playerId);
+        var selectedPlayer = AvailablePlayers.First(p => p.PlayerId == playerId);
+        AvailablePlayers.Remove(selectedPlayer);
         UserRosters[userId].Add(playerId);
 
         DraftOrder.Dequeue();

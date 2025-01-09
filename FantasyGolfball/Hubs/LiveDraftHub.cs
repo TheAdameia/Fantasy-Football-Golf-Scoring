@@ -13,19 +13,19 @@ public class LiveDraftHub : Hub
     public async Task JoinDraft(int leagueId)
     {
         string groupName = $"League_{leagueId}";
-        await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+        await Groups.AddToGroupAsync(Context.ConnectionId, groupName); //adds user
 
-        var draftState = await _draftService.GetDraftState(leagueId);
-        await Clients.Caller.SendAsync("DraftStateUpdated", draftState);
+        var draftState = await _draftService.GetDraftState(leagueId); //fetches draft state
+        await Clients.Caller.SendAsync("DraftStateUpdated", draftState); //sends draft state to caller
     }
 
-    // called when a user selects a player
+    // called when a user drafts a player
     public async Task SelectPlayer(int leagueId, int userId, int playerId)
     {
         try
         {
             var updatedState = await _draftService.SelectPlayer(leagueId, userId, playerId);
-            await Clients.Group($"League_{leagueId}").SendAsync("DraftStateUpdated", updatedState);
+            await Clients.Group($"League_{leagueId}").SendAsync("DraftStateUpdated", updatedState); // notifies all clients
         }
         catch (Exception ex)
         {
