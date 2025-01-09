@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
+using FantasyGolfball.Services;
+using System.Text.Json;
 
 public class LiveDraftHub : Hub
 {
@@ -22,11 +24,16 @@ public class LiveDraftHub : Hub
             // Get the draft state
             var draftState = await _draftService.GetDraftState(leagueId);
 
+            // Ensure draft state is valid and not null
             if (draftState == null)
             {
                 Console.WriteLine($"Draft state for league {leagueId} is null");
                 return;
             }
+
+            // Ensure all properties of the draftState are valid and serializable
+            var draftStateJson = JsonSerializer.Serialize(draftState);
+            Console.WriteLine($"Serialized DraftState JSON: {draftStateJson}");
 
             // Send draft state to the client
             await Clients.Caller.SendAsync("DraftStateUpdated", draftState);
@@ -40,12 +47,13 @@ public class LiveDraftHub : Hub
     }
 
 
+
     // called when a user drafts a player
-    public async Task SelectPlayer(int leagueId, int userId, int playerId)
+    public async Task SelectPlayer(int leagueId, int userId, int playerId, int maxRosterSize)
     {
         try
         {
-            var updatedState = await _draftService.SelectPlayer(leagueId, userId, playerId);
+            var updatedState = await _draftService.SelectPlayer(leagueId, userId, playerId, maxRosterSize);
             await Clients.Group($"League_{leagueId}").SendAsync("DraftStateUpdated", updatedState); // notifies all clients
         }
         catch (Exception ex)
