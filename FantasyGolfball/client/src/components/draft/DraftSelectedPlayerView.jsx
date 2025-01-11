@@ -12,7 +12,9 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
 
     // handle drafting a player
     const handleDraftPlayer = async (playerId) => {
-        if (connection && currentTurn === loggedInUser.userId) {
+        console.log(loggedInUser.id)
+        console.log(currentTurn)
+        if (connection && currentTurn === loggedInUser.id) {
             try {
                 const leagueId = 1; // Replace with dynamic leagueId if needed
                 await connection.invoke("SelectPlayer", leagueId, loggedInUser.userId, playerId);

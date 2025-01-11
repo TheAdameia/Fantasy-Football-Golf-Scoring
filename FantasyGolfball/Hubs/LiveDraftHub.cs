@@ -65,6 +65,7 @@ public class LiveDraftHub : Hub
     // server sends current turn update
     public async Task NotifyTurn(int leagueId, int userId)
     {
+        Console.WriteLine($"Notifying User {userId} in League {leagueId}");
         await Clients.Group($"League_{leagueId}").SendAsync("TurnUpdated", userId);
     }
 }

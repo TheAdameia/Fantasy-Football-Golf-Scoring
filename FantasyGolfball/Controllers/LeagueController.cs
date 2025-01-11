@@ -49,17 +49,22 @@ public class LeagueController : ControllerBase
                 League = league
             };
             league.LeagueUsers = new List<LeagueUser> { leagueUser };
+        }
 
+        _dbContext.Leagues.Add(league);
+        _dbContext.SaveChanges();
+
+        if (user != null)
+        {
             var roster = new Roster
             {
                 LeagueId = league.LeagueId,
                 UserId = user.Id
             };
             _dbContext.Rosters.Add(roster);
+            _dbContext.SaveChanges();
         }
         
-        _dbContext.Leagues.Add(league);
-        _dbContext.SaveChanges();
         return Created($"api/leagues/{league.LeagueId}", league);
     }
 

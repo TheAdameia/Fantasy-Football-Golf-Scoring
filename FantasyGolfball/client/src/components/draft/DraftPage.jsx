@@ -9,6 +9,7 @@ import { DraftTimer } from "./DraftTimer"
 import { DraftPlayerQueue } from "./DraftPlayerQueue"
 import { DraftAutoQueue } from "./DraftAutoQueue"
 import { DraftTeamDisplay } from "./DraftTeamDisplay"
+import { useAppContext } from "../../contexts/AppContext"
 
 export const DraftContext = createContext()
 
@@ -18,7 +19,9 @@ export const DraftPage = () => {
     const [currentTurn, setCurrentTurn] = useState(null)
     const [selectedPlayer, setSelectedPlayer] = useState(null)
     const [queuedPlayers, setQueuedPlayers] = useState([])
-    const leagueId = 1 // just always assume it's 1 for testing, fix it later
+    const leagueId = 5 // changing it manually for testing
+    const { loggedInUser } = useAppContext()
+    const userId = loggedInUser.id
     
 
     // handle dequeueing a player
@@ -30,6 +33,7 @@ export const DraftPage = () => {
 
     useEffect(() => {
         const connect = async () => {
+            
             const newConnection = new HubConnectionBuilder()
                 .withUrl("https://localhost:5001/draftHub") // Backend URL
                 .withAutomaticReconnect()
@@ -53,7 +57,7 @@ export const DraftPage = () => {
                 await newConnection.start();
                 console.log("Connected to draft hub");
     
-                const leagueId = 1; // replace with dynamic value eventually
+                const leagueId = 5; // replace with dynamic value eventually
                 await newConnection.invoke("JoinDraft", leagueId)
                     .catch(error => {
                         console.error("Error during JoinDraft invocation:", error);
