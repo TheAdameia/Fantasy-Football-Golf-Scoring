@@ -17,10 +17,6 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
         setPositionFilter(event.target.value)
     }
 
-    if (!draftState || !draftState.availablePlayers) {
-        return <div>Loading draft state...</div>;
-    }
-
     useEffect(() => {
         if (draftState && draftState.availablePlayers !== undefined) {
             const foundPlayers = draftState.availablePlayers.filter(player => 
@@ -52,7 +48,7 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
                     break
             }
         } 
-    }, [searchTerm, positionFilter, draftState.availablePlayers])
+    }, [searchTerm, positionFilter, draftState])
 
     if (!draftState) {
         return (

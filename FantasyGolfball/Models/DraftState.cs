@@ -1,16 +1,17 @@
 using FantasyGolfball.Models;
+using FantasyGolfball.Models.DTOs;
 
 public class DraftState
 {
     public int LeagueId { get; set; }
     public Queue<int> DraftOrder { get; private set; }
-    public List<Player> AvailablePlayers { get; private set; }
+    public List<PlayerFullExpandDTO> AvailablePlayers { get; private set; }
     public Dictionary<int, List<int>> UserRosters { get; private set; } // UserId -> PlayerIds
 
-    public DraftState(int leagueId, List<Player> playerPool, List<int> userOrder)
+    public DraftState(int leagueId, List<PlayerFullExpandDTO> playerPool, List<int> userOrder)
     {
         LeagueId = leagueId;
-        AvailablePlayers = new List<Player>(playerPool);
+        AvailablePlayers = new List<PlayerFullExpandDTO>(playerPool);
         DraftOrder = new Queue<int>(userOrder);
         UserRosters = userOrder.ToDictionary(id => id, _ => new List<int>());
     }

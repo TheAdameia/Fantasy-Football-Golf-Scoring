@@ -2,6 +2,7 @@ namespace FantasyGolfball.Services;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
 using Microsoft.EntityFrameworkCore;
+using FantasyGolfball.Models.DTOs;
 
 public interface IDraftService
 {
@@ -35,6 +36,27 @@ public class DraftService : IDraftService
                 .Where(p => !p.RosterPlayers.Any(rp => rp.Roster.LeagueId == leagueId))
                 .Include(p => p.Status)
                 .Include(p => p.Position)
+                .Select(p => new PlayerFullExpandDTO
+                {
+                    PlayerId = p.PlayerId,
+                    PlayerFirstName = p.PlayerFirstName,
+                    PlayerLastName = p.PlayerLastName,
+                    StatusId = p.StatusId,
+                    PositionId = p.PositionId,
+                    Position = new PositionDTO
+                    {
+                        PositionId = p.Position.PositionId,
+                        PositionShort = p.Position.PositionShort,
+                        PositionLong = p.Position.PositionLong
+                    },
+                    Status = new StatusDTO
+                    {
+                        StatusId = p.Status.StatusId,
+                        StatusType = p.Status.StatusType,
+                        ViableToPlay = p.Status.ViableToPlay,
+                        RequiresBackup = p.Status.RequiresBackup
+                    }
+                })
                 .ToListAsync();
             
             // fetches user ids
