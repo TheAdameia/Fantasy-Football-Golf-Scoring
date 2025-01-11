@@ -118,3 +118,8 @@
     font-weight: 500;
     margin-right: 5px;
   }
+
+  .table-container {
+    height: 500px;
+    overflow-y: scroll;
+  }

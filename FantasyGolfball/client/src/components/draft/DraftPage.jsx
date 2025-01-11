@@ -8,6 +8,7 @@ import Chat from "../../clientHubs/exampleClientHub"
 import { DraftTimer } from "./DraftTimer"
 import { DraftPlayerQueue } from "./DraftPlayerQueue"
 import { DraftAutoQueue } from "./DraftAutoQueue"
+import { DraftTeamDisplay } from "./DraftTeamDisplay"
 
 export const DraftContext = createContext()
 
@@ -52,7 +53,7 @@ export const DraftPage = () => {
                 await newConnection.start();
                 console.log("Connected to draft hub");
     
-                const leagueId = 1; // Replace with dynamic value if needed
+                const leagueId = 1; // replace with dynamic value eventually
                 await newConnection.invoke("JoinDraft", leagueId)
                     .catch(error => {
                         console.error("Error during JoinDraft invocation:", error);
@@ -70,10 +71,11 @@ export const DraftPage = () => {
     
         return () => {
             if (connection) {
+                // stop connection on unmount
                 connection.stop().catch(error => console.error("Error stopping connection:", error));
             }
         };
-    }, [connection]);
+    }, []); // only runs once on purpose, ignore the siren song of the "missing dependency"
     
     
 
@@ -91,7 +93,7 @@ export const DraftPage = () => {
                         queuedPlayers={queuedPlayers}
                         deQueuePlayer={deQueuePlayer}
                     />
-                    <div>My team display</div>
+                    <DraftTeamDisplay />
                     <Chat />
                 </div>
                 <div className="center-box">
