@@ -38,6 +38,13 @@ public class LiveDraftHub : Hub
             // Send draft state to the client
             await Clients.Caller.SendAsync("DraftStateUpdated", draftState);
             Console.WriteLine($"Draft state for league {leagueId} sent to {Context.ConnectionId}");
+
+            // trigger NotifyTurn for the first user
+            if (draftState.CurrentUserId != 0)
+            {
+                Console.WriteLine($"Triggering NotifyTurn for user {draftState.CurrentUserId} in league {leagueId}");
+                await NotifyTurn(leagueId, draftState.CurrentUserId);
+            }
         }
         catch (Exception ex)
         {
@@ -65,7 +72,16 @@ public class LiveDraftHub : Hub
     // server sends current turn update
     public async Task NotifyTurn(int leagueId, int userId)
     {
-        Console.WriteLine($"Notifying User {userId} in League {leagueId}");
-        await Clients.Group($"League_{leagueId}").SendAsync("TurnUpdated", userId);
+        try
+        {
+            await Clients.Group($"League_{leagueId}").SendAsync("TurnUpdated", userId);
+            Console.WriteLine($"Notifying User {userId} in League {leagueId}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error sending TurnUpdated event: {ex.Message}");
+        }
+        
+        
     }
 }
