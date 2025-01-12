@@ -58,8 +58,14 @@ public class LiveDraftHub : Hub
     // called when a user drafts a player
     public async Task SelectPlayer(int leagueId, int userId, int playerId, int maxRosterSize)
     {
+        Console.WriteLine($"SelectPlayer called: leagueId={leagueId}, userId={userId}, playerId={playerId}, maxRosterSize={maxRosterSize}");
         try
         {
+            if (leagueId <= 0 || userId <= 0 || playerId <= 0 || maxRosterSize<= 0 )
+            {
+                
+                throw new ArgumentException("invalid arguments passed to SelectPlayer");
+            }
             var updatedState = await _draftService.SelectPlayer(leagueId, userId, playerId, maxRosterSize);
             await Clients.Group($"League_{leagueId}").SendAsync("DraftStateUpdated", updatedState); // notifies all clients
         }

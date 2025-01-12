@@ -72,7 +72,20 @@ public class DraftService : IDraftService
 
     public async Task<DraftState> SelectPlayer(int leagueId, int userId, int playerId, int maxRosterSize)
     {
+        Console.WriteLine($"DraftService.SelectPlayer called: leagueId={leagueId}, userId={userId}, playerId={playerId}, maxRosterSize={maxRosterSize}");
+
+        if (leagueId <= 0 || userId <= 0 || playerId <= 0 || maxRosterSize <= 0)
+        {
+            throw new ArgumentException($"Invalid input(s): leagueId={leagueId}, userId={userId}, playerId={playerId}, maxRosterSize={maxRosterSize}");
+        }
+
+
         var draftState = await GetDraftState(leagueId);
+        if (draftState == null)
+        {
+            throw new Exception($"Draft state not found for league {leagueId}");
+        }
+
         draftState.SelectPlayer(userId, playerId, maxRosterSize);
 
         // update db

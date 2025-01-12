@@ -1,6 +1,7 @@
 using FantasyGolfball.Models;
 using FantasyGolfball.Models.DTOs;
 
+namespace FantasyGolfball.Models;
 public class DraftState
 {
     public int LeagueId { get; set; }
