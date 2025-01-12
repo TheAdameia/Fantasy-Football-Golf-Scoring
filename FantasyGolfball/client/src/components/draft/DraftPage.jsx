@@ -57,7 +57,6 @@ export const DraftPage = () => {
                 await newConnection.start();
                 console.log("Connected to draft hub");
     
-                const leagueId = 5; // replace with dynamic value eventually
                 await newConnection.invoke("JoinDraft", leagueId)
                     .catch(error => {
                         console.error("Error during JoinDraft invocation:", error);

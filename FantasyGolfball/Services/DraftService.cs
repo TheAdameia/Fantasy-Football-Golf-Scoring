@@ -102,7 +102,15 @@ public class DraftService : IDraftService
             RosterId = roster.RosterId
         });
 
-        await _dbContext.SaveChangesAsync();
+        try
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Database save error: {ex.Message}");
+        }
+        
         return draftState;
     }
 }
