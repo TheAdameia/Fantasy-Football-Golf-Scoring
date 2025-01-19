@@ -4,7 +4,7 @@ import { useAppContext } from "../../contexts/AppContext";
 import { DraftContext } from "./DraftPage";
 
 export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, setQueuedPlayers, queuedPlayers }) => {
-    const { draftState, connection, currentTurn } = useContext(DraftContext)
+    const { connection, currentTurn } = useContext(DraftContext)
     const { loggedInUser} = useAppContext()
     const maxRosterSize = 2 // you know the drill, got to fix it later
     const leagueId = 5
@@ -14,14 +14,15 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
 
     // handle drafting a player
     const handleDraftPlayer = async (playerId) => {
-        console.log("Details (userId, currentTurn, playerId, rostersize):")
+        console.log("Details (userId, currentTurn, playerId, rostersize, leagueId):")
         console.log(loggedInUser.id)
         console.log(currentTurn)
         console.log(playerId)
         console.log(maxRosterSize)
+        console.log(leagueId)
         if (connection && currentTurn === loggedInUser.id) {
             try {
-                await connection.invoke("SelectPlayer", leagueId, loggedInUser.userId, playerId, maxRosterSize);
+                await connection.invoke("SelectPlayer", leagueId, loggedInUser.id, playerId, maxRosterSize);
             } catch (error) {
                 console.error("Error selecting player:", error);
             }
