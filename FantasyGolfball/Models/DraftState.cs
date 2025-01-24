@@ -22,7 +22,7 @@ public class DraftState
     public void SelectPlayer(int userId, int playerId, int maxRosterSize)
     {
         if (userId != CurrentUserId)
-            throw new InvalidOperationException("Not this user's turn.");
+            throw new InvalidOperationException($"Not this user's turn. userId read as {userId}. Current turn is for user {CurrentUserId}");
         if (!AvailablePlayers.Any(p => p.PlayerId == playerId))
             throw new InvalidOperationException("Player not available.");
         if (UserRosters[userId].Count >= maxRosterSize)
@@ -31,11 +31,14 @@ public class DraftState
         var selectedPlayer = AvailablePlayers.First(p => p.PlayerId == playerId);
         AvailablePlayers.Remove(selectedPlayer);
         UserRosters[userId].Add(playerId);
-
-        var currentUserId = DraftOrder.Dequeue(); // Save the dequeued user ID
+        Console.WriteLine($"CurrentUserId: {CurrentUserId}");
+        var justDraftedUserId = DraftOrder.Dequeue(); // Save the dequeued user ID
+        Console.WriteLine($"CurrentUserId: {CurrentUserId}, justDraftedUserId: {justDraftedUserId}");
         if (DraftOrder.Count > 0)
-            DraftOrder.Enqueue(currentUserId); // Re-enqueue for snake draft
-
+            DraftOrder.Enqueue(justDraftedUserId); // Re-enqueue for snake draft
+        if (DraftOrder.Count == 0)
+            Console.WriteLine("DraftOrder is empty. Ending draft");
+        
     }
 
     public bool IsDraftComplete() => AvailablePlayers.Count == 0 || DraftOrder.Count == 0;

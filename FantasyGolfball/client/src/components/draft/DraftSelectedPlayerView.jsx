@@ -14,12 +14,6 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
 
     // handle drafting a player
     const handleDraftPlayer = async (playerId) => {
-        console.log("Details (userId, currentTurn, playerId, rostersize, leagueId):")
-        console.log(loggedInUser.id)
-        console.log(currentTurn)
-        console.log(playerId)
-        console.log(maxRosterSize)
-        console.log(leagueId)
         if (connection && currentTurn === loggedInUser.id) {
             try {
                 await connection.invoke("SelectPlayer", leagueId, loggedInUser.id, playerId, maxRosterSize);

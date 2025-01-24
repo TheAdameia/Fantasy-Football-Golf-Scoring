@@ -9,7 +9,6 @@ import { DraftTimer } from "./DraftTimer"
 import { DraftPlayerQueue } from "./DraftPlayerQueue"
 import { DraftAutoQueue } from "./DraftAutoQueue"
 import { DraftTeamDisplay } from "./DraftTeamDisplay"
-import { useAppContext } from "../../contexts/AppContext"
 
 export const DraftContext = createContext()
 
@@ -20,8 +19,6 @@ export const DraftPage = () => {
     const [selectedPlayer, setSelectedPlayer] = useState(null)
     const [queuedPlayers, setQueuedPlayers] = useState([])
     const leagueId = 5 // changing it manually for testing
-    const { loggedInUser } = useAppContext()
-    const userId = loggedInUser.id
     
 
     // handle dequeueing a player

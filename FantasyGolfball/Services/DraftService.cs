@@ -72,25 +72,33 @@ public class DraftService : IDraftService
 
     public async Task<DraftState> SelectPlayer(int leagueId, int userId, int playerId, int maxRosterSize)
     {
-        Console.WriteLine($"DraftService.SelectPlayer called: leagueId={leagueId}, userId={userId}, playerId={playerId}, maxRosterSize={maxRosterSize}");
-
+        // validate inputs
         if (leagueId <= 0 || userId <= 0 || playerId <= 0 || maxRosterSize <= 0)
         {
             throw new ArgumentException($"Invalid input(s): leagueId={leagueId}, userId={userId}, playerId={playerId}, maxRosterSize={maxRosterSize}");
         }
 
-
+        // retrieve draft state
         var draftState = await GetDraftState(leagueId);
         if (draftState == null)
         {
             throw new Exception($"Draft state not found for league {leagueId}");
         }
 
+        // Log the current state of the draft order before processing
+        Console.WriteLine($"[Before Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
+        Console.WriteLine($"[Before Selection] Current User ID: {draftState.CurrentUserId}");
+
+        // do the thing, zhu li
         draftState.SelectPlayer(userId, playerId, maxRosterSize);
+
+        // Log the state after modifying the draft
+        Console.WriteLine($"[After Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
+        Console.WriteLine($"[After Selection] Current User ID: {draftState.CurrentUserId}");
+
 
         // update db
         var roster = await _dbContext.Rosters.FirstOrDefaultAsync(r => r.LeagueId == leagueId && r.UserId == userId);
-        
         if (roster == null) 
         {
             throw new Exception($"Roster not found for user {userId} in league {leagueId}");
@@ -99,7 +107,8 @@ public class DraftService : IDraftService
         _dbContext.RosterPlayers.Add(new RosterPlayer
         {
             PlayerId = playerId,
-            RosterId = roster.RosterId
+            RosterId = roster.RosterId,
+            RosterPosition = "bench"
         });
 
         try
@@ -109,7 +118,12 @@ public class DraftService : IDraftService
         catch (Exception ex)
         {
             Console.WriteLine($"Database save error: {ex.Message}");
+            throw;
         }
+
+        // Log final state confirmation
+        Console.WriteLine($"Draft process completed for User {userId} in League {leagueId}.");
+        Console.WriteLine($"[Final State] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
         
         return draftState;
     }
