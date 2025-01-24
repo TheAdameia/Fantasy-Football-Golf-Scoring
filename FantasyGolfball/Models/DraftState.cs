@@ -32,9 +32,10 @@ public class DraftState
         AvailablePlayers.Remove(selectedPlayer);
         UserRosters[userId].Add(playerId);
 
-        DraftOrder.Dequeue();
+        var currentUserId = DraftOrder.Dequeue(); // Save the dequeued user ID
         if (DraftOrder.Count > 0)
-            DraftOrder.Enqueue(CurrentUserId); // Snake draft order
+            DraftOrder.Enqueue(currentUserId); // Re-enqueue for snake draft
+
     }
 
     public bool IsDraftComplete() => AvailablePlayers.Count == 0 || DraftOrder.Count == 0;
