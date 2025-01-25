@@ -8,7 +8,10 @@ public interface IDraftService
 {
     Task<DraftState> GetDraftState(int leagueId);
     Task<DraftState> SelectPlayer(int leagueId, int userId, int playerId, int maxRosterSize);
+    void UpdateDraftState(int leagueId, DraftState updatedState);
 }
+
+
 
 public class DraftService : IDraftService
 {
@@ -20,11 +23,24 @@ public class DraftService : IDraftService
         _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext)); // Ensure dbContext is injected correctly
     }
 
+    public void UpdateDraftState(int leagueId, DraftState updatedState)
+    {
+        if (_draftStates.ContainsKey(leagueId))
+        {
+            _draftStates[leagueId] = updatedState;
+            Console.WriteLine($"Updated DraftState for League {leagueId}. CurrentUserId: {updatedState.CurrentUserId}");
+        }
+        else
+        {
+            throw new Exception($"DraftState for League {leagueId} does not exist.");
+        }
+    }
+
     public async Task<DraftState> GetDraftState(int leagueId)
     {
         if (!_draftStates.ContainsKey(leagueId))
         {
-            // initialize draft state from db
+            // grabs league from db
             var league = await _dbContext.Leagues
                 .Include(l => l.LeagueUsers)
                 .FirstOrDefaultAsync(l => l.LeagueId == leagueId);
@@ -64,7 +80,11 @@ public class DraftService : IDraftService
 
             // initializes draft state
             _draftStates[leagueId] = new DraftState(leagueId, availablePlayers, userIds);
-
+            Console.WriteLine($"DraftState initialized with leagueId {leagueId}, userIds {userIds}");
+        }
+        else
+        {
+            Console.WriteLine($"Retrieved existing DraftState for League {leagueId}. CurrentUserId: {_draftStates[leagueId].CurrentUserId}");
         }
 
         return _draftStates[leagueId];
@@ -85,16 +105,17 @@ public class DraftService : IDraftService
             throw new Exception($"Draft state not found for league {leagueId}");
         }
 
-        // Log the current state of the draft order before processing
-        Console.WriteLine($"[Before Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
-        Console.WriteLine($"[Before Selection] Current User ID: {draftState.CurrentUserId}");
+        // // Log the current state of the draft order before processing
+        // Console.WriteLine($"[Before Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
+        // Console.WriteLine($"[Before Selection] Current User ID: {draftState.CurrentUserId}");
 
         // do the thing, zhu li
         draftState.SelectPlayer(userId, playerId, maxRosterSize);
 
-        // Log the state after modifying the draft
-        Console.WriteLine($"[After Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
-        Console.WriteLine($"[After Selection] Current User ID: {draftState.CurrentUserId}");
+        UpdateDraftState(leagueId, draftState);
+        // // Log the state after modifying the draft
+        // Console.WriteLine($"[After Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
+        // Console.WriteLine($"[After Selection] Current User ID: {draftState.CurrentUserId}");
 
 
         // update db
@@ -121,9 +142,9 @@ public class DraftService : IDraftService
             throw;
         }
 
-        // Log final state confirmation
-        Console.WriteLine($"Draft process completed for User {userId} in League {leagueId}.");
-        Console.WriteLine($"[Final State] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
+        // // Log final state confirmation
+        // Console.WriteLine($"Draft process completed for User {userId} in League {leagueId}.");
+        // Console.WriteLine($"[Final State] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
         
         return draftState;
     }

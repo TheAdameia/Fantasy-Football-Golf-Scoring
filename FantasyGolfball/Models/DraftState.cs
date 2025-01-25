@@ -31,13 +31,30 @@ public class DraftState
         var selectedPlayer = AvailablePlayers.First(p => p.PlayerId == playerId);
         AvailablePlayers.Remove(selectedPlayer);
         UserRosters[userId].Add(playerId);
+
         Console.WriteLine($"CurrentUserId: {CurrentUserId}");
-        var justDraftedUserId = DraftOrder.Dequeue(); // Save the dequeued user ID
-        Console.WriteLine($"CurrentUserId: {CurrentUserId}, justDraftedUserId: {justDraftedUserId}");
-        if (DraftOrder.Count > 0)
-            DraftOrder.Enqueue(justDraftedUserId); // Re-enqueue for snake draft
-        if (DraftOrder.Count == 0)
+        if (DraftOrder.Count > 0) // Always ensure the queue has elements before dequeuing
+        {
+            var justDraftedUserId = DraftOrder.Dequeue();
+            if (AvailablePlayers.Count > 0) // Only re-enqueue if there are still players to draft
+            {
+                DraftOrder.Enqueue(justDraftedUserId); // Re-enqueue for snake draft
+            }
+            else
+            {
+                Console.WriteLine("No players available. Draft ends.");
+            }
+        }
+        else
+        {
             Console.WriteLine("DraftOrder is empty. Ending draft");
+        }
+        // var justDraftedUserId = DraftOrder.Dequeue(); // Save the dequeued user ID
+        // Console.WriteLine($"CurrentUserId: {CurrentUserId}, justDraftedUserId: {justDraftedUserId}");
+        // if (DraftOrder.Count > 0)
+        //     DraftOrder.Enqueue(justDraftedUserId); // Re-enqueue for snake draft
+        // if (DraftOrder.Count == 0)
+        //     Console.WriteLine("DraftOrder is empty. Ending draft");
         
     }
 
