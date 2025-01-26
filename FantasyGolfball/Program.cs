@@ -29,7 +29,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
 
-builder.Services.AddScoped<IDraftService, DraftService>(); // registers IDraftService and its implementation, whatever that means
+builder.Services.AddSingleton<IDraftService, DraftService>(); // registers IDraftService and its implementation, Singleton instead of scopes means there will only be one persistent instance across the app's runtime
+builder.Services.AddScoped<FantasyGolfballDbContext>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
