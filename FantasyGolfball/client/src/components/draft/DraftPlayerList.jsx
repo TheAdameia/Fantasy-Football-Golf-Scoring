@@ -3,6 +3,7 @@ import { SearchBar } from "../SearchBar"
 import { Table } from "reactstrap"
 import { DraftPlayerCard } from "./DraftPlayerCard"
 import { DraftContext } from "./DraftPage"
+import "./DraftLayout.css"
 
 
 export const DraftPlayerList = ({ setSelectedPlayer }) => {
@@ -17,9 +18,8 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
         setPositionFilter(event.target.value)
     }
 
-
     useEffect(() => {
-        if (draftState.availablePlayers){
+        if (draftState && draftState.availablePlayers !== undefined) {
             const foundPlayers = draftState.availablePlayers.filter(player => 
                 player.playerLastName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                 player.playerFirstName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -49,7 +49,7 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
                     break
             }
         } 
-    }, [searchTerm, positionFilter, draftState.availablePlayers])
+    }, [searchTerm, positionFilter, draftState])
 
     if (!draftState) {
         return (
@@ -82,40 +82,42 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
                     </select>
                 </div>
             </div>
-            <Table>
-                <thead>
-                    <tr>
-                        <th>
-                            Rank (NYI)
-                        </th>
-                        <th>
-                            Player
-                        </th>
-                        <th>
-                            Position
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                        <th>
-                            Expected Points
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredPlayers ? filteredPlayers.map((player) => {
-                        return (
-                            <DraftPlayerCard
-                                player={player}
-                                key={`player-${player.playerId}`}
-                                setSelectedPlayer={setSelectedPlayer}
-                            />
-                        )
-                    }) : <tr>
-                            <td>Loading...</td>
-                         </tr>}
-                </tbody>
-            </Table>
+            <div className="table-container">
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Rank (NYI)
+                            </th>
+                            <th>
+                                Player
+                            </th>
+                            <th>
+                                Position
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Expected Points
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredPlayers ? filteredPlayers.map((player) => {
+                            return (
+                                <DraftPlayerCard
+                                    player={player}
+                                    key={`player-${player.playerId}`}
+                                    setSelectedPlayer={setSelectedPlayer}
+                                />
+                            )
+                        }) : <tr>
+                                <td>Loading...</td>
+                            </tr>}
+                    </tbody>
+                </Table>
+            </div>
         </div>
     )
 }

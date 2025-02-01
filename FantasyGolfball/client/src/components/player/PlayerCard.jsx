@@ -57,7 +57,6 @@ export const PlayerCard = ({ player }) => {
                 {seasonTotal ? seasonTotal : 0}
             </td>
             <td>
-                Add/drop button goes here
                 {roster && roster.rosterPlayers.some(rp =>
                     rp.player.playerId === player.playerId) 
                 ? <button>-</button> : <div></div>}

@@ -53,6 +53,18 @@ public class LeagueController : ControllerBase
 
         _dbContext.Leagues.Add(league);
         _dbContext.SaveChanges();
+
+        if (user != null)
+        {
+            var roster = new Roster
+            {
+                LeagueId = league.LeagueId,
+                UserId = user.Id
+            };
+            _dbContext.Rosters.Add(roster);
+            _dbContext.SaveChanges();
+        }
+        
         return Created($"api/leagues/{league.LeagueId}", league);
     }
 
@@ -81,7 +93,14 @@ public class LeagueController : ControllerBase
             UserProfileId = user.Id,
             League = league
         };
+        
+        var roster = new Roster
+        {
+            LeagueId = league.LeagueId,
+            UserId = user.Id
+        };
 
+        _dbContext.Rosters.Add(roster);
         _dbContext.LeagueUsers.Add(leagueUser);
         _dbContext.SaveChanges();
         return NoContent();

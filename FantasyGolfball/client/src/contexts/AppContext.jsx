@@ -17,9 +17,9 @@ export const AppProvider = ({ children }) => {
   const getAndSetRoster = () => {
     if (loggedInUser != null)
     {
-      let leagueId = 1 // I will need to actually get this value instead of assuming it
+      let leagueId = 5 // I will need to actually get this value instead of assuming it
     let userId = loggedInUser.id
-    GetByUserAndLeague(leagueId, userId).then(setRoster)
+    GetByUserAndLeague(userId, leagueId).then(setRoster)
     }
   }
 
