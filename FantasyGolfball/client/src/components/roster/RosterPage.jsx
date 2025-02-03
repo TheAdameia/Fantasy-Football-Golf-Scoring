@@ -3,6 +3,7 @@ import { RosterCard } from "./RosterCard"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByWeekAndPlayers } from "../../managers/scoringManager"
 import { Button, ButtonDropdown } from "reactstrap"
+import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 
 
 export const RosterPage = () => {
@@ -18,6 +19,11 @@ export const RosterPage = () => {
         if (playerIds.length > 0) {
             GetByWeekAndPlayers(globalWeek, playerIdsString).then(setScores)
         }
+    }
+
+    const HandleDropPlayer = (rosterPlayerId) => {
+        DeleteRosterPlayer(rosterPlayerId)
+        window.alert("Player was dropped")
     }
 
     useEffect(() => {

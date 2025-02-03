@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByPlayer } from "../../managers/scoringManager"
+import { AddRosterPlayer, DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 
 export const PlayerCard = ({ player }) => {
     const [scores, setScores] = useState()
@@ -10,6 +11,22 @@ export const PlayerCard = ({ player }) => {
 
     const getAndSetScores = () => {
         GetByPlayer(player.playerId).then(setScores)
+    }
+
+    const HandleDropPlayer = () => {
+        let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
+        DeleteRosterPlayer(rosterPlayer.rosterPlayerId)
+        window.alert("Player dropped")
+    }
+        
+    const HandleAddPlayer = (rosterId, playerId) => {
+        let rosterPlayerPostDTO = {
+            "playerId": playerId,
+            "rosterId": rosterId,
+            "rosterPosition": "bench"
+        }
+        AddRosterPlayer(rosterPlayerPostDTO)
+        window.alert("Player added")
     }
 
     useEffect(() => {
@@ -59,10 +76,10 @@ export const PlayerCard = ({ player }) => {
             <td>
                 {roster && roster.rosterPlayers.some(rp =>
                     rp.player.playerId === player.playerId) 
-                ? <button>-</button> : <div></div>}
+                ? <button onClick={() => HandleDropPlayer()}>-</button> : <div></div>}
                 {roster && !roster.rosterPlayers.some(rp =>
                     rp.player.playerId === player.playerId) 
-                ? <button>+</button> : <div></div>}
+                ? <button onClick={() => HandleAddPlayer(roster.rosterId, player.playerId)}>+</button> : <div></div>}
                 
             </td>
         </tr>
