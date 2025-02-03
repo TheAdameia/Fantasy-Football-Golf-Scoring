@@ -7,7 +7,7 @@ export const PlayerCard = ({ player }) => {
     const [scores, setScores] = useState()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
-    const { globalWeek, roster } = useAppContext()
+    const { globalWeek, roster, getAndSetRoster } = useAppContext()
 
     const getAndSetScores = () => {
         GetByPlayer(player.playerId).then(setScores)
@@ -16,7 +16,7 @@ export const PlayerCard = ({ player }) => {
     const HandleDropPlayer = () => {
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
         DeleteRosterPlayer(rosterPlayer.rosterPlayerId)
-        window.alert("Player dropped")
+        getAndSetRoster()
     }
         
     const HandleAddPlayer = (rosterId, playerId) => {
@@ -26,7 +26,7 @@ export const PlayerCard = ({ player }) => {
             "rosterPosition": "bench"
         }
         AddRosterPlayer(rosterPlayerPostDTO)
-        window.alert("Player added")
+        getAndSetRoster()
     }
 
     useEffect(() => {

@@ -43,7 +43,13 @@ export const AppProvider = ({ children }) => {
 
 
   return (
-    <AppContext.Provider value={{ loggedInUser, setLoggedInUser, globalWeek, roster, players }}>
+    <AppContext.Provider value={{ 
+      loggedInUser, 
+      setLoggedInUser, 
+      globalWeek, 
+      roster, 
+      players,
+      getAndSetRoster }}>
       {children}
     </AppContext.Provider>
   )

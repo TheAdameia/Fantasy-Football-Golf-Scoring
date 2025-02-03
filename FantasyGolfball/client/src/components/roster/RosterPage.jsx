@@ -3,7 +3,6 @@ import { RosterCard } from "./RosterCard"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByWeekAndPlayers } from "../../managers/scoringManager"
 import { Button, ButtonDropdown } from "reactstrap"
-import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 
 
 export const RosterPage = () => {
@@ -21,11 +20,6 @@ export const RosterPage = () => {
         }
     }
 
-    const HandleDropPlayer = (rosterPlayerId) => {
-        DeleteRosterPlayer(rosterPlayerId)
-        window.alert("Player was dropped")
-    }
-
     useEffect(() => {
         getAndSetScores()
     }, [roster])
@@ -33,14 +27,13 @@ export const RosterPage = () => {
     return (
         <div>
             <h2>User team</h2>
-            <div>Add, drop, create trade buttons go here
-                <Button>Drop a player</Button>
+            <div>create trade button goes here
                 <Button>Create a trade</Button>
             </div>
             <div>Select other rosters goes to the side
                 <ButtonDropdown>Other Rosters</ButtonDropdown>
             </div>
-            <RosterCard roster={roster} scores={scores}/>
+            <RosterCard scores={scores}/>
         </div>
     )
 }
