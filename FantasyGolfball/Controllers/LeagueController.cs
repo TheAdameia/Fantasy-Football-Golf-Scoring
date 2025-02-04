@@ -106,16 +106,15 @@ public class LeagueController : ControllerBase
         return NoContent();
     }
 
-    // [HttpGet] // needs to also have distinct route
-    // // [Authorize]
-    // public IActionResult GetByUser(int userId)
-    // {
-    //     // return Ok(_dbContext.Leagues
-    //     // .Where(l => l.))
-    //     // expand it to solve it?
-    // }
+    [HttpGet("by-user/{userId}")]
+    // [Authorize]
+    public IActionResult GetByUser(int userId)
+    {
+        return Ok(_dbContext.Leagues
+        .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId)));
+    }
 
-    [HttpGet("{leagueId}")]
+    [HttpGet("{leagueId}")] //unused currently
     // [Authorize]
     public IActionResult GetByLeagueId(int leagueId)
     {
