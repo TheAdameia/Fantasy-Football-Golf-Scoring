@@ -113,6 +113,7 @@ export const DraftPage = () => {
                         setSelectedPlayer={setSelectedPlayer}
                         queuedPlayers={queuedPlayers}
                         setQueuedPlayers={setQueuedPlayers}
+                        leagueId={leagueId}
                     />
                     <DraftPlayerList setSelectedPlayer={setSelectedPlayer}/>
                 </div>

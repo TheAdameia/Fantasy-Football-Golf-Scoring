@@ -39,6 +39,9 @@ public class LeagueController : ControllerBase
             RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
 
         };
+        
+        _dbContext.Leagues.Add(league);
+        _dbContext.SaveChanges();
 
         var user = _dbContext.UserProfiles.SingleOrDefault(up => leaguePOSTDTO.CreatorId == up.Id);
         if (user != null)
@@ -59,8 +62,7 @@ public class LeagueController : ControllerBase
             };
             league.LeagueUsers = new List<LeagueUser> { leagueUser };
         
-            _dbContext.Leagues.Add(league);
-            _dbContext.SaveChanges();
+            
         }
         
         return Created($"api/leagues/{league.LeagueId}", league);

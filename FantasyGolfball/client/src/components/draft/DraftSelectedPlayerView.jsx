@@ -3,11 +3,10 @@ import "./DraftLayout.css"
 import { useAppContext } from "../../contexts/AppContext";
 import { DraftContext } from "./DraftPage";
 
-export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, setQueuedPlayers, queuedPlayers }) => {
+export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, setQueuedPlayers, queuedPlayers, leagueId }) => {
     const { connection, currentTurn } = useContext(DraftContext)
     const { loggedInUser} = useAppContext()
     const maxRosterSize = 2 // you know the drill, got to fix it later
-    const leagueId = 5
     // drills in state value for selected player, if null displays an empty stat box.
     // if more granular stats are added to the data this should be remade to display those
 
