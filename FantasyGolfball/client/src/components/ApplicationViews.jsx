@@ -9,9 +9,13 @@ import { LeaguePage } from "./league/LeaguePage";
 import { LeagueForm } from "./league/LeagueForm";
 import Chat from "../clientHubs/exampleClientHub";
 import { DraftPage } from "./draft/DraftPage";
+import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap";
 
 const Placeholder = () => {
-  return <h1>Testing, attention please!</h1>;
+  return <div>
+          <h1>Testing, attention please!</h1>
+          <LeagueDropdownSwap />
+        </div>
 };
 
 
