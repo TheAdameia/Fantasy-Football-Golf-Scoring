@@ -7,7 +7,7 @@ export const PlayerCard = ({ player }) => {
     const [scores, setScores] = useState()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
-    const { globalWeek, roster, getAndSetRoster } = useAppContext()
+    const { globalWeek, roster, getAndSetRoster, selectedLeague, loggedInUser } = useAppContext()
 
     const getAndSetScores = () => {
         GetByPlayer(player.playerId).then(setScores)
@@ -80,8 +80,9 @@ export const PlayerCard = ({ player }) => {
                 {roster && !roster.rosterPlayers.some(rp =>
                     rp.player.playerId === player.playerId) 
                 ? <button onClick={() => HandleAddPlayer(roster.rosterId, player.playerId)}>+</button> : <div></div>}
+                {/* {selectedLeague && selectedLeague.rosters.some(r => r.userId !== loggedInUser.id && r.rosterPlayer.some(rp => rp.playerId === player.playerId)) ? <div></div> : <div></div>} */}
                 
             </td>
         </tr>
-    )
+    ) // if league and league contains playerId and 
 }

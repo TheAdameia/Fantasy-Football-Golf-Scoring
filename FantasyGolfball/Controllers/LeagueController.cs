@@ -43,25 +43,23 @@ public class LeagueController : ControllerBase
         var user = _dbContext.UserProfiles.SingleOrDefault(up => leaguePOSTDTO.CreatorId == up.Id);
         if (user != null)
         {
-            var leagueUser = new LeagueUser
-            {
-                UserProfileId = user.Id,
-                League = league
-            };
-            league.LeagueUsers = new List<LeagueUser> { leagueUser };
-        }
-
-        _dbContext.Leagues.Add(league);
-        _dbContext.SaveChanges();
-
-        if (user != null)
-        {
             var roster = new Roster
             {
                 LeagueId = league.LeagueId,
                 UserId = user.Id
             };
             _dbContext.Rosters.Add(roster);
+            _dbContext.SaveChanges();
+
+            var leagueUser = new LeagueUser
+            {
+                UserProfileId = user.Id,
+                League = league,
+                RosterId = roster.RosterId
+            };
+            league.LeagueUsers = new List<LeagueUser> { leagueUser };
+        
+            _dbContext.Leagues.Add(league);
             _dbContext.SaveChanges();
         }
         
@@ -77,30 +75,28 @@ public class LeagueController : ControllerBase
             return BadRequest("Bad IDs");
         }
 
-        League league = _dbContext.Leagues
-        .SingleOrDefault(l => l.LeagueId == leagueId);
-
-        UserProfile user = _dbContext.UserProfiles
-        .SingleOrDefault(u => u.Id == userId);
+        League league = _dbContext.Leagues.SingleOrDefault(l => l.LeagueId == leagueId);
+        UserProfile user = _dbContext.UserProfiles.SingleOrDefault(u => u.Id == userId);
 
         if (league == null || user == null)
         {
             return BadRequest("no league found or no user found");
         }
 
-        var leagueUser = new LeagueUser
-        {
-            UserProfileId = user.Id,
-            League = league
-        };
-        
         var roster = new Roster
         {
             LeagueId = league.LeagueId,
             UserId = user.Id
         };
-
         _dbContext.Rosters.Add(roster);
+        _dbContext.SaveChanges();
+
+        var leagueUser = new LeagueUser
+        {
+            UserProfileId = user.Id,
+            League = league,
+            RosterId = roster.RosterId
+        };
         _dbContext.LeagueUsers.Add(leagueUser);
         _dbContext.SaveChanges();
         return NoContent();
@@ -111,7 +107,8 @@ public class LeagueController : ControllerBase
     public IActionResult GetByUser(int userId)
     {
         return Ok(_dbContext.Leagues
-        .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId)));
+        .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId))
+        .Include(l => l.LeagueUsers));
     }
 
     [HttpGet("{leagueId}")] //unused currently
