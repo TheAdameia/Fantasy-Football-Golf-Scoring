@@ -9,6 +9,7 @@ import { DraftTimer } from "./DraftTimer"
 import { DraftPlayerQueue } from "./DraftPlayerQueue"
 import { DraftAutoQueue } from "./DraftAutoQueue"
 import { DraftTeamDisplay } from "./DraftTeamDisplay"
+import { useAppContext } from "../../contexts/AppContext"
 
 export const DraftContext = createContext()
 
@@ -18,8 +19,8 @@ export const DraftPage = () => {
     const [currentTurn, setCurrentTurn] = useState(null)
     const [selectedPlayer, setSelectedPlayer] = useState(null)
     const [queuedPlayers, setQueuedPlayers] = useState([])
-    const leagueId = 5 // changing it manually for testing
-    
+    const [leagueId, setLeagueId] = useState(0)
+    const { selectedLeague } = useAppContext()
 
     // handle dequeueing a player
     const deQueuePlayer = (removePlayer) => {
@@ -29,6 +30,16 @@ export const DraftPage = () => {
     }
 
     useEffect(() => {
+        if (selectedLeague != undefined) {
+            setLeagueId(selectedLeague.leagueId)
+        }
+        
+    }, [selectedLeague])
+
+    useEffect(() => {
+        if (leagueId == 0) {
+            return
+        }
         const connect = async () => {
             
             const newConnection = new HubConnectionBuilder()
@@ -75,7 +86,7 @@ export const DraftPage = () => {
                 connection.stop().catch(error => console.error("Error stopping connection:", error));
             }
         };
-    }, []); // only runs once on purpose, ignore the siren song of the "missing dependency"
+    }, [leagueId]); // only runs once on purpose, ignore the siren song of the "missing dependency"
     
     
 

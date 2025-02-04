@@ -6,7 +6,7 @@ export const LeagueDropdownSwap = () => {
     const toggle = () => setDropdownOpen((prevState) => !prevState)
     const  { userLeagues, setSelectedLeague, selectedLeague } = useAppContext()
 
-    if (userLeagues) {
+    if (userLeagues && userLeagues.length > 0) {
       return (
         <div className="d-flex p-5">
           <div>Viewed League: {selectedLeague.leagueName}</div>
@@ -33,7 +33,7 @@ export const LeagueDropdownSwap = () => {
         </div>
       )
     } else {
-      return <></>
+      return <div>You haven't joined any Leagues! Check out the Leagues page and join or create one!</div>
     }
 
 }

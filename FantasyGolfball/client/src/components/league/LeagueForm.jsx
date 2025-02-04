@@ -10,7 +10,7 @@ export const LeagueForm = () => {
     const [leagueObject, setLeagueObject] = useState({
         creatorId: loggedInUser.id,
         leagueName: "",
-        playerLimit: 0,
+        playerLimit: 2,
         randomizedDraftOrder: true,
         usersVetoTrades: false,
         requiredFullToStart: true
@@ -22,7 +22,7 @@ export const LeagueForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const newLeague = {...leagueObject}
-        if (newLeague.leagueName != "" && newLeague.playerLimit != 0) {
+        if (newLeague.leagueName != "") {
             PostLeague(newLeague).then(() => {
                 navigate("/league")
             })

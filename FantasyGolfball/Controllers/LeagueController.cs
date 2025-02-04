@@ -108,7 +108,10 @@ public class LeagueController : ControllerBase
     {
         return Ok(_dbContext.Leagues
         .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId))
-        .Include(l => l.LeagueUsers));
+        .Include(l => l.LeagueUsers)
+            .ThenInclude(lu => lu.Roster)
+                .ThenInclude(r => r.RosterPlayers)
+        );
     }
 
     [HttpGet("{leagueId}")] //unused currently

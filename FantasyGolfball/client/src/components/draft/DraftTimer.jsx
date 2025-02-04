@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import "./DraftLayout.css"
+import { DraftContext } from "./DraftPage"
+import { useAppContext } from "../../contexts/AppContext"
 
 
 export const DraftTimer = () => {
     const initialSeconds = 60
     const [secondsLeft, setSecondsLeft] = useState(initialSeconds)
     const intervalRef = useRef(null)
+    const { currentTurn } = useContext(DraftContext)
+    const { loggedInUser } = useAppContext()
 
     const startTimer = () => {
         clearInterval(intervalRef.current)
@@ -43,6 +47,7 @@ export const DraftTimer = () => {
         <div>
             <div className="timer">{secondsLeft}</div>
             <button onClick={resetTimer}>reset timer</button>
+            {currentTurn === loggedInUser.id ? <div>Your Turn to Draft!</div> : <></>}
         </div>
     )
 }

@@ -69,7 +69,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 LeagueUserId = 1,
                 LeagueId = 1,
-                UserProfileId = 1
+                UserProfileId = 1,
+                RosterId = 1
             }
         });
         modelBuilder.Entity<Roster>().HasData(new Roster[]
