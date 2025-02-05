@@ -27,7 +27,7 @@ export const AppProvider = ({ children }) => {
         const storedLeagueId = localStorage.getItem("selectedLeagueId");
 
         // set selected league from localStorage if valid, otherwise first league
-        const initialLeague = data.find(l => l.id === parseInt(storedLeagueId)) || data[0];
+        const initialLeague = data.find(l => l.leagueId === parseInt(storedLeagueId)) || data[0];
         setSelectedLeague(initialLeague);
         }) 
     }
@@ -63,7 +63,12 @@ export const AppProvider = ({ children }) => {
     getAndSetPlayers()
   }, [])
 
-
+  useEffect(() => {
+    if (selectedLeague) {
+      localStorage.setItem("selectedLeagueId", selectedLeague.leagueId);
+    }
+  }, [selectedLeague]);
+  
   return (
     <AppContext.Provider value={{ 
       loggedInUser, 
