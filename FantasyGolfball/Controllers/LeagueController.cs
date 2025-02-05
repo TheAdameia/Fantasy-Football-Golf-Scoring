@@ -57,11 +57,11 @@ public class LeagueController : ControllerBase
             var leagueUser = new LeagueUser
             {
                 UserProfileId = user.Id,
-                League = league,
+                LeagueId = league.LeagueId,
                 RosterId = roster.RosterId
             };
-            league.LeagueUsers = new List<LeagueUser> { leagueUser };
-        
+            _dbContext.LeagueUsers.Add(leagueUser);
+            _dbContext.SaveChanges();
             
         }
         
@@ -77,12 +77,19 @@ public class LeagueController : ControllerBase
             return BadRequest("Bad IDs");
         }
 
-        League league = _dbContext.Leagues.SingleOrDefault(l => l.LeagueId == leagueId);
+        League league = _dbContext.Leagues
+            .Include(l => l.LeagueUsers)
+            .SingleOrDefault(l => l.LeagueId == leagueId);
         UserProfile user = _dbContext.UserProfiles.SingleOrDefault(u => u.Id == userId);
 
         if (league == null || user == null)
         {
             return BadRequest("no league found or no user found");
+        }
+
+        if (league.LeagueUsers.Any(lu => lu.UserProfileId == user.Id))
+        {
+            return BadRequest("User already joined league");
         }
 
         var roster = new Roster
