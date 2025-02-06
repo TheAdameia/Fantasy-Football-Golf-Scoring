@@ -13,7 +13,8 @@ export const LeagueForm = () => {
         playerLimit: 2,
         randomizedDraftOrder: true,
         usersVetoTrades: false,
-        requiredFullToStart: true
+        requiredFullToStart: true,
+        maxRosterSize: 15 // I will need to add an option to change this
     })
     const navigate = useNavigate()
 

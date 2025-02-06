@@ -37,7 +37,7 @@ public class LeagueController : ControllerBase
             UsersVetoTrades = leaguePOSTDTO.UsersVetoTrades,
             LeagueName = leaguePOSTDTO.LeagueName,
             RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
-
+            MaxRosterSize = leaguePOSTDTO.MaxRosterSize
         };
         
         _dbContext.Leagues.Add(league);
@@ -85,6 +85,11 @@ public class LeagueController : ControllerBase
         if (league == null || user == null)
         {
             return BadRequest("no league found or no user found");
+        }
+
+        if ((league.LeagueUsers.Count() + 1) > league.PlayerLimit)
+        {
+            return BadRequest("League is full!");
         }
 
         if (league.LeagueUsers.Any(lu => lu.UserProfileId == user.Id))

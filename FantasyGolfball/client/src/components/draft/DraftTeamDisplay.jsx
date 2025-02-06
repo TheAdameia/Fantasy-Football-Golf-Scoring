@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 
 
 export const DraftTeamDisplay = () => {
     const { roster } = useAppContext()
-    const [rplayers, SetRPlayers] = useState()
 
-    useEffect(() => {
-        if (!roster) {
-            return
-        }
-        if (roster.rosterPlayers) {
-            SetRPlayers(roster.rosterPlayers)
-        }
-    }, [roster])
-
-    if (!rplayers) {
+   
+    if (!roster || !roster.rosterPlayers || roster.rosterPlayers.length == 0) {
         return (
             <div>No players drafted yet</div>
         )
@@ -23,7 +13,7 @@ export const DraftTeamDisplay = () => {
 
     return (
         <div>
-            {rplayers.map((rp) => {
+            {roster.rosterPlayers.map((rp) => {
                 return (
                     <div key={rp.player.playerId}>
                         <div>{rp.player.position.positionShort}</div>

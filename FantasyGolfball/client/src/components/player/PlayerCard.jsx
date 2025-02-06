@@ -7,6 +7,7 @@ export const PlayerCard = ({ player }) => {
     const [scores, setScores] = useState()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
+    const [playerRosterCondition, setPlayerRosterCondition] = useState(<div></div>)
     const { globalWeek, roster, getAndSetRoster, selectedLeague, loggedInUser } = useAppContext()
 
     const getAndSetScores = () => {
@@ -44,7 +45,18 @@ export const PlayerCard = ({ player }) => {
         }
     }, [scores])
 
-    if (!roster) {
+    useEffect(() => {
+        if (selectedLeague && selectedLeague.leagueUsers.some(lu => lu.userProfileId !== loggedInUser.id 
+            && lu.roster.rosterPlayers.some(rp => rp.playerId === player.playerId))) {
+                setPlayerRosterCondition(<div>Taken</div>) // on another team
+        } else if (roster && roster.rosterPlayers.some(rp => rp.player.playerId === player.playerId)) {
+            setPlayerRosterCondition(<button onClick={() => HandleDropPlayer()}>-</button>) // on your team
+        } else if (roster && !roster.rosterPlayers.some(rp => rp.player.playerId === player.playerId) ){
+            setPlayerRosterCondition(<button onClick={() => HandleAddPlayer(roster.rosterId, player.playerId)}>+</button>) // available
+        }
+    }, [roster])
+
+    if (!roster || !selectedLeague) {
         return (
             <tr></tr>
         )
@@ -74,15 +86,8 @@ export const PlayerCard = ({ player }) => {
                 {seasonTotal ? seasonTotal : 0}
             </td>
             <td>
-                {roster && roster.rosterPlayers.some(rp =>
-                    rp.player.playerId === player.playerId) 
-                ? <button onClick={() => HandleDropPlayer()}>-</button> : <div></div>}
-                {roster && !roster.rosterPlayers.some(rp =>
-                    rp.player.playerId === player.playerId) 
-                ? <button onClick={() => HandleAddPlayer(roster.rosterId, player.playerId)}>+</button> : <div></div>}
-                {/* {selectedLeague && selectedLeague.rosters.some(r => r.userId !== loggedInUser.id && r.rosterPlayer.some(rp => rp.playerId === player.playerId)) ? <div></div> : <div></div>} */}
-                
+                {playerRosterCondition}
             </td>
         </tr>
-    ) // if league and league contains playerId and 
+    ) 
 }

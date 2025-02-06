@@ -11,4 +11,5 @@ public class LeaguePOSTDTO
    public bool RandomizedDraftOrder { get; set; }
    public bool UsersVetoTrades { get; set; }
    public bool RequiredFullToStart { get; set; }
+   public int MaxRosterSize { get; set; }
 }

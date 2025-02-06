@@ -60,7 +60,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 RandomizedDraftOrder = true,
                 UsersVetoTrades = true,
                 LeagueName = "testing league",
-                RequiredFullToStart = true
+                RequiredFullToStart = true,
+                MaxRosterSize = 15
             }
         });
         modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]

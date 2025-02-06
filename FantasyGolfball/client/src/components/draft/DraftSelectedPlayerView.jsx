@@ -3,11 +3,9 @@ import "./DraftLayout.css"
 import { useAppContext } from "../../contexts/AppContext";
 import { DraftContext } from "./DraftPage";
 
-export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, setQueuedPlayers, queuedPlayers, leagueId }) => {
+export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, setQueuedPlayers, queuedPlayers }) => {
     const { connection, currentTurn } = useContext(DraftContext)
-    const { loggedInUser} = useAppContext()
-    const maxRosterSize = 2 // you know the drill, got to fix it later
-    // drills in state value for selected player, if null displays an empty stat box.
+    const { loggedInUser, selectedLeague, getAndSetRoster } = useAppContext()
     // if more granular stats are added to the data this should be remade to display those
 
 
@@ -15,12 +13,14 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
     const handleDraftPlayer = async (playerId) => {
         if (connection && currentTurn === loggedInUser.id) {
             try {
-                await connection.invoke("SelectPlayer", leagueId, loggedInUser.id, playerId, maxRosterSize);
+                await connection.invoke("SelectPlayer", selectedLeague.leagueId, loggedInUser.id, playerId, selectedLeague.maxRosterSize)
+                setSelectedPlayer(null)
+                getAndSetRoster()
             } catch (error) {
-                console.error("Error selecting player:", error);
+                console.error("Error selecting player:", error)
             }
         } else {
-            console.warn("It's not your turn!");
+            console.warn("It's not your turn!")
         }
     };
     

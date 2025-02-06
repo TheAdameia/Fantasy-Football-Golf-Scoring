@@ -12,5 +12,6 @@ public class LeagueSafeExportDTO
     public bool UsersVetoTrades { get; set; }
     public string LeagueName { get; set; }
     public bool RequiredFullToStart { get; set; }
+    public int MaxRosterSize { get; set; }
     public ICollection<LeagueUserSafeExportDTO> LeagueUsers { get; set; }
 }

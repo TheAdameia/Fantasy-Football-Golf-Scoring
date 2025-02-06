@@ -49,13 +49,6 @@ public class DraftState
         {
             Console.WriteLine("DraftOrder is empty. Ending draft");
         }
-        // var justDraftedUserId = DraftOrder.Dequeue(); // Save the dequeued user ID
-        // Console.WriteLine($"CurrentUserId: {CurrentUserId}, justDraftedUserId: {justDraftedUserId}");
-        // if (DraftOrder.Count > 0)
-        //     DraftOrder.Enqueue(justDraftedUserId); // Re-enqueue for snake draft
-        // if (DraftOrder.Count == 0)
-        //     Console.WriteLine("DraftOrder is empty. Ending draft");
-        
     }
 
     public bool IsDraftComplete() => AvailablePlayers.Count == 0 || DraftOrder.Count == 0;

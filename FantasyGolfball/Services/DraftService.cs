@@ -113,18 +113,10 @@ public class DraftService : IDraftService
             throw new Exception($"Draft state not found for league {leagueId}");
         }
 
-        // // Log the current state of the draft order before processing
-        // Console.WriteLine($"[Before Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
-        // Console.WriteLine($"[Before Selection] Current User ID: {draftState.CurrentUserId}");
-
         // do the thing, zhu li
         draftState.SelectPlayer(userId, playerId, maxRosterSize);
 
         UpdateDraftState(leagueId, draftState);
-        // // Log the state after modifying the draft
-        // Console.WriteLine($"[After Selection] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
-        // Console.WriteLine($"[After Selection] Current User ID: {draftState.CurrentUserId}");
-
 
         // update db
         var roster = await dbContext.Rosters.FirstOrDefaultAsync(r => r.LeagueId == leagueId && r.UserId == userId);
