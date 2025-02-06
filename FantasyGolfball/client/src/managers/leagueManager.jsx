@@ -24,3 +24,8 @@ export const JoinLeague = (leagueId, userId) => {
         headers: { "Content-Type": "application/json"}
     })
 }
+
+export const GetLeaguesByUser = (userId) => {
+    return fetch(_apiUrl + `/by-user?userId=${userId}`)
+        .then((res) => res.json())
+} // unused but has an equivalent in appcontext that wouldn't be good for exporting

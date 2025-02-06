@@ -44,4 +44,20 @@ public class RosterPlayerController : ControllerBase
 
         return Ok();
     }
+
+    [HttpDelete("{rosterPlayerId}")]
+    // [Authorize]
+    public IActionResult Delete(int rosterPlayerId)
+    {
+        RosterPlayer rosterPlayerToDelete = _dbContext.RosterPlayers.SingleOrDefault(rp => rp.RosterPlayerId == rosterPlayerId);
+        
+        if (rosterPlayerToDelete == null)
+        {
+            return NotFound();
+        }
+        _dbContext.RosterPlayers.Remove(rosterPlayerToDelete);
+        _dbContext.SaveChanges();
+        
+        return NoContent();
+    }
 }

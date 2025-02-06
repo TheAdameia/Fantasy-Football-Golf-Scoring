@@ -7,6 +7,8 @@ const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState()
+  const [userLeagues, setUserLeagues] = useState()
+  const [selectedLeague, setSelectedLeague] = useState(null)
   const [roster, setRoster] = useState()
   const [players, setPlayers] = useState()
 
@@ -14,12 +16,28 @@ export const AppProvider = ({ children }) => {
   // add state for determining week here
   const globalWeek = 1
 
+  const getAndSetLeagues = () => {
+    if (loggedInUser) {
+      fetch(`/api/league/by-user/${loggedInUser.id}`) // I hate writing out calls somewhere that's not a manager, but importing context to a manager caused initialization issues and the league states needed to be set before anything else happened
+        .then((res) => res.json())
+        .then((data) => {
+          setUserLeagues(data)
+          
+        // check localStorage for previously selected league
+        const storedLeagueId = localStorage.getItem("selectedLeagueId");
+
+        // set selected league from localStorage if valid, otherwise first league
+        const initialLeague = data.find(l => l.leagueId === parseInt(storedLeagueId)) || data[0];
+        setSelectedLeague(initialLeague);
+        }) 
+    }
+  }
+
   const getAndSetRoster = () => {
-    if (loggedInUser != null)
+    if (loggedInUser != null && selectedLeague != null)
     {
-      let leagueId = 5 // I will need to actually get this value instead of assuming it
-    let userId = loggedInUser.id
-    GetByUserAndLeague(userId, leagueId).then(setRoster)
+      let userId = loggedInUser.id
+      GetByUserAndLeague(userId, selectedLeague.leagueId).then(setRoster)
     }
   }
 
@@ -34,16 +52,35 @@ export const AppProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    getAndSetRoster()
+    getAndSetLeagues()
   }, [loggedInUser])
+
+  useEffect(() => {
+    getAndSetRoster()
+  }, [loggedInUser, selectedLeague])
 
   useEffect(() => {
     getAndSetPlayers()
   }, [])
 
-
+  useEffect(() => {
+    if (selectedLeague) {
+      localStorage.setItem("selectedLeagueId", selectedLeague.leagueId);
+    }
+  }, [selectedLeague]);
+  
   return (
-    <AppContext.Provider value={{ loggedInUser, setLoggedInUser, globalWeek, roster, players }}>
+    <AppContext.Provider value={{ 
+      loggedInUser, 
+      setLoggedInUser, 
+      globalWeek, 
+      roster, 
+      players,
+      getAndSetRoster,
+      setSelectedLeague,
+      userLeagues,
+      setUserLeagues,
+      selectedLeague }}>
       {children}
     </AppContext.Provider>
   )

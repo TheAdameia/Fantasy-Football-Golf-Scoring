@@ -1,11 +1,9 @@
 import { Button } from "reactstrap"
 import { JoinLeague } from "../../managers/leagueManager"
-import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../../contexts/AppContext"
 
 
-export const LeagueCard = ({ league }) => {
-    const navigate = useNavigate()
+export const LeagueCard = ({ league, getAndSetLeagues }) => {
     const { loggedInUser } = useAppContext()
 
     const handleJoin = (event) => {
@@ -19,7 +17,7 @@ export const LeagueCard = ({ league }) => {
         }
         
         JoinLeague(leagueId, userId).then(() => {
-            navigate("/league")
+            getAndSetLeagues()
         })
     }
 

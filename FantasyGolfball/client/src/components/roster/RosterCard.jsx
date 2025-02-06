@@ -1,8 +1,10 @@
 import { Table } from "reactstrap"
 import { RosterPlayerCard } from "./RosterPlayerCard"
+import { useAppContext } from "../../contexts/AppContext";
 
 
-export const RosterCard = ({ roster, scores }) => {
+export const RosterCard = ({ scores }) => {
+    const { roster } = useAppContext()
     
     if (!roster || !Array.isArray(roster.rosterPlayers)) {
         return <div>No roster data available</div>;
@@ -17,6 +19,12 @@ export const RosterCard = ({ roster, scores }) => {
                 <thead>
                     <tr>
                         <th>
+                            pos ddown
+                        </th>
+                        <th>
+                            Active
+                        </th>
+                        <th>
                             Pos
                         </th>
                         <th>
@@ -27,6 +35,9 @@ export const RosterCard = ({ roster, scores }) => {
                         </th>
                         <th>
                             Points
+                        </th>
+                        <th>
+                            drop
                         </th>
                     </tr>
                 </thead>

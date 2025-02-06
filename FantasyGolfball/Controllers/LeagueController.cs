@@ -37,23 +37,13 @@ public class LeagueController : ControllerBase
             UsersVetoTrades = leaguePOSTDTO.UsersVetoTrades,
             LeagueName = leaguePOSTDTO.LeagueName,
             RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
-
+            MaxRosterSize = leaguePOSTDTO.MaxRosterSize
         };
-
-        var user = _dbContext.UserProfiles.SingleOrDefault(up => leaguePOSTDTO.CreatorId == up.Id);
-        if (user != null)
-        {
-            var leagueUser = new LeagueUser
-            {
-                UserProfileId = user.Id,
-                League = league
-            };
-            league.LeagueUsers = new List<LeagueUser> { leagueUser };
-        }
-
+        
         _dbContext.Leagues.Add(league);
         _dbContext.SaveChanges();
 
+        var user = _dbContext.UserProfiles.SingleOrDefault(up => leaguePOSTDTO.CreatorId == up.Id);
         if (user != null)
         {
             var roster = new Roster
@@ -63,6 +53,16 @@ public class LeagueController : ControllerBase
             };
             _dbContext.Rosters.Add(roster);
             _dbContext.SaveChanges();
+
+            var leagueUser = new LeagueUser
+            {
+                UserProfileId = user.Id,
+                LeagueId = league.LeagueId,
+                RosterId = roster.RosterId
+            };
+            _dbContext.LeagueUsers.Add(leagueUser);
+            _dbContext.SaveChanges();
+            
         }
         
         return Created($"api/leagues/{league.LeagueId}", league);
@@ -78,44 +78,57 @@ public class LeagueController : ControllerBase
         }
 
         League league = _dbContext.Leagues
-        .SingleOrDefault(l => l.LeagueId == leagueId);
-
-        UserProfile user = _dbContext.UserProfiles
-        .SingleOrDefault(u => u.Id == userId);
+            .Include(l => l.LeagueUsers)
+            .SingleOrDefault(l => l.LeagueId == leagueId);
+        UserProfile user = _dbContext.UserProfiles.SingleOrDefault(u => u.Id == userId);
 
         if (league == null || user == null)
         {
             return BadRequest("no league found or no user found");
         }
 
-        var leagueUser = new LeagueUser
+        if ((league.LeagueUsers.Count() + 1) > league.PlayerLimit)
         {
-            UserProfileId = user.Id,
-            League = league
-        };
-        
+            return BadRequest("League is full!");
+        }
+
+        if (league.LeagueUsers.Any(lu => lu.UserProfileId == user.Id))
+        {
+            return BadRequest("User already joined league");
+        }
+
         var roster = new Roster
         {
             LeagueId = league.LeagueId,
             UserId = user.Id
         };
-
         _dbContext.Rosters.Add(roster);
+        _dbContext.SaveChanges();
+
+        var leagueUser = new LeagueUser
+        {
+            UserProfileId = user.Id,
+            League = league,
+            RosterId = roster.RosterId
+        };
         _dbContext.LeagueUsers.Add(leagueUser);
         _dbContext.SaveChanges();
         return NoContent();
     }
 
-    // [HttpGet] // needs to also have distinct route
-    // // [Authorize]
-    // public IActionResult GetByUser(int userId)
-    // {
-    //     // return Ok(_dbContext.Leagues
-    //     // .Where(l => l.))
-    //     // expand it to solve it?
-    // }
+    [HttpGet("by-user/{userId}")]
+    // [Authorize]
+    public IActionResult GetByUser(int userId)
+    {
+        return Ok(_dbContext.Leagues
+        .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId))
+        .Include(l => l.LeagueUsers)
+            .ThenInclude(lu => lu.Roster)
+                .ThenInclude(r => r.RosterPlayers)
+        );
+    }
 
-    [HttpGet("{leagueId}")]
+    [HttpGet("{leagueId}")] //unused currently
     // [Authorize]
     public IActionResult GetByLeagueId(int leagueId)
     {

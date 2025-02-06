@@ -10,10 +10,11 @@ export const LeagueForm = () => {
     const [leagueObject, setLeagueObject] = useState({
         creatorId: loggedInUser.id,
         leagueName: "",
-        playerLimit: 0,
+        playerLimit: 2,
         randomizedDraftOrder: true,
         usersVetoTrades: false,
-        requiredFullToStart: true
+        requiredFullToStart: true,
+        maxRosterSize: 15 // I will need to add an option to change this
     })
     const navigate = useNavigate()
 
@@ -22,7 +23,7 @@ export const LeagueForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const newLeague = {...leagueObject}
-        if (newLeague.leagueName != "" && newLeague.playerLimit != 0) {
+        if (newLeague.leagueName != "") {
             PostLeague(newLeague).then(() => {
                 navigate("/league")
             })

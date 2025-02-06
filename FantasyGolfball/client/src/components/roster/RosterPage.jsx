@@ -27,14 +27,13 @@ export const RosterPage = () => {
     return (
         <div>
             <h2>User team</h2>
-            <div>Add, drop, create trade buttons go here
-                <Button>Drop a player</Button>
+            <div>create trade button goes here
                 <Button>Create a trade</Button>
             </div>
             <div>Select other rosters goes to the side
                 <ButtonDropdown>Other Rosters</ButtonDropdown>
             </div>
-            <RosterCard roster={roster} scores={scores}/>
+            <RosterCard scores={scores}/>
         </div>
     )
 }

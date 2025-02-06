@@ -1,6 +1,24 @@
+import { useAppContext } from "../../contexts/AppContext"
+import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 
 
 export const RosterPlayerCard = ({ rp, scores }) => {
+    const  { getAndSetRoster } = useAppContext()
+
+    const HandleDropPlayer = (rosterPlayerId) => {
+        DeleteRosterPlayer(rosterPlayerId)
+    }
+
+    const ConfirmDrop = (rosterPlayerId) => {
+        const confirmed = window.confirm(`Are you sure you want to drop ${rp.player.playerFirstName} ${rp.player.playerLastName}?`)
+        if (confirmed) {
+            HandleDropPlayer(rosterPlayerId)
+            getAndSetRoster()
+        } else {
+            return
+        }
+    }
+
     let playerScore = 0;
 
     if (scores != null) {
@@ -16,8 +34,14 @@ export const RosterPlayerCard = ({ rp, scores }) => {
     return (
         <tr>
             <th scope="row">
-                {rp.player.position.positionShort}
+
             </th>
+            <td>
+                {rp.rosterPosition}
+            </td>
+            <td>
+                {rp.player.position.positionShort}
+            </td>
             <td>
                 {rp.player.playerFirstName + " " + rp.player.playerLastName}
             </td>
@@ -26,6 +50,9 @@ export const RosterPlayerCard = ({ rp, scores }) => {
             </td>
             <td>
                 {playerScore}
+            </td>
+            <td>
+                <button onClick={() => ConfirmDrop(rp.rosterPlayerId)}>-</button>
             </td>
         </tr>
     )

@@ -31,6 +31,7 @@ export const LeaguePage = () => {
                     return (
                         <LeagueCard
                             league={league}
+                            getAndSetLeagues={getAndSetLeagues}
                             key={`league-${league.leagueId}`}
                         />
                     )
