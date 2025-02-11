@@ -21,7 +21,7 @@ Functionality is being added and tested for MVP mandatory features. Pending that
 
 Task Organizer https://github.com/users/TheAdameia/projects/2/views/1 \
 Wireframe https://miro.com/app/board/uXjVLbeHqSM=/?share_link_id=186772598044 \
-ERD https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
+ERD (outdated) https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
 
 ## Disclosures
 I don't own football (does anybody?). All data used is either fabricated for testing purposes or gathered from public sources on the internet. I do not profit from this project.

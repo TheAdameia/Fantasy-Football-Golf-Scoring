@@ -2,12 +2,13 @@ import { useEffect, useState } from "react"
 import { RosterCard } from "./RosterCard"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByWeekAndPlayers } from "../../managers/scoringManager"
-import { Button, ButtonDropdown } from "reactstrap"
+import { Button } from "reactstrap"
+import { LeagueDropdownSwap } from "../league/LeagueDropdownSwap"
 
 
 export const RosterPage = () => {
     const [scores, setScores] = useState([])
-    const { roster, globalWeek } = useAppContext()
+    const { roster, globalWeek, loggedInUser } = useAppContext()
 
     const getAndSetScores = () => {
         const rosterPlayers = roster?.rosterPlayers || []
@@ -26,12 +27,12 @@ export const RosterPage = () => {
 
     return (
         <div>
-            <h2>User team</h2>
+            <div>
+                <LeagueDropdownSwap/>
+            </div>
+            <h2>{loggedInUser.userName}'s team</h2>
             <div>create trade button goes here
                 <Button>Create a trade</Button>
-            </div>
-            <div>Select other rosters goes to the side
-                <ButtonDropdown>Other Rosters</ButtonDropdown>
             </div>
             <RosterCard scores={scores}/>
         </div>

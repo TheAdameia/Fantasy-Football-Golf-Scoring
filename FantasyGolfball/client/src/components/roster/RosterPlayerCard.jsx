@@ -5,6 +5,10 @@ import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 export const RosterPlayerCard = ({ rp, scores }) => {
     const  { getAndSetRoster } = useAppContext()
 
+    const HandlePositionChange = () => {
+        
+    }
+
     const HandleDropPlayer = (rosterPlayerId) => {
         DeleteRosterPlayer(rosterPlayerId)
     }
