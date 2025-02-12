@@ -8,7 +8,12 @@ export const RosterPositionDropdown = ({ rp }) => {
     const toggle = () => setDropdownOpen((prevState) => !prevState)
     const { roster } = useAppContext()
 
-    const HandlePositionChange = () => {
+    const HandlePositionChange = (taco) => {
+        if (roster.rosterPlayers.some((rp) => rp.rosterPosition === taco)) {
+            window.alert("Player already has that role")
+        } else {
+            // set the value - manager, endpoint
+        }
     }
 
 
@@ -54,7 +59,7 @@ export const RosterPositionDropdown = ({ rp }) => {
                                 Bench
                             </DropdownItem>
                             <DropdownItem>
-                                QB1
+                                RB1
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -68,7 +73,7 @@ export const RosterPositionDropdown = ({ rp }) => {
                                 Bench
                             </DropdownItem>
                             <DropdownItem>
-                                QB1
+                                TE1
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -82,7 +87,7 @@ export const RosterPositionDropdown = ({ rp }) => {
                                 Bench
                             </DropdownItem>
                             <DropdownItem>
-                                QB1
+                                K
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -96,7 +101,7 @@ export const RosterPositionDropdown = ({ rp }) => {
                                 Bench
                             </DropdownItem>
                             <DropdownItem>
-                                QB1
+                                DEF
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -106,33 +111,5 @@ export const RosterPositionDropdown = ({ rp }) => {
                     <div>loading...</div>
                 )
         }
-    }
-
-
-    // if ( rp && rp.player.position.positionShort === "QB") {
-
-    // } else if (rp && rp.player.position.positionShort === "WR") {
-
-    // } else if (rp && rp.player.position.positionShort === "RB") {
-
-    // } else if (rp && rp.player.position.positionShort === "TE") {
-
-    // } else if (rp && rp.player.position.positionShort === "K") {
-
-    // } else if (rp && rp.player.position.positionShort === "DEF") {
-
-    // }
-
-    if (rp) {
-        return (
-            <Dropdown isOpen={dropDownOpen} toggle={toggle}>
-                <DropdownToggle caret>{rp.rosterPosition}</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>
-
-                    </DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-        )
     }
 }

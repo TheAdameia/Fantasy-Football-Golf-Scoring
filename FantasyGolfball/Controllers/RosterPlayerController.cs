@@ -60,4 +60,40 @@ public class RosterPlayerController : ControllerBase
         
         return NoContent();
     }
+
+    [HttpPut("roster-position")]
+    // [Authorize]
+    public IActionResult SetRosterPosition(int rosterPlayerId, string position)
+    {
+        RosterPlayer rosterPlayer = _dbContext.RosterPlayers.SingleOrDefault(rp => rp.RosterPlayerId == rosterPlayerId);
+
+        if (rosterPlayer == null)
+        {
+            return NotFound();
+        }
+
+        Roster roster = _dbContext.Rosters.SingleOrDefault(r => r.RosterPlayers.Contains(rosterPlayer));
+
+        if (roster == null)
+        {
+            return NotFound("No Roster found for RosterPlayer");
+        }
+
+        if (position == "bench")
+        {
+            rosterPlayer.RosterPosition = "bench";
+            _dbContext.SaveChanges();
+            return NoContent();
+        }
+
+        if ( !roster.RosterPlayers.Any(rp => rp.RosterPosition == position))
+        {
+            rosterPlayer.RosterPosition = position;
+            _dbContext.SaveChanges();
+            return NoContent();
+        } else
+        {
+            return BadRequest("A player already has that role");
+        }
+    }
 }
