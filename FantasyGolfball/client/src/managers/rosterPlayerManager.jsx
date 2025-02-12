@@ -15,3 +15,10 @@ export const DeleteRosterPlayer = (id) => {
         body: JSON.stringify(id)
     })
 }
+
+export const ChangeRosterPlayerPosition = (rosterPlayerId, position) => {
+    return fetch(`${_apiUrl}/roster-position?rosterPlayerId=${rosterPlayerId}&position=${position}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json"}
+    })
+}

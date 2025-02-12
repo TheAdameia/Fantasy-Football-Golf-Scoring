@@ -1,6 +1,7 @@
 import { Table } from "reactstrap"
 import { RosterPlayerCard } from "./RosterPlayerCard"
 import { useAppContext } from "../../contexts/AppContext";
+import "./Roster.css"
 
 
 export const RosterCard = ({ scores }) => {
@@ -10,11 +11,9 @@ export const RosterCard = ({ scores }) => {
         return <div>No roster data available</div>;
     }
 
-    // I have to wonder if there's a computationally more efficient way to pass scores that sorts them first here.
-    
     return (
         <div>
-            <h4>Stuff goes here. Make it longer so it doesn't look odd</h4>
+            <h4>Roster</h4>
             <Table>
                 <thead>
                     <tr>
@@ -42,7 +41,111 @@ export const RosterCard = ({ scores }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {roster.rosterPlayers.map((rp) => {
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "QB1")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "WR1")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "WR2")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "RB1")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "RB2")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "TE1")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "FLEX")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "K")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "DEF")
+                        .map((rp) => {
+                            return (
+                                <RosterPlayerCard
+                                    rp={rp}
+                                    key={`rp-${rp.rosterPlayerId}`}
+                                    scores={scores}
+                                ></RosterPlayerCard>
+                            )
+                    })}
+                </tbody>
+                <tbody className="table-divider">
+                    {/* slap a divider in here for bench? make a new tbody? */}
+                    {roster.rosterPlayers
+                        .filter((rp) => rp.rosterPosition === "bench")
+                        .map((rp) => { // change to map only RP that are benched
                         return (
                             <RosterPlayerCard
                                 rp={rp}
