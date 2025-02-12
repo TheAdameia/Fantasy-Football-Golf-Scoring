@@ -30,9 +30,11 @@ export const RosterPage = () => {
             <div>
                 <LeagueDropdownSwap/>
             </div>
-            <h2>{loggedInUser.userName}'s team</h2>
-            <div>create trade button goes here
-                <Button>Create a trade</Button>
+            <div>
+                <h2>{loggedInUser.userName}'s team</h2>
+                <div>
+                    <Button>Create a trade</Button>
+                </div>
             </div>
             <RosterCard scores={scores}/>
         </div>

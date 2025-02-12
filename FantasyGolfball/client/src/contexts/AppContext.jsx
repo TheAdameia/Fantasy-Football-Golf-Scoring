@@ -26,7 +26,7 @@ export const AppProvider = ({ children }) => {
         // check localStorage for previously selected league
         const storedLeagueId = localStorage.getItem("selectedLeagueId");
 
-        // set selected league from localStorage if valid, otherwise first league
+        // set selected league from localStorage if valid, otherwise first league user is in
         const initialLeague = data.find(l => l.leagueId === parseInt(storedLeagueId)) || data[0];
         setSelectedLeague(initialLeague);
         }) 

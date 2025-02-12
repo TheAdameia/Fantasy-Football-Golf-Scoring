@@ -19,7 +19,6 @@ export const DeleteRosterPlayer = (id) => {
 export const ChangeRosterPlayerPosition = (rosterPlayerId, position) => {
     return fetch(`${_apiUrl}/roster-position?rosterPlayerId=${rosterPlayerId}&position=${position}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify()
+        headers: { "Content-Type": "application/json"}
     })
 }

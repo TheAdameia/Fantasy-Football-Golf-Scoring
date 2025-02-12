@@ -1,6 +1,7 @@
 import { Table } from "reactstrap"
 import { RosterPlayerCard } from "./RosterPlayerCard"
 import { useAppContext } from "../../contexts/AppContext";
+import "./Roster.css"
 
 
 export const RosterCard = ({ scores }) => {
@@ -139,6 +140,8 @@ export const RosterCard = ({ scores }) => {
                                 ></RosterPlayerCard>
                             )
                     })}
+                </tbody>
+                <tbody className="table-divider">
                     {/* slap a divider in here for bench? make a new tbody? */}
                     {roster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "bench")

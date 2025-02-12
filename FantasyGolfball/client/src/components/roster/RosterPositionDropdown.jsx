@@ -7,18 +7,16 @@ import { ChangeRosterPlayerPosition } from "../../managers/rosterPlayerManager"
 export const RosterPositionDropdown = ({ rp }) => {
     const [dropDownOpen, setDropdownOpen] = useState()
     const toggle = () => setDropdownOpen((prevState) => !prevState)
-    const { roster } = useAppContext()
+    const { roster, getAndSetRoster } = useAppContext()
+    const rosterOptions = ["bench", "QB1", "WR1", "WR2", "RB1", "RB2", "FLEX", "TE1", "K", "DEF"]
 
-    const HandlePositionChange = (taco) => { // taco needs to be event.value I think, onSelect or whatever
+    const HandlePositionChange = async (newPosition) => {  // needs to be async to make sure db updates before refresh
   
-        if (roster.rosterPlayers.some((rp) => rp.rosterPosition === taco) && taco != "bench") {
+        if (roster.rosterPlayers.some((rosterPlayer) => rosterPlayer.rosterPosition === newPosition) && newPosition != "bench") {
             window.alert("Player already has that role")
-        } else if (taco == "bench") {
-            ChangeRosterPlayerPosition(rp.rosterPlayedId, taco)
-        } else if (taco != "bench") {
-            ChangeRosterPlayerPosition(rp.rosterPlayedId, taco)
         } else {
-            window.alert("input error")
+            await ChangeRosterPlayerPosition(rp.rosterPlayerId, newPosition)
+            await getAndSetRoster()
         }
     }
 
@@ -29,10 +27,10 @@ export const RosterPositionDropdown = ({ rp }) => {
                     <Dropdown isOpen={dropDownOpen} toggle={toggle}>
                         <DropdownToggle caret>{rp.rosterPosition}</DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[0])}>
                                 Bench
                             </DropdownItem>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[1])}>
                                 QB1
                             </DropdownItem>
                         </DropdownMenu>
@@ -43,11 +41,17 @@ export const RosterPositionDropdown = ({ rp }) => {
                     <Dropdown isOpen={dropDownOpen} toggle={toggle}>
                         <DropdownToggle caret>{rp.rosterPosition}</DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[0])}>
                                 Bench
                             </DropdownItem>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[2])}>
                                 WR1
+                            </DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[3])}>
+                                WR2
+                            </DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[6])}>
+                                FLEX
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -57,11 +61,17 @@ export const RosterPositionDropdown = ({ rp }) => {
                     <Dropdown isOpen={dropDownOpen} toggle={toggle}>
                         <DropdownToggle caret>{rp.rosterPosition}</DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[0])}>
                                 Bench
                             </DropdownItem>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[4])}>
                                 RB1
+                            </DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[5])}>
+                                RB2
+                            </DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[6])}>
+                                FLEX
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -71,11 +81,14 @@ export const RosterPositionDropdown = ({ rp }) => {
                     <Dropdown isOpen={dropDownOpen} toggle={toggle}>
                         <DropdownToggle caret>{rp.rosterPosition}</DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[0])}>
                                 Bench
                             </DropdownItem>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[7])}>
                                 TE1
+                            </DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[6])}>
+                                FLEX
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -85,10 +98,10 @@ export const RosterPositionDropdown = ({ rp }) => {
                     <Dropdown isOpen={dropDownOpen} toggle={toggle}>
                         <DropdownToggle caret>{rp.rosterPosition}</DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[0])}>
                                 Bench
                             </DropdownItem>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[8])}>
                                 K
                             </DropdownItem>
                         </DropdownMenu>
@@ -99,10 +112,10 @@ export const RosterPositionDropdown = ({ rp }) => {
                     <Dropdown isOpen={dropDownOpen} toggle={toggle}>
                         <DropdownToggle caret>{rp.rosterPosition}</DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[0])}>
                                 Bench
                             </DropdownItem>
-                            <DropdownItem>
+                            <DropdownItem onClick={() => HandlePositionChange(rosterOptions[9])}>
                                 DEF
                             </DropdownItem>
                         </DropdownMenu>
