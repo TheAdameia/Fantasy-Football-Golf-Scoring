@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap"
 import { useAppContext } from "../../contexts/AppContext"
+import { ChangeRosterPlayerPosition } from "../../managers/rosterPlayerManager"
 
 
 export const RosterPositionDropdown = ({ rp }) => {
@@ -8,17 +9,18 @@ export const RosterPositionDropdown = ({ rp }) => {
     const toggle = () => setDropdownOpen((prevState) => !prevState)
     const { roster } = useAppContext()
 
-    const HandlePositionChange = (taco) => {
-        if (roster.rosterPlayers.some((rp) => rp.rosterPosition === taco)) {
+    const HandlePositionChange = (taco) => { // taco needs to be event.value I think, onSelect or whatever
+  
+        if (roster.rosterPlayers.some((rp) => rp.rosterPosition === taco) && taco != "bench") {
             window.alert("Player already has that role")
+        } else if (taco == "bench") {
+            ChangeRosterPlayerPosition(rp.rosterPlayedId, taco)
+        } else if (taco != "bench") {
+            ChangeRosterPlayerPosition(rp.rosterPlayedId, taco)
         } else {
-            // set the value - manager, endpoint
+            window.alert("input error")
         }
     }
-
-
-    // I think the simplest way to work this out would be an elseif based on rosterPosition and rp.player.position.positionShort
-    // sadly the conditions are too ugly for a switch case... or are they? If I really wanted to validate rp in its entirety, I can just put the whole switch in an if that checks that.
 
     if (rp) {
         switch(rp.player.position.positionShort) {

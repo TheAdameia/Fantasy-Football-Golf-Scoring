@@ -1,13 +1,11 @@
 import { useAppContext } from "../../contexts/AppContext"
 import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
+import { RosterPositionDropdown } from "./RosterPositionDropdown"
 
 
 export const RosterPlayerCard = ({ rp, scores }) => {
     const  { getAndSetRoster } = useAppContext()
 
-    const HandlePositionChange = () => {
-        
-    }
 
     const HandleDropPlayer = (rosterPlayerId) => {
         DeleteRosterPlayer(rosterPlayerId)
@@ -38,7 +36,10 @@ export const RosterPlayerCard = ({ rp, scores }) => {
     return (
         <tr>
             <th scope="row">
+                <RosterPositionDropdown
+                    rp={rp}>
 
+                </RosterPositionDropdown>
             </th>
             <td>
                 {rp.rosterPosition}
