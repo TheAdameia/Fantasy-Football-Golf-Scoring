@@ -50,6 +50,10 @@ public class DraftState
             Console.WriteLine("DraftOrder is empty. Ending draft");
         }
     }
+    public bool AllUsersHaveFullRosters(int maxRosterSize) // this will almost certainly not work like this
+    {
+        return UserRosters.Values.All(roster => roster.Count >= maxRosterSize);
+    }
 
     public bool IsDraftComplete() => AvailablePlayers.Count == 0 || DraftOrder.Count == 0;
 }

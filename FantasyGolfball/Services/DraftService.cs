@@ -142,10 +142,32 @@ public class DraftService : IDraftService
             throw;
         }
 
-        // // Log final state confirmation
-        // Console.WriteLine($"Draft process completed for User {userId} in League {leagueId}.");
-        // Console.WriteLine($"[Final State] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
-        
+        // **Check if draft is complete**
+        bool draftComplete = draftState.AllUsersHaveFullRosters(maxRosterSize);
+        if (draftComplete)
+        {
+            await CompleteDraft(leagueId); // Trigger DraftCompletedEvent
+        }
         return draftState;
+    }
+
+    public async Task CompleteDraft(int leagueId)
+    {
+        using var dbContext = GetDbContext();
+
+        var draft = await dbContext.Drafts.FirstOrDefaultAsync(d => d.LeagueId == leagueId);
+        if (draft == null)
+        {
+            throw new Exception($"Draft record not found for League {leagueId}");
+        }
+
+        draft.IsCompleted = true;
+        await dbContext.SaveChangesAsync();
+
+        Console.WriteLine($"Draft for League {leagueId} marked as completed.");
+
+        // Fire DraftCompletedEvent
+        var draftCompletedEvent = new DraftCompletedEvent(leagueId);
+        await _eventBus.PublishAsync(draftCompletedEvent);
     }
 }
