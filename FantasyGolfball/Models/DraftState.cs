@@ -50,7 +50,7 @@ public class DraftState
             Console.WriteLine("DraftOrder is empty. Ending draft");
         }
     }
-    public bool AllUsersHaveFullRosters(int maxRosterSize) // this will almost certainly not work like this
+    public bool AllUsersHaveFullRosters(int maxRosterSize) // this should work because the "roster" here is just a list of IDs, not the actual roster in the dbcontext
     {
         return UserRosters.Values.All(roster => roster.Count >= maxRosterSize);
     }

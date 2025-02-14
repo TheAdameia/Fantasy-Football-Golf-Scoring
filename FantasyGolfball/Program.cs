@@ -33,6 +33,7 @@ builder.Services.AddSingleton<IDraftService, DraftService>(); // registers IDraf
 builder.Services.AddScoped<FantasyGolfballDbContext>();
 
 builder.Services.AddScoped<IMatchupService, MatchupService>();
+builder.Services.AddSingleton<EventBus>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>

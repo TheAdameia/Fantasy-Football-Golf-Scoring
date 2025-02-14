@@ -2,23 +2,38 @@ using FantasyGolfball.Data;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Models;
+using FantasyGolfball.Models.Events;
 
 namespace FantasyGolfball.Services;
 
 public interface IMatchupService
 {
     Task GenerateMatchups(int leagueId, int totalWeeks, int gamesPerPlayer);
+    Task HandleDraftCompleted(int leagueId);
 }
 
 public class MatchupService : IMatchupService
 {
     private readonly IDbContextFactory<FantasyGolfballDbContext> _dbContextFactory;
 
-    public MatchupService(IDbContextFactory<FantasyGolfballDbContext> dbContextFactory)
+    public MatchupService(IDbContextFactory<FantasyGolfballDbContext> dbContextFactory, EventBus eventBus)
     {
         _dbContextFactory = dbContextFactory;
+        eventBus.Subscribe<int>(HandleDraftCompleted);
     }
 
+    public async Task HandleDraftCompleted(int leagueId)
+    {
+        Console.WriteLine($"Attempting to generate matchups for {leagueId}");
+
+       
+        // I need to change League to have all of these properties... eventually
+
+        int totalWeeks = 4;
+        int gamesPerPlayer = 4;
+
+        await GenerateMatchups(leagueId, totalWeeks, gamesPerPlayer);
+    }
     public async Task GenerateMatchups(int leagueId, int totalWeeks, int gamesPerPlayer)
     {
         using var context = _dbContextFactory.CreateDbContext();

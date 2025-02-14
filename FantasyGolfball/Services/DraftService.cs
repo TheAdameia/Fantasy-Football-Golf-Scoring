@@ -17,10 +17,12 @@ public class DraftService : IDraftService
 {
     private readonly IServiceScopeFactory _scopeFactory;
     private readonly Dictionary<int, DraftState> _draftStates = new();
+    private readonly EventBus _eventBus;
 
-    public DraftService(IServiceScopeFactory scopeFactory)
+    public DraftService(IServiceScopeFactory scopeFactory, EventBus eventBus)
     {
         _scopeFactory = scopeFactory ?? throw new ArgumentNullException(nameof(scopeFactory));
+        _eventBus = eventBus;
     }
 
      private FantasyGolfballDbContext GetDbContext()
@@ -146,7 +148,7 @@ public class DraftService : IDraftService
         bool draftComplete = draftState.AllUsersHaveFullRosters(maxRosterSize);
         if (draftComplete)
         {
-            await CompleteDraft(leagueId); // Trigger DraftCompletedEvent
+            await CompleteDraft(leagueId); // Triggers draft completion event
         }
         return draftState;
     }
@@ -155,19 +157,18 @@ public class DraftService : IDraftService
     {
         using var dbContext = GetDbContext();
 
-        var draft = await dbContext.Drafts.FirstOrDefaultAsync(d => d.LeagueId == leagueId);
-        if (draft == null)
+        var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == leagueId);
+        if (league == null)
         {
-            throw new Exception($"Draft record not found for League {leagueId}");
+            throw new Exception($"League {leagueId} not found");
         }
 
-        draft.IsCompleted = true;
+        league.IsDraftComplete = true;
         await dbContext.SaveChangesAsync();
 
         Console.WriteLine($"Draft for League {leagueId} marked as completed.");
 
-        // Fire DraftCompletedEvent
-        var draftCompletedEvent = new DraftCompletedEvent(leagueId);
-        await _eventBus.PublishAsync(draftCompletedEvent);
+        // publish event
+        await _eventBus.Publish(leagueId);
     }
 }
