@@ -32,6 +32,8 @@ builder.Services.AddSignalR();
 builder.Services.AddSingleton<IDraftService, DraftService>(); // registers IDraftService and its implementation, Singleton instead of scopes means there will only be one persistent instance across the app's runtime
 builder.Services.AddScoped<FantasyGolfballDbContext>();
 
+builder.Services.AddScoped<IMatchupService, MatchupService>();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {

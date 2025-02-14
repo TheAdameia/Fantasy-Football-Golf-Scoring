@@ -20,16 +20,16 @@ public class MatchupController : ControllerBase
     // There is an interesting question of what GETs I will need here.
     // I'm not sure I'd ever need to delete or modify them either as a matter of normal operations.
 
-    [HttpPost]
-    // [Authorize]
-    public IActionResult Post(Matchup matchup)
-    {
-        if (matchup == null)
-        {
-            return BadRequest();
-        }
-        _dbContext.Matchups.Add(matchup);
-        _dbContext.SaveChanges();
-        return Ok();
-    }
+    // [HttpPost]
+    // // [Authorize]
+    // public IActionResult Post(Matchup matchup)
+    // {
+    //     if (matchup == null)
+    //     {
+    //         return BadRequest();
+    //     }
+    //     _dbContext.Matchups.Add(matchup);
+    //     _dbContext.SaveChanges();
+    //     return Ok();
+    // }
 }
