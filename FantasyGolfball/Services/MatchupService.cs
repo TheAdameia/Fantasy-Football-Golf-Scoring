@@ -14,12 +14,20 @@ public interface IMatchupService
 
 public class MatchupService : IMatchupService
 {
-    private readonly IDbContextFactory<FantasyGolfballDbContext> _dbContextFactory;
+    private readonly IServiceScopeFactory _scopeFactory;
+    private readonly EventBus _eventBus;
 
-    public MatchupService(IDbContextFactory<FantasyGolfballDbContext> dbContextFactory, EventBus eventBus)
+    public MatchupService(IServiceScopeFactory scopeFactory, EventBus eventBus)
     {
-        _dbContextFactory = dbContextFactory;
+        _scopeFactory = scopeFactory;
+        _eventBus = eventBus;
         eventBus.Subscribe<int>(HandleDraftCompleted);
+    }
+
+    private FantasyGolfballDbContext GetDbContext()
+    {
+        var scope = _scopeFactory.CreateScope();
+        return scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
     }
 
     public async Task HandleDraftCompleted(int leagueId)

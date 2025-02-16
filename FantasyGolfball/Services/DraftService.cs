@@ -4,6 +4,7 @@ using FantasyGolfball.Models;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Models.DTOs;
 using Microsoft.Extensions.DependencyInjection;
+using FantasyGolfball.Models.Events;
 public interface IDraftService
 {
     Task<DraftState> GetDraftState(int leagueId);

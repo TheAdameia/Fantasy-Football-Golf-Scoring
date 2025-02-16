@@ -1,4 +1,4 @@
-
+namespace FantasyGolfball.Models.Events;
 
 public class EventBus
 {

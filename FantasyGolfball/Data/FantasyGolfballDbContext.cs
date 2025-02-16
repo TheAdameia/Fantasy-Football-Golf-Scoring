@@ -17,6 +17,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Scoring> Scorings { get; set; }
     public DbSet<Status> Statuses { get; set; }
     public DbSet<LeagueUser> LeagueUsers { get; set; }
+    public DbSet<MatchupUser> MatchupUsers { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -61,7 +62,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 UsersVetoTrades = true,
                 LeagueName = "testing league",
                 RequiredFullToStart = true,
-                MaxRosterSize = 15
+                MaxRosterSize = 15,
+                IsDraftComplete = false
             }
         });
         modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]
