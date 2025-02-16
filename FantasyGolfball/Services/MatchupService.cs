@@ -44,7 +44,7 @@ public class MatchupService : IMatchupService
     }
     public async Task GenerateMatchups(int leagueId, int totalWeeks, int gamesPerPlayer)
     {
-        using var context = _dbContextFactory.CreateDbContext();
+        using var context = GetDbContext();
 
         var users = await context.LeagueUsers
             .Where(lu => lu.LeagueId == leagueId)
