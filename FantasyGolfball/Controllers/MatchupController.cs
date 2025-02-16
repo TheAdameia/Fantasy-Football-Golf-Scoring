@@ -17,8 +17,26 @@ public class MatchupController : ControllerBase
         _dbContext = context;
     }
 
-    // There is an interesting question of what GETs I will need here.
-    // I'm not sure I'd ever need to delete or modify them either as a matter of normal operations.
+    [HttpGet]
+    // [Authorize]
+    public IActionResult GetByLeague(int leagueId)
+    {
+        if (leagueId == 0)
+        {
+            return BadRequest();
+        }
+
+        List<Matchup> matchups = _dbContext.Matchups
+            .Where(m => m.LeagueId == leagueId)
+            .ToList();
+
+        if (matchups == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(matchups);
+    }
 
     // [HttpPost]
     // // [Authorize]
