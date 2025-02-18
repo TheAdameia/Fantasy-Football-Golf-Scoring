@@ -170,6 +170,15 @@ public class DraftService : IDraftService
         Console.WriteLine($"Draft for League {leagueId} marked as completed.");
 
         // publish event
-        await _eventBus.Publish(leagueId);
+        try
+        {
+            await _eventBus.Publish(leagueId);
+        }
+        catch (Exception ex)
+        {
+            
+            throw new Exception($"Something went wrong publishing draft completed event, ex: {ex}");
+        }
+        
     }
 }

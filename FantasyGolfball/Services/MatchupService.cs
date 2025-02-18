@@ -39,8 +39,15 @@ public class MatchupService : IMatchupService
 
         int totalWeeks = 4;
         int gamesPerPlayer = 4;
-
-        await GenerateMatchups(leagueId, totalWeeks, gamesPerPlayer);
+        try
+        {
+            await GenerateMatchups(leagueId, totalWeeks, gamesPerPlayer);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Something went wrong in HandleDraftCompleted, ex: {ex}");
+        }
+        
     }
     public async Task GenerateMatchups(int leagueId, int totalWeeks, int gamesPerPlayer)
     {
