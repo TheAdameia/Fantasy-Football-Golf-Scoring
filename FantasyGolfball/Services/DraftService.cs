@@ -4,6 +4,7 @@ using FantasyGolfball.Models;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Models.DTOs;
 using Microsoft.Extensions.DependencyInjection;
+using FantasyGolfball.Models.Events;
 public interface IDraftService
 {
     Task<DraftState> GetDraftState(int leagueId);
@@ -17,10 +18,12 @@ public class DraftService : IDraftService
 {
     private readonly IServiceScopeFactory _scopeFactory;
     private readonly Dictionary<int, DraftState> _draftStates = new();
+    private readonly EventBus _eventBus;
 
-    public DraftService(IServiceScopeFactory scopeFactory)
+    public DraftService(IServiceScopeFactory scopeFactory, EventBus eventBus)
     {
         _scopeFactory = scopeFactory ?? throw new ArgumentNullException(nameof(scopeFactory));
+        _eventBus = eventBus;
     }
 
      private FantasyGolfballDbContext GetDbContext()
@@ -142,10 +145,40 @@ public class DraftService : IDraftService
             throw;
         }
 
-        // // Log final state confirmation
-        // Console.WriteLine($"Draft process completed for User {userId} in League {leagueId}.");
-        // Console.WriteLine($"[Final State] DraftOrder: {string.Join(", ", draftState.DraftOrder)}");
-        
+        // **Check if draft is complete**
+        bool draftComplete = draftState.AllUsersHaveFullRosters(maxRosterSize);
+        if (draftComplete)
+        {
+            await CompleteDraft(leagueId); // Triggers draft completion event
+        }
         return draftState;
+    }
+
+    public async Task CompleteDraft(int leagueId)
+    {
+        using var dbContext = GetDbContext();
+
+        var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == leagueId);
+        if (league == null)
+        {
+            throw new Exception($"League {leagueId} not found");
+        }
+
+        league.IsDraftComplete = true;
+        await dbContext.SaveChangesAsync();
+
+        Console.WriteLine($"Draft for League {leagueId} marked as completed.");
+
+        // publish event
+        try
+        {
+            await _eventBus.Publish(leagueId);
+        }
+        catch (Exception ex)
+        {
+            
+            throw new Exception($"Something went wrong publishing draft completed event, ex: {ex}");
+        }
+        
     }
 }

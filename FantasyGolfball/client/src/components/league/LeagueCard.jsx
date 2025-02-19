@@ -4,7 +4,7 @@ import { useAppContext } from "../../contexts/AppContext"
 
 
 export const LeagueCard = ({ league, getAndSetLeagues }) => {
-    const { loggedInUser } = useAppContext()
+    const { loggedInUser, setSelectedLeague } = useAppContext()
 
     const handleJoin = (event) => {
         event.preventDefault()
@@ -18,7 +18,7 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
         
         JoinLeague(leagueId, userId).then(() => {
             getAndSetLeagues()
-        })
+        }).then(setSelectedLeague(league)) // speculative
     }
 
     return (

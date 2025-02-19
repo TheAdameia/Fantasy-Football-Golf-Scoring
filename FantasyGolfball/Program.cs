@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using FantasyGolfball.Data;
 using FantasyGolfball.Services;
+using FantasyGolfball.Models.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,9 @@ builder.Services.AddSignalR();
 
 builder.Services.AddSingleton<IDraftService, DraftService>(); // registers IDraftService and its implementation, Singleton instead of scopes means there will only be one persistent instance across the app's runtime
 builder.Services.AddScoped<FantasyGolfballDbContext>();
+
+builder.Services.AddSingleton<IMatchupService, MatchupService>();
+builder.Services.AddSingleton<EventBus>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -93,6 +97,9 @@ app.UseAuthorization();
 app.MapHub<ChatHub>("/chathub");
 // Creating a SignalR hub for live draft
 app.MapHub<LiveDraftHub>("/draftHub");
+
+// forcing MatchupService to initialize when the app starts to run
+var matchupService = app.Services.GetRequiredService<IMatchupService>();
 
 app.MapControllers();
 

@@ -37,7 +37,8 @@ public class LeagueController : ControllerBase
             UsersVetoTrades = leaguePOSTDTO.UsersVetoTrades,
             LeagueName = leaguePOSTDTO.LeagueName,
             RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
-            MaxRosterSize = leaguePOSTDTO.MaxRosterSize
+            MaxRosterSize = leaguePOSTDTO.MaxRosterSize,
+            IsDraftComplete = false
         };
         
         _dbContext.Leagues.Add(league);
