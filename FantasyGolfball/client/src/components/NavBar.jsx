@@ -42,7 +42,12 @@ return (
                 </NavItem>
                 <NavItem>
                     <NavLink tag={RRNavLink} to="/league">
-                        League
+                        Leagues
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink tag={RRNavLink} to="/matchups">
+                        Matchups
                     </NavLink>
                 </NavItem>
             </Nav>
