@@ -18,7 +18,7 @@ export const AppProvider = ({ children }) => {
 
   const getAndSetLeagues = () => {
     if (loggedInUser) {
-      fetch(`/api/league/by-user/${loggedInUser.id}`) // I hate writing out calls somewhere that's not a manager, but importing context to a manager caused initialization issues and the league states needed to be set before anything else happened
+      fetch(`/api/league/by-user/${loggedInUser.id}`) // I hate writing out calls somewhere that's not a manager, but importing context to a manager causes initialization issues and the league states need to be set before anything else happens
         .then((res) => res.json())
         .then((data) => {
           setUserLeagues(data)
