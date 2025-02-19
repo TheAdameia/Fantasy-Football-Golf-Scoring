@@ -6,7 +6,7 @@ import { useAppContext } from "../../contexts/AppContext"
 export const LeagueCard = ({ league, getAndSetLeagues }) => {
     const { loggedInUser } = useAppContext()
 
-    const handleJoin = (event) => {
+    const handleJoin = (event) => { // I could make this also change the selected league through appcontext
         event.preventDefault()
         let leagueId = league.leagueId
         let userId = loggedInUser.id

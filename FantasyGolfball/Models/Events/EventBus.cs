@@ -11,6 +11,8 @@ public class EventBus
             _handlers[typeof(T)] = new List<Delegate>();
         }
         _handlers[typeof(T)].Add(handler);
+
+        Console.WriteLine($"EventBus: Subscribed to event of type {typeof(T).Name}");
     }
 
     public async Task Publish<T>(T eventData)

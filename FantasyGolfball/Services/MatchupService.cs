@@ -21,6 +21,7 @@ public class MatchupService : IMatchupService
     {
         _scopeFactory = scopeFactory;
         _eventBus = eventBus;
+        Console.WriteLine("MatchupService initiated");
         eventBus.Subscribe<int>(HandleDraftCompleted);
     }
 
@@ -58,7 +59,7 @@ public class MatchupService : IMatchupService
             .Select(lu => lu.UserProfileId)
             .ToListAsync();
 
-        if (users.Count < 2) return; // this shouldn't happen because this should only trigger when a draft is completed
+        if (users.Count < 2) return; // this shouldn't happen because this should only trigger when a draft is completed. I wish I could have this return some kind of error
 
         var matchups = new List<Matchup>();
 

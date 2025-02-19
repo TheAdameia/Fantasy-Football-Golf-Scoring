@@ -27,6 +27,7 @@ public class MatchupController : ControllerBase
         }
 
         List<Matchup> matchups = _dbContext.Matchups
+            .Include(m => m.MatchupUsers)
             .Where(m => m.LeagueId == leagueId)
             .ToList();
 
