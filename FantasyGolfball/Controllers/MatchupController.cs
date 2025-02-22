@@ -39,7 +39,7 @@ public class MatchupController : ControllerBase
         return Ok(matchups);
     }
 
-    [HttpGet("by-league-and-user")]
+    [HttpGet("by-league-and-user")] // it behooves me to make these into safe exports for the sake of displaying opponent's usernames.
     // [Authorize]
     public IActionResult GetByLeagueAndUser(int leagueId, int userId)
     {
