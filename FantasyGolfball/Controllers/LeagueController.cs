@@ -121,12 +121,78 @@ public class LeagueController : ControllerBase
     // [Authorize]
     public IActionResult GetByUser(int userId)
     {
-        return Ok(_dbContext.Leagues
+        var UserLeagues = _dbContext.Leagues
         .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId))
+        .Include(l => l.LeagueUsers)
+            .ThenInclude(lu => lu.UserProfile)
+                .ThenInclude(up => up.IdentityUser)
         .Include(l => l.LeagueUsers)
             .ThenInclude(lu => lu.Roster)
                 .ThenInclude(r => r.RosterPlayers)
-        );
+                    .ThenInclude(rp => rp.Player)
+                        .ThenInclude(p => p.Status)
+        .Include(l => l.LeagueUsers)
+            .ThenInclude(lu => lu.Roster)
+                .ThenInclude(r => r.RosterPlayers)
+                    .ThenInclude(rp => rp.Player)
+                        .ThenInclude(p => p.Position)
+        .Select(l => new LeagueFullExpandDTO
+        {
+            LeagueId = l.LeagueId,
+            PlayerLimit = l.PlayerLimit,
+            RandomizedDraftOrder = l.RandomizedDraftOrder,
+            UsersVetoTrades = l.UsersVetoTrades,
+            LeagueName = l.LeagueName,
+            RequiredFullToStart = l.RequiredFullToStart,
+            LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
+            {
+                LeagueUserId = lu.LeagueUserId,
+                LeagueId = lu.LeagueId,
+                UserProfileId = lu.UserProfileId,
+                RosterId = lu.RosterId,
+                UserProfile = new UserProfileSafeExportDTO
+                {
+                    Id = lu.UserProfile.Id,
+                    UserName = lu.UserProfile.IdentityUser.UserName
+                },
+                Roster = new RosterFullExpandDTO
+                {
+                    RosterId = lu.RosterId,
+                    LeagueId = lu.LeagueId,
+                    RosterPlayers = lu.Roster.RosterPlayers.Select(rp => new RosterPlayerFullExpandDTO
+                    {
+                        RosterPlayerId = rp.RosterPlayerId,
+                        PlayerId = rp.PlayerId,
+                        RosterPosition = rp.RosterPosition,
+                        RosterId = rp.RosterId,
+                        Player = new PlayerFullExpandDTO
+                        {
+                            PlayerId = rp.Player.PlayerId,
+                            PlayerFirstName = rp.Player.PlayerFirstName,
+                            PlayerLastName = rp.Player.PlayerLastName,
+                            PositionId = rp.Player.PositionId,
+                            StatusId = rp.Player.StatusId,
+                            Status = new StatusDTO
+                            {
+                                StatusId = rp.Player.Status.StatusId,
+                                StatusType = rp.Player.Status.StatusType,
+                                ViableToPlay = rp.Player.Status.ViableToPlay,
+                                RequiresBackup = rp.Player.Status.RequiresBackup
+                            },
+                            Position = new PositionDTO
+                            {
+                                PositionId = rp.Player.Position.PositionId,
+                                PositionShort = rp.Player.Position.PositionShort,
+                                PositionLong = rp.Player.Position.PositionLong
+                            }
+                        }
+                    }).ToList()
+                }
+            }).ToList()
+        }).ToList();
+
+        return Ok(UserLeagues);
+                        
     }
 
     [HttpGet("{leagueId}")] //unused currently
