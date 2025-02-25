@@ -31,10 +31,10 @@ export const MatchupPage = () => {
         return (
             <div>
                 <div>
-                <label>Week {week}</label>
                 <button
                     onClick={() => handleWeekChange(false)}
                 >Previous</button>
+                <label>Week {week}</label>
                 <button
                     onClick={() => handleWeekChange(true)}
                 >Next</button>
