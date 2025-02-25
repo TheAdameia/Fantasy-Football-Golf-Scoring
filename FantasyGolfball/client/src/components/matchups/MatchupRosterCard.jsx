@@ -167,7 +167,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "QB1") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "QB1") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "QB1")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -179,7 +179,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                     ) : (
                         <BlankPlayerCard slot={slot} position="QB1"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "WR1") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "WR1") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "WR1")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -191,7 +191,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                     ) : (
                         <BlankPlayerCard slot={slot} position="WR1"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "WR2") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "WR2") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "WR2")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -201,9 +201,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                             ></MatchupPlayerCard>
                         ))
                     ) : (
-                        <BlankPlayerCard slot={slot} />
+                        <BlankPlayerCard slot={slot} position="WR2"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "RB1") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "RB1") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "RB1")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -213,9 +213,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                             ></MatchupPlayerCard>
                         ))
                     ) : (
-                        <BlankPlayerCard slot={slot} />
+                        <BlankPlayerCard slot={slot} position="RB1"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "RB2") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "RB2") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "RB2")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -225,9 +225,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                             ></MatchupPlayerCard>
                         ))
                     ) : (
-                        <BlankPlayerCard slot={slot} />
+                        <BlankPlayerCard slot={slot} position="RB2"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "TE1") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "TE1") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "TE1")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -237,9 +237,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                             ></MatchupPlayerCard>
                         ))
                     ) : (
-                        <BlankPlayerCard slot={slot} />
+                        <BlankPlayerCard slot={slot} position="TE1"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "FLEX") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "FLEX") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "FLEX")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -249,9 +249,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                             ></MatchupPlayerCard>
                         ))
                     ) : (
-                        <BlankPlayerCard slot={slot} />
+                        <BlankPlayerCard slot={slot} position="FLEX"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "K") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "K") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "K")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -263,7 +263,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                     ) : (
                         <BlankPlayerCard slot={slot} position="K"/>
                     )}
-                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "DEF") ? ( roster.rosterPlayers
+                    {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "DEF") ? ( opponentRoster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "DEF")
                         .map((rp) => (
                             <MatchupPlayerCard
@@ -273,7 +273,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
                             ></MatchupPlayerCard>
                         ))
                     ) : (
-                        <BlankPlayerCard slot={slot} />
+                        <BlankPlayerCard slot={slot} position="DEF"/>
                     )}
                 </tbody>
             </Table>
