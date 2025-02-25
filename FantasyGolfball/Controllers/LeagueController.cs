@@ -144,6 +144,8 @@ public class LeagueController : ControllerBase
             UsersVetoTrades = l.UsersVetoTrades,
             LeagueName = l.LeagueName,
             RequiredFullToStart = l.RequiredFullToStart,
+            MaxRosterSize = l.MaxRosterSize,
+            IsDraftComplete = l.IsDraftComplete,
             LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
             {
                 LeagueUserId = lu.LeagueUserId,

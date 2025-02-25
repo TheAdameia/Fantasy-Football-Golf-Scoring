@@ -8,15 +8,16 @@ export const MatchupCard = ({ matchup }) => {
     const opponent = matchup.matchupUsers.find((user) => user.userProfileId !== loggedInUser.id)
     const opponentLeagueUser = selectedLeague.leagueUsers.find((lu) => lu.userProfileId === opponent.userProfileId)
     const opponentRoster = opponentLeagueUser.roster
-    // console.log(opponentLeagueUser)
-    
       
     return (
         <div className="matchup-container">
-            {/* <div>{loggedInUser.userName}'s team
+            <div>{loggedInUser.userName}'s team
                 <MatchupRosterCard slot={true}/>
-            </div> */}
-            <div>{opponent.userProfileId}'s team
+            </div>
+            <div className="vertical-divider">
+                
+            </div>
+            <div>{opponentLeagueUser.userProfile.userName}'s team
                 <MatchupRosterCard slot={false} opponentRoster={opponentRoster}/>
             </div>
         </div>

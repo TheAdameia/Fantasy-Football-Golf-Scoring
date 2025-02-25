@@ -12,7 +12,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
     
     if (slot == true && roster) {
         return ( //position, name, team, injury status, points
-            <Table>
+            <Table striped>
                 <thead>
                     <tr>
                         <th>
@@ -146,7 +146,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster }) => {
         )
     } else if (slot == false && opponentRoster) {
         return (
-            <Table>
+            <Table striped>
                 <thead>
                     <tr>
                         <th>
