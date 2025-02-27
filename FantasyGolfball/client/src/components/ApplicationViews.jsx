@@ -10,6 +10,7 @@ import { LeagueForm } from "./league/LeagueForm";
 import Chat from "../clientHubs/exampleClientHub";
 import { DraftPage } from "./draft/DraftPage";
 import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap";
+import { MatchupPage } from "./matchups/MatchupPage";
 
 const Placeholder = () => {
   return <div>
@@ -85,6 +86,14 @@ export default function ApplicationViews() {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <DraftPage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route 
+          path="matchups"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <MatchupPage />
             </AuthorizedRoute>
           }
         />

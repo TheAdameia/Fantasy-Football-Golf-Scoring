@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react'
 import { tryGetLoggedInUser } from '../managers/authManager'
 import { GetByUserAndLeague } from '../managers/rosterManager'
 import { GetAllPlayers } from '../managers/playerManager'
+import { GetMatchupsByLeagueAndUser } from '../managers/matchupManager'
 
 const AppContext = createContext()
 
@@ -11,6 +12,7 @@ export const AppProvider = ({ children }) => {
   const [selectedLeague, setSelectedLeague] = useState(null)
   const [roster, setRoster] = useState()
   const [players, setPlayers] = useState()
+  const [matchups, setMatchups] = useState(null)
 
 
   // add state for determining week here
@@ -30,6 +32,14 @@ export const AppProvider = ({ children }) => {
         const initialLeague = data.find(l => l.leagueId === parseInt(storedLeagueId)) || data[0];
         setSelectedLeague(initialLeague);
         }) 
+    }
+  }
+
+  const getAndSetMatchups = () => {
+    if (loggedInUser != null && selectedLeague != null) {
+      if (selectedLeague.isDraftComplete) {
+        GetMatchupsByLeagueAndUser(selectedLeague.leagueId, loggedInUser.userId).then(setMatchups)
+      }
     }
   }
 
@@ -68,6 +78,14 @@ export const AppProvider = ({ children }) => {
       localStorage.setItem("selectedLeagueId", selectedLeague.leagueId);
     }
   }, [selectedLeague]);
+
+  useEffect(() => {
+    if (selectedLeague) {
+      if (selectedLeague.isDraftComplete) {
+        getAndSetMatchups()
+      }
+    }
+  }, [selectedLeague])
   
   return (
     <AppContext.Provider value={{ 
@@ -80,7 +98,8 @@ export const AppProvider = ({ children }) => {
       setSelectedLeague,
       userLeagues,
       setUserLeagues,
-      selectedLeague }}>
+      selectedLeague,
+      matchups }}>
       {children}
     </AppContext.Provider>
   )

@@ -99,10 +99,10 @@ export const PlayerPage = () => {
                         <option value="Season Average">Season Average</option>
                     </select>
                 </div>
-                <div>Checkboxes: include my team, include other team
+                {/* <div>Checkboxes: include my team, include other team
                     <input type="checkbox" id="my-team" name="Include my team"/>
                     <input type="checkbox" id="other-teams" name="Include other teams"/>
-                </div>
+                </div> */}
             </div>
             <div>
                 <label>{playerSlice.sliceStart} - {playerSlice.sliceEnd}</label>

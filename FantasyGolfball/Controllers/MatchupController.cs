@@ -39,16 +39,26 @@ public class MatchupController : ControllerBase
         return Ok(matchups);
     }
 
-    // [HttpPost]
-    // // [Authorize]
-    // public IActionResult Post(Matchup matchup)
-    // {
-    //     if (matchup == null)
-    //     {
-    //         return BadRequest();
-    //     }
-    //     _dbContext.Matchups.Add(matchup);
-    //     _dbContext.SaveChanges();
-    //     return Ok();
-    // }
+    [HttpGet("by-league-and-user")] // it behooves me to make these into safe exports for the sake of displaying opponent's usernames.
+    // [Authorize]
+    public IActionResult GetByLeagueAndUser(int leagueId, int userId)
+    {
+        if (leagueId == 0 || userId == 0)
+        {
+            return BadRequest();
+        }
+
+        List<Matchup> matchups = _dbContext.Matchups
+            .Include(m => m.MatchupUsers)
+            .Where(m => m.LeagueId == leagueId)
+            .Where(m => m.MatchupUsers.Any(mu => mu.UserProfileId == userId))
+            .ToList();
+
+        if (matchups == null)
+        {
+            return BadRequest("No matchups found");
+        }
+
+        return Ok(matchups);
+    }
 }

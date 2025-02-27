@@ -23,11 +23,6 @@ export const LeagueDropdownSwap = () => {
                   </DropdownItem>
                 )
               })}
-              <DropdownItem header>Header</DropdownItem>
-              <DropdownItem>Some Action</DropdownItem>
-              <DropdownItem text>Dropdown Item Text</DropdownItem>
-              <DropdownItem disabled>Action (disabled)</DropdownItem>
-              <DropdownItem divider />
             </DropdownMenu>
           </Dropdown>
         </div>

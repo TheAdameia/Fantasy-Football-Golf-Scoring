@@ -1,0 +1,10 @@
+.matchup-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-divider {
+    background-color: black;
+    width: .2em;
+    align-self: stretch;
+}

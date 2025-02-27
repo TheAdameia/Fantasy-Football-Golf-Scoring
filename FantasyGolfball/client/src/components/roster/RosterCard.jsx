@@ -142,7 +142,6 @@ export const RosterCard = ({ scores }) => {
                     })}
                 </tbody>
                 <tbody className="table-divider">
-                    {/* slap a divider in here for bench? make a new tbody? */}
                     {roster.rosterPlayers
                         .filter((rp) => rp.rosterPosition === "bench")
                         .map((rp) => { // change to map only RP that are benched
