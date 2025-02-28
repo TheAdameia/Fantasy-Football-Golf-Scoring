@@ -11,13 +11,7 @@ import Chat from "../clientHubs/exampleClientHub";
 import { DraftPage } from "./draft/DraftPage";
 import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap";
 import { MatchupPage } from "./matchups/MatchupPage";
-
-const Placeholder = () => {
-  return <div>
-          <h1>Testing, attention please!</h1>
-          <LeagueDropdownSwap />
-        </div>
-};
+import { MainPage } from "./MainPage";
 
 
 export default function ApplicationViews() {
@@ -30,7 +24,7 @@ export default function ApplicationViews() {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Placeholder />
+              <MainPage />
             </AuthorizedRoute>
           }
         />
@@ -40,14 +34,6 @@ export default function ApplicationViews() {
           <AuthorizedRoute loggedInUser={loggedInUser}>
             <RosterPage />
           </AuthorizedRoute>}
-        />
-        <Route
-          path="mock-draft"
-          element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <DraftPage />
-            </AuthorizedRoute>
-          }
         />
         <Route
           path="chat"

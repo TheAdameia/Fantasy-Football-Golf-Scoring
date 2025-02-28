@@ -8,7 +8,7 @@ export const LeagueDropdownSwap = () => {
 
     if (userLeagues && userLeagues.length > 0) {
       return (
-        <div className="d-flex p-5">
+        <div>
           <div>Viewed League: {selectedLeague.leagueName}</div>
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle caret>Change League</DropdownToggle>

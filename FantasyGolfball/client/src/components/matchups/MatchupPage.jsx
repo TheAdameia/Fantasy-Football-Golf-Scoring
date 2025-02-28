@@ -32,10 +32,12 @@ export const MatchupPage = () => {
             <div>
                 <div>
                 <button
+                    className="week-buttons"
                     onClick={() => handleWeekChange(false)}
                 >Previous</button>
-                <label>Week {week}</label>
+                <label className="week-label">Week {week}</label>
                 <button
+                    className="week-buttons"
                     onClick={() => handleWeekChange(true)}
                 >Next</button>
                 </div>

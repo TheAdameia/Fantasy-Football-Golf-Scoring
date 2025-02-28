@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByPlayer } from "../../managers/scoringManager"
 import { AddRosterPlayer, DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
+import "./PlayerPage.css"
 
 export const PlayerCard = ({ player }) => {
     const [scores, setScores] = useState()
@@ -50,9 +51,9 @@ export const PlayerCard = ({ player }) => {
             && lu.roster.rosterPlayers.some(rp => rp.playerId === player.playerId))) {
                 setPlayerRosterCondition(<div>Taken</div>) // on another team
         } else if (roster && roster.rosterPlayers.some(rp => rp.player.playerId === player.playerId)) {
-            setPlayerRosterCondition(<button onClick={() => HandleDropPlayer()}>-</button>) // on your team
+            setPlayerRosterCondition(<button className="button-drop" onClick={() => HandleDropPlayer()}>-</button>) // on your team
         } else if (roster && !roster.rosterPlayers.some(rp => rp.player.playerId === player.playerId) ){
-            setPlayerRosterCondition(<button onClick={() => HandleAddPlayer(roster.rosterId, player.playerId)}>+</button>) // available
+            setPlayerRosterCondition(<button className="button-add" onClick={() => HandleAddPlayer(roster.rosterId, player.playerId)}>+</button>) // available
         }
     }, [roster])
 

@@ -1,10 +1,12 @@
 import { Button } from "reactstrap"
 import { JoinLeague } from "../../managers/leagueManager"
 import { useAppContext } from "../../contexts/AppContext"
+import "./League.css"
 
 
 export const LeagueCard = ({ league, getAndSetLeagues }) => {
     const { loggedInUser, setSelectedLeague } = useAppContext()
+    let openSlots = (league.playerLimit - league.leagueUsers.length)
 
     const handleJoin = (event) => {
         event.preventDefault()
@@ -22,9 +24,9 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
     }
 
     return (
-        <div>
-            <div>{league.leagueName}</div>
-            <h4>Users joined so far:</h4>
+        <div className="league-card">
+            <h4>{league.leagueName}</h4>
+            <div>Users joined so far:</div>
             {league.leagueUsers.map((lu) => {
                 return (
                     <div key={lu.leagueUserId}>
@@ -34,8 +36,14 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
                     </div>
                 )
             })}
-            <div>League rules:</div>
-            <div>Player Limit: {league.playerLimit}, Randomized Draft {league.randomizedDraftOrder}, Veto Trades {league.usersVetoTrades}, Must be full to start {league.requiredFullToStart}</div>
+            <div>{openSlots} Open Slots</div>
+            <div className="rules-card">
+                <div>League rules:</div>
+                <div>Player Limit: {league.playerLimit}</div>
+                {league.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
+                {league.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}
+                {league.requiredFullToStart ? <div>League must be full to start</div> : <div>League does not need to be full to start</div>}
+            </div>
             <Button
                 onClick={handleJoin}
             >Join this league!</Button>

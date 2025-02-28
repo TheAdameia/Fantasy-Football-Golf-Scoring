@@ -8,3 +8,18 @@
     width: .2em;
     align-self: stretch;
 }
+
+.parent-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.week-label {
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.week-buttons {
+    width: 8%;
+}

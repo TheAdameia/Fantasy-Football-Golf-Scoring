@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { GetLeaguesWithVacancies } from "../../managers/leagueManager"
 import { LeagueCard } from "./LeagueCard"
+import "./League.css"
 
 
 export const LeaguePage = () => {
@@ -26,7 +27,7 @@ export const LeaguePage = () => {
                 onClick={() => handleCreate()}
             >Create a league!</button>
             <h2>Leagues looking for players</h2>
-            <div>
+            <div className="leagues-container">
                 {leagues ? leagues.map((league) => {
                     return (
                         <LeagueCard
