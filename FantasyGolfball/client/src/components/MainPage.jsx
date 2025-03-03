@@ -1,5 +1,4 @@
 import { useAppContext } from "../contexts/AppContext"
-import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap"
 
 
 export const MainPage = () => {
@@ -13,7 +12,6 @@ export const MainPage = () => {
     return (
         <div>
             <h1>Testing, attention please!</h1>
-            <LeagueDropdownSwap />
             <div>
                 <h4>{selectedLeague.leagueName}</h4>
                 <div>League rankings</div>

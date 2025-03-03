@@ -3,7 +3,6 @@ import { RosterCard } from "./RosterCard"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByWeekAndPlayers } from "../../managers/scoringManager"
 import { Button } from "reactstrap"
-import { LeagueDropdownSwap } from "../league/LeagueDropdownSwap"
 
 
 export const RosterPage = () => {
@@ -27,9 +26,6 @@ export const RosterPage = () => {
 
     return (
         <div>
-            <div>
-                <LeagueDropdownSwap/>
-            </div>
             <div>
                 <h2>{loggedInUser.userName}'s team</h2>
                 <div>

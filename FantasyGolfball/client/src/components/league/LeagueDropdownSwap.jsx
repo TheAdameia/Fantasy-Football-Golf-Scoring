@@ -28,7 +28,7 @@ export const LeagueDropdownSwap = () => {
         </div>
       )
     } else {
-      return <div>You haven't joined any Leagues! Check out the Leagues page and join or create one!</div>
+      return null
     }
 
 }

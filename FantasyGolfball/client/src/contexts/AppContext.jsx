@@ -3,6 +3,7 @@ import { tryGetLoggedInUser } from '../managers/authManager'
 import { GetByUserAndLeague } from '../managers/rosterManager'
 import { GetAllPlayers } from '../managers/playerManager'
 import { GetMatchupsByLeagueAndUser } from '../managers/matchupManager'
+import { GetAllScores } from '../managers/scoringManager'
 
 const AppContext = createContext()
 
@@ -13,10 +14,17 @@ export const AppProvider = ({ children }) => {
   const [roster, setRoster] = useState()
   const [players, setPlayers] = useState()
   const [matchups, setMatchups] = useState(null)
+  const [allScores, setAllScores] = useState()
 
 
   // add state for determining week here
   const globalWeek = 1
+
+  const getAndSetAllScores = () => {
+    if (loggedInUser) {
+      GetAllScores().then(setAllScores)
+    }
+  }
 
   const getAndSetLeagues = () => {
     if (loggedInUser) {
@@ -86,6 +94,12 @@ export const AppProvider = ({ children }) => {
       }
     }
   }, [selectedLeague])
+
+  useEffect(() => {
+    if (loggedInUser) {
+      getAndSetAllScores()
+    }
+  }, [loggedInUser])
   
   return (
     <AppContext.Provider value={{ 
@@ -99,7 +113,8 @@ export const AppProvider = ({ children }) => {
       userLeagues,
       setUserLeagues,
       selectedLeague,
-      matchups }}>
+      matchups,
+      allScores }}>
       {children}
     </AppContext.Provider>
   )
