@@ -6,9 +6,6 @@ public class Season
 {
     public int SeasonId { get; set; }
     public int SeasonYear { get; set; }
-    // how do I want to indicate that each week is done? just a bool? That's probably best.
-    public bool Week1Moves { get; set; }
-    // signalling the scoring calculation would probably be another chronjob thing?
 
 
     // the idea is that... there will be premade seasons for the actual, real season.

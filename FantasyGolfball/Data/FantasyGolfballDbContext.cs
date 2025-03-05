@@ -18,6 +18,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Status> Statuses { get; set; }
     public DbSet<LeagueUser> LeagueUsers { get; set; }
     public DbSet<MatchupUser> MatchupUsers { get; set; }
+    public DbSet<Season> Seasons { get; set; }
+    public DbSet<Team> Teams { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
