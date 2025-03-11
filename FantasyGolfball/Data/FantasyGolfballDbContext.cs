@@ -54,6 +54,16 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             Id = 1,
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
         });
+        modelBuilder.Entity<Season>().HasData(new Season[]
+        {
+            new Season
+            {
+                SeasonId = 1,
+                SeasonYear = 2025,
+                SeasonStartDate = new DateTime(2025, 3, 10, 8, 0, 0),
+                RealSeason = false
+            }
+        });
         modelBuilder.Entity<League>().HasData(new League[]
         {
             new League
@@ -202,9 +212,233 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 RequiresBackup = true
             }
         });
+        // Ton of fabricated data for testing purposes
+        modelBuilder.Entity<Team>().HasData(new Team[]
+        {
+            new Team
+            {
+                TeamId = 1,
+                TeamName = "Thunderbirds",
+                TeamCity = "Denver",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 2,
+                TeamName = "Vipers",
+                TeamCity = "Atlanta",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 3,
+                TeamName = "Ironhounds",
+                TeamCity = "Houston",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 4,
+                TeamName = "Stallions",
+                TeamCity = "Chicago",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 5,
+                TeamName = "Warhawks",
+                TeamCity = "Seattle",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 6,
+                TeamName = "Cyclones",
+                TeamCity = "Orlando",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 7,
+                TeamName = "Guardians",
+                TeamCity = "Nashville",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 8,
+                TeamName = "Lumberjacks",
+                TeamCity = "Portland",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 9,
+                TeamName = "Outlaws",
+                TeamCity = "Las Vegas",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 10,
+                TeamName = "Redtails",
+                TeamCity = "Kansas City",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 11,
+                TeamName = "Firestorm",
+                TeamCity = "Phoenix",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 12,
+                TeamName = "Sentinels",
+                TeamCity = "Brooklyn",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 13,
+                TeamName = "Hurricanes",
+                TeamCity = "Miami",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 14,
+                TeamName = "Tritons",
+                TeamCity = "San Diego",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 15,
+                TeamName = "Phantoms",
+                TeamCity = "Detroit",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 16,
+                TeamName = "Cobras",
+                TeamCity = "Carolina",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 17,
+                TeamName = "Rampage",
+                TeamCity = "New Jersey",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 18,
+                TeamName = "Renegades",
+                TeamCity = "St. Louis",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 19,
+                TeamName = "Mustangs",
+                TeamCity = "Oklahoma City",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            },
+            new Team
+            {
+                TeamId = 20,
+                TeamName = "Scorpions",
+                TeamCity = "Cincinnati",
+                ByeWeek = 0,
+                ActivePeriods = new List<(DateTime, DateTime)>
+                {
+                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
+                }
+            }
+        });
         modelBuilder.Entity<Player>().HasData(new Player[]
         {
-            // Ton of fabricated data for testing purposes
+            
             // Quarterbacks
             new Player
             {

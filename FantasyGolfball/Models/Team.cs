@@ -7,7 +7,7 @@ public class Team
     public int TeamId { get; set; }
     public string TeamName { get; set; }
     public string TeamCity { get; set; }
-
+    public int ByeWeek { get; set; }
     public List<(DateTime Start, DateTime End)> ActivePeriods { get; set; } = new();
 
     public bool PlayerMovePossible

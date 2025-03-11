@@ -78,9 +78,10 @@ export const PlayerPage = () => {
     return (
         <div>
             <h2>Player List</h2>
-            <div>
-                <div>Search bar (name)</div>
-                <SearchBar setSearchTerm={setSearchTerm}/>
+            <div className="playerpage-options-container">
+                <div>
+                    <SearchBar setSearchTerm={setSearchTerm}/>
+                </div>
                 <div>
                     <label>Position</label>
                     <select name="position" id="position" onChange={handlePositionChange}>
@@ -92,6 +93,8 @@ export const PlayerPage = () => {
                         <option value="K">K</option>
                         <option value="DEF">DEF</option>
                     </select>
+                </div>
+                <div>
                     <label>Stats</label>
                     <select name="stats" id="stats">
                         <option value="This week">This Week</option>

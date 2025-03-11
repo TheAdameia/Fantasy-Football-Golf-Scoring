@@ -1,4 +1,5 @@
 import { useAppContext } from "../contexts/AppContext"
+import "./MainPage.css"
 
 
 export const MainPage = () => {
@@ -15,7 +16,7 @@ export const MainPage = () => {
             <div>
                 <h4>{selectedLeague.leagueName}</h4>
                 <div>League rankings</div>
-                <div>Week {globalWeek} Matchups
+                <div className="mainpage-matchup-container">Week {globalWeek} Matchups
                     <div>
                         {matchups ? matchups
                         .filter((matchup) => matchup.weekId === globalWeek)
