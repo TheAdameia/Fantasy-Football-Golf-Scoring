@@ -1,0 +1,19 @@
+.league-card {
+    border: 1px;
+    border-color: #000000;
+    border-style: double;
+    width: 50%;
+}
+
+.leagues-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rules-card {
+    margin: 5px;
+    border: 1px;
+    border-color: aquamarine;
+    border-style: groove;
+}

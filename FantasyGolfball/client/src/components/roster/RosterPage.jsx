@@ -3,12 +3,11 @@ import { RosterCard } from "./RosterCard"
 import { useAppContext } from "../../contexts/AppContext"
 import { GetByWeekAndPlayers } from "../../managers/scoringManager"
 import { Button } from "reactstrap"
-import { LeagueDropdownSwap } from "../league/LeagueDropdownSwap"
 
 
 export const RosterPage = () => {
     const [scores, setScores] = useState([])
-    const { roster, globalWeek, loggedInUser } = useAppContext()
+    const { roster, loggedInUser, selectedLeague } = useAppContext()
 
     const getAndSetScores = () => {
         const rosterPlayers = roster?.rosterPlayers || []
@@ -17,7 +16,7 @@ export const RosterPage = () => {
         const playerIdsString = playerIds.join(',')
        
         if (playerIds.length > 0) {
-            GetByWeekAndPlayers(globalWeek, playerIdsString).then(setScores)
+            GetByWeekAndPlayers(selectedLeague.season.currentWeek, playerIdsString).then(setScores)
         }
     }
 
@@ -27,9 +26,6 @@ export const RosterPage = () => {
 
     return (
         <div>
-            <div>
-                <LeagueDropdownSwap/>
-            </div>
             <div>
                 <h2>{loggedInUser.userName}'s team</h2>
                 <div>

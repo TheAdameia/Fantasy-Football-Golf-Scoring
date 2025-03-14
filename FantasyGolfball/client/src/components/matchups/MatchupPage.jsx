@@ -4,8 +4,10 @@ import { MatchupCard } from "./MatchupCard"
 
 
 export const MatchupPage = () => {
-    const { matchups, globalWeek } = useAppContext()
-    const [week, setWeek] = useState(globalWeek)
+    const { matchups, selectedLeague } = useAppContext()
+    const [week, setWeek] = useState(selectedLeague.season.currentWeek)
+    
+    
 
 
     const handleWeekChange = (arg) => {
@@ -32,10 +34,12 @@ export const MatchupPage = () => {
             <div>
                 <div>
                 <button
+                    className="week-buttons"
                     onClick={() => handleWeekChange(false)}
                 >Previous</button>
-                <label>Week {week}</label>
+                <label className="week-label">Week {week}</label>
                 <button
+                    className="week-buttons"
                     onClick={() => handleWeekChange(true)}
                 >Next</button>
                 </div>

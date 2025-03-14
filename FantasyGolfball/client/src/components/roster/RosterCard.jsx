@@ -13,7 +13,6 @@ export const RosterCard = ({ scores }) => {
 
     return (
         <div>
-            <h4>Roster</h4>
             <Table>
                 <thead>
                     <tr>
@@ -21,16 +20,22 @@ export const RosterCard = ({ scores }) => {
                             pos ddown
                         </th>
                         <th>
-                            Active
+                            Activity
+                        </th>
+                        <th>
+                            Status
                         </th>
                         <th>
                             Pos
                         </th>
                         <th>
+                            Team
+                        </th>
+                        <th>
                             Player
                         </th>
                         <th>
-                            Bye NYI
+                            Bye Week
                         </th>
                         <th>
                             Points

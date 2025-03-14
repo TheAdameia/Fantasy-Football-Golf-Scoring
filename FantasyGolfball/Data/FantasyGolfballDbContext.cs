@@ -18,6 +18,9 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Status> Statuses { get; set; }
     public DbSet<LeagueUser> LeagueUsers { get; set; }
     public DbSet<MatchupUser> MatchupUsers { get; set; }
+    public DbSet<Season> Seasons { get; set; }
+    public DbSet<Team> Teams { get; set; }
+    public DbSet<ActivePeriod> ActivePeriods { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -52,6 +55,16 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             Id = 1,
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
         });
+        modelBuilder.Entity<Season>().HasData(new Season[]
+        {
+            new Season
+            {
+                SeasonId = 1,
+                SeasonYear = 2025,
+                SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0),
+                RealSeason = false
+            }
+        });
         modelBuilder.Entity<League>().HasData(new League[]
         {
             new League
@@ -63,7 +76,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 LeagueName = "testing league",
                 RequiredFullToStart = true,
                 MaxRosterSize = 15,
-                IsDraftComplete = false
+                IsDraftComplete = false,
+                SeasonId = 1
             }
         });
         modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]
@@ -200,9 +214,301 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 RequiresBackup = true
             }
         });
+        // Ton of fabricated data for testing purposes
+       
+        modelBuilder.Entity<Team>().HasData(new Team[]
+        {
+            new Team
+            {
+                TeamId = 1,
+                TeamName = "Thunderbirds",
+                TeamCity = "Denver",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 2,
+                TeamName = "Vipers",
+                TeamCity = "Atlanta",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 3,
+                TeamName = "Ironhounds",
+                TeamCity = "Houston",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 4,
+                TeamName = "Stallions",
+                TeamCity = "Chicago",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 5,
+                TeamName = "Warhawks",
+                TeamCity = "Seattle",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 6,
+                TeamName = "Cyclones",
+                TeamCity = "Orlando",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 7,
+                TeamName = "Guardians",
+                TeamCity = "Nashville",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 8,
+                TeamName = "Lumberjacks",
+                TeamCity = "Portland",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 9,
+                TeamName = "Outlaws",
+                TeamCity = "Las Vegas",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 10,
+                TeamName = "Redtails",
+                TeamCity = "Kansas City",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 11,
+                TeamName = "Firestorm",
+                TeamCity = "Phoenix",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 12,
+                TeamName = "Sentinels",
+                TeamCity = "Brooklyn",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 13,
+                TeamName = "Hurricanes",
+                TeamCity = "Miami",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 14,
+                TeamName = "Tritons",
+                TeamCity = "San Diego",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 15,
+                TeamName = "Phantoms",
+                TeamCity = "Detroit",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 16,
+                TeamName = "Cobras",
+                TeamCity = "Carolina",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 17,
+                TeamName = "Rampage",
+                TeamCity = "New Jersey",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 18,
+                TeamName = "Renegades",
+                TeamCity = "St. Louis",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 19,
+                TeamName = "Mustangs",
+                TeamCity = "Oklahoma City",
+                ByeWeek = 0,
+            },
+            new Team
+            {
+                TeamId = 20,
+                TeamName = "Scorpions",
+                TeamCity = "Cincinnati",
+                ByeWeek = 0,
+            }
+        }); 
+        modelBuilder.Entity<ActivePeriod>()
+            .HasOne(ap => ap.Team)
+            .WithMany(t => t.ActivePeriods)
+            .HasForeignKey(ap => ap.TeamId);
+        modelBuilder.Entity<ActivePeriod>().HasData( new ActivePeriod[]
+        {
+            new ActivePeriod
+            {
+                ActivePeriodId = 1, 
+                TeamId = 1, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 2, 
+                TeamId = 2, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 3, 
+                TeamId = 3, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 4, 
+                TeamId = 4, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 5, 
+                TeamId = 5, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 6, 
+                TeamId = 6, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 7, 
+                TeamId = 7, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 8, 
+                TeamId = 8, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 9, 
+                TeamId = 9, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 10, 
+                TeamId = 10, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 11, 
+                TeamId = 11, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 12, 
+                TeamId = 12, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 13, 
+                TeamId = 13, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 14, 
+                TeamId = 14, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 15, 
+                TeamId = 15, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 16, 
+                TeamId = 16, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 17, 
+                TeamId = 17, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 18, 
+                TeamId = 18, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 19, 
+                TeamId = 19, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 20, 
+                TeamId = 20, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+        });
         modelBuilder.Entity<Player>().HasData(new Player[]
         {
-            // Ton of fabricated data for testing purposes
+            
             // Quarterbacks
             new Player
             {

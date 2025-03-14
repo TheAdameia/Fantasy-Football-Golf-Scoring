@@ -1,0 +1,14 @@
+.button-drop {
+    background-color: red;
+}
+
+.button-add {
+    background-color: green;
+}
+
+.playerpage-options-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: .5em;
+}

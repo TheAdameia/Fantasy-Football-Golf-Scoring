@@ -45,7 +45,13 @@ export const RosterPlayerCard = ({ rp, scores }) => {
                 {rp.rosterPosition}
             </td>
             <td>
+                {rp.player.status.statusType}
+            </td>
+            <td>
                 {rp.player.position.positionShort}
+            </td>
+            <td>
+                -
             </td>
             <td>
                 {rp.player.playerFirstName + " " + rp.player.playerLastName}

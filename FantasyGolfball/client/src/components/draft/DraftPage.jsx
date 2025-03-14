@@ -10,6 +10,7 @@ import { DraftPlayerQueue } from "./DraftPlayerQueue"
 import { DraftAutoQueue } from "./DraftAutoQueue"
 import { DraftTeamDisplay } from "./DraftTeamDisplay"
 import { useAppContext } from "../../contexts/AppContext"
+import Confetti from "react-confetti"
 
 export const DraftContext = createContext()
 
@@ -93,6 +94,9 @@ export const DraftPage = () => {
 
     return (
         <DraftContext.Provider value={{ draftState, currentTurn, connection}}>
+            {selectedLeague?.isDraftComplete && (
+                <Confetti  />
+            )}
             <div className="draft-container">
                 <div className="left-side">
                     <DraftTimer />

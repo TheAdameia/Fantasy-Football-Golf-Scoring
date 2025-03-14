@@ -10,15 +10,15 @@ export const MatchupCard = ({ matchup }) => {
     const opponentRoster = opponentLeagueUser.roster
       
     return (
-        <div className="matchup-container">
-            <div>{loggedInUser.userName}'s team
-                <MatchupRosterCard slot={true}/>
-            </div>
-            <div className="vertical-divider">
-                
-            </div>
-            <div>{opponentLeagueUser.userProfile.userName}'s team
-                <MatchupRosterCard slot={false} opponentRoster={opponentRoster}/>
+        <div className="parent-container">
+            <div className="matchup-container">
+                <div>{loggedInUser.userName}'s team
+                    <MatchupRosterCard slot={true}/>
+                </div>
+                <div className="vertical-divider"></div>
+                <div>{opponentLeagueUser.userProfile.userName}'s team
+                    <MatchupRosterCard slot={false} opponentRoster={opponentRoster}/>
+                </div>
             </div>
         </div>
     )

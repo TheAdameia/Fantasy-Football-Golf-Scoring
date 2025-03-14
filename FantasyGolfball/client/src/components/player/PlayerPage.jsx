@@ -4,13 +4,12 @@ import { useAppContext } from "../../contexts/AppContext"
 import { SearchBar } from "../SearchBar"
 import { PlayerCard } from "./PlayerCard"
 
-// I'm holding off on making the "stats" and "my/other teams" filters functional until I put scores into contextAPI, otherwise the sheer number of endpoint calls will be horrendous.
 export const PlayerPage = () => {
     const [filteredPlayers, setFilteredPlayers] = useState()
     const [searchTerm, setSearchTerm] = useState("")
     const [positionFilter, setPositionFilter] = useState("Any")
     const [playerSlice, setPlayerSlice] = useState({sliceStart: 0, sliceEnd: 24})
-    const { globalWeek, players } = useAppContext()
+    const { players, selectedLeague } = useAppContext()
 
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
@@ -78,9 +77,10 @@ export const PlayerPage = () => {
     return (
         <div>
             <h2>Player List</h2>
-            <div>
-                <div>Search bar (name)</div>
-                <SearchBar setSearchTerm={setSearchTerm}/>
+            <div className="playerpage-options-container">
+                <div>
+                    <SearchBar setSearchTerm={setSearchTerm}/>
+                </div>
                 <div>
                     <label>Position</label>
                     <select name="position" id="position" onChange={handlePositionChange}>
@@ -92,6 +92,8 @@ export const PlayerPage = () => {
                         <option value="K">K</option>
                         <option value="DEF">DEF</option>
                     </select>
+                </div>
+                <div>
                     <label>Stats</label>
                     <select name="stats" id="stats">
                         <option value="This week">This Week</option>
@@ -132,7 +134,7 @@ export const PlayerPage = () => {
                             Roster Status
                         </th>
                         <th>
-                            Week {globalWeek} Points
+                            Week {selectedLeague.season.currentWeek} Points
                         </th>
                         <th>
                             Season Total Points

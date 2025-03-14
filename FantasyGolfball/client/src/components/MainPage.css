@@ -1,0 +1,28 @@
+.mainpage-matchup-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    border: .5em;
+    border-color: darkgreen;
+    border-style: ridge;
+}
+
+.mainpage-league-container {
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    width: 40em;
+}
+
+.mainpage-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainpage-rules-container {
+    border: .5em;
+    border-color: black;
+    border-style: groove;
+}

@@ -12,6 +12,7 @@ NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
 import { useAppContext } from "../contexts/AppContext";
+import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap";
 
 export default function NavBar() {
 const [open, setOpen] = useState(false);
@@ -49,6 +50,9 @@ return (
                     <NavLink tag={RRNavLink} to="/matchups">
                         Matchups
                     </NavLink>
+                </NavItem>
+                <NavItem>
+                    <LeagueDropdownSwap />
                 </NavItem>
             </Nav>
             </Collapse>
