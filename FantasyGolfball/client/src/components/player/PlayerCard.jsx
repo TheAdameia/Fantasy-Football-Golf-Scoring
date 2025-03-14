@@ -28,14 +28,14 @@ export const PlayerCard = ({ player }) => {
     useEffect(() => {
         if (allScores) {
             const playerScores = allScores.filter(s => s.playerId == player.playerId)
-            let thisWeekScore = playerScores.find(s => s.seasonWeek == globalWeek)
+            let thisWeekScore = playerScores.find(s => s.seasonWeek == selectedLeague.season.currentWeek)
             setWeekScore(thisWeekScore)
 
             let total = playerScores.reduce((sum, s) => sum + s.points, 0)
             let fixedTotal = total.toFixed(1)
             setSeasonTotal(fixedTotal)
         }
-    }, [allScores, globalWeek, player])
+    }, [allScores, selectedLeague.season.currentWeek, player])
 
     useEffect(() => {
         if (selectedLeague && selectedLeague.leagueUsers.some(lu => lu.userProfileId !== loggedInUser.id 

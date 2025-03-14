@@ -3,7 +3,7 @@ import "./MainPage.css"
 
 
 export const MainPage = () => {
-    const { selectedLeague, matchups, globalWeek } = useAppContext()
+    const { selectedLeague, matchups } = useAppContext()
 
     if (!selectedLeague) {
         return (
@@ -11,15 +11,15 @@ export const MainPage = () => {
         )
     }
     return (
-        <div>
+        <div className="mainpage-main-container">
             <h1>Testing, attention please!</h1>
-            <div>
+            <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 <div>League rankings</div>
-                <div className="mainpage-matchup-container">Week {globalWeek} Matchups
+                <div className="mainpage-matchup-container">Week {selectedLeague.season.currentWeek} Matchups
                     <div>
                         {matchups ? matchups
-                        .filter((matchup) => matchup.weekId === globalWeek)
+                        .filter((matchup) => matchup.weekId === selectedLeague.season.currentWeek)
                         .map((matchup) => {
                             return (
                                 <div key={matchup.matchupId} className="matchup">
@@ -29,7 +29,7 @@ export const MainPage = () => {
                         }) : <div></div>}
                     </div>
                 </div>
-                <div>League Settings 
+                <div className="mainpage-rules-container">League Settings 
                     <div>Player Limit: {selectedLeague.playerLimit}</div>
                     {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                     {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}

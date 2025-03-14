@@ -4,8 +4,10 @@ import { MatchupCard } from "./MatchupCard"
 
 
 export const MatchupPage = () => {
-    const { matchups, globalWeek } = useAppContext()
-    const [week, setWeek] = useState(globalWeek)
+    const { matchups, selectedLeague } = useAppContext()
+    const [week, setWeek] = useState(selectedLeague.season.currentWeek)
+    
+    
 
 
     const handleWeekChange = (arg) => {

@@ -82,7 +82,7 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
                     </select>
                 </div>
             </div>
-            <div className="table-container">
+            <div className="draft-table-container">
                 <Table>
                     <thead>
                         <tr>

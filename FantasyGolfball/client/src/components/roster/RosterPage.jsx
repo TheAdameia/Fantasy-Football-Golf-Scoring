@@ -7,7 +7,7 @@ import { Button } from "reactstrap"
 
 export const RosterPage = () => {
     const [scores, setScores] = useState([])
-    const { roster, globalWeek, loggedInUser } = useAppContext()
+    const { roster, loggedInUser, selectedLeague } = useAppContext()
 
     const getAndSetScores = () => {
         const rosterPlayers = roster?.rosterPlayers || []
@@ -16,7 +16,7 @@ export const RosterPage = () => {
         const playerIdsString = playerIds.join(',')
        
         if (playerIds.length > 0) {
-            GetByWeekAndPlayers(globalWeek, playerIdsString).then(setScores)
+            GetByWeekAndPlayers(selectedLeague.season.currentWeek, playerIdsString).then(setScores)
         }
     }
 

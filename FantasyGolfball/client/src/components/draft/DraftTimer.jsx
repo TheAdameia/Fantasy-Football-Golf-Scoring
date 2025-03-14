@@ -45,9 +45,10 @@ export const DraftTimer = () => {
     // cut the reset button after testing
     return (
         <div>
-            <div className="timer">{secondsLeft}</div>
+            <div className="timer-seconds">{secondsLeft}</div>
             <button onClick={resetTimer}>reset timer</button>
-            {currentTurn === loggedInUser.id ? <div>Your Turn to Draft!</div> : <></>}
+            {currentTurn === loggedInUser.id ? <div className="timer-yourTurn">Your Turn to Draft!</div> 
+            : <div className="timer-notYourTurn">Not your turn</div>}
         </div>
     )
 }

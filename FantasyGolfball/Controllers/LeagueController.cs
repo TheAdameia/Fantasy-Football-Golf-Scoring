@@ -124,6 +124,7 @@ public class LeagueController : ControllerBase
     {
         var UserLeagues = _dbContext.Leagues
         .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId))
+        .Include(l => l.Season)
         .Include(l => l.LeagueUsers)
             .ThenInclude(lu => lu.UserProfile)
                 .ThenInclude(up => up.IdentityUser)
@@ -148,6 +149,13 @@ public class LeagueController : ControllerBase
             MaxRosterSize = l.MaxRosterSize,
             IsDraftComplete = l.IsDraftComplete,
             SeasonId = l.SeasonId,
+            Season = new SeasonDTO
+            {
+                SeasonId = l.Season.SeasonId,
+                SeasonYear = l.Season.SeasonYear,
+                SeasonStartDate = l.Season.SeasonStartDate,
+                RealSeason = l.Season.RealSeason
+            },
             LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
             {
                 LeagueUserId = lu.LeagueUserId,
@@ -225,6 +233,13 @@ public class LeagueController : ControllerBase
                 LeagueName = l.LeagueName,
                 RequiredFullToStart = l.RequiredFullToStart,
                 SeasonId = l.SeasonId,
+                Season = new SeasonDTO
+                {
+                    SeasonId = l.Season.SeasonId,
+                    SeasonYear = l.Season.SeasonYear,
+                    SeasonStartDate = l.Season.SeasonStartDate,
+                    RealSeason = l.Season.RealSeason
+                },
                 LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserSafeExportDTO
                 {
                     LeagueUserId = lu.LeagueUserId,

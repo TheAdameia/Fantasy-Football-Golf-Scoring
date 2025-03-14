@@ -20,6 +20,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<MatchupUser> MatchupUsers { get; set; }
     public DbSet<Season> Seasons { get; set; }
     public DbSet<Team> Teams { get; set; }
+    public DbSet<ActivePeriod> ActivePeriods { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -214,6 +215,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             }
         });
         // Ton of fabricated data for testing purposes
+       
         modelBuilder.Entity<Team>().HasData(new Team[]
         {
             new Team
@@ -222,10 +224,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Thunderbirds",
                 TeamCity = "Denver",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -233,10 +231,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Vipers",
                 TeamCity = "Atlanta",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -244,10 +238,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Ironhounds",
                 TeamCity = "Houston",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -255,10 +245,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Stallions",
                 TeamCity = "Chicago",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -266,10 +252,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Warhawks",
                 TeamCity = "Seattle",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -277,10 +259,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Cyclones",
                 TeamCity = "Orlando",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -288,10 +266,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Guardians",
                 TeamCity = "Nashville",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -299,10 +273,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Lumberjacks",
                 TeamCity = "Portland",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -310,10 +280,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Outlaws",
                 TeamCity = "Las Vegas",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -321,10 +287,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Redtails",
                 TeamCity = "Kansas City",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -332,10 +294,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Firestorm",
                 TeamCity = "Phoenix",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -343,10 +301,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Sentinels",
                 TeamCity = "Brooklyn",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -354,10 +308,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Hurricanes",
                 TeamCity = "Miami",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -365,10 +315,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Tritons",
                 TeamCity = "San Diego",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -376,10 +322,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Phantoms",
                 TeamCity = "Detroit",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -387,10 +329,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Cobras",
                 TeamCity = "Carolina",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -398,10 +336,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Rampage",
                 TeamCity = "New Jersey",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -409,10 +343,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Renegades",
                 TeamCity = "St. Louis",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -420,10 +350,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Mustangs",
                 TeamCity = "Oklahoma City",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             },
             new Team
             {
@@ -431,11 +357,154 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Scorpions",
                 TeamCity = "Cincinnati",
                 ByeWeek = 0,
-                ActivePeriods = new List<(DateTime, DateTime)>
-                {
-                    (new DateTime(2025, 1, 1, 8, 0, 0), new DateTime (2040, 1, 1, 8, 0, 0))
-                }
             }
+        }); 
+        modelBuilder.Entity<ActivePeriod>()
+            .HasOne(ap => ap.Team)
+            .WithMany(t => t.ActivePeriods)
+            .HasForeignKey(ap => ap.TeamId);
+        modelBuilder.Entity<ActivePeriod>().HasData( new ActivePeriod[]
+        {
+            new ActivePeriod
+            {
+                ActivePeriodId = 1, 
+                TeamId = 1, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 2, 
+                TeamId = 2, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 3, 
+                TeamId = 3, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 4, 
+                TeamId = 4, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 5, 
+                TeamId = 5, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 6, 
+                TeamId = 6, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 7, 
+                TeamId = 7, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 8, 
+                TeamId = 8, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 9, 
+                TeamId = 9, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 10, 
+                TeamId = 10, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 11, 
+                TeamId = 11, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 12, 
+                TeamId = 12, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 13, 
+                TeamId = 13, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 14, 
+                TeamId = 14, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 15, 
+                TeamId = 15, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 16, 
+                TeamId = 16, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 17, 
+                TeamId = 17, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 18, 
+                TeamId = 18, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 19, 
+                TeamId = 19, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
+            new ActivePeriod
+            {
+                ActivePeriodId = 20, 
+                TeamId = 20, 
+                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0)
+            },
         });
         modelBuilder.Entity<Player>().HasData(new Player[]
         {

@@ -16,10 +16,6 @@ export const AppProvider = ({ children }) => {
   const [matchups, setMatchups] = useState(null)
   const [allScores, setAllScores] = useState()
 
-
-  // add state for determining week here
-  const globalWeek = 1
-
   const getAndSetAllScores = () => {
     if (loggedInUser) {
       GetAllScores().then(setAllScores)
@@ -104,8 +100,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{ 
       loggedInUser, 
-      setLoggedInUser, 
-      globalWeek, 
+      setLoggedInUser,
       roster, 
       players,
       getAndSetRoster,

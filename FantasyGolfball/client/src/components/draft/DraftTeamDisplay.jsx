@@ -12,11 +12,11 @@ export const DraftTeamDisplay = () => {
     }
 
     return (
-        <div>
+        <div className="draft-selectedPlayers-container">
             {roster.rosterPlayers.map((rp) => {
                 return (
-                    <div key={rp.player.playerId}>
-                        <div>{rp.player.position.positionShort}</div>
+                    <div key={rp.player.playerId} className="draft-selectedPlayers-playerContainer">
+                        <div className="draft-selectedPlayers-position">{rp.player.position.positionShort}</div>
                         <div>{rp.player.playerFirstName} {rp.player.playerLastName}</div>
                     </div>
                 )
