@@ -14,6 +14,7 @@ export const LeagueForm = () => {
         randomizedDraftOrder: true,
         usersVetoTrades: false,
         requiredFullToStart: true,
+        seasonId: 1,
         maxRosterSize: 15 // I will need to add an option to change this
     })
     const navigate = useNavigate()
@@ -87,6 +88,8 @@ export const LeagueForm = () => {
                             setLeagueObject(objectCopy)
                         }}
                     ></Input>
+                    <Label>Custom or Real season placeholder</Label>
+                    
                 </FormGroup>
                 <button
                     onClick={handleSubmit}

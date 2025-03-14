@@ -60,7 +60,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 SeasonId = 1,
                 SeasonYear = 2025,
-                SeasonStartDate = new DateTime(2025, 3, 10, 8, 0, 0),
+                SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0),
                 RealSeason = false
             }
         });
@@ -75,7 +75,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 LeagueName = "testing league",
                 RequiredFullToStart = true,
                 MaxRosterSize = 15,
-                IsDraftComplete = false
+                IsDraftComplete = false,
+                SeasonId = 1
             }
         });
         modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]

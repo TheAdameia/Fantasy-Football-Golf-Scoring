@@ -14,5 +14,6 @@ public class LeagueFullExpandDTO
     public bool RequiredFullToStart { get; set; }
     public int MaxRosterSize { get; set; }
     public bool IsDraftComplete { get; set; }
+    public int SeasonId { get; set; }
     public ICollection<LeagueUserFullExpandDTO> LeagueUsers { get; set; }
 }

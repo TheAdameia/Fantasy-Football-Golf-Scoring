@@ -38,7 +38,8 @@ public class LeagueController : ControllerBase
             LeagueName = leaguePOSTDTO.LeagueName,
             RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
             MaxRosterSize = leaguePOSTDTO.MaxRosterSize,
-            IsDraftComplete = false
+            IsDraftComplete = false,
+            SeasonId = leaguePOSTDTO.SeasonId
         };
         
         _dbContext.Leagues.Add(league);
@@ -146,6 +147,7 @@ public class LeagueController : ControllerBase
             RequiredFullToStart = l.RequiredFullToStart,
             MaxRosterSize = l.MaxRosterSize,
             IsDraftComplete = l.IsDraftComplete,
+            SeasonId = l.SeasonId,
             LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
             {
                 LeagueUserId = lu.LeagueUserId,
@@ -222,6 +224,7 @@ public class LeagueController : ControllerBase
                 UsersVetoTrades = l.UsersVetoTrades,
                 LeagueName = l.LeagueName,
                 RequiredFullToStart = l.RequiredFullToStart,
+                SeasonId = l.SeasonId,
                 LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserSafeExportDTO
                 {
                     LeagueUserId = lu.LeagueUserId,

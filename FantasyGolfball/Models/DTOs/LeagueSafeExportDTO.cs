@@ -13,5 +13,6 @@ public class LeagueSafeExportDTO
     public string LeagueName { get; set; }
     public bool RequiredFullToStart { get; set; }
     public int MaxRosterSize { get; set; }
+    public int SeasonId { get; set; }
     public ICollection<LeagueUserSafeExportDTO> LeagueUsers { get; set; }
 }
