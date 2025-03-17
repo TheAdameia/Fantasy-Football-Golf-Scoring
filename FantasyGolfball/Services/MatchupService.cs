@@ -15,9 +15,9 @@ public interface IMatchupService
 public class MatchupService : IMatchupService
 {
     private readonly IServiceScopeFactory _scopeFactory;
-    private readonly EventBus _eventBus;
+    private readonly IEventBus _eventBus;
 
-    public MatchupService(IServiceScopeFactory scopeFactory, EventBus eventBus)
+    public MatchupService(IServiceScopeFactory scopeFactory, IEventBus eventBus)
     {
         _scopeFactory = scopeFactory;
         _eventBus = eventBus;
@@ -104,7 +104,7 @@ public class MatchupService : IMatchupService
                 int userB = users[numUsers - 1 - i]; // what.gif
 
                 if (userA != -1 && userB != -1) //ignores byes
-                { // this bracket was missing, why
+                {
                     roundMatches.AddRange(new[] {userA, userB});
                 }
             }

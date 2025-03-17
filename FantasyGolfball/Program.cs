@@ -34,7 +34,8 @@ builder.Services.AddSingleton<IDraftService, DraftService>(); // registers IDraf
 builder.Services.AddScoped<FantasyGolfballDbContext>();
 
 builder.Services.AddSingleton<IMatchupService, MatchupService>();
-builder.Services.AddSingleton<EventBus>();
+builder.Services.AddSingleton<IEventBus, EventBus>();
+builder.Services.AddHostedService<WeekAdvancementService>(); // cronjob to see when seasonweeks change
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>

@@ -32,7 +32,6 @@ public class DraftState
         AvailablePlayers.Remove(selectedPlayer);
         UserRosters[userId].Add(playerId);
 
-        Console.WriteLine($"CurrentUserId: {CurrentUserId}");
         if (DraftOrder.Count > 0) // Always ensure the queue has elements before dequeuing
         {
             var justDraftedUserId = DraftOrder.Dequeue();
