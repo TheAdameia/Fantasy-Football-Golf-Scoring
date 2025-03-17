@@ -19,8 +19,8 @@ public class WeekAdvancementService : BackgroundService
         {
             using (var scope = _scopeFactory.CreateScope())
             {
-                var dbcontext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
-                var seasons = await dbcontext.Seasons.ToListAsync(stoppingToken);
+                var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
+                var seasons = await dbContext.Seasons.ToListAsync(stoppingToken);
 
                 foreach (var season in seasons)
                 {
@@ -28,7 +28,7 @@ public class WeekAdvancementService : BackgroundService
                     if (latestWeek.HasValue && season.LastRecordedWeek != latestWeek)
                     {
                         season.LastRecordedWeek = latestWeek; // updates stored value
-                        await dbcontext.SaveChangesAsync(stoppingToken);
+                        await dbContext.SaveChangesAsync(stoppingToken);
 
                         await _eventBus.Publish(new WeekAdvancedEvent(season.SeasonId, latestWeek.Value)); // triggers event
                     }
