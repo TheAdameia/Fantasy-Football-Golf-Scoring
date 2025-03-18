@@ -6,9 +6,6 @@ import { BlankPlayerCard } from "./BlankPlayerCard"
 
 export const MatchupRosterCard = ({ slot, opponentRoster }) => {
     const { roster } = useAppContext()
-
-    // if in slot 1 display columns left to right... slot 2 right to left
-    // I can use the same trick for the player card
     
     if (slot == true && roster) {
         return ( //position, name, team, injury status, points

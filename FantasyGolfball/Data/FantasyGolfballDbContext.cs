@@ -78,6 +78,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 RequiredFullToStart = true,
                 MaxRosterSize = 15,
                 IsDraftComplete = false,
+                IsLeagueFinished = false,
                 SeasonId = 1
             }
         });

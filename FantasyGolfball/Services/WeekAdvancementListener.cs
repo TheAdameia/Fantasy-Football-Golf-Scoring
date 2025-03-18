@@ -89,7 +89,7 @@ public class WeekAdvancementListenerService
                 }
             }
         }
-    await dbContext.SaveChangesAsync();
-    Console.WriteLine("Completed Week Advancement matchup processing.");
+        await dbContext.SaveChangesAsync();
+        Console.WriteLine("Completed Week Advancement matchup processing.");
     }
 }
