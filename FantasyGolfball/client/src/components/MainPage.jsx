@@ -19,7 +19,7 @@ export const MainPage = () => {
                     <div>Final Rankings:</div>
                     <div className="mainpage-matchup-container">
                         <div>
-                            bubkis (placeholder, supposed to show win/loss records and potentially other fun stats)
+                            bubkis (placeholder, supposed to show win/loss records and other fun stats)
                         </div>
                     </div>
                     <div className="mainpage-rules-container">League Settings 
@@ -37,6 +37,7 @@ export const MainPage = () => {
     return (
         <div className="mainpage-main-container">
             <h1>Testing, attention please!</h1>
+            <aside>View past leagues</aside>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 <div>League rankings</div>
