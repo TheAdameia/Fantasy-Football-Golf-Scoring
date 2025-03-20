@@ -5,14 +5,12 @@ Alternatively, Fantasy Football with Golf Scoring (lowest score wins)
 Fantasy Golfball is a proof of concept fantasy football creation that is meant to ultimately be able to host a service for those that want to play fantasy football with a quirky, irreverent ruleset.
 
 ## Technologies Used
-- React/JS
-- C#/.NET
+- React/JS, C#/.NET, CSS
 - EFC
 - PSQL
-- reactstrap
-- Context API
-- CSS
 - SignalR
+- xUnit
+- Context API
 
 ## Where is the project at now and where is it going?
 Functionality is being added and tested for MVP mandatory features. Pending that testing and functionality, in-house testing with a group of beta testers will begin. After that, the project will continue development with an eye on becoming a public-facing web service.
