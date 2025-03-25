@@ -1,6 +1,13 @@
 namespace FantasyGolfball.Models.Events;
 
-public class EventBus
+
+public interface IEventBus
+{
+    void Subscribe<T>(Func<T, Task> handler);
+    Task Publish<T>(T eventData);
+}
+
+public class EventBus : IEventBus
 {
     private readonly Dictionary<Type, List<Delegate>> _handlers = new();
 

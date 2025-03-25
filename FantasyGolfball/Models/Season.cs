@@ -26,4 +26,5 @@ public class Season
         }
     }
     public bool RealSeason { get; set; }
+    public int? LastRecordedWeek { get; set; } // key exists to assist in detecting when CurrentWeek changes
 }

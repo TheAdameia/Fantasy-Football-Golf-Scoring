@@ -18,9 +18,9 @@ public class DraftService : IDraftService
 {
     private readonly IServiceScopeFactory _scopeFactory;
     private readonly Dictionary<int, DraftState> _draftStates = new();
-    private readonly EventBus _eventBus;
+    private readonly IEventBus _eventBus;
 
-    public DraftService(IServiceScopeFactory scopeFactory, EventBus eventBus)
+    public DraftService(IServiceScopeFactory scopeFactory, IEventBus eventBus)
     {
         _scopeFactory = scopeFactory ?? throw new ArgumentNullException(nameof(scopeFactory));
         _eventBus = eventBus;

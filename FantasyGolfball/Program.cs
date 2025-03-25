@@ -34,7 +34,9 @@ builder.Services.AddSingleton<IDraftService, DraftService>(); // registers IDraf
 builder.Services.AddScoped<FantasyGolfballDbContext>();
 
 builder.Services.AddSingleton<IMatchupService, MatchupService>();
-builder.Services.AddSingleton<EventBus>();
+builder.Services.AddSingleton<IEventBus, EventBus>();
+builder.Services.AddHostedService<WeekAdvancementService>(); // cronjob to see when seasonweeks change
+builder.Services.AddSingleton<WeekAdvancementListenerService>(); // listens for week change
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -100,6 +102,8 @@ app.MapHub<LiveDraftHub>("/draftHub");
 
 // forcing MatchupService to initialize when the app starts to run
 var matchupService = app.Services.GetRequiredService<IMatchupService>();
+var weekListenerService = app.Services.GetRequiredService<WeekAdvancementListenerService>();
+
 
 app.MapControllers();
 

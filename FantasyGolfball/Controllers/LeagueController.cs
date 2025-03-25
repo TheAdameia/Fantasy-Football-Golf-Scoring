@@ -39,7 +39,8 @@ public class LeagueController : ControllerBase
             RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
             MaxRosterSize = leaguePOSTDTO.MaxRosterSize,
             IsDraftComplete = false,
-            SeasonId = leaguePOSTDTO.SeasonId
+            SeasonId = leaguePOSTDTO.SeasonId,
+            IsLeagueFinished =  false
         };
         
         _dbContext.Leagues.Add(league);
@@ -148,6 +149,7 @@ public class LeagueController : ControllerBase
             RequiredFullToStart = l.RequiredFullToStart,
             MaxRosterSize = l.MaxRosterSize,
             IsDraftComplete = l.IsDraftComplete,
+            IsLeagueFinished = l.IsLeagueFinished,
             SeasonId = l.SeasonId,
             Season = new SeasonDTO
             {
@@ -205,14 +207,6 @@ public class LeagueController : ControllerBase
 
         return Ok(UserLeagues);
                         
-    }
-
-    [HttpGet("{leagueId}")] //unused currently
-    // [Authorize]
-    public IActionResult GetByLeagueId(int leagueId)
-    {
-        return Ok(_dbContext.Leagues
-        .SingleOrDefault(l => l.LeagueId == leagueId));
     }
 
     [HttpGet("not-full-leagues")]

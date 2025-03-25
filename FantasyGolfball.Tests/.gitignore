@@ -1,0 +1,27 @@
+# Ignore build and binary files
+bin/
+obj/
+
+# Ignore logs and temp files
+*.log
+logs/
+TestResults/
+
+# Ignore test database files (if any)
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# Ignore publish/output directories
+out/
+dist/
+.publish/
+
+# Ignore IDE-specific files
+.idea/
+*.swp
+*.sln.ide
+
+# Ignore NuGet packages
+packages/
