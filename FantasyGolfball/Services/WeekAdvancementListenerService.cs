@@ -53,7 +53,7 @@ public class WeekAdvancementListenerService
             {
                 if (matchup.MatchupUsers.Count != 2)
                 {
-                    throw new Exception($"matchup {matchup.MatchupId} containers a non-2 number of MU");
+                    throw new Exception($"matchup {matchup.MatchupId} contains a non-2 number of MU");
                 }
 
                 var scores = new Dictionary<int, float>(); // key: userprofileid, value: sum score
@@ -69,14 +69,17 @@ public class WeekAdvancementListenerService
                     {
                         throw new Exception($"user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
                     }
+
+                    // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC, so tests break on that
+                    var filteredRosterPlayers = roster.RosterPlayers
+                        .Where(rp => rp.RosterPosition != "bench")
+                        .Select(rp => rp.PlayerId)
+                        .ToList();
                     
                     float totalScore = await dbContext.Scorings
                         .Where(s => s.SeasonYear == season.SeasonYear &&
-                                    s.SeasonWeek ==  previousWeek &&
-                                    roster.RosterPlayers
-                                        .Where(rp => rp.RosterPosition != "bench")
-                                        .Select(rp => rp.PlayerId)
-                                        .Contains(s.PlayerId))
+                                    s.SeasonWeek == previousWeek &&
+                                    filteredRosterPlayers.Contains(s.PlayerId))
                         .SumAsync(s => s.Points);
                     
                     scores[matchupUser.UserProfileId] = totalScore;
