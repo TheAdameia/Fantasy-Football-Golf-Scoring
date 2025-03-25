@@ -19,7 +19,7 @@ export const LeagueForm = () => {
     })
     const navigate = useNavigate()
 
-    // waiver wire is a big undertaking, hold off until after first closed testing iteration
+    // if I need to make a new Season in this interface, I think the smartest way to do it is by expanding the Post DTO. That way, in the controller, I can create the Season first and then the League. The new keys int he post DTO will be nullable.
 
     const handleSubmit = (event) => {
         event.preventDefault()

@@ -30,6 +30,9 @@ public class LeagueController : ControllerBase
     // [Authorize]
     public IActionResult Post(LeaguePOSTDTO leaguePOSTDTO)
     {
+
+        // if leaguePOSTDTO.SeasonWhatever != null, create new season
+        
         var league = new League
         {
             PlayerLimit = leaguePOSTDTO.PlayerLimit,
