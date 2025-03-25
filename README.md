@@ -6,10 +6,10 @@ Fantasy Golfball is a proof of concept fantasy football creation that is meant t
 
 ## Technologies Used
 - React/JS, C#/.NET, CSS
+- xUnit, Moq
 - EFC
 - PSQL
 - SignalR
-- xUnit, Moq
 - Context API
 
 ## Where is the project at now and where is it going?
@@ -25,8 +25,8 @@ Minimum Viable Product will be achieved when users can do the following:
 
 ## Planning links
 
-Task Organizer (actively updated) https://github.com/users/TheAdameia/projects/2/views/1 \
-ERD (out of date) https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
+Task Organizer https://github.com/users/TheAdameia/projects/2/views/1 \
+ERD https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
 
 ## Disclosures
 I don't own football (does anybody?). All data used is either fabricated for testing purposes or gathered from public sources on the internet. I do not profit from this project.
