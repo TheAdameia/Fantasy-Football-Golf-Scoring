@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
 using FantasyGolfball.Models.DTOs;
+using System.Transactions;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -31,13 +32,14 @@ public class LeagueController : ControllerBase
     public IActionResult Post(LeaguePOSTDTO leaguePOSTDTO)
     {
         using var transaction = _dbContext.Database.BeginTransaction();
-
+        Console.WriteLine("If you don't see this, it didn't start");
         try
         {
             Season season;
 
-            if (!leaguePOSTDTO.RealSeason)
+            if (leaguePOSTDTO.RealSeason == false)
             {
+                Console.WriteLine("If you don't see this, RealSeason was true");
                 season = new Season
                 {
                     RealSeason = leaguePOSTDTO.RealSeason,
@@ -56,6 +58,7 @@ public class LeagueController : ControllerBase
 
                 if (season == null)
                 {
+                    transaction.Rollback();
                     return BadRequest($"No real season found for year {leaguePOSTDTO.SeasonYear}");
                 }
             }
@@ -94,15 +97,17 @@ public class LeagueController : ControllerBase
                     RosterId = roster.RosterId
                 };
                 _dbContext.LeagueUsers.Add(leagueUser);
-                _dbContext.SaveChanges();
+                
                 
             }
-            
+
+            _dbContext.SaveChanges();
+            transaction.Commit();
             return Created($"api/leagues/{league.LeagueId}", league);
         }
         catch(Exception ex)
         {
-            // rollback the db changes if an error occurs
+            // this only rolls back a few of the changes, but I can write error handling to delete vestiges if they are created
             transaction.Rollback();
             return StatusCode(500, $"An error occurred while trying to create a League: {ex.Message}");
         }
