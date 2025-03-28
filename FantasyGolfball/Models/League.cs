@@ -16,4 +16,5 @@ public class League
     public int SeasonId { get; set; }
     public Season Season { get; set; }
     public ICollection<LeagueUser> LeagueUsers { get; set; }
+    public DateTime DraftStartTime { get; set; }
 }

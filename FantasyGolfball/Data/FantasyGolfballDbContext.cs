@@ -79,7 +79,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 MaxRosterSize = 15,
                 IsDraftComplete = false,
                 IsLeagueFinished = false,
-                SeasonId = 1
+                SeasonId = 1,
+                DraftStartTime = new DateTime(2025, 3, 12, 8, 0, 0)
             }
         });
         modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]
