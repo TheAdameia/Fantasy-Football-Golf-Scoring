@@ -1,6 +1,13 @@
+import { useMemo } from "react"
+import { useAppContext } from "../../contexts/AppContext"
 
 
-export const MatchupPlayerCard = ({ rp, slot }) => {
+export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
+    const { allScores } = useAppContext()
+
+    const playerScore = useMemo(() => {
+        return allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
+    }, [allScores, displayWeekPoints.week, rp.playerId])
 
    if (slot && rp) {
     return (
@@ -17,17 +24,13 @@ export const MatchupPlayerCard = ({ rp, slot }) => {
             <td>
                 -
             </td>
-            <td>
-                0
-            </td>
+            {displayWeekPoints.display ? <td>{playerScore.points}</td>:<td>0</td>}
         </tr>
     )
    } else if (slot == false && rp) {
     return (
         <tr>
-            <th>
-                0
-            </th>
+            {displayWeekPoints.display ? <td>{playerScore.points}</td>:<td>0</td>}
             <td>
                 -
             </td>
