@@ -13,4 +13,9 @@ public class LeaguePOSTDTO
    public bool RequiredFullToStart { get; set; }
    public int MaxRosterSize { get; set; }
    public int SeasonId { get; set; }
+   public bool RealSeason { get; set; }
+   public int SeasonYear { get; set; }
+   public DateTime SeasonStartDate { get; set; }
+   public DateTime DraftStartTime { get; set; }
+   public string Advancement { get; set; }
 }

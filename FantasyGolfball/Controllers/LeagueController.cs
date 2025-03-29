@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
 using FantasyGolfball.Models.DTOs;
+using System.Transactions;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -30,45 +31,86 @@ public class LeagueController : ControllerBase
     // [Authorize]
     public IActionResult Post(LeaguePOSTDTO leaguePOSTDTO)
     {
-        var league = new League
+        using var transaction = _dbContext.Database.BeginTransaction();
+        Console.WriteLine("If you don't see this, it didn't start");
+        try
         {
-            PlayerLimit = leaguePOSTDTO.PlayerLimit,
-            RandomizedDraftOrder = leaguePOSTDTO.RandomizedDraftOrder,
-            UsersVetoTrades = leaguePOSTDTO.UsersVetoTrades,
-            LeagueName = leaguePOSTDTO.LeagueName,
-            RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
-            MaxRosterSize = leaguePOSTDTO.MaxRosterSize,
-            IsDraftComplete = false,
-            SeasonId = leaguePOSTDTO.SeasonId,
-            IsLeagueFinished =  false
-        };
-        
-        _dbContext.Leagues.Add(league);
-        _dbContext.SaveChanges();
+            Season season;
 
-        var user = _dbContext.UserProfiles.SingleOrDefault(up => leaguePOSTDTO.CreatorId == up.Id);
-        if (user != null)
-        {
-            var roster = new Roster
+            if (leaguePOSTDTO.RealSeason == false)
             {
-                LeagueId = league.LeagueId,
-                UserId = user.Id
-            };
-            _dbContext.Rosters.Add(roster);
-            _dbContext.SaveChanges();
+                Console.WriteLine("If you don't see this, RealSeason was true");
+                season = new Season
+                {
+                    RealSeason = leaguePOSTDTO.RealSeason,
+                    SeasonYear = leaguePOSTDTO.SeasonYear,
+                    SeasonStartDate = leaguePOSTDTO.SeasonStartDate,
+                    Advancement = Enum.Parse<AdvancementType>(leaguePOSTDTO.Advancement, true) // true makes it case-insensitive                
+                };
 
-            var leagueUser = new LeagueUser
+                _dbContext.Seasons.Add(season);
+                _dbContext.SaveChanges();
+            }
+            else
             {
-                UserProfileId = user.Id,
-                LeagueId = league.LeagueId,
-                RosterId = roster.RosterId
+                // finds the real season
+                season = _dbContext.Seasons.FirstOrDefault(s => s.SeasonYear == leaguePOSTDTO.SeasonYear && s.RealSeason);
+
+                if (season == null)
+                {
+                    transaction.Rollback();
+                    return BadRequest($"No real season found for year {leaguePOSTDTO.SeasonYear}");
+                }
+            }
+
+            var league = new League
+            {
+                PlayerLimit = leaguePOSTDTO.PlayerLimit,
+                RandomizedDraftOrder = leaguePOSTDTO.RandomizedDraftOrder,
+                UsersVetoTrades = leaguePOSTDTO.UsersVetoTrades,
+                LeagueName = leaguePOSTDTO.LeagueName,
+                RequiredFullToStart = leaguePOSTDTO.RequiredFullToStart,
+                MaxRosterSize = leaguePOSTDTO.MaxRosterSize,
+                IsDraftComplete = false,
+                SeasonId = season.SeasonId,
+                IsLeagueFinished =  false
             };
-            _dbContext.LeagueUsers.Add(leagueUser);
-            _dbContext.SaveChanges();
             
+            _dbContext.Leagues.Add(league);
+            _dbContext.SaveChanges();
+
+            var user = _dbContext.UserProfiles.SingleOrDefault(up => leaguePOSTDTO.CreatorId == up.Id);
+            if (user != null)
+            {
+                var roster = new Roster
+                {
+                    LeagueId = league.LeagueId,
+                    UserId = user.Id
+                };
+                _dbContext.Rosters.Add(roster);
+                _dbContext.SaveChanges();
+
+                var leagueUser = new LeagueUser
+                {
+                    UserProfileId = user.Id,
+                    LeagueId = league.LeagueId,
+                    RosterId = roster.RosterId
+                };
+                _dbContext.LeagueUsers.Add(leagueUser);
+                
+                
+            }
+
+            _dbContext.SaveChanges();
+            transaction.Commit();
+            return Created($"api/leagues/{league.LeagueId}", league);
         }
-        
-        return Created($"api/leagues/{league.LeagueId}", league);
+        catch(Exception ex)
+        {
+            // this only rolls back a few of the changes, but I can write error handling to delete vestiges if they are created
+            transaction.Rollback();
+            return StatusCode(500, $"An error occurred while trying to create a League: {ex.Message}");
+        }
     }
 
     [HttpPut("join-league")]

@@ -1,14 +1,17 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupCard } from "./MatchupCard"
 
 
 export const MatchupPage = () => {
     const { matchups, selectedLeague } = useAppContext()
-    const [week, setWeek] = useState(selectedLeague.season.currentWeek)
+    const [week, setWeek] = useState(selectedLeague?.season?.currentWeek ?? 1)
     
-    
-
+    useEffect(() => {
+        if (selectedLeague?.season?.currentWeek) {
+            setWeek(selectedLeague.season.currentWeek)
+        }
+    }, [selectedLeague?.season?.currentWeek])
 
     const handleWeekChange = (arg) => {
         if (arg == true && (week + 1) > 4) {
@@ -52,6 +55,7 @@ export const MatchupPage = () => {
                             <MatchupCard
                                 matchup={matchup}
                                 key={matchup.matchupId}
+                                week={week}
                             />
                         )
                     })}
