@@ -35,7 +35,7 @@ export const PlayerCard = ({ player }) => {
             let fixedTotal = total.toFixed(1)
             setSeasonTotal(fixedTotal)
         }
-    }, [allScores, selectedLeague.season.currentWeek, player])
+    }, [allScores, selectedLeague?.season?.currentWeek, player])
 
     useEffect(() => {
         if (selectedLeague && selectedLeague.leagueUsers.some(lu => lu.userProfileId !== loggedInUser.id 
@@ -60,7 +60,7 @@ export const PlayerCard = ({ player }) => {
 
             </th>
             <td>
-                {player.playerFirstName} {player.playerLastName}
+                {player.playerFullName}
             </td>
             <td>
                 {player.position.positionShort}

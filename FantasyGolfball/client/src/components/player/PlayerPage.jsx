@@ -134,7 +134,7 @@ export const PlayerPage = () => {
                             Roster Status
                         </th>
                         <th>
-                            Week {selectedLeague.season.currentWeek} Points
+                            Week {selectedLeague?.season?.currentWeek} Points
                         </th>
                         <th>
                             Season Total Points

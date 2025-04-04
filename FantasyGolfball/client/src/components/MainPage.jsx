@@ -37,7 +37,7 @@ export const MainPage = () => {
     return (
         <div className="mainpage-main-container">
             <h1>Testing, attention please!</h1>
-            <aside>View past leagues</aside>
+            <aside>View past leagues (NYI)</aside>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 <div>League rankings</div>

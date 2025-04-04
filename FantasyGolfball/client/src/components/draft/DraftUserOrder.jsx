@@ -1,14 +1,32 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { DraftContext } from "./DraftPage"
 
 
 export const DraftUserOrder = () => {
-    const { draftState } = useContext(DraftContext)
-    // the number of rounds is equal to the roster size which will eventually be included in draftState
+    const { draftState, selectedLeague } = useContext(DraftContext)
+    // this is just going to be easier to do in the backend. Not to mention state won't be preserved
 
-    // a more serious rethink will be necessary once real data is being used. This will not function (possibly at all) when that is ported, but I don't have a good enough understanding of the data at the time to make this work.
+    // const [rounds, setRounds] = useState()
 
-    return (
+    // const userOrder = draftState.draftOrder
+    // const numberOfRounds = selectedLeague.maxRosterSize
+
+    // const generateRounds = () => {
+    //     const result = []
+
+    //     for (let round = 0; round <numberOfRounds; round ++) {
+    //         const isEvenRound = round % 2 == 1
+    //         const roundOrder = isEvenRound ? [...userOrder].reverse() : userOrder // reverses the draft order every other round
+    //     }
+
+        
+    // }
+
+    
+    
+    
+    
+        return (
         <ol>
             {draftState.userTurnOrder.map((u) => {
                 return (

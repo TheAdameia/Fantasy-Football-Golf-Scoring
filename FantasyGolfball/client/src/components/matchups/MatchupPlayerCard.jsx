@@ -38,7 +38,7 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
                 -
             </td>
             <td>
-                {rp.player.playerFirstName} {rp.player.playerLastName}
+                {rp.player.playerFullName}
             </td>
             <td>
                 {rp.rosterPosition}

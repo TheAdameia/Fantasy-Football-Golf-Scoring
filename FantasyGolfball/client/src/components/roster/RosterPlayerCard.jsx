@@ -54,7 +54,7 @@ export const RosterPlayerCard = ({ rp, scores }) => {
                 -
             </td>
             <td>
-                {rp.player.playerFirstName + " " + rp.player.playerLastName}
+                {rp.player.playerFullName}
             </td>
             <td>
                 Week 
