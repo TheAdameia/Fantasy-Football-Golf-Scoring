@@ -1,38 +1,51 @@
-import { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { DraftContext } from "./DraftPage"
+import { useAppContext } from "../../contexts/AppContext"
 
 
 export const DraftUserOrder = () => {
-    const { draftState, selectedLeague } = useContext(DraftContext)
-    // this is just going to be easier to do in the backend. Not to mention state won't be preserved
+    const { draftState } = useContext(DraftContext)
+    const { selectedLeague } = useAppContext()
+    const [ roundIndicator, setRoundIndicator] = useState(selectedLeague?.playerLimit ?? 8)
 
-    // const [rounds, setRounds] = useState()
+    useEffect(() => {
+        if (selectedLeague?.playerLimit) {
+            setRoundIndicator(selectedLeague.playerLimit)
+        }
+    }, [selectedLeague?.playerLimit])
 
-    // const userOrder = draftState.draftOrder
-    // const numberOfRounds = selectedLeague.maxRosterSize
+    // I don't know whether to change this in the front end or the backend to fix state issues.
 
-    // const generateRounds = () => {
-    //     const result = []
+    let pickCount = 1
 
-    //     for (let round = 0; round <numberOfRounds; round ++) {
-    //         const isEvenRound = round % 2 == 1
-    //         const roundOrder = isEvenRound ? [...userOrder].reverse() : userOrder // reverses the draft order every other round
-    //     }
-
-        
-    // }
-
-    
-    
-    
-    
+    if (draftState?.draftOrder) {
         return (
-        <ol>
-            {draftState.userTurnOrder.map((u) => {
+            <ol>
+            {draftState.draftOrder.map((u, index) => {
+                const showRoundHeader = index % roundIndicator == 0
+
+                const roundHeader = showRoundHeader ? (
+                        <div key={`round-${index}`}>
+                            Round {Math.floor(index / roundIndicator) + 1}
+                        </div>
+                    ) : null
+
+                const userLine = (
+                    <div key={u.userId}>
+                        {pickCount++}. Name
+                    </div>
+                )
+
                 return (
-                    <li key={u.userId}>{u.name}</li>
+                    <React.Fragment key={u.userId}>
+                        {roundHeader}
+                        {userLine}
+                    </React.Fragment>
                 )
             })}
-        </ol>
-    )
+            </ol>
+        )
+    }
+        
+    
 }

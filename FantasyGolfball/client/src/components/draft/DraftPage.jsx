@@ -101,7 +101,7 @@ export const DraftPage = () => {
                 <div className="left-side">
                     <DraftTimer />
                     {/* <DraftAutoQueue /> */}
-                    {/* <DraftUserOrder /> */}
+                    <DraftUserOrder />
                 </div>
                 <div className="right-side">
                     <DraftPlayerQueue 

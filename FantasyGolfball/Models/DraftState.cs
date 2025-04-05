@@ -13,8 +13,26 @@ public class DraftState
     {
         LeagueId = leagueId;
         AvailablePlayers = new List<PlayerFullExpandDTO>(playerPool);
-        DraftOrder = new Queue<int>(userOrder);
+        DraftOrder = new Queue<int>(GenerateDraftOrder(userOrder, 15)); // 15 should be replaced with MaxRosterSize if that ever changes
         UserRosters = userOrder.ToDictionary(id => id, _ => new List<int>());
+    }
+
+    private IEnumerable<int>GenerateDraftOrder(List<int> userIds, int rounds)
+    {
+        var order = new List<int>();
+        for (int round = 0; round < rounds; round++)
+        {
+            if (round % 2 == 0) // reverses order every other round to accomplish snake draft format
+            {
+                order.AddRange(userIds); 
+            }
+            else
+            {
+                order.AddRange(userIds.AsEnumerable().Reverse());
+            }
+        }
+
+        return order;
     }
 
     public int CurrentUserId => DraftOrder.Peek();
@@ -34,15 +52,7 @@ public class DraftState
 
         if (DraftOrder.Count > 0) // Always ensure the queue has elements before dequeuing
         {
-            var justDraftedUserId = DraftOrder.Dequeue();
-            if (AvailablePlayers.Count > 0) // Only re-enqueue if there are still players to draft
-            {
-                DraftOrder.Enqueue(justDraftedUserId); // Re-enqueue for snake draft
-            }
-            else
-            {
-                Console.WriteLine("No players available. Draft ends.");
-            }
+          DraftOrder.Dequeue();
         }
         else
         {
