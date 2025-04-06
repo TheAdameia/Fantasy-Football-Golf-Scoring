@@ -38,7 +38,7 @@ export const DraftPage = () => {
     }, [selectedLeague])
 
     useEffect(() => {
-        if (leagueId == 0) {
+        if (leagueId == 0 || selectedLeague.isDraftComplete) {
             return
         }
         const connect = async () => {
@@ -94,9 +94,7 @@ export const DraftPage = () => {
 
     return (
         <DraftContext.Provider value={{ draftState, currentTurn, connection}}>
-            {selectedLeague?.isDraftComplete && (
-                <Confetti  />
-            )}
+            {selectedLeague?.isDraftComplete ? <Confetti/> : <></>}
             <div className="draft-container">
                 <div className="left-side">
                     <DraftTimer />

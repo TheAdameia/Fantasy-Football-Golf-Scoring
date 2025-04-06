@@ -3,7 +3,7 @@ import { useAppContext } from "../../contexts/AppContext"
 import { AddRosterPlayer, DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 import "./PlayerPage.css"
 
-export const PlayerCard = ({ player }) => {
+export const PlayerCard = ({ player, isPreseason }) => {
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
     const [playerRosterCondition, setPlayerRosterCondition] = useState(<div></div>)
@@ -26,15 +26,20 @@ export const PlayerCard = ({ player }) => {
     }
 
     useEffect(() => {
-        if (allScores) {
-            const playerScores = allScores.filter(s => s.playerId == player.playerId)
-            let thisWeekScore = playerScores.find(s => s.seasonWeek == selectedLeague.season.currentWeek)
-            setWeekScore(thisWeekScore)
-
-            let total = playerScores.reduce((sum, s) => sum + s.points, 0)
-            let fixedTotal = total.toFixed(1)
-            setSeasonTotal(fixedTotal)
+        if (!allScores || selectedLeague?.season?.currentWeek == null) {
+            setWeekScore(undefined)
+            setSeasonTotal("-")
+            return
         }
+
+        const playerScores = allScores.filter(s => s.playerId == player.playerId)
+
+        const thisWeekScore = playerScores.find(s => s.seasonWeek === selectedLeague.season.currentWeek)
+        setWeekScore(thisWeekScore)
+
+        const total = playerScores.reduce((sum, s) => sum + s.points, 0)
+        setSeasonTotal(total.toFixed(1))
+        
     }, [allScores, selectedLeague?.season?.currentWeek, player])
 
     useEffect(() => {
@@ -47,39 +52,21 @@ export const PlayerCard = ({ player }) => {
             setPlayerRosterCondition(<button className="button-add" onClick={() => HandleAddPlayer(roster.rosterId, player.playerId)}>+</button>) // available
         }
     }, [roster, selectedLeague, loggedInUser, player])
-
+    
     if (!roster || !selectedLeague) {
-        return (
-            <tr></tr>
-        )
+        return (null)
     }
-
+    
     return (
         <tr>
-            <th>
-
-            </th>
-            <td>
-                {player.playerFullName}
-            </td>
-            <td>
-                {player.position.positionShort}
-            </td>
-            <td>
-                {player.status.statusType}
-            </td>
-            <td>
-                NYI
-            </td>
-            <td>
-                {weekScore ? weekScore.points : 0}
-            </td>
-            <td>
-                {seasonTotal ? seasonTotal : 0}
-            </td>
-            <td>
-                {playerRosterCondition}
-            </td>
+            <td></td>
+            <td>{player.playerFullName}</td>
+            <td>{player.position.positionShort}</td>
+            <td>{player.status.statusType}</td>
+            <td>NYI</td>
+            <td>{isPreseason ? "Preseason" : weekScore ? weekScore.points : "-"}</td>
+            <td>{seasonTotal ?? "-"}</td>
+            <td>{playerRosterCondition}</td>
         </tr>
-    ) 
+    )
 }

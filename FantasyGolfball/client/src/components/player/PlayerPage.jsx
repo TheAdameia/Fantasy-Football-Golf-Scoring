@@ -33,7 +33,6 @@ export const PlayerPage = () => {
             }
         }
     }
-
     
     useEffect(() => {
         if (players){
@@ -72,6 +71,10 @@ export const PlayerPage = () => {
         return (
             <div>Loading...</div>
         )
+    }
+
+    if (!selectedLeague?.isDraftComplete) {
+        return <div>Draft must be complete to view Player List.</div>;
     }
 
     return (
@@ -134,7 +137,7 @@ export const PlayerPage = () => {
                             Roster Status
                         </th>
                         <th>
-                            Week {selectedLeague?.season?.currentWeek} Points
+                            Week {selectedLeague?.season?.currentWeek != null ? selectedLeague.season.currentWeek : "Preseason"} Points
                         </th>
                         <th>
                             Season Total Points
@@ -145,14 +148,18 @@ export const PlayerPage = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredPlayers ? filteredPlayers.slice(playerSlice.sliceStart, playerSlice.sliceEnd).map((player) => {
-                        return (
-                            <PlayerCard 
-                                player={player}
-                                key={`player-${player.playerId}`}
-                            />
-                        )
-                    }) : <tr></tr>}
+                    {filteredPlayers && filteredPlayers.length > 0
+                        ? filteredPlayers.slice(playerSlice.sliceStart, playerSlice.sliceEnd).map(player => 
+                                <PlayerCard 
+                                    player={player}
+                                    key={`player-${player.playerId}`}
+                                    isPreseason={selectedLeague?.season?.currentWeek == null}
+                                />
+                    ) : (
+                    <tr>
+                        <td>No players found</td>
+                    </tr> 
+                    )}
                 </tbody>
             </Table>
         </div>

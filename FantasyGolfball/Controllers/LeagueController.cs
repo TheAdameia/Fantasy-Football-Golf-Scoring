@@ -44,7 +44,7 @@ public class LeagueController : ControllerBase
                 {
                     RealSeason = leaguePOSTDTO.RealSeason,
                     SeasonYear = leaguePOSTDTO.SeasonYear,
-                    SeasonStartDate = leaguePOSTDTO.SeasonStartDate,
+                    SeasonStartDate = leaguePOSTDTO.SeasonStartDate.ToUniversalTime(),
                     Advancement = Enum.Parse<AdvancementType>(leaguePOSTDTO.Advancement, true) // true makes it case-insensitive                
                 };
 
@@ -73,7 +73,8 @@ public class LeagueController : ControllerBase
                 MaxRosterSize = leaguePOSTDTO.MaxRosterSize,
                 IsDraftComplete = false,
                 SeasonId = season.SeasonId,
-                IsLeagueFinished =  false
+                IsLeagueFinished =  false,
+                DraftStartTime = leaguePOSTDTO.DraftStartTime.ToUniversalTime()
             };
             
             _dbContext.Leagues.Add(league);
@@ -193,6 +194,7 @@ public class LeagueController : ControllerBase
             IsDraftComplete = l.IsDraftComplete,
             IsLeagueFinished = l.IsLeagueFinished,
             SeasonId = l.SeasonId,
+            DraftStartTime = l.DraftStartTime,
             Season = new SeasonDTO
             {
                 SeasonId = l.Season.SeasonId,
