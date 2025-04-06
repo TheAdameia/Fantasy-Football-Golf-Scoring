@@ -4,7 +4,7 @@ import { useAppContext } from "../../contexts/AppContext";
 import "./Roster.css"
 
 
-export const RosterCard = ({ scores }) => {
+export const RosterCard = () => {
     const { roster } = useAppContext()
     
     if (!roster || !Array.isArray(roster.rosterPlayers)) {
@@ -53,7 +53,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -64,7 +63,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -75,7 +73,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -86,7 +83,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -97,7 +93,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -108,7 +103,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -119,7 +113,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -130,7 +123,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -141,7 +133,6 @@ export const RosterCard = ({ scores }) => {
                                 <RosterPlayerCard
                                     rp={rp}
                                     key={`rp-${rp.rosterPlayerId}`}
-                                    scores={scores}
                                 ></RosterPlayerCard>
                             )
                     })}
@@ -154,7 +145,6 @@ export const RosterCard = ({ scores }) => {
                             <RosterPlayerCard
                                 rp={rp}
                                 key={`rp-${rp.rosterPlayerId}`}
-                                scores={scores}
                             ></RosterPlayerCard>
                         )
                     })}

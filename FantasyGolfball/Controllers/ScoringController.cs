@@ -33,26 +33,6 @@ public class ScoringController : ControllerBase
         .SingleOrDefault(s => s.ScoringId == id));
     }
 
-    [HttpGet("by-week-and-players")]
-    // [Authorize]
-    public IActionResult GetByWeekAndPlayers(int weekId, string playerIds)
-    {
-        List<int> playerIdsList = playerIds.Split(',')
-                                            .Select(int.Parse)
-                                            .ToList();
-
-        List<Scoring> weekScores = _dbContext.Scorings
-        .Where(s => s.SeasonWeek == weekId && playerIdsList.Contains(s.PlayerId))
-        .ToList();
-        
-        if (weekScores == null)
-        {
-            return BadRequest("No scores found");
-        }
-
-        return Ok(weekScores);
-    }
-
     [HttpGet("by-player")]
     // [Authorize]
     public IActionResult GetByPlayer(int playerId)

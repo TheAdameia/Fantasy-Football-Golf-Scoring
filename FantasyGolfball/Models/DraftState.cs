@@ -39,10 +39,12 @@ public class DraftState
         return order;
     }
 
-    public int CurrentUserId => DraftOrder.Peek();
+    public int? CurrentUserId => DraftOrder.Count > 0 ? DraftOrder.Peek() : null;
 
     public void SelectPlayer(int userId, int playerId, int maxRosterSize)
     {
+        if (CurrentUserId == null)
+            throw new InvalidOperationException("Draft has already ended.");
         if (userId != CurrentUserId)
             throw new InvalidOperationException($"Not this user's turn. userId read as {userId}. Current turn is for user {CurrentUserId}");
         if (!AvailablePlayers.Any(p => p.PlayerId == playerId))

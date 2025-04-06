@@ -7,7 +7,7 @@ export const PlayerCard = ({ player }) => {
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
     const [playerRosterCondition, setPlayerRosterCondition] = useState(<div></div>)
-    const { globalWeek, roster, getAndSetRoster, selectedLeague, loggedInUser, allScores } = useAppContext()
+    const { roster, getAndSetRoster, selectedLeague, loggedInUser, allScores } = useAppContext()
 
     const HandleDropPlayer = () => {
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
