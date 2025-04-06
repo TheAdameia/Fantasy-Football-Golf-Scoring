@@ -14,36 +14,48 @@ export const DraftUserOrder = () => {
         }
     }, [selectedLeague?.playerLimit])
 
-    // I don't know whether to change this in the front end or the backend to fix state issues.
+    const indexByUser = (permanentDraftOrder, userId, currentIndex) => {
+        // counts how many times this user has appeared up to this point
+        return permanentDraftOrder.slice(0, currentIndex + 1).filter(id => id === userId).length - 1
+    }
+    
 
-    let pickCount = 1
-
-    if (draftState?.draftOrder) {
+    if (draftState?.permanentDraftOrder) {
         return (
-            <ol>
-            {draftState.draftOrder.map((u, index) => {
+            <div className="draft-DraftUserOrder-container">
+            {draftState.permanentDraftOrder.map((u, index) => {
                 const showRoundHeader = index % roundIndicator == 0
 
                 const roundHeader = showRoundHeader ? (
-                        <div key={`round-${index}`}>
+                        <div key={`round-${index}`} className="draft-DraftUserOrder-round">
                             Round {Math.floor(index / roundIndicator) + 1}
                         </div>
                     ) : null
 
+                const pickNumber = index + 1
+                const playerPick = draftState.userRosters[u]?.[indexByUser(draftState.permanentDraftOrder, u, index)] ?? "-"
+                const playerPickObject = draftState.permanentPlayers.filter(p => p.playerId == playerPick)
+                const drafter = selectedLeague.leagueUsers.filter(lu => lu.userProfileId == u)
+
                 const userLine = (
-                    <div key={u.userId}>
-                        {pickCount++}. Name
+                    <div key={`${u}-${pickNumber}`}>
+                        {pickNumber}. {drafter[0]?.userProfile?.userName}, 
+                        {
+                            playerPickObject?.[0]
+                                ? ` ${playerPickObject[0]?.position?.positionShort} ${playerPickObject[0]?.playerFullName}`
+                                : "-"
+                        }
                     </div>
                 )
 
                 return (
-                    <React.Fragment key={u.userId}>
+                    <React.Fragment key={`${u}-${pickNumber}`}>
                         {roundHeader}
                         {userLine}
                     </React.Fragment>
                 )
             })}
-            </ol>
+            </div>
         )
     }
         

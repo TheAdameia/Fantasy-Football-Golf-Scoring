@@ -6,14 +6,18 @@ public class DraftState
 {
     public int LeagueId { get; set; }
     public Queue<int> DraftOrder { get; private set; }
+    public Queue<int> PermanentDraftOrder { get; private set; }
     public List<PlayerFullExpandDTO> AvailablePlayers { get; private set; }
+    public List<PlayerFullExpandDTO> PermanentPlayers { get; private set; }
     public Dictionary<int, List<int>> UserRosters { get; private set; } // UserId -> PlayerIds
 
     public DraftState(int leagueId, List<PlayerFullExpandDTO> playerPool, List<int> userOrder)
     {
         LeagueId = leagueId;
         AvailablePlayers = new List<PlayerFullExpandDTO>(playerPool);
+        PermanentPlayers = new List<PlayerFullExpandDTO>(playerPool);
         DraftOrder = new Queue<int>(GenerateDraftOrder(userOrder, 15)); // 15 should be replaced with MaxRosterSize if that ever changes
+        PermanentDraftOrder = new Queue<int>(GenerateDraftOrder(userOrder, 15));
         UserRosters = userOrder.ToDictionary(id => id, _ => new List<int>());
     }
 

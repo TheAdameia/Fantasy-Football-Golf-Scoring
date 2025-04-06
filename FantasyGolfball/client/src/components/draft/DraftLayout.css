@@ -151,3 +151,13 @@
     background-color: antiquewhite;
     width: 2em;
   }
+
+  .draft-DraftUserOrder-round {
+    font-weight: bold;
+  }
+
+  .draft-DraftUserOrder-container {
+    height: 500px;
+    overflow-y: scroll;
+    
+  }

@@ -15,8 +15,8 @@ export const DraftPlayerQueue = ({ queuedPlayers, deQueuePlayer }) => {
             {queuedPlayers.map((player) => {
                 return (
                     <li key={player.playerId} className="queue-player">
-                        <div className="queue-player-name">{player.playerFirstName} {player.playerLastName}</div>
                         <div className="queue-player-role">{player.position.positionShort}</div>
+                        <div className="queue-player-name">{player.playerFullName}</div>
                         <div className="queue-player-role">Team</div>
                         <button className="queue-dequeue" onClick={() => deQueuePlayer(player)}>X</button>
                     </li>
