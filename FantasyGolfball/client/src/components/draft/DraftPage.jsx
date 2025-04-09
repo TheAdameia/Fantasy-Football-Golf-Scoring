@@ -11,6 +11,7 @@ import { DraftAutoQueue } from "./DraftAutoQueue"
 import { DraftTeamDisplay } from "./DraftTeamDisplay"
 import { useAppContext } from "../../contexts/AppContext"
 import Confetti from "react-confetti"
+import { useNavigate } from "react-router-dom"
 
 export const DraftContext = createContext()
 
@@ -21,7 +22,9 @@ export const DraftPage = () => {
     const [selectedPlayer, setSelectedPlayer] = useState(null)
     const [queuedPlayers, setQueuedPlayers] = useState([])
     const [leagueId, setLeagueId] = useState(0)
+    const [draftGraphic, setDraftGraphic] = useState(false)
     const { selectedLeague } = useAppContext()
+    const navigate = useNavigate()
 
     // handle dequeueing a player
     const deQueuePlayer = (removePlayer) => {
@@ -49,7 +52,7 @@ export const DraftPage = () => {
                 .build();
     
             newConnection.on("DraftStateUpdated", (updatedDraftState) => {
-                console.log("Draft State Updated:", updatedDraftState);
+                // console.log("Draft State Updated:", updatedDraftState);
                 setDraftState(updatedDraftState);
             });
     
@@ -57,6 +60,12 @@ export const DraftPage = () => {
                 console.log("User turn:", userId);
                 setCurrentTurn(userId);
             });
+
+            newConnection.on("DraftCompleted", () => {
+                console.log("Draft completed!")
+                setDraftGraphic(true)
+
+            })
     
             newConnection.on("Error", (error) => {
                 console.error("Error from SignalR Hub:", error);
@@ -90,11 +99,23 @@ export const DraftPage = () => {
     }, [leagueId]); // only runs once on purpose, ignore the siren song of the "missing dependency"
     
     
-
+    useEffect(() => {
+        if (selectedLeague?.isDraftComplete) {
+            setDraftGraphic(true)
+        }
+    }, [selectedLeague]) // already "listening" for this from SignalR, but that won't catch if you're revisiting a draft page.
 
     return (
         <DraftContext.Provider value={{ draftState, currentTurn, connection}}>
-            {selectedLeague?.isDraftComplete ? <Confetti/> : <></>}
+            {draftGraphic && (
+                <div className="draft-complete-overlay">
+                   <h2>Draft Complete!</h2>
+                   <p>The draft is finished. You can now view your roster, matchups, and get ready for the season.</p>
+                    <button onClick={() => setDraftGraphic(false)}>Close</button>
+                    <button onClick={() => navigate("/roster")}>View Roster</button>
+                    <Confetti />
+                </div>
+            )}
             <div className="draft-container">
                 <div className="left-side">
                     <DraftTimer />

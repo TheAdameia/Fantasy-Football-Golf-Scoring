@@ -87,7 +87,6 @@ public class LiveDraftHub : Hub
             else
             {
                 Console.WriteLine("Draft has ended. No more turns to notify.");
-                // this would be a good place to send a draft complete message or trigger for the UI
                 await Clients.Group($"League_{leagueId}").SendAsync("DraftCompleted");
             }
 

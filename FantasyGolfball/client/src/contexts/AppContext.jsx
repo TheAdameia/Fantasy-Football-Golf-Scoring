@@ -48,7 +48,7 @@ export const AppProvider = ({ children }) => {
   }
 
   const getAndSetRoster = () => {
-    if (loggedInUser != null && selectedLeague?.isDraftComplete)
+    if (loggedInUser != null && selectedLeague)
     {
       let userId = loggedInUser.id
       GetByUserAndLeague(userId, selectedLeague.leagueId).then(setRoster)
