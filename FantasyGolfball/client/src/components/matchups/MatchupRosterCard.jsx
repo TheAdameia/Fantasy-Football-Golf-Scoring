@@ -90,7 +90,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                                 ></MatchupPlayerCard>
                             ))
                         ) : (
-                            <BlankPlayerCard slot={slot} />
+                            <BlankPlayerCard slot={slot} position="WR2"/>
                         )}
                         {roster.rosterPlayers.some((rp) => rp.rosterPosition === "RB1") ? ( roster.rosterPlayers
                             .filter((rp) => rp.rosterPosition === "RB1")
@@ -103,7 +103,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                                 ></MatchupPlayerCard>
                             ))
                         ) : (
-                            <BlankPlayerCard slot={slot} />
+                            <BlankPlayerCard slot={slot} position="RB1"/>
                         )}
                         {roster.rosterPlayers.some((rp) => rp.rosterPosition === "RB2") ? ( roster.rosterPlayers
                             .filter((rp) => rp.rosterPosition === "RB2")
@@ -116,7 +116,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                                 ></MatchupPlayerCard>
                             ))
                         ) : (
-                            <BlankPlayerCard slot={slot} />
+                            <BlankPlayerCard slot={slot} position="RB2"/>
                         )}
                         {roster.rosterPlayers.some((rp) => rp.rosterPosition === "TE1") ? ( roster.rosterPlayers
                             .filter((rp) => rp.rosterPosition === "TE1")
@@ -129,7 +129,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                                 ></MatchupPlayerCard>
                             ))
                         ) : (
-                            <BlankPlayerCard slot={slot} />
+                            <BlankPlayerCard slot={slot} position="TE1"/>
                         )}
                         {roster.rosterPlayers.some((rp) => rp.rosterPosition === "FLEX") ? ( roster.rosterPlayers
                             .filter((rp) => rp.rosterPosition === "FLEX")
@@ -142,7 +142,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                                 ></MatchupPlayerCard>
                             ))
                         ) : (
-                            <BlankPlayerCard slot={slot} />
+                            <BlankPlayerCard slot={slot} position="FLEX"/>
                         )}
                         {roster.rosterPlayers.some((rp) => rp.rosterPosition === "K") ? ( roster.rosterPlayers
                             .filter((rp) => rp.rosterPosition === "K")
@@ -168,7 +168,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                                 ></MatchupPlayerCard>
                             ))
                         ) : (
-                            <BlankPlayerCard slot={slot} />
+                            <BlankPlayerCard slot={slot} position="DEF"/>
                         )}
                     </tbody>
                 </Table>

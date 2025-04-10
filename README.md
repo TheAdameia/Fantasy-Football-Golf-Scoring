@@ -1,8 +1,8 @@
-# Fantasy Golfball
+# Fantasy Golfball V0.1.0
 Alternatively, Fantasy Football with Golf Scoring (lowest score wins)
 
 ## But why?
-Fantasy Golfball is a proof of concept fantasy football creation that is meant to ultimately be able to host a service for those that want to play fantasy football with a quirky, irreverent ruleset.
+Fantasy Golfball is a fantasy football creation for those that want to play fantasy football with a quirky, irreverent ruleset. It is currently in alpha testing following completion of MVP features for a select group of users.
 
 ## Technologies Used
 - React/JS, C#/.NET, CSS
@@ -13,13 +13,13 @@ Fantasy Golfball is a proof of concept fantasy football creation that is meant t
 - Context API
 
 ## Where is the project at now and where is it going?
-Functionality is being added and tested for MVP mandatory features. Pending that testing and functionality, in-house testing with a group of beta testers will begin. After that, the project will continue development with an eye on becoming a public-facing web service.
+Fantasy Golfball is currently in an alpha state, using fake player and scoring data to test the validity of business logic and user experience. Users have the option of accelerating a season using custom timeframes (i.e., a "week" can pass in a day instead of a real time week). Major beta planned features include the addition of past seasons of real NFL fantasy data so that users can recreate those seasons on their own time.
 
 ## MVP statement
-Minimum Viable Product will be achieved when users can do the following:
+Minimum Viable Product means that users can do the following:
 1. Create an account and join or create one or more leagues with other users,
 2. Enter into a live draft with those users to select players for their roster,
-3. Add, drop, and trade said players with other users,
+3. Add and drop said players to the user's roster,
 4. Set active and benched players on their roster,
 5. See their matchups with other users and the results of the matchup after time has passed.
 
