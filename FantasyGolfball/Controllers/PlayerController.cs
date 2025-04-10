@@ -19,7 +19,7 @@ public class PlayerController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetAllPlayers()
     {
         var AllPlayers = _dbContext.Players

@@ -19,7 +19,6 @@ export const PlayerCard = ({ player, isPreseason }) => {
         let rosterPlayerPostDTO = {
             "playerId": playerId,
             "rosterId": rosterId,
-            "rosterPosition": "bench"
         }
         AddRosterPlayer(rosterPlayerPostDTO)
         getAndSetRoster()

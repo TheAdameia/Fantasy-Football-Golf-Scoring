@@ -16,7 +16,7 @@ public class SeasonController : ControllerBase
     }
 
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetAll()
     {
         return Ok(_dbContext.Seasons);

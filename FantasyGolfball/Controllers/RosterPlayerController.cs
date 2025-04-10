@@ -19,7 +19,7 @@ public class RosterPlayerController : ControllerBase
     }
 
     [HttpGet] 
-    // [Authorize]
+    [Authorize]
     public IActionResult GetPlayersByRoster(int rosterId)
     {
         return Ok(_dbContext.RosterPlayers
@@ -29,14 +29,21 @@ public class RosterPlayerController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult Post(RosterPlayerPOSTDTO rosterPlayerPOSTDTO)
     {
+        // checks begin here
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        // checks end here
+
         var rosterPlayer = new RosterPlayer
         {
             PlayerId = rosterPlayerPOSTDTO.PlayerId,
             RosterId = rosterPlayerPOSTDTO.RosterId,
-            RosterPosition = rosterPlayerPOSTDTO.RosterPosition
+            RosterPosition = "bench"
         };
         
         _dbContext.RosterPlayers.Add(rosterPlayer);
@@ -46,7 +53,7 @@ public class RosterPlayerController : ControllerBase
     }
 
     [HttpDelete("{rosterPlayerId}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult Delete(int rosterPlayerId)
     {
         RosterPlayer rosterPlayerToDelete = _dbContext.RosterPlayers.SingleOrDefault(rp => rp.RosterPlayerId == rosterPlayerId);
@@ -62,7 +69,7 @@ public class RosterPlayerController : ControllerBase
     }
 
     [HttpPut("roster-position")]
-    // [Authorize]
+    [Authorize]
     public IActionResult SetRosterPosition(int rosterPlayerId, string position)
     {
         RosterPlayer rosterPlayer = _dbContext.RosterPlayers.SingleOrDefault(rp => rp.RosterPlayerId == rosterPlayerId);
