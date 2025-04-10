@@ -3,7 +3,7 @@ import { useAppContext } from "../../contexts/AppContext"
 
 
 export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
-    const { allScores } = useAppContext()
+    const { allScores, selectedLeague } = useAppContext()
 
     const playerScore = useMemo(() => {
         return allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
@@ -24,13 +24,13 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             <td>
                 -
             </td>
-            {displayWeekPoints.display ? <td>{playerScore.points}</td>:<td>0</td>}
+            {displayWeekPoints.display && selectedLeague.season.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
         </tr>
     )
    } else if (slot == false && rp) {
     return (
         <tr>
-            {displayWeekPoints.display ? <td>{playerScore.points}</td>:<td>0</td>}
+            {displayWeekPoints.display && selectedLeague.season.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
             <td>
                 -
             </td>
@@ -38,7 +38,7 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
                 -
             </td>
             <td>
-                {rp.player.playerFirstName} {rp.player.playerLastName}
+                {rp.player.playerFullName}
             </td>
             <td>
                 {rp.rosterPosition}

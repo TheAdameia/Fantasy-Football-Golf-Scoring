@@ -6,12 +6,15 @@ import { useMemo } from "react"
 
 
 export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) => {
-    const { roster, allScores } = useAppContext()
+    const { roster, allScores, selectedLeague } = useAppContext()
 
     const calculateTotalPoints = (rosterPlayers) => {
         return rosterPlayers.reduce((total, rp) => {
-            const playerScore = allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
+            if (rp.rosterPosition != "bench" ) {
+                const playerScore = allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
             return total + (playerScore ? playerScore.points : 0)
+            }
+            return total
         }, 0)
     }
 
@@ -28,7 +31,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     if (slot == true && roster) {
         return ( //position, name, team, injury status, points
             <div>
-                <h5>{userTotalPoints.toFixed(2)}</h5>
+                <h5>{displayWeekPoints.display && selectedLeague.season.currentWeek ? userTotalPoints.toFixed(2) : "0"}</h5>
                 <Table striped>
                     <thead>
                         <tr>
@@ -174,7 +177,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     } else if (slot == false && opponentRoster) {
         return (
             <div>
-                <h5>{opponentTotalPoints.toFixed(2)}</h5>
+                <h5>{displayWeekPoints.display && selectedLeague.season.currentWeek ? opponentTotalPoints.toFixed(2) : "0"}</h5>
                 <Table striped>
                     <thead>
                         <tr>

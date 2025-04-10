@@ -16,6 +16,7 @@ public class LeagueFullExpandDTO
     public bool IsDraftComplete { get; set; }
     public bool IsLeagueFinished { get; set; }
     public int SeasonId { get; set; }
+    public DateTime DraftStartTime { get; set; }
     public SeasonDTO Season { get; set; }
     public ICollection<LeagueUserFullExpandDTO> LeagueUsers { get; set; }
 }

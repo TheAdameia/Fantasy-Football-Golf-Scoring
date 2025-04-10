@@ -1,9 +1,22 @@
+import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../contexts/AppContext"
 import "./MainPage.css"
 
 
 export const MainPage = () => {
     const { selectedLeague, matchups } = useAppContext()
+    const navigate = useNavigate()
+    const now = new Date()
+    const draftStart = new Date(selectedLeague?.draftStartTime)
+
+    const diffMs = draftStart - now
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+    const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60))
+
+    const enterDraft = () => {
+        navigate(`/live-draft`)
+    }
 
     if (!selectedLeague) {
         return (
@@ -37,9 +50,17 @@ export const MainPage = () => {
     return (
         <div className="mainpage-main-container">
             <h1>Testing, attention please!</h1>
-            <aside>View past leagues</aside>
+            <aside>View past leagues (NYI)</aside>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
+                {now < draftStart 
+                    ? <div>Draft starts on {draftStart.toLocaleString()}, in {diffDays} days, {diffHours} hours and {diffMinutes} minutes.</div> 
+                    : <div></div>
+                }
+                {(selectedLeague.playerLimit == selectedLeague.leagueUsers.length) && !selectedLeague.isDraftComplete 
+                    ? <button onClick={() => enterDraft()}>Enter the draft!</button>
+                    : <></>
+                }
                 <div>League rankings</div>
                 <div className="mainpage-matchup-container">Week {selectedLeague.season.currentWeek} Matchups
                     <div>

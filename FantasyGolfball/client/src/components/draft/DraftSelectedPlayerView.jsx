@@ -11,6 +11,10 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
 
     // handle drafting a player
     const handleDraftPlayer = async (playerId) => {
+        if (selectedLeague.isDraftComplete) {
+            window.alert("The draft has been completed!")
+        }
+
         if (connection && currentTurn === loggedInUser.id && selectedLeague.isDraftComplete == false) {
             try {
                 await connection.invoke("SelectPlayer", selectedLeague.leagueId, loggedInUser.id, playerId, selectedLeague.maxRosterSize)

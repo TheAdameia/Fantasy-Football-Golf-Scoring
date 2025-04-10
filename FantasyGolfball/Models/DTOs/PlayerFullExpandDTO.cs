@@ -13,4 +13,11 @@ public class PlayerFullExpandDTO
     public int StatusId { get; set; }
     public PositionDTO Position { get; set; }
     public StatusDTO Status { get; set; }
+    public string PlayerFullName
+    {
+        get
+        {
+            return $"{PlayerFirstName} {PlayerLastName}";
+        }
+    }
 }

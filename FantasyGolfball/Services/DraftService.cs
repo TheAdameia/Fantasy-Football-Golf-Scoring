@@ -146,10 +146,12 @@ public class DraftService : IDraftService
         }
 
         // **Check if draft is complete**
-        bool draftComplete = draftState.AllUsersHaveFullRosters(maxRosterSize);
+        bool draftComplete = draftState.AllUsersHaveFullRosters(maxRosterSize) || draftState.IsDraftComplete();
         if (draftComplete)
         {
             await CompleteDraft(leagueId); // Triggers draft completion event
+            Console.WriteLine($"Draft completion check: IsDraftComplete={draftState.IsDraftComplete()}, AllUsersHaveFullRosters={draftState.AllUsersHaveFullRosters(maxRosterSize)}");
+
         }
         return draftState;
     }

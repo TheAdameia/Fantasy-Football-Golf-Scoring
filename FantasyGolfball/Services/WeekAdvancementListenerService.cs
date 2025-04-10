@@ -87,7 +87,7 @@ public class WeekAdvancementListenerService
 
                 if (scores.Count == 2)
                 {
-                    var winner = scores.OrderByDescending(kv => kv.Value).First();
+                    var winner = scores.OrderBy(kv => kv.Value).First(); // sorts lowest to highest score, lowest wins
                     matchup.WinnerId = winner.Key;
                 }
             }

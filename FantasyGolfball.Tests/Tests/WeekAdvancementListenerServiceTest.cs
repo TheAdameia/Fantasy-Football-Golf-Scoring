@@ -113,6 +113,6 @@ public class WeekAdvancementListenerServiceTests
         var updatedMatchup = await context.Matchups.FindAsync(matchup.MatchupId);
         Assert.NotNull(updatedMatchup);
         Assert.NotNull(updatedMatchup.WinnerId);
-        Assert.Equal(2, updatedMatchup.WinnerId); // Ensure the correct winner is assigned
+        Assert.Equal(1, updatedMatchup.WinnerId); // Ensure the correct winner is assigned
     }
 }

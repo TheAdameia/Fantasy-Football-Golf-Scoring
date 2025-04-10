@@ -17,8 +17,7 @@ function App() {
   return (
     <>
       <NavBar/>
-      <ApplicationViews
-      />
+      <ApplicationViews/>
     </>
   );
 }

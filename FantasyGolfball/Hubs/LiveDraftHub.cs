@@ -40,10 +40,10 @@ public class LiveDraftHub : Hub
             Console.WriteLine($"Draft state for league {leagueId} sent to {Context.ConnectionId}");
 
             // trigger NotifyTurn for the first user
-            if (draftState.CurrentUserId != 0)
+            if (draftState.CurrentUserId != null)
             {
                 Console.WriteLine($"Triggering NotifyTurn for user {draftState.CurrentUserId} in league {leagueId}");
-                await NotifyTurn(leagueId, draftState.CurrentUserId);
+                await NotifyTurn(leagueId, draftState.CurrentUserId.Value);
             }
         }
         catch (Exception ex)
@@ -80,8 +80,19 @@ public class LiveDraftHub : Hub
             }
             var updatedState = await _draftService.SelectPlayer(leagueId, userId, playerId, maxRosterSize);
             await Clients.Group($"League_{leagueId}").SendAsync("DraftStateUpdated", updatedState); // notifies all clients
-            var nextUserId = updatedState.CurrentUserId;
-            await NotifyTurn(leagueId, nextUserId);
+            if (updatedState.CurrentUserId.HasValue)
+            {
+                await NotifyTurn(leagueId, updatedState.CurrentUserId.Value);
+            }
+            else
+            {
+                Console.WriteLine("Draft has ended. No more turns to notify.");
+                await Clients.Group($"League_{leagueId}").SendAsync("DraftCompleted");
+            }
+
+            
+            // var nextUserId = updatedState.CurrentUserId;
+            // await NotifyTurn(leagueId, nextUserId);
         }
         catch (Exception ex)
         {
