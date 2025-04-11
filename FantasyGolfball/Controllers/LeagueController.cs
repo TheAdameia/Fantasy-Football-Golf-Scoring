@@ -20,7 +20,7 @@ public class LeagueController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    // [Authorize]
     public IActionResult GetAll()
     {
         return Ok(_dbContext.Leagues
