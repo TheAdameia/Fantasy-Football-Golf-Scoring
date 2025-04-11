@@ -44,6 +44,15 @@ export const DraftPage = () => {
         if (leagueId == 0 || selectedLeague.isDraftComplete) {
             return
         }
+
+        const draftStart = new Date(selectedLeague?.draftStartTime);
+        const now = new Date();
+        if (draftStart > now) {
+            alert("It's too early to start the draft!");
+            navigate("/");
+            return;
+        }
+        
         const connect = async () => {
             
             const newConnection = new HubConnectionBuilder()
