@@ -13,9 +13,6 @@
 *.userosscache
 *.sln.docstates
 
-#to avoid duplication during testing
-/Migrations
-
 #me being a silly goose shouldn't be on github
 Notes.txt
 
