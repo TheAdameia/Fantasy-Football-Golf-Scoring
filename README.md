@@ -1,16 +1,17 @@
-# Fantasy Golfball V0.1.0
+# Fantasy Golfball V0.1.0 (Alpha)
 Alternatively, Fantasy Football with Golf Scoring (lowest score wins)
+https://fantasygolfball.org
 
 ## But why?
-Fantasy Golfball is a fantasy football creation for those that want to play fantasy football with a quirky, irreverent ruleset. It is currently in alpha testing following completion of MVP features for a select group of users.
+Fantasy Golfball is a fantasy football webapp for those that want to play fantasy football with a quirky, irreverent ruleset. It is currently in alpha testing following completion of MVP features.
 
 ## Technologies Used
 - React/JS, C#/.NET, CSS
 - xUnit, Moq
-- EFC
-- PSQL
+- EFC, PSQL
 - SignalR
 - Context API
+- nginx, certbot, cloudflare
 
 ## Where is the project at now and where is it going?
 Fantasy Golfball is currently in an alpha state, using fake player and scoring data to test the validity of business logic and user experience. Users have the option of accelerating a season using custom timeframes (i.e., a "week" can pass in a day instead of a real time week). Major beta planned features include the addition of past seasons of real NFL fantasy data so that users can recreate those seasons on their own time.
