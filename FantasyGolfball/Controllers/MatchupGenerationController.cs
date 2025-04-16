@@ -15,7 +15,7 @@ public class MatchupGenerationController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public async Task<IActionResult> GenerateMatchups([FromBody] GenerateMatchupsRequest request)
     {
         await _matchupService.GenerateMatchups(request.LeagueId, request.TotalWeeks, request.GamesPerPlayer);

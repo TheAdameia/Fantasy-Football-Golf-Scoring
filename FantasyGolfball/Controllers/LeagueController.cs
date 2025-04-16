@@ -20,7 +20,7 @@ public class LeagueController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetAll()
     {
         return Ok(_dbContext.Leagues
@@ -28,11 +28,41 @@ public class LeagueController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult Post(LeaguePOSTDTO leaguePOSTDTO)
     {
+        // checks begin here
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        if (string.IsNullOrWhiteSpace(leaguePOSTDTO.LeagueName) || leaguePOSTDTO.LeagueName.Length > 100)
+        {
+            return BadRequest("League name is required and must be less than 100 characters.");
+        }
+
+        if (!Enum.TryParse<AdvancementType>(leaguePOSTDTO.Advancement, true, out var advancement)) // true makes it case-insensitive 
+        {
+            return BadRequest("Invalid advancement type.");
+        }
+
+        if (leaguePOSTDTO.PlayerLimit < 2 || leaguePOSTDTO.PlayerLimit > 8)
+        {
+            return BadRequest("Player limit must be between 2 and 8.");
+        }
+
+        if (leaguePOSTDTO.SeasonStartDate < DateTime.UtcNow.AddDays(-1))
+        {
+            return BadRequest("Season start date must be in the future.");
+        }
+
+        leaguePOSTDTO.LeagueName = System.Text.RegularExpressions.Regex.Replace(
+            leaguePOSTDTO.LeagueName, "<.*?>", string.Empty
+        );
+        // checks end here
+
         using var transaction = _dbContext.Database.BeginTransaction();
-        Console.WriteLine("If you don't see this, it didn't start");
         try
         {
             Season season;
@@ -45,7 +75,7 @@ public class LeagueController : ControllerBase
                     RealSeason = leaguePOSTDTO.RealSeason,
                     SeasonYear = leaguePOSTDTO.SeasonYear,
                     SeasonStartDate = leaguePOSTDTO.SeasonStartDate.ToUniversalTime(),
-                    Advancement = Enum.Parse<AdvancementType>(leaguePOSTDTO.Advancement, true) // true makes it case-insensitive                
+                    Advancement = advancement                
                 };
 
                 _dbContext.Seasons.Add(season);
@@ -115,7 +145,7 @@ public class LeagueController : ControllerBase
     }
 
     [HttpPut("join-league")]
-    // [Authorize]
+    [Authorize]
     public IActionResult JoinLeague(int leagueId, int userId)
     {
         if (leagueId == 0 || userId == 0)
@@ -163,7 +193,7 @@ public class LeagueController : ControllerBase
     }
 
     [HttpGet("by-user/{userId}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetByUser(int userId)
     {
         var UserLeagues = _dbContext.Leagues
@@ -254,7 +284,7 @@ public class LeagueController : ControllerBase
     }
 
     [HttpGet("not-full-leagues")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetNotFullLeagues()
     {
         var NotFullLeagues = _dbContext.Leagues

@@ -8,6 +8,7 @@ export const MainPage = () => {
     const navigate = useNavigate()
     const now = new Date()
     const draftStart = new Date(selectedLeague?.draftStartTime)
+    const seasonStart = new Date(selectedLeague?.season?.seasonStartDate)
 
     const diffMs = draftStart - now
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
@@ -54,9 +55,12 @@ export const MainPage = () => {
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 {now < draftStart 
-                    ? <div>Draft starts on {draftStart.toLocaleString()}, in {diffDays} days, {diffHours} hours and {diffMinutes} minutes.</div> 
+                    ? <div>Draft starts on {draftStart.toLocaleString('en-US')}, in {diffDays} days, {diffHours} hours and {diffMinutes} minutes.</div> 
                     : <div></div>
                 }
+                {now < seasonStart
+                    ? <div>Season begins {seasonStart.toLocaleString('en-US')}</div>
+                    : <div></div>}
                 {(selectedLeague.playerLimit == selectedLeague.leagueUsers.length) && !selectedLeague.isDraftComplete 
                     ? <button onClick={() => enterDraft()}>Enter the draft!</button>
                     : <></>

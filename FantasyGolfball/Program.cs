@@ -18,7 +18,9 @@ builder.Services.AddCors(options => {
     options.AddPolicy("AllowFrontend",
     policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "https://fantasygolfball.org")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -88,7 +90,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+ // app.UseHttpsRedirection(); // commented out for server config
 // these two calls are required to add auth to the pipeline for a request
 app.UseAuthentication();
 app.UseAuthorization();

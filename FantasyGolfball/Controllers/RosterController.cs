@@ -19,7 +19,7 @@ public class RosterController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetByUserAndLeague(int userId, int leagueId)
     {
         if (userId == 0 || leagueId == 0)
@@ -77,22 +77,4 @@ public class RosterController : ControllerBase
 
         return Ok(rosterFullExpand);
     }
-
-    [HttpPost]
-    // [Authorize]
-    public IActionResult Post(RosterPOSTDTO rosterPOSTDTO)
-    {
-        var roster = new Roster
-        {
-            RosterId = rosterPOSTDTO.RosterId,
-            LeagueId = rosterPOSTDTO.LeagueId,
-            UserId = rosterPOSTDTO.UserId
-        };
-        
-        _dbContext.Rosters.Add(roster);
-        _dbContext.SaveChanges();
-
-        return Created($"api/rosters/{roster.RosterId}", roster);
-    }
-
 }

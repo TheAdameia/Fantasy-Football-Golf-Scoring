@@ -40,7 +40,7 @@ export default function Register({ setLoggedInUser }) {
     <div className="container" style={{ maxWidth: "500px" }}>
       <h3>Sign Up</h3>
       <FormGroup>
-        <Label>Email</Label>
+        <Label>Email. Doesn't need to be a real one.</Label>
         <Input
           type="email"
           value={email}
@@ -60,7 +60,7 @@ export default function Register({ setLoggedInUser }) {
         />
       </FormGroup>
       <FormGroup>
-        <Label>Password</Label>
+        <Label>Password. Please don't reuse your passwords. Min password length is 3 so you can screw around during the alpha.</Label>
         <Input
           invalid={passwordMismatch}
           type="password"

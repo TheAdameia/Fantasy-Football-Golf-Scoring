@@ -18,7 +18,7 @@ public class MatchupController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetByLeague(int leagueId)
     {
         if (leagueId == 0)
@@ -39,8 +39,8 @@ public class MatchupController : ControllerBase
         return Ok(matchups);
     }
 
-    [HttpGet("by-league-and-user")] // it behooves me to make these into safe exports for the sake of displaying opponent's usernames.
-    // [Authorize]
+    [HttpGet("by-league-and-user")]
+    [Authorize]
     public IActionResult GetByLeagueAndUser(int leagueId, int userId)
     {
         if (leagueId == 0 || userId == 0)

@@ -19,14 +19,14 @@ public class ScoringController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetAll()
     {
         return Ok(_dbContext.Scorings.ToList());
     }
 
     [HttpGet("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetOne(int id)
     {
         return Ok(_dbContext.Scorings
@@ -34,14 +34,14 @@ public class ScoringController : ControllerBase
     }
 
     [HttpGet("by-player")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetByPlayer(int playerId)
     {
         return Ok(_dbContext.Scorings.Where(s => s.PlayerId == playerId).ToList());
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult Post(Scoring scoring)
     {
         _dbContext.Scorings.Add(scoring);
@@ -51,7 +51,7 @@ public class ScoringController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult Put(Scoring scoring)
     {
         Scoring scoreToUpdate = _dbContext.Scorings
@@ -68,7 +68,7 @@ public class ScoringController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult Delete(int id)
     {
         Scoring scoreToDelete = _dbContext.Scorings.SingleOrDefault(s => s.ScoringId == id);
