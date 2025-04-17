@@ -31,7 +31,7 @@ export const AppProvider = ({ children }) => {
           
         // check localStorage for previously selected league
         const storedLeagueId = localStorage.getItem("selectedLeagueId");
-
+        
         // set selected league from localStorage if valid, otherwise first league user is in
         const initialLeague = data.find(l => l.leagueId === parseInt(storedLeagueId)) || data[0];
         setSelectedLeague(initialLeague);
@@ -42,7 +42,8 @@ export const AppProvider = ({ children }) => {
   const getAndSetMatchups = () => {
     if (loggedInUser != null && selectedLeague != null) {
       if (selectedLeague.isDraftComplete) {
-        GetMatchupsByLeagueAndUser(selectedLeague.leagueId, loggedInUser.userId).then(setMatchups)
+        console.log(`league ${selectedLeague.leagueId}, user ${loggedInUser.id}`)
+        GetMatchupsByLeagueAndUser(selectedLeague.leagueId, loggedInUser.id).then(setMatchups)
       }
     }
   }
