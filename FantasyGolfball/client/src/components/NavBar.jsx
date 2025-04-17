@@ -52,6 +52,11 @@ return (
                     </NavLink>
                 </NavItem>
                 <NavItem>
+                    <NavLink tag={RRNavLink} to="/faq">
+                        FAQ
+                    </NavLink>
+                </NavItem>
+                <NavItem>
                     <LeagueDropdownSwap />
                 </NavItem>
             </Nav>

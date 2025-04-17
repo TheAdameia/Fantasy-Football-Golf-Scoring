@@ -16,4 +16,5 @@ public class LeagueSafeExportDTO
     public int SeasonId { get; set; }
     public SeasonDTO Season { get; set; }
     public ICollection<LeagueUserSafeExportDTO> LeagueUsers { get; set; }
+    public bool RequiresPassword { get; set; }
 }

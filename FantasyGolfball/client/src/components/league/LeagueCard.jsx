@@ -2,25 +2,37 @@ import { Button } from "reactstrap"
 import { JoinLeague } from "../../managers/leagueManager"
 import { useAppContext } from "../../contexts/AppContext"
 import "./League.css"
+import { useNavigate } from "react-router-dom"
 
 
 export const LeagueCard = ({ league, getAndSetLeagues }) => {
     const { loggedInUser, setSelectedLeague } = useAppContext()
     let openSlots = (league.playerLimit - league.leagueUsers.length)
+    const navigate = useNavigate()
 
     const handleJoin = (event) => {
         event.preventDefault()
         let leagueId = league.leagueId
         let userId = loggedInUser.id
+        let userPassword = ""
 
         if (league.leagueUsers.some(u => u.userProfileId == userId)) {
             window.alert("Already joined that league!")
             return
         }
         
-        JoinLeague(leagueId, userId).then(() => {
+
+        if (league.requiresPassword) {
+            userPassword = window.prompt("Enter the password for this League:")
+            if (userPassword == null) {
+                return
+            }
+        }
+        
+        JoinLeague(leagueId, userId, userPassword).then(() => {
             getAndSetLeagues()
-        }).then(setSelectedLeague(league)) // speculative
+        }).then(setSelectedLeague(league))
+        navigate("/")
     }
 
     return (

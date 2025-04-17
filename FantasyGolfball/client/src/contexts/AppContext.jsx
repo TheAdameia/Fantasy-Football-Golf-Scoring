@@ -48,8 +48,7 @@ export const AppProvider = ({ children }) => {
   }
 
   const getAndSetRoster = () => {
-    if (loggedInUser != null && selectedLeague)
-    {
+    if (loggedInUser != null && selectedLeague) {
       let userId = loggedInUser.id
       GetByUserAndLeague(userId, selectedLeague.leagueId).then(setRoster)
     }
@@ -74,8 +73,10 @@ export const AppProvider = ({ children }) => {
   }, [loggedInUser, selectedLeague])
 
   useEffect(() => {
-    getAndSetPlayers()
-  }, [])
+    if (loggedInUser && selectedLeague) {
+      getAndSetPlayers()
+    }
+  }, [loggedInUser, selectedLeague])
 
   useEffect(() => {
     if (selectedLeague) {

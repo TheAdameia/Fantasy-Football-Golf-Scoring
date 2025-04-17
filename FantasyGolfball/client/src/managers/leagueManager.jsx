@@ -18,14 +18,14 @@ export const GetLeaguesWithVacancies = () => {
         .then((res) => res.json())
 }
 
-export const JoinLeague = (leagueId, userId) => {
-    return fetch(_apiUrl + `/join-league?leagueId=${leagueId}&userId=${userId}`, {
+export const JoinLeague = (leagueId, userId, passwordInput) => {
+    return fetch(_apiUrl + `/join-league?leagueId=${leagueId}&userId=${userId}&passwordInput=${passwordInput}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json"}
     })
 }
 
-export const GetLeaguesByUser = (userId) => {
-    return fetch(_apiUrl + `/by-user?userId=${userId}`)
-        .then((res) => res.json())
-} // unused but has an equivalent in appcontext that wouldn't be good for exporting
+// export const GetLeaguesByUser = (userId) => {
+//     return fetch(_apiUrl + `/by-user?userId=${userId}`)
+//         .then((res) => res.json())
+// } // unused but has an equivalent in appcontext that wouldn't be good for exporting

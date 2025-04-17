@@ -119,6 +119,11 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegistrationDTO registration)
     {
+        if(!ModelState.IsValid)
+        {
+            return BadRequest();
+        }
+
         var user = new IdentityUser
         {
             UserName = registration.UserName,

@@ -69,7 +69,7 @@ export const PlayerPage = () => {
 
     if (!players) {
         return (
-            <div>Loading...</div>
+            <div>The player list will become available when you have joined a League and completed a Draft.</div>
         )
     }
 

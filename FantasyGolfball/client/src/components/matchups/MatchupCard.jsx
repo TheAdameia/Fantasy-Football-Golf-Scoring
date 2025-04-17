@@ -17,7 +17,7 @@ export const MatchupCard = ({ matchup, week }) => {
 
     
     const checkWinner = () => {
-        if (matchup.winnerId) {
+        if (matchup?.winnerId) {
             let taco = selectedLeague.leagueUsers.find((lu) => lu.userProfileId == matchup.winnerId)
             setWinner(taco)
         }
@@ -36,6 +36,12 @@ export const MatchupCard = ({ matchup, week }) => {
     useEffect(() => {
         checkWinner()
     }, [])
+
+    if (!matchup) {
+        return (
+            <div>Error: Invalid</div>
+        )
+    }
 
     return (
         <div className="parent-container">

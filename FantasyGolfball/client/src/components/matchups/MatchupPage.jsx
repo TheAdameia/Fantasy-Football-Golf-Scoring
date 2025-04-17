@@ -65,6 +65,6 @@ export const MatchupPage = () => {
     }
     
     return (
-        <div>Quack!</div>
+        <div>To view matchups, you must join a League and complete a Draft.</div>
     )
 }

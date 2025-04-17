@@ -19,11 +19,12 @@ export const LeagueForm = () => {
         realSeason: true,
         draftStartTime: "",
         seasonStartDate: "",
-        advancement: "Weekly"
+        advancement: "Weekly",
+        joinPassword: ""
     })
+    const [joinCheck, setJoinCheck] = useState(false)
     const navigate = useNavigate()
 
-    // Helpers
     const toLocalInputValue = (utcString) => {
         if (!utcString) return ""
         const date = new Date(utcString)
@@ -88,7 +89,32 @@ export const LeagueForm = () => {
                             const objectCopy = { ...leagueObject }
                             objectCopy.leagueName = e.target.value
                             setLeagueObject(objectCopy)
-                        }}></Input>
+                        }}>
+                    </Input>
+
+                    <Label>Join Password (optional)</Label>
+                    <Input 
+                        type="checkbox"
+                        checked={joinCheck}
+                        onChange={() => {
+                            setJoinCheck(!joinCheck)
+                            const objectCopy = { ...leagueObject}
+                            objectCopy.joinPassword = ""
+                            setLeagueObject(objectCopy)
+                        }}
+                    ></Input>
+                    
+                    {joinCheck ? 
+                    <Input
+                        type="text"
+                        value={leagueObject.joinPassword}
+                        onChange={(e) => {
+                            const objectCopy = { ...leagueObject}
+                            objectCopy.joinPassword = e.target.value
+                            setLeagueObject(objectCopy)
+                        }}
+                    ></Input>
+                    : <></>}
 
                     <Label>Number of players</Label>
                     <Input

@@ -16,6 +16,7 @@ export const MainPage = () => {
     const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60))
 
     const enterDraft = () => {
+        console.log(`now: ${now}`)
         navigate(`/live-draft`)
     }
 
@@ -61,7 +62,9 @@ export const MainPage = () => {
                 {now < seasonStart
                     ? <div>Season begins {seasonStart.toLocaleString('en-US')}</div>
                     : <div></div>}
-                {(selectedLeague.playerLimit == selectedLeague.leagueUsers.length) && !selectedLeague.isDraftComplete 
+                {(selectedLeague.playerLimit == selectedLeague.leagueUsers.length) 
+                    && !selectedLeague.isDraftComplete
+                    && now >= draftStart
                     ? <button onClick={() => enterDraft()}>Enter the draft!</button>
                     : <></>
                 }
