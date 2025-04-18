@@ -18,11 +18,18 @@ export const GetLeaguesWithVacancies = () => {
         .then((res) => res.json())
 }
 
-export const JoinLeague = (leagueId, userId, passwordInput) => {
-    return fetch(_apiUrl + `/join-league?leagueId=${leagueId}&userId=${userId}&passwordInput=${passwordInput}`, {
+export const JoinLeague = async (leagueId, userId, passwordInput) => {
+    const response = await fetch(_apiUrl + `/join-league?leagueId=${leagueId}&userId=${userId}&passwordInput=${passwordInput}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json"}
     })
+
+    if (!response.ok) {
+        const errorText = await response.text()
+        throw new Error(errorText || "Failed to join League.")
+    }
+    
+    return
 }
 
 // export const GetLeaguesByUser = (userId) => {

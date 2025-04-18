@@ -8,4 +8,5 @@ public class MatchupUserDTO
     public int UserProfileId { get; set; }
     public UserProfileSafeExportDTO UserProfileDTO { get; set; }
     public int MatchupId { get; set; }
+    public ICollection<MatchupUserSavedPlayer> MatchupUserSavedPlayers { get; set; }
 }

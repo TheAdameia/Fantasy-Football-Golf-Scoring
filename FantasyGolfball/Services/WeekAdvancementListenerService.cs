@@ -1,6 +1,7 @@
 namespace FantasyGolfball.Services;
 
 using FantasyGolfball.Data;
+using FantasyGolfball.Models;
 using FantasyGolfball.Models.Events;
 using Microsoft.EntityFrameworkCore;
 
@@ -70,19 +71,43 @@ public class WeekAdvancementListenerService
                         throw new Exception($"user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
                     }
 
+                    // for the SavedPlayers
+                    var AllRosterPlayers = roster.RosterPlayers
+                        .ToList();
+
                     // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC, so tests break on that
                     var filteredRosterPlayers = roster.RosterPlayers
                         .Where(rp => rp.RosterPosition != "bench")
                         .Select(rp => rp.PlayerId)
                         .ToList();
                     
-                    float totalScore = await dbContext.Scorings
+                    var scoringEntries = await dbContext.Scorings
                         .Where(s => s.SeasonYear == season.SeasonYear &&
                                     s.SeasonWeek == previousWeek &&
                                     filteredRosterPlayers.Contains(s.PlayerId))
-                        .SumAsync(s => s.Points);
+                        .ToListAsync();
                     
+                    float totalScore = scoringEntries.Sum(s => s.Points);
                     scores[matchupUser.UserProfileId] = totalScore;
+                    
+                    // saves what the roster was so it can be excavated for past matchups display
+                    matchupUser.MatchupUserSavedPlayers = AllRosterPlayers
+                        .Select(rp =>
+                        {
+                            var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
+                            
+                            if (scoring == null)
+                            {
+                                throw new Exception($"player {rp.PlayerId} in matchupuser {matchupUser.MatchupUserId} did not have a scoring");
+                            }
+
+                            return new MatchupUserSavedPlayer
+                            {
+                                MatchupUserId = matchupUser.MatchupUserId,
+                                PlayerId = rp.PlayerId,
+                                ScoringId = scoring.ScoringId
+                            };
+                        }).ToList();
                 }
 
                 if (scores.Count == 2)

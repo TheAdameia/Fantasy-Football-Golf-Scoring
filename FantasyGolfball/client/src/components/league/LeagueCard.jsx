@@ -10,7 +10,7 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
     let openSlots = (league.playerLimit - league.leagueUsers.length)
     const navigate = useNavigate()
 
-    const handleJoin = (event) => {
+    const handleJoin = async (event) => {
         event.preventDefault()
         let leagueId = league.leagueId
         let userId = loggedInUser.id
@@ -27,12 +27,18 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
             if (userPassword == null) {
                 return
             }
+        } // this need some work. Sets the league and sends you to the mainpage even if you enter the wrong password.
+        
+        try {
+            await JoinLeague(leagueId, userId, userPassword)
+            await    getAndSetLeagues()
+            setSelectedLeague(league)
+            navigate("/")
+        } catch (error) {
+            window.alert("League password incorrect or other error joining.")
+            console.error("JoinLeague error:", error)
         }
         
-        JoinLeague(leagueId, userId, userPassword).then(() => {
-            getAndSetLeagues()
-        }).then(setSelectedLeague(league))
-        navigate("/")
     }
 
     return (

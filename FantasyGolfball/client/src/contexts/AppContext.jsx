@@ -105,6 +105,7 @@ export const AppProvider = ({ children }) => {
       roster, 
       players,
       getAndSetRoster,
+      getAndSetPlayers,
       setSelectedLeague,
       userLeagues,
       setUserLeagues,

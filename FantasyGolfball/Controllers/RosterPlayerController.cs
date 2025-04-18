@@ -37,6 +37,31 @@ public class RosterPlayerController : ControllerBase
         {
             return BadRequest(ModelState);
         }
+
+        var roster = _dbContext.Rosters
+            .Where(r => r.RosterId == rosterPlayerPOSTDTO.RosterId)
+            .SingleOrDefault();
+        
+        if (roster == null) {
+            return BadRequest($"No roster found for RosterId{rosterPlayerPOSTDTO.RosterId}");
+        }
+
+        var league = _dbContext.Leagues
+            .Where(l => l.LeagueId == roster.LeagueId)
+            .SingleOrDefault();
+
+        if (league == null) {
+            return BadRequest($"No League found for LeagueId{roster.LeagueId}");
+        }
+
+        if (roster.RosterPlayers.Count() >= league.MaxRosterSize) {
+            return BadRequest($"Request would exceed maximum roster size of {league.MaxRosterSize}");
+        }
+
+        if (roster.RosterPlayers.Any(rp => rp.PlayerId == rosterPlayerPOSTDTO.PlayerId))
+        {
+            return BadRequest($"Roster {roster.RosterId} already contains player {rosterPlayerPOSTDTO.PlayerId}.");
+        }
         // checks end here
 
         var rosterPlayer = new RosterPlayer

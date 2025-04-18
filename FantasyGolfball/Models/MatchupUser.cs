@@ -9,4 +9,5 @@ public class MatchupUser
     public UserProfile userProfile { get; set; }
     public int MatchupId { get; set; }
     public Matchup matchup { get; set; }
+    public ICollection<MatchupUserSavedPlayer> MatchupUserSavedPlayers { get; set; }
 }

@@ -47,8 +47,7 @@ public class RosterPlayerControllerTests
             var rosterPlayerDTO = new RosterPlayerPOSTDTO
             {
                 PlayerId = 1,
-                RosterId = 1,
-                RosterPosition = "bench"
+                RosterId = 1
             };
 
             // Act

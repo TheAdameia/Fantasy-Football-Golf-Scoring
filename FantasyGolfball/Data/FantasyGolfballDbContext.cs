@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using FantasyGolfball.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FantasyGolfball.Data;
 public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
@@ -21,6 +22,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Season> Seasons { get; set; }
     public DbSet<Team> Teams { get; set; }
     public DbSet<ActivePeriod> ActivePeriods { get; set; }
+    public DbSet<MatchupUserSavedPlayer> MatchupUserSavedPlayers { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
