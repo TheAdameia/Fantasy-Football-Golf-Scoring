@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../contexts/AppContext"
 import "./MainPage.css"
+import { MatchupRecap } from "./matchups/MatchupRecap"
 
 
 export const MainPage = () => {
@@ -32,10 +33,12 @@ export const MainPage = () => {
                 <div className="mainpage-league-container">
                     <h4>{selectedLeague.leagueName}</h4>
                     <div>Final Rankings:</div>
+                    <div>win/loss, PF, PA goes here </div>
                     <div className="mainpage-matchup-container">
-                        <div>
-                            bubkis (placeholder, supposed to show win/loss records and other fun stats)
-                        </div>
+                        <MatchupRecap weekId={1} />
+                        <MatchupRecap weekId={2} />
+                        <MatchupRecap weekId={3} />
+                        <MatchupRecap weekId={4} />
                     </div>
                     <div className="mainpage-rules-container">League Settings 
                         <div>Player Limit: {selectedLeague.playerLimit}</div>
@@ -76,7 +79,7 @@ export const MainPage = () => {
                         .map((matchup) => {
                             return (
                                 <div key={matchup.matchupId} className="matchup">
-                                    User {matchup.matchupUsers[0].userProfileId} vs. User {matchup.matchupUsers[1].userProfileId}
+                                    {matchup.matchupUsers[0].userProfileDTO.userName} vs. {matchup.matchupUsers[1].userProfileDTO.userName}
                                 </div>
                             )
                         }) : <div></div>}

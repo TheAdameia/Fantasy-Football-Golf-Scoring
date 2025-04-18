@@ -1,4 +1,4 @@
-
+import "./Faq.css"
 
 export const FaqPage = () => {
 
@@ -6,7 +6,7 @@ export const FaqPage = () => {
         <div>
             <h3>Frequently Asked Questions</h3>
             <h5>Where am I? What is this place?</h5>
-            <article>
+            <article className="faq-article">
                 This is Fantasy Golfball. It is a fantasy football webapp with the twist that you're trying to get the lowest possible score instead of the highest possible score. This project is currently in alpha, meaning that some features are missing or unavailable and that all players and related data on the site is either fake or user-created.
             </article>
             <h5>Where can I find documentation and additional information about this website?</h5>

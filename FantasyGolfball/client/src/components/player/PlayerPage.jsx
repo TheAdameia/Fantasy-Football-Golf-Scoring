@@ -37,9 +37,8 @@ export const PlayerPage = () => {
     useEffect(() => {
         if (players){
             const foundPlayers = players.filter(player => 
-                player.playerLastName.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                player.playerFirstName.toLowerCase().includes(searchTerm.toLowerCase())
-            ) // I realize that if you type a full name in this won't work. I will have to adjust the full name to be a calculated property later.
+                player.playerFullName.toLowerCase().includes(searchTerm.toLowerCase()) 
+            )
 
             switch(positionFilter) {
                 case "Any":

@@ -42,7 +42,6 @@ export const AppProvider = ({ children }) => {
   const getAndSetMatchups = () => {
     if (loggedInUser != null && selectedLeague != null) {
       if (selectedLeague.isDraftComplete) {
-        console.log(`league ${selectedLeague.leagueId}, user ${loggedInUser.id}`)
         GetMatchupsByLeagueAndUser(selectedLeague.leagueId, loggedInUser.id).then(setMatchups)
       }
     }
