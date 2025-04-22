@@ -44,6 +44,21 @@ public class WeekAdvancementListenerService
 
         foreach (var league in leagues)
         {
+            // league finish code begins here
+            if (previousWeek >= 4 && !league.IsLeagueFinished) // needs to change once we get real seasons
+            {
+                league.IsLeagueFinished = true;
+                Console.WriteLine($"League {league.LeagueId} set to finished");
+                continue; // skips this iteration and continues with the loop
+            }
+            if (league.IsLeagueFinished)
+            {
+                Console.WriteLine($"League {league.LeagueId} skipped in WALS due to already being done");
+                continue;
+            }
+
+            // league finish code ends here
+
             var matchups = await dbContext.Matchups
                 .Where(m => m.LeagueId == league.LeagueId)
                 .Include(m => m.MatchupUsers)

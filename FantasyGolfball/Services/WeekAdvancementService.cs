@@ -35,6 +35,12 @@ public class WeekAdvancementService : BackgroundService
             foreach (var season in seasons)
             {
                 int? latestWeek = season.CurrentWeek;
+
+                if (latestWeek >= 5)
+                {
+                    continue; // skips this iteration and continues the loop
+                }
+
                 if (latestWeek.HasValue && season.LastRecordedWeek != latestWeek)
                 {
                     season.LastRecordedWeek = latestWeek; // updates stored value
