@@ -12,6 +12,7 @@ import { DraftPage } from "./draft/DraftPage";
 import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap";
 import { MatchupPage } from "./matchups/MatchupPage";
 import { MainPage } from "./MainPage";
+import { FaqPage } from "./rule-faq/FaqPage";
 
 
 export default function ApplicationViews() {
@@ -81,6 +82,12 @@ export default function ApplicationViews() {
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <MatchupPage />
             </AuthorizedRoute>
+          }
+        />
+        <Route 
+          path="faq"
+          element={
+            <FaqPage />
           }
         />
         <Route

@@ -26,4 +26,6 @@ public class LeaguePOSTDTO
    public DateTime DraftStartTime { get; set; }
    [Required]
    public string Advancement { get; set; }
+   [StringLength(100)]
+   public string? JoinPassword { get; set;}
 }

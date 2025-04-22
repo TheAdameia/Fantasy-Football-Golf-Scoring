@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace FantasyGolfball.Models;
+namespace FantasyGolfball.Models.DTOs;
 
-public class MatchupUser
+public class MatchupUserDTO
 {
     public int MatchupUserId { get; set; }
     public int UserProfileId { get; set; }
-    public UserProfile userProfile { get; set; }
+    public UserProfileSafeExportDTO UserProfileDTO { get; set; }
     public int MatchupId { get; set; }
-    public Matchup matchup { get; set; }
     public ICollection<MatchupUserSavedPlayer> MatchupUserSavedPlayers { get; set; }
 }

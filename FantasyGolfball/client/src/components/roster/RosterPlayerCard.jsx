@@ -5,20 +5,22 @@ import { RosterPositionDropdown } from "./RosterPositionDropdown"
 
 
 export const RosterPlayerCard = ({ rp }) => {
-    const  { getAndSetRoster, allScores, selectedLeague } = useAppContext()
+    const  { getAndSetRoster, allScores, selectedLeague, getAndSetPlayers } = useAppContext()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState() // might want to fit this in later
 
 
     const HandleDropPlayer = (rosterPlayerId) => {
-        DeleteRosterPlayer(rosterPlayerId)
+        DeleteRosterPlayer(rosterPlayerId).then(() => {
+            getAndSetRoster(),
+            getAndSetPlayers()
+        })
     }
 
     const ConfirmDrop = (rosterPlayerId) => {
         const confirmed = window.confirm(`Are you sure you want to drop ${rp.player.playerFullName}?`)
         if (confirmed) {
             HandleDropPlayer(rosterPlayerId)
-            getAndSetRoster()
         } else {
             return
         }

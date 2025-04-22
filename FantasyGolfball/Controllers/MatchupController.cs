@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
+using FantasyGolfball.Models.DTOs;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -17,27 +18,27 @@ public class MatchupController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
-    [Authorize]
-    public IActionResult GetByLeague(int leagueId)
-    {
-        if (leagueId == 0)
-        {
-            return BadRequest();
-        }
+    // [HttpGet]
+    // [Authorize]
+    // public IActionResult GetByLeague(int leagueId)
+    // {
+    //     if (leagueId == 0)
+    //     {
+    //         return BadRequest();
+    //     }
 
-        List<Matchup> matchups = _dbContext.Matchups
-            .Include(m => m.MatchupUsers)
-            .Where(m => m.LeagueId == leagueId)
-            .ToList();
+    //     List<Matchup> matchups = _dbContext.Matchups
+    //         .Include(m => m.MatchupUsers)
+    //         .Where(m => m.LeagueId == leagueId)
+    //         .ToList();
 
-        if (matchups == null)
-        {
-            return NotFound();
-        }
+    //     if (matchups == null)
+    //     {
+    //         return NotFound();
+    //     }
 
-        return Ok(matchups);
-    }
+    //     return Ok(matchups);
+    // }
 
     [HttpGet("by-league-and-user")]
     [Authorize]
@@ -48,11 +49,30 @@ public class MatchupController : ControllerBase
             return BadRequest();
         }
 
-        List<Matchup> matchups = _dbContext.Matchups
+        var matchups = _dbContext.Matchups
             .Include(m => m.MatchupUsers)
+                .ThenInclude(mu => mu.userProfile)
+                    .ThenInclude(up => up.IdentityUser)
             .Where(m => m.LeagueId == leagueId)
             .Where(m => m.MatchupUsers.Any(mu => mu.UserProfileId == userId))
-            .ToList();
+            .Select(m => new MatchupDTO
+            {
+                MatchupId = m.MatchupId,
+                LeagueId = m.LeagueId,
+                WeekId = m.WeekId,
+                WinnerId = m.WinnerId,
+                MatchupUsers = m.MatchupUsers.Select(mu => new MatchupUserDTO
+                {
+                    MatchupUserId = mu.MatchupId,
+                    UserProfileId = mu.UserProfileId,
+                    MatchupId = mu.MatchupId,
+                    UserProfileDTO = new UserProfileSafeExportDTO
+                    {
+                        Id = mu.userProfile.Id,
+                        UserName = mu.userProfile.IdentityUser.UserName
+                    }
+                }).ToList()
+            }).ToList();
 
         if (matchups == null)
         {

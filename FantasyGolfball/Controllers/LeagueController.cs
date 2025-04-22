@@ -34,7 +34,7 @@ public class LeagueController : ControllerBase
         // checks begin here
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState);
+            return BadRequest($"model invalid: {ModelState}");
         }
 
         if (string.IsNullOrWhiteSpace(leaguePOSTDTO.LeagueName) || leaguePOSTDTO.LeagueName.Length > 100)
@@ -104,7 +104,8 @@ public class LeagueController : ControllerBase
                 IsDraftComplete = false,
                 SeasonId = season.SeasonId,
                 IsLeagueFinished =  false,
-                DraftStartTime = leaguePOSTDTO.DraftStartTime.ToUniversalTime()
+                DraftStartTime = leaguePOSTDTO.DraftStartTime.ToUniversalTime(),
+                JoinPassword = leaguePOSTDTO.JoinPassword
             };
             
             _dbContext.Leagues.Add(league);
@@ -146,7 +147,7 @@ public class LeagueController : ControllerBase
 
     [HttpPut("join-league")]
     [Authorize]
-    public IActionResult JoinLeague(int leagueId, int userId)
+    public IActionResult JoinLeague(int leagueId, int userId, string passwordInput)
     {
         if (leagueId == 0 || userId == 0)
         {
@@ -171,6 +172,14 @@ public class LeagueController : ControllerBase
         if (league.LeagueUsers.Any(lu => lu.UserProfileId == user.Id))
         {
             return BadRequest("User already joined league");
+        }
+
+        if (league.JoinPassword != null)
+        {
+            if (league.JoinPassword != passwordInput)
+            {
+                return BadRequest("Wrong password entered");
+            }
         }
 
         var roster = new Roster
@@ -301,6 +310,7 @@ public class LeagueController : ControllerBase
                 LeagueName = l.LeagueName,
                 RequiredFullToStart = l.RequiredFullToStart,
                 SeasonId = l.SeasonId,
+                RequiresPassword = l.JoinPassword != null,
                 Season = new SeasonDTO
                 {
                     SeasonId = l.Season.SeasonId,

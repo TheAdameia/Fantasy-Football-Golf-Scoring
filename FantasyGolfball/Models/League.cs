@@ -17,4 +17,5 @@ public class League
     public Season Season { get; set; }
     public ICollection<LeagueUser> LeagueUsers { get; set; }
     public DateTime DraftStartTime { get; set; }
+    public string? JoinPassword { get; set; }
 }

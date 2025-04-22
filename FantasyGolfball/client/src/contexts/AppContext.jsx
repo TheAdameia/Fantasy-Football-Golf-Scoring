@@ -31,7 +31,7 @@ export const AppProvider = ({ children }) => {
           
         // check localStorage for previously selected league
         const storedLeagueId = localStorage.getItem("selectedLeagueId");
-
+        
         // set selected league from localStorage if valid, otherwise first league user is in
         const initialLeague = data.find(l => l.leagueId === parseInt(storedLeagueId)) || data[0];
         setSelectedLeague(initialLeague);
@@ -42,14 +42,13 @@ export const AppProvider = ({ children }) => {
   const getAndSetMatchups = () => {
     if (loggedInUser != null && selectedLeague != null) {
       if (selectedLeague.isDraftComplete) {
-        GetMatchupsByLeagueAndUser(selectedLeague.leagueId, loggedInUser.userId).then(setMatchups)
+        GetMatchupsByLeagueAndUser(selectedLeague.leagueId, loggedInUser.id).then(setMatchups)
       }
     }
   }
 
   const getAndSetRoster = () => {
-    if (loggedInUser != null && selectedLeague)
-    {
+    if (loggedInUser != null && selectedLeague) {
       let userId = loggedInUser.id
       GetByUserAndLeague(userId, selectedLeague.leagueId).then(setRoster)
     }
@@ -74,8 +73,10 @@ export const AppProvider = ({ children }) => {
   }, [loggedInUser, selectedLeague])
 
   useEffect(() => {
-    getAndSetPlayers()
-  }, [])
+    if (loggedInUser && selectedLeague) {
+      getAndSetPlayers()
+    }
+  }, [loggedInUser, selectedLeague])
 
   useEffect(() => {
     if (selectedLeague) {
@@ -104,6 +105,7 @@ export const AppProvider = ({ children }) => {
       roster, 
       players,
       getAndSetRoster,
+      getAndSetPlayers,
       setSelectedLeague,
       userLeagues,
       setUserLeagues,

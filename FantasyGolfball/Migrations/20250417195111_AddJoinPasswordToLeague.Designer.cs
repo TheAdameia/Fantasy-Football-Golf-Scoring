@@ -3,6 +3,7 @@ using System;
 using FantasyGolfball.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasyGolfball.Migrations
 {
     [DbContext(typeof(FantasyGolfballDbContext))]
-    partial class FantasyGolfballDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250417195111_AddJoinPasswordToLeague")]
+    partial class AddJoinPasswordToLeague
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -333,34 +336,6 @@ namespace FantasyGolfball.Migrations
                     b.HasIndex("UserProfileId");
 
                     b.ToTable("MatchupUsers");
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.MatchupUserSavedPlayer", b =>
-                {
-                    b.Property<int>("MatchupUserSavedPlayerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MatchupUserSavedPlayerId"));
-
-                    b.Property<int>("MatchupUserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ScoringId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("MatchupUserSavedPlayerId");
-
-                    b.HasIndex("MatchupUserId");
-
-                    b.HasIndex("PlayerId");
-
-                    b.HasIndex("ScoringId");
-
-                    b.ToTable("MatchupUserSavedPlayers");
                 });
 
             modelBuilder.Entity("FantasyGolfball.Models.Player", b =>
@@ -7391,13 +7366,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "73ff2965-7dc6-4bc2-bb86-4ebed6e29709",
+                            ConcurrencyStamp = "680aeb28-ef9b-4c11-b8cb-4aa609e2a4f7",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAECDP8XSlWLSEash8h3SM0CSRespJ2X2FNyklnQZmog+c4etQemrUhfj/lo7UodpjJw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENAD1wyvU1KxB61q7RnLQA3PK+x3kIBG4Q0kAFZnz68Sm36TZROx7ExLZ7JbJIvY8Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5527d4b2-f8ba-4ca4-938b-34cc7bd11387",
+                            SecurityStamp = "020628a7-0ec6-451f-b431-30728aec8883",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
@@ -7559,31 +7534,6 @@ namespace FantasyGolfball.Migrations
                     b.Navigation("userProfile");
                 });
 
-            modelBuilder.Entity("FantasyGolfball.Models.MatchupUserSavedPlayer", b =>
-                {
-                    b.HasOne("FantasyGolfball.Models.MatchupUser", null)
-                        .WithMany("MatchupUserSavedPlayers")
-                        .HasForeignKey("MatchupUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FantasyGolfball.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FantasyGolfball.Models.Scoring", "Scoring")
-                        .WithMany()
-                        .HasForeignKey("ScoringId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Player");
-
-                    b.Navigation("Scoring");
-                });
-
             modelBuilder.Entity("FantasyGolfball.Models.Player", b =>
                 {
                     b.HasOne("FantasyGolfball.Models.Position", "Position")
@@ -7692,11 +7642,6 @@ namespace FantasyGolfball.Migrations
             modelBuilder.Entity("FantasyGolfball.Models.Matchup", b =>
                 {
                     b.Navigation("MatchupUsers");
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.MatchupUser", b =>
-                {
-                    b.Navigation("MatchupUserSavedPlayers");
                 });
 
             modelBuilder.Entity("FantasyGolfball.Models.Player", b =>

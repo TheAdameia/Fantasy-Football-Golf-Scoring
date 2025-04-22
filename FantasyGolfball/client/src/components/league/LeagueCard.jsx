@@ -2,25 +2,43 @@ import { Button } from "reactstrap"
 import { JoinLeague } from "../../managers/leagueManager"
 import { useAppContext } from "../../contexts/AppContext"
 import "./League.css"
+import { useNavigate } from "react-router-dom"
 
 
 export const LeagueCard = ({ league, getAndSetLeagues }) => {
     const { loggedInUser, setSelectedLeague } = useAppContext()
     let openSlots = (league.playerLimit - league.leagueUsers.length)
+    const navigate = useNavigate()
 
-    const handleJoin = (event) => {
+    const handleJoin = async (event) => {
         event.preventDefault()
         let leagueId = league.leagueId
         let userId = loggedInUser.id
+        let userPassword = ""
 
         if (league.leagueUsers.some(u => u.userProfileId == userId)) {
             window.alert("Already joined that league!")
             return
         }
         
-        JoinLeague(leagueId, userId).then(() => {
-            getAndSetLeagues()
-        }).then(setSelectedLeague(league)) // speculative
+
+        if (league.requiresPassword) {
+            userPassword = window.prompt("Enter the password for this League:")
+            if (userPassword == null) {
+                return
+            }
+        } // this need some work. Sets the league and sends you to the mainpage even if you enter the wrong password.
+        
+        try {
+            await JoinLeague(leagueId, userId, userPassword)
+            await    getAndSetLeagues()
+            setSelectedLeague(league)
+            navigate("/")
+        } catch (error) {
+            window.alert("League password incorrect or other error joining.")
+            console.error("JoinLeague error:", error)
+        }
+        
     }
 
     return (
