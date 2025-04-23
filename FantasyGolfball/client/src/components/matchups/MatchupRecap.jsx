@@ -4,8 +4,37 @@ import { useAppContext } from "../../contexts/AppContext"
 export const MatchupRecap = ({ weekId }) => {
     const { matchups } = useAppContext()
 
-    // take all the matchups, filter to a certain week, display them
-    //
+    // const testObjects = [
+    //     {
+    //         matchupUserSavedPlayerId: 1,
+    //         playerId: 1,
+    //         scoringId: 1,
+    //         rosterPlayerPosition: "QB1",
+    //         player: {
+    //             playerId: 1,
+    //             playerFullName: "Joe Blow"
+    //         },
+    //         scoring: {
+    //             scoringId: 1,
+    //             points: 2
+    //         }
+    //     },
+    //     {
+    //         matchupUserSavedPlayerId: 1,
+    //         playerId: 1,
+    //         scoringId: 1,
+    //         rosterPlayerPosition: "QB1",
+    //         player: {
+    //             playerId: 1,
+    //             playerFullName: "Joe Blow"
+    //         },
+    //         scoring: {
+    //             scoringId: 1,
+    //             points: 2
+    //         }
+    //     },
+
+    // ]
 
     return (
         <div>

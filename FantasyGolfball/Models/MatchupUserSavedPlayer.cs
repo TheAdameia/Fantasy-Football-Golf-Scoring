@@ -10,4 +10,5 @@ public class MatchupUserSavedPlayer
     public Player Player { get; set; }
     public int ScoringId { get; set; }
     public Scoring Scoring { get; set; }
+    public string RosterPlayerPosition { get; set; }
 }

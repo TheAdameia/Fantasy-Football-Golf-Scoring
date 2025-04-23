@@ -120,7 +120,8 @@ public class WeekAdvancementListenerService
                             {
                                 MatchupUserId = matchupUser.MatchupUserId,
                                 PlayerId = rp.PlayerId,
-                                ScoringId = scoring.ScoringId
+                                ScoringId = scoring.ScoringId,
+                                RosterPlayerPosition = rp.RosterPosition
                             };
                         }).ToList();
                 }

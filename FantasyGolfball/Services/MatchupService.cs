@@ -87,7 +87,7 @@ public class MatchupService : IMatchupService
         await context.SaveChangesAsync();
     }
 
-    private List<List<int>> GenerateRoundRobin(List<int> users) // Yo dawg I herd u liek lists
+    private List<List<int>> GenerateRoundRobin(List<int> users)
     {
         int numUsers = users.Count();
         if (numUsers % 2 != 0) users.Add(-1); //bye if odd number of users
