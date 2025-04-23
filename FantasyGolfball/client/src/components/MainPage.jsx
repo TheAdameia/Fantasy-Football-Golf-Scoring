@@ -71,6 +71,7 @@ export const MainPage = () => {
                     ? <button onClick={() => enterDraft()}>Enter the draft!</button>
                     : <></>
                 }
+                {/* A different check will be needed for Leagues that don't need all players to start */}
                 <div>League rankings</div>
                 <div>PF, PA tables go here</div>
                 <div className="mainpage-matchup-container">Week {selectedLeague.season.currentWeek} Matchups

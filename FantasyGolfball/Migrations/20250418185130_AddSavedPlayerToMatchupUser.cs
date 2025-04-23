@@ -12,9 +12,18 @@ namespace FantasyGolfball.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "RosterPositionPlayerIds",
-                table: "MatchupUsers");
+            migrationBuilder.Sql(@"
+                DO $$
+                BEGIN
+                    IF EXISTS (
+                        SELECT 1
+                        FROM information_schema.columns
+                        WHERE table_name='MatchupUsers' AND column_name='RosterPositionPlayerIds'
+                    ) THEN
+                        ALTER TABLE ""MatchupUsers"" DROP COLUMN ""RosterPositionPlayerIds"";
+                    END IF;
+                END$$;
+            ");
 
             migrationBuilder.CreateTable(
                 name: "MatchupUserSavedPlayers",
