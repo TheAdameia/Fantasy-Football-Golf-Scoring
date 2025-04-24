@@ -20,7 +20,7 @@ public class WeekAdvancementService : BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             await PerformWeekAdvancement(stoppingToken);
-            await Task.Delay(TimeSpan.FromHours(1), stoppingToken); // runs every hour
+            await Task.Delay(TimeSpan.FromMinutes(15), stoppingToken); // runs every 15 minutes
         }
     }
 

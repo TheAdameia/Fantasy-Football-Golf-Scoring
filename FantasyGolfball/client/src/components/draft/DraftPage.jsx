@@ -33,6 +33,15 @@ export const DraftPage = () => {
         setQueuedPlayers(listCopy)
     }
 
+    // handles differences between test environment and deployment environment
+    const getSignalRUrl = () => {
+        if (window.location.hostname === "localhost") {
+            return "https://localhost:5001/draftHub";
+        }
+        return "https://fantasygolfball.org/draftHub";
+    };
+    
+
     useEffect(() => {
         if (selectedLeague != undefined) {
             setLeagueId(selectedLeague.leagueId)
@@ -56,7 +65,7 @@ export const DraftPage = () => {
         const connect = async () => {
             
             const newConnection = new HubConnectionBuilder()
-                .withUrl("https://localhost:5001/draftHub") // Backend URL
+                .withUrl(getSignalRUrl()) // Backend URL
                 .withAutomaticReconnect()
                 .build();
     
