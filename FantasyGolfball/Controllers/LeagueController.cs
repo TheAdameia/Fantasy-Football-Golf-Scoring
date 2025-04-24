@@ -105,7 +105,8 @@ public class LeagueController : ControllerBase
                 SeasonId = season.SeasonId,
                 IsLeagueFinished =  false,
                 DraftStartTime = leaguePOSTDTO.DraftStartTime.ToUniversalTime(),
-                JoinPassword = leaguePOSTDTO.JoinPassword
+                JoinPassword = leaguePOSTDTO.JoinPassword,
+                RequiresPassword = leaguePOSTDTO.RequiresPassword
             };
             
             _dbContext.Leagues.Add(league);
@@ -147,7 +148,7 @@ public class LeagueController : ControllerBase
 
     [HttpPut("join-league")]
     [Authorize]
-    public IActionResult JoinLeague(int leagueId, int userId, string passwordInput)
+    public IActionResult JoinLeague(int leagueId, int userId, string? passwordInput)
     {
         if (leagueId == 0 || userId == 0)
         {
@@ -174,7 +175,7 @@ public class LeagueController : ControllerBase
             return BadRequest("User already joined league");
         }
 
-        if (league.JoinPassword != null)
+        if (league.RequiresPassword)
         {
             if (league.JoinPassword != passwordInput)
             {
@@ -310,7 +311,7 @@ public class LeagueController : ControllerBase
                 LeagueName = l.LeagueName,
                 RequiredFullToStart = l.RequiredFullToStart,
                 SeasonId = l.SeasonId,
-                RequiresPassword = l.JoinPassword != null,
+                RequiresPassword = l.RequiresPassword,
                 Season = new SeasonDTO
                 {
                     SeasonId = l.Season.SeasonId,

@@ -27,7 +27,7 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
             if (userPassword == null) {
                 return
             }
-        } // this need some work. Sets the league and sends you to the mainpage even if you enter the wrong password.
+        } 
         
         try {
             await JoinLeague(leagueId, userId, userPassword)

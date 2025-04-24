@@ -20,9 +20,9 @@ export const LeagueForm = () => {
         draftStartTime: "",
         seasonStartDate: "",
         advancement: "Weekly",
-        joinPassword: ""
+        joinPassword: "",
+        requiresPassword: false
     })
-    const [joinCheck, setJoinCheck] = useState(false)
     const navigate = useNavigate()
 
     const toLocalInputValue = (utcString) => {
@@ -95,16 +95,15 @@ export const LeagueForm = () => {
                     <Label>Join Password (optional)</Label>
                     <Input 
                         type="checkbox"
-                        checked={joinCheck}
+                        checked={leagueObject.requiresPassword}
                         onChange={() => {
-                            setJoinCheck(!joinCheck)
                             const objectCopy = { ...leagueObject}
-                            objectCopy.joinPassword = ""
+                            objectCopy.requiresPassword = !leagueObject.requiresPassword
                             setLeagueObject(objectCopy)
                         }}
                     ></Input>
                     
-                    {joinCheck ? 
+                    {leagueObject.requiresPassword ? 
                     <Input
                         type="text"
                         value={leagueObject.joinPassword}
@@ -227,6 +226,7 @@ export const LeagueForm = () => {
                         >
                             <option value={"Weekly"}>Every Week (default)</option>
                             <option value={"Daily"}>Every Day</option>
+                            <option value={"Hourly"}>Every Hour</option>
                         </Input>
                     </FormGroup>
                 ) : null}

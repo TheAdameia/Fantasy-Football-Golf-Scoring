@@ -33,7 +33,7 @@ public class WeekAdvancementListenerService
         Console.WriteLine($"Performing updates for Season {season.SeasonYear} now in Week {eventData.NewWeek}");
 
         int previousWeek = eventData.NewWeek - 1;
-        if (previousWeek <= 0)
+        if (previousWeek < 0)
         {
             throw new Exception($"previousWeek {previousWeek} error for season {eventData.SeasonId}");
         }

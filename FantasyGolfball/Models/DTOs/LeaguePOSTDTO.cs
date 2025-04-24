@@ -28,4 +28,5 @@ public class LeaguePOSTDTO
    public string Advancement { get; set; }
    [StringLength(100)]
    public string? JoinPassword { get; set;}
+   public bool RequiresPassword { get; set; }
 }
