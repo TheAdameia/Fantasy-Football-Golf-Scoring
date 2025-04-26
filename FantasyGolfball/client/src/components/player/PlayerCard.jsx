@@ -85,7 +85,6 @@ export const PlayerCard = ({ player, isPreseason }) => {
     
     return (
         <tr>
-            <td></td>
             <td>{player.playerFullName}</td>
             <td>{player.position.positionShort}</td>
             <td>{player.status.statusType}</td>

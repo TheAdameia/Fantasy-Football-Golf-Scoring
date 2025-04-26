@@ -32,13 +32,18 @@ export const LeaguePage = () => {
     }, [leagues, searchTerm])
 
     return (
-        <div>            
-            <button
-                onClick={() => handleCreate()}
-            >Create a league!</button>
-            <div>Search:</div>
-            <SearchBar setSearchTerm={setSearchTerm} />
-            <h2>Leagues looking for players</h2>
+        <div>
+            <h2 className="leagues-h2">Leagues looking for players</h2>
+            <div className="leagues-widgets-container">
+                <div className="leagues-widget">
+                    <div>Search:</div>
+                    <SearchBar setSearchTerm={setSearchTerm} />
+                </div>
+                <button
+                    className="leagues-widget"
+                    onClick={() => handleCreate()}
+                >Create a league!</button>
+            </div>            
             <div className="leagues-container">
                 {filteredLeagues ? filteredLeagues.map((league) => {
                     return (

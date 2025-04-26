@@ -39,6 +39,7 @@ public class RosterPlayerController : ControllerBase
         }
 
         var roster = _dbContext.Rosters
+            .Include(r => r.RosterPlayers)
             .Where(r => r.RosterId == rosterPlayerPOSTDTO.RosterId)
             .SingleOrDefault();
         

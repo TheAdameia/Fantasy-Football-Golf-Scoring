@@ -3,6 +3,8 @@
     border-color: #000000;
     border-style: double;
     width: 50%;
+    margin: .5em;
+    border-radius: .5em;
 }
 
 .leagues-container {
@@ -16,4 +18,24 @@
     border: 1px;
     border-color: aquamarine;
     border-style: groove;
+    border-radius: .5em;
+}
+
+.leagues-h2 {
+    margin: .2em;
+    max-width: 50em;
+}
+
+.leagues-widgets-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.leagues-widget {
+    margin: .2em;
+    margin-left: 1em;
+    margin-right: 1em;
 }

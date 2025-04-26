@@ -55,7 +55,6 @@ export const MainPage = () => {
     return (
         <div className="mainpage-main-container">
             <h1>Testing, attention please!</h1>
-            <aside>View past leagues (NYI)</aside>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 {now < draftStart 
@@ -72,9 +71,10 @@ export const MainPage = () => {
                     : <></>
                 }
                 {/* A different check will be needed for Leagues that don't need all players to start */}
-                <div>League rankings</div>
-                <div>PF, PA tables go here</div>
-                <div className="mainpage-matchup-container">Week {selectedLeague.season.currentWeek} Matchups
+                <div className="mainpage-matchup-container">
+                    <div className="mainpage-matchup-weekannouncer">
+                        Week {selectedLeague.season.currentWeek} Matchups
+                    </div>
                     <div>
                         {matchups ? matchups
                         .filter((matchup) => matchup.weekId === selectedLeague.season.currentWeek)
@@ -87,7 +87,10 @@ export const MainPage = () => {
                         }) : <div></div>}
                     </div>
                 </div>
-                <div className="mainpage-rules-container">League Settings 
+                <div>League rankings</div>
+                <div>PF, PA tables go here</div>
+                <div className="mainpage-rules-container">
+                    <div className="mainpage-rules-announcer">League Settings</div>
                     <div>Player Limit: {selectedLeague.playerLimit}</div>
                     {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                     {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}
