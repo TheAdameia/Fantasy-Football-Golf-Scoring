@@ -35,10 +35,7 @@ public class MatchupService : IMatchupService
     {
         Console.WriteLine($"Attempting to generate matchups for {leagueId}");
 
-       
-        // I need to change League to have all of these properties... eventually
-
-        int totalWeeks = 4;
+        int totalWeeks = 4; // I need to change League to have these properties... eventually
         int gamesPerPlayer = 4;
         try
         {
@@ -70,15 +67,20 @@ public class MatchupService : IMatchupService
         {
             foreach (var round in baseSchedule)
             {
-                var matchup = new Matchup
+                foreach (var (userA, userB) in round)
                 {
-                    LeagueId = leagueId,
-                    WeekId = weekId,
-                    MatchupUsers = round.Select(userId => new MatchupUser {UserProfileId = userId}).ToList() 
-                    //this stuff in the brackets is some real black magic
-                };
-
-                matchups.Add(matchup);
+                    var matchup = new Matchup
+                    {
+                        LeagueId = leagueId,
+                        WeekId = weekId,
+                        MatchupUsers = new List<MatchupUser>
+                        {
+                            new MatchupUser { UserProfileId = userA },
+                            new MatchupUser { UserProfileId = userB }
+                        }
+                    };
+                    matchups.Add(matchup);
+                }
                 weekId = (weekId % totalWeeks) + 1;
             }
         }
@@ -87,30 +89,30 @@ public class MatchupService : IMatchupService
         await context.SaveChangesAsync();
     }
 
-    private List<List<int>> GenerateRoundRobin(List<int> users)
+    private List<List<(int, int)>> GenerateRoundRobin(List<int> users)
     {
-        int numUsers = users.Count();
-        if (numUsers % 2 != 0) users.Add(-1); //bye if odd number of users
+        int numUsers = users.Count;
+        if (numUsers % 2 != 0) users.Add(-1); // add bye
 
         int numRounds = users.Count - 1;
-        var schedule = new List<List<int>>();
+        var schedule = new List<List<(int, int)>>();
 
         for (int round = 0; round < numRounds; round++)
         {
-            var roundMatches = new List<int>();
+            var roundMatches = new List<(int, int)>();
             for (int i = 0; i < numUsers / 2; i++)
             {
                 int userA = users[i];
-                int userB = users[numUsers - 1 - i]; // what.gif
+                int userB = users[numUsers - 1 - i];
 
-                if (userA != -1 && userB != -1) //ignores byes
+                if (userA != -1 && userB != -1)
                 {
-                    roundMatches.AddRange(new[] {userA, userB});
+                    roundMatches.Add((userA, userB));
                 }
             }
 
             schedule.Add(roundMatches);
-            users.Insert(1, users[^1]); // rotates players
+            users.Insert(1, users[^1]);
             users.RemoveAt(users.Count - 1);
         }
 
