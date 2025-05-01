@@ -2,17 +2,15 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupCard } from "./MatchupCard"
 import { SavedMatchupCard } from "./SavedMatchupCard"
-
+import "./matchups.css"
 
 export const MatchupPage = () => {
     const { matchups, selectedLeague } = useAppContext()
-    const [week, setWeek] = useState(selectedLeague?.season?.currentWeek ?? 1)
-    
-    useEffect(() => {
-        if (selectedLeague?.season?.currentWeek) {
-            setWeek(selectedLeague.season.currentWeek)
-        }
-    }, [selectedLeague?.season?.currentWeek])
+    const getInitialWeek = () => {
+        const currentWeek = selectedLeague?.season?.currentWeek ?? 1
+        return Math.min(currentWeek, 4)
+    }
+    const [week, setWeek] = useState(getInitialWeek)
 
     const handleWeekChange = (arg) => {
         if (arg == true && (week + 1) > 4) {
@@ -32,7 +30,14 @@ export const MatchupPage = () => {
         }
     }
 
-    if (selectedLeague.season.currentWeek != week) {
+    useEffect(() => {
+        const currentWeek = selectedLeague?.season?.currentWeek ?? 1
+        const clampedWeek = Math.min(currentWeek, 4)
+        setWeek(clampedWeek)
+    }, [selectedLeague?.season?.currentWeek])
+
+
+    if (selectedLeague?.season?.currentWeek != week) {
         return (
             <div>
                 <div>
@@ -48,7 +53,7 @@ export const MatchupPage = () => {
                 </div>
         
                 <div>
-                    {matchups
+                    {matchups ? matchups
                     .filter((matchup) => matchup.weekId === week)
                     .map((matchup) => {
                         return (
@@ -57,7 +62,7 @@ export const MatchupPage = () => {
                                 key={matchup.matchupId}
                             />
                         )
-                    })}
+                    }) : <></>}
                 </div>
             </div>
         )

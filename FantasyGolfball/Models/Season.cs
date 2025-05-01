@@ -16,7 +16,7 @@ public class Season
         {
             get
             {
-                DateTime now = DateTime.Now;
+                DateTime now = DateTime.UtcNow;
                 if (now < SeasonStartDate) return null; // season hasn't started
 
                 int weekNumber = 0;
