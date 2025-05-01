@@ -18,27 +18,6 @@ public class MatchupController : ControllerBase
         _dbContext = context;
     }
 
-    // [HttpGet]
-    // [Authorize]
-    // public IActionResult GetByLeague(int leagueId)
-    // {
-    //     if (leagueId == 0)
-    //     {
-    //         return BadRequest();
-    //     }
-
-    //     List<Matchup> matchups = _dbContext.Matchups
-    //         .Include(m => m.MatchupUsers)
-    //         .Where(m => m.LeagueId == leagueId)
-    //         .ToList();
-
-    //     if (matchups == null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     return Ok(matchups);
-    // }
 
     [HttpGet("by-league-and-user")]
     [Authorize]

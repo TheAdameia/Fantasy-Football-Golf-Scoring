@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupCard } from "./MatchupCard"
+import { SavedMatchupCard } from "./SavedMatchupCard"
 
 
 export const MatchupPage = () => {
@@ -29,6 +30,37 @@ export const MatchupPage = () => {
         } else {
             window.alert("Something went wrong. Please try again.")
         }
+    }
+
+    if (selectedLeague.season.currentWeek != week) {
+        return (
+            <div>
+                <div>
+                <button
+                    className="week-buttons"
+                    onClick={() => handleWeekChange(false)}
+                >Previous</button>
+                <label className="week-label">Week {week}</label>
+                <button
+                    className="week-buttons"
+                    onClick={() => handleWeekChange(true)}
+                >Next</button>
+                </div>
+        
+                <div>
+                    {matchups
+                    .filter((matchup) => matchup.weekId === week)
+                    .map((matchup) => {
+                        return (
+                            <SavedMatchupCard
+                                matchup={matchup}
+                                key={matchup.matchupId}
+                            />
+                        )
+                    })}
+                </div>
+            </div>
+        )
     }
 
     if (matchups != null)

@@ -35,10 +35,11 @@ export const MainPage = () => {
                     <div>Final Rankings:</div>
                     <div>win/loss, PF, PA goes here </div>
                     <div className="mainpage-matchup-container">
-                        {/* <MatchupRecap weekId={1} />
-                        <MatchupRecap weekId={2} />
-                        <MatchupRecap weekId={3} />
-                        <MatchupRecap weekId={4} /> */}
+                        <div>Last week recap goes here</div>
+                        {(selectedLeague?.season?.currentWeek - 1) > 0 ? 
+                        <MatchupRecap
+                            weekId={selectedLeague.season.currentWeek - 1}
+                        /> : <></>}
                     </div>
                     <div className="mainpage-rules-container">League Settings 
                         <div>Player Limit: {selectedLeague.playerLimit}</div>
