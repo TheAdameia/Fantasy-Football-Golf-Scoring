@@ -13,12 +13,6 @@ export const FaqPage = () => {
                     </article>
                 </div>
                 <div className="faq-item">
-                    <h5 className="faq-question">Where can I find documentation and additional information about this website?</h5>
-                    <article className="faq-answer">
-                        <a href="github.com/TheAdameia/Fantasy-Football-Golf-Scoring" target="_blank" rel="noopener noreferrer">https://github.com/TheAdameia/Fantasy-Football-Golf-Scoring</a>
-                    </article>
-                </div>
-                <div className="faq-item">
                     <h5 className="faq-question">
                         How do I play?
                     </h5>
@@ -36,6 +30,12 @@ export const FaqPage = () => {
                     <h5 className="faq-question">When there are real players, what rules will there be regarding injured players and players that don't actually see snaps?</h5>
                     <article className="faq-answer">
                         There are rules to address these issues and they will be posted when the beta arrives.
+                    </article>
+                </div>
+                <div className="faq-item">
+                    <h5 className="faq-question">Where can I find documentation and additional information about this website?</h5>
+                    <article className="faq-answer">
+                        <a href="github.com/TheAdameia/Fantasy-Football-Golf-Scoring" target="_blank" rel="noopener noreferrer">https://github.com/TheAdameia/Fantasy-Football-Golf-Scoring</a>
                     </article>
                 </div>
             </div>
