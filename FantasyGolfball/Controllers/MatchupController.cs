@@ -63,9 +63,46 @@ public class MatchupController : ControllerBase
                 WinnerId = m.WinnerId,
                 MatchupUsers = m.MatchupUsers.Select(mu => new MatchupUserDTO
                 {
-                    MatchupUserId = mu.MatchupId,
+                    MatchupUserId = mu.MatchupUserId,
                     UserProfileId = mu.UserProfileId,
                     MatchupId = mu.MatchupId,
+                    MatchupUserSavedPlayers = mu.MatchupUserSavedPlayers.Select(musp => new MatchupUserSavedPlayerDTO
+                    {
+                        MatchupUserSavedPlayerId = musp.MatchupUserSavedPlayerId,
+                        MatchupUserId = musp.MatchupUserId,
+                        PlayerId = musp.PlayerId,
+                        ScoringId = musp.ScoringId,
+                        RosterPlayerPosition = musp.RosterPlayerPosition,
+                        Scoring = new ScoringDTO
+                        {
+                            ScoringId = musp.Scoring.ScoringId,
+                            PlayerId = musp.Scoring.PlayerId,
+                            SeasonYear = musp.Scoring.SeasonYear,
+                            SeasonWeek = musp.Scoring.SeasonWeek,
+                            Points = musp.Scoring.Points
+                        },
+                        Player = new PlayerFullExpandDTO
+                        {
+                            PlayerId = musp.Player.PlayerId,
+                            PlayerFirstName = musp.Player.PlayerFirstName,
+                            PlayerLastName = musp.Player.PlayerLastName,
+                            PositionId = musp.Player.PositionId,
+                            StatusId = musp.Player.StatusId,
+                            Position = new PositionDTO
+                            {
+                                PositionId = musp.Player.Position.PositionId,
+                                PositionShort = musp.Player.Position.PositionShort,
+                                PositionLong = musp.Player.Position.PositionLong
+                            },
+                            Status = new StatusDTO
+                            {
+                                StatusId = musp.Player.Status.StatusId,
+                                StatusType = musp.Player.Status.StatusType,
+                                ViableToPlay = musp.Player.Status.ViableToPlay,
+                                RequiresBackup = musp.Player.Status.RequiresBackup
+                            }
+                        }
+                    }).ToList(),
                     UserProfileDTO = new UserProfileSafeExportDTO
                     {
                         Id = mu.userProfile.Id,
