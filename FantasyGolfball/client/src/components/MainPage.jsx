@@ -112,8 +112,22 @@ export const MainPage = () => {
                         weekId={selectedLeague.season.currentWeek - 1}
                     /> : <></>}
                 </div>
-                <div>League rankings</div>
-                <div>PF, PA tables go here</div>
+                <h6>League rankings</h6>
+                <div className="mainpage-table-container">
+                    <PointsForTable
+                        matchups={matchups}
+                        selectedLeague={selectedLeague}
+                    />
+                    <PointsAgainstTable
+                        matchups={matchups}
+                        selectedLeague={selectedLeague}
+                    />
+                    <WinLossTable
+                        matchups={matchups}
+                        selectedLeague={selectedLeague}
+                    />
+                </div>
+                
                 <div className="mainpage-rules-container">
                     <div className="mainpage-rules-announcer">League Settings</div>
                     <div>Player Limit: {selectedLeague.playerLimit}</div>
