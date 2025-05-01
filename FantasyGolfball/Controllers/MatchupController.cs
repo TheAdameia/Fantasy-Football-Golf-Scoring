@@ -19,11 +19,11 @@ public class MatchupController : ControllerBase
     }
 
 
-    [HttpGet("by-league-and-user")]
+    [HttpGet("by-league")]
     [Authorize]
-    public IActionResult GetByLeagueAndUser(int leagueId, int userId)
+    public IActionResult GetByLeagueAndUser(int leagueId)
     {
-        if (leagueId == 0 || userId == 0)
+        if (leagueId == 0)
         {
             return BadRequest();
         }
@@ -33,7 +33,6 @@ public class MatchupController : ControllerBase
                 .ThenInclude(mu => mu.userProfile)
                     .ThenInclude(up => up.IdentityUser)
             .Where(m => m.LeagueId == leagueId)
-            .Where(m => m.MatchupUsers.Any(mu => mu.UserProfileId == userId))
             .Select(m => new MatchupDTO
             {
                 MatchupId = m.MatchupId,

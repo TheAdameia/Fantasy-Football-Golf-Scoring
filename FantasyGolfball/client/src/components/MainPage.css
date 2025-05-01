@@ -40,3 +40,10 @@
 .mainpage-rules-announcer {
     font-size: 20px;
 }
+
+.mainpage-table-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+}

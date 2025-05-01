@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../contexts/AppContext"
 import "./MainPage.css"
 import { MatchupRecap } from "./matchups/MatchupRecap"
+import { PointsForTable } from "./widgets/PointsForTable"
+import { PointsAgainstTable } from "./widgets/PointsAgainstTable"
+import { WinLossTable } from "./widgets/WinLossTable"
 
 
 export const MainPage = () => {
@@ -32,8 +35,21 @@ export const MainPage = () => {
             <div className="mainpage-main-container">
                 <div className="mainpage-league-container">
                     <h4>{selectedLeague.leagueName}</h4>
-                    <div>Final Rankings:</div>
-                    <div>win/loss, PF, PA goes here </div>
+                    <h6>Final Rankings:</h6>
+                    <div className="mainpage-table-container">
+                        <PointsForTable
+                            matchups={matchups}
+                            selectedLeague={selectedLeague}
+                        />
+                        <PointsAgainstTable
+                            matchups={matchups}
+                            selectedLeague={selectedLeague}
+                        />
+                        <WinLossTable
+                            matchups={matchups}
+                            selectedLeague={selectedLeague}
+                        />
+                    </div>
                     <div className="mainpage-matchup-container">
                         <MatchupRecap weekId={1} />
                         <MatchupRecap weekId={2} />
@@ -71,7 +87,7 @@ export const MainPage = () => {
                     : <></>
                 }
                 {/* A different check will be needed for Leagues that don't need all players to start */}
-                {selectedLeague.season.currentWeek < 5 ?
+               
                 <div className="mainpage-matchup-container">
                     <div className="mainpage-matchup-weekannouncer">
                         Week {selectedLeague.season.currentWeek} Matchups
@@ -88,7 +104,6 @@ export const MainPage = () => {
                         }) : <></>}
                     </div>
                 </div>    
-                : <></>}
                 
                 <div className="mainpage-matchup-container">
                     <div>Last week recap goes here</div>

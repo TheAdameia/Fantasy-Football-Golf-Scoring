@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react'
 import { tryGetLoggedInUser } from '../managers/authManager'
 import { GetByUserAndLeague } from '../managers/rosterManager'
 import { GetAllPlayers } from '../managers/playerManager'
-import { GetMatchupsByLeagueAndUser } from '../managers/matchupManager'
+import { GetMatchupsByLeague } from '../managers/matchupManager'
 import { GetAllScores } from '../managers/scoringManager'
 
 const AppContext = createContext()
@@ -42,7 +42,7 @@ export const AppProvider = ({ children }) => {
   const getAndSetMatchups = () => {
     if (loggedInUser != null && selectedLeague != null) {
       if (selectedLeague.isDraftComplete) {
-        GetMatchupsByLeagueAndUser(selectedLeague.leagueId, loggedInUser.id).then(setMatchups)
+        GetMatchupsByLeague(selectedLeague.leagueId, loggedInUser.id).then(setMatchups)
       }
     }
   }
