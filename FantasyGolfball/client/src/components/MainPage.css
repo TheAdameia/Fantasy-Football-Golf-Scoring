@@ -4,8 +4,9 @@
     margin-top: .5em;
     margin-bottom: .5em;
     border: .5em;
-    border-color: darkgreen;
+    border-color: lightblue;
     border-style: ridge;
+    border-radius: .3em;
 }
 
 .mainpage-league-container {
@@ -13,6 +14,9 @@
     flex-direction: column;
     background-color: beige;
     width: 40em;
+    border-radius: 2em;
+    padding: 2em;
+    margin: 1em;
 }
 
 .mainpage-main-container {
@@ -22,7 +26,24 @@
 }
 
 .mainpage-rules-container {
-    border: .5em;
-    border-color: black;
-    border-style: groove;
+    border: .3em;
+    border-color: grey;
+    border-style: solid;
+    border-radius: .3em;
+    margin: .5em;
+}
+
+.mainpage-matchup-weekannouncer {
+  font-size: 20px;
+}
+
+.mainpage-rules-announcer {
+    font-size: 20px;
+}
+
+.mainpage-table-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
 }

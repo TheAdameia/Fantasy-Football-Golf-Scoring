@@ -1,28 +1,32 @@
-import { Table } from "reactstrap"
 import { useAppContext } from "../../contexts/AppContext"
+import "./matchups.css"
 
 export const MatchupRecap = ({ weekId }) => {
     const { matchups } = useAppContext()
 
-    // take all the matchups, filter to a certain week, display them
-    //
+    const getTotalPoints = (matchupUser) => {
+        return matchupUser.matchupUserSavedPlayers
+        ?.filter((musp) => musp.rosterPlayerPosition?.toLowerCase() != "bench")
+        .reduce((total, musp) => {
+            return total + (musp.scoring?.points ?? 0)
+        }, 0) ?? 0
+    }
 
     return (
         <div>
-            <div>Week {weekId} Matchups</div>
+            <div className="matchup-recap-announcer">Week {weekId} Matchups</div>
             {matchups ? matchups
             .filter((matchup) => matchup.weekId === weekId)
             .map((matchup) => {
+                const mu0Score = getTotalPoints(matchup.matchupUsers[0])
+                const mu1Score = getTotalPoints(matchup.matchupUsers[1])
                 return (
-                    <div key={matchup.matchupId} className="matchup">
-                        <div>
-                            <div>{matchup.matchupUsers[0].userProfileDTO.userName}</div>
-                            <div>vs.</div>
-                            <div>{matchup.matchupUsers[1].userProfileDTO.userName}</div>
-                        </div>
-                        <Table>
-
-                        </Table>
+                    <div 
+                        key={matchup.matchupId}
+                        className="matchup-recap-container"
+                    >
+                        <div className="matchup-recap-item">
+                        {mu0Score.toFixed(2)} {matchup.matchupUsers[0].userProfileDTO.userName} vs. {matchup.matchupUsers[1].userProfileDTO.userName} {mu1Score.toFixed(2)}</div>
                     </div>
                 )
             }) : <div></div>}

@@ -18,33 +18,12 @@ public class MatchupController : ControllerBase
         _dbContext = context;
     }
 
-    // [HttpGet]
-    // [Authorize]
-    // public IActionResult GetByLeague(int leagueId)
-    // {
-    //     if (leagueId == 0)
-    //     {
-    //         return BadRequest();
-    //     }
 
-    //     List<Matchup> matchups = _dbContext.Matchups
-    //         .Include(m => m.MatchupUsers)
-    //         .Where(m => m.LeagueId == leagueId)
-    //         .ToList();
-
-    //     if (matchups == null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     return Ok(matchups);
-    // }
-
-    [HttpGet("by-league-and-user")]
+    [HttpGet("by-league")]
     [Authorize]
-    public IActionResult GetByLeagueAndUser(int leagueId, int userId)
+    public IActionResult GetByLeagueAndUser(int leagueId)
     {
-        if (leagueId == 0 || userId == 0)
+        if (leagueId == 0)
         {
             return BadRequest();
         }
@@ -54,7 +33,6 @@ public class MatchupController : ControllerBase
                 .ThenInclude(mu => mu.userProfile)
                     .ThenInclude(up => up.IdentityUser)
             .Where(m => m.LeagueId == leagueId)
-            .Where(m => m.MatchupUsers.Any(mu => mu.UserProfileId == userId))
             .Select(m => new MatchupDTO
             {
                 MatchupId = m.MatchupId,
@@ -63,9 +41,46 @@ public class MatchupController : ControllerBase
                 WinnerId = m.WinnerId,
                 MatchupUsers = m.MatchupUsers.Select(mu => new MatchupUserDTO
                 {
-                    MatchupUserId = mu.MatchupId,
+                    MatchupUserId = mu.MatchupUserId,
                     UserProfileId = mu.UserProfileId,
                     MatchupId = mu.MatchupId,
+                    MatchupUserSavedPlayers = mu.MatchupUserSavedPlayers.Select(musp => new MatchupUserSavedPlayerDTO
+                    {
+                        MatchupUserSavedPlayerId = musp.MatchupUserSavedPlayerId,
+                        MatchupUserId = musp.MatchupUserId,
+                        PlayerId = musp.PlayerId,
+                        ScoringId = musp.ScoringId,
+                        RosterPlayerPosition = musp.RosterPlayerPosition,
+                        Scoring = new ScoringDTO
+                        {
+                            ScoringId = musp.Scoring.ScoringId,
+                            PlayerId = musp.Scoring.PlayerId,
+                            SeasonYear = musp.Scoring.SeasonYear,
+                            SeasonWeek = musp.Scoring.SeasonWeek,
+                            Points = musp.Scoring.Points
+                        },
+                        Player = new PlayerFullExpandDTO
+                        {
+                            PlayerId = musp.Player.PlayerId,
+                            PlayerFirstName = musp.Player.PlayerFirstName,
+                            PlayerLastName = musp.Player.PlayerLastName,
+                            PositionId = musp.Player.PositionId,
+                            StatusId = musp.Player.StatusId,
+                            Position = new PositionDTO
+                            {
+                                PositionId = musp.Player.Position.PositionId,
+                                PositionShort = musp.Player.Position.PositionShort,
+                                PositionLong = musp.Player.Position.PositionLong
+                            },
+                            Status = new StatusDTO
+                            {
+                                StatusId = musp.Player.Status.StatusId,
+                                StatusType = musp.Player.Status.StatusType,
+                                ViableToPlay = musp.Player.Status.ViableToPlay,
+                                RequiresBackup = musp.Player.Status.RequiresBackup
+                            }
+                        }
+                    }).ToList(),
                     UserProfileDTO = new UserProfileSafeExportDTO
                     {
                         Id = mu.userProfile.Id,

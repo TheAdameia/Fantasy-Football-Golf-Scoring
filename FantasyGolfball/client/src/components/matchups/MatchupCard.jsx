@@ -6,7 +6,6 @@ import "./matchups.css"
 
 export const MatchupCard = ({ matchup, week }) => {
     const { loggedInUser, selectedLeague } = useAppContext()
-    const [winner, setWinner] = useState()
     const opponent = matchup.matchupUsers.find((user) => user.userProfileId !== loggedInUser.id)
     const opponentLeagueUser = selectedLeague.leagueUsers.find((lu) => lu.userProfileId === opponent.userProfileId)
     const opponentRoster = opponentLeagueUser.roster
@@ -14,14 +13,6 @@ export const MatchupCard = ({ matchup, week }) => {
         week: week,
         display: false
     })
-
-    
-    const checkWinner = () => {
-        if (matchup?.winnerId) {
-            let taco = selectedLeague.leagueUsers.find((lu) => lu.userProfileId == matchup.winnerId)
-            setWinner(taco)
-        }
-    }
     
     useEffect(() => {
         if (matchup) {
@@ -33,10 +24,7 @@ export const MatchupCard = ({ matchup, week }) => {
         }
     }, [matchup])
 
-    useEffect(() => {
-        checkWinner()
-    }, [])
-
+    
     if (!matchup) {
         return (
             <div>Error: Invalid</div>
@@ -45,7 +33,6 @@ export const MatchupCard = ({ matchup, week }) => {
 
     return (
         <div className="parent-container">
-            {matchup.winnerId ? <div>#{matchup.winnerId} {winner?.userProfile?.userName} wins!</div> : <></>}
             <div className="matchup-container">
                 <div>{loggedInUser.userName}'s team
                     <MatchupRosterCard slot={true} displayWeekPoints={displayWeekPoints}/>

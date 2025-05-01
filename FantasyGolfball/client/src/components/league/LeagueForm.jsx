@@ -3,6 +3,8 @@ import { useAppContext } from "../../contexts/AppContext"
 import { useState } from "react"
 import { PostLeague } from "../../managers/leagueManager"
 import { useNavigate } from "react-router-dom"
+import "./League.css"
+
 
 export const LeagueForm = () => {
     const { loggedInUser } = useAppContext()
@@ -16,13 +18,13 @@ export const LeagueForm = () => {
         seasonId: 1,
         seasonYear: 2025,
         maxRosterSize: 15,
-        realSeason: true,
+        realSeason: false,
         draftStartTime: "",
         seasonStartDate: "",
         advancement: "Weekly",
-        joinPassword: ""
+        joinPassword: "",
+        requiresPassword: false
     })
-    const [joinCheck, setJoinCheck] = useState(false)
     const navigate = useNavigate()
 
     const toLocalInputValue = (utcString) => {
@@ -81,30 +83,33 @@ export const LeagueForm = () => {
             <h4>League Creation Form</h4>
             <Form>
                 <FormGroup>
-                    <Label>League Name</Label>
-                    <Input
-                        type="text"
-                        value={leagueObject.leagueName}
-                        onChange={(e) => {
-                            const objectCopy = { ...leagueObject }
-                            objectCopy.leagueName = e.target.value
-                            setLeagueObject(objectCopy)
-                        }}>
-                    </Input>
+                    <div>
+                        <Label className="leagues-widget">League Name:</Label>
+                        <Input
+                            type="text"
+                            value={leagueObject.leagueName}
+                            onChange={(e) => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.leagueName = e.target.value
+                                setLeagueObject(objectCopy)
+                            }}>
+                        </Input>
+                    </div>
 
-                    <Label>Join Password (optional)</Label>
-                    <Input 
-                        type="checkbox"
-                        checked={joinCheck}
-                        onChange={() => {
-                            setJoinCheck(!joinCheck)
-                            const objectCopy = { ...leagueObject}
-                            objectCopy.joinPassword = ""
-                            setLeagueObject(objectCopy)
-                        }}
-                    ></Input>
+                    <div className="leagues-widgets-container">
+                        <Label className="leagues-widget">Join Password (optional):</Label>
+                        <Input 
+                            type="checkbox"
+                            checked={leagueObject.requiresPassword}
+                            onChange={() => {
+                                const objectCopy = { ...leagueObject}
+                                objectCopy.requiresPassword = !leagueObject.requiresPassword
+                                setLeagueObject(objectCopy)
+                            }}
+                        ></Input>
+                    </div>
                     
-                    {joinCheck ? 
+                    {leagueObject.requiresPassword ? 
                     <Input
                         type="text"
                         value={leagueObject.joinPassword}
@@ -116,118 +121,146 @@ export const LeagueForm = () => {
                     ></Input>
                     : <></>}
 
-                    <Label>Number of players</Label>
-                    <Input
-                        type="select"
-                        onChange={(e) => {
-                            const objectCopy = { ...leagueObject }
-                            objectCopy.playerLimit = Number(e.target.value)
-                            setLeagueObject(objectCopy)
-                        }}
-                    >
-                        <option value={2}>2</option>
-                        <option value={4}>4</option>
-                        <option value={6}>6</option>
-                        <option value={8}>8</option>
-                        <option value={10}>10</option>
-                    </Input>
+                    <div>
+                        <Label>Number of Players:</Label>
+                        <Input
+                            type="select"
+                            onChange={(e) => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.playerLimit = Number(e.target.value)
+                                setLeagueObject(objectCopy)
+                            }}
+                        >
+                            <option value={2}>2</option>
+                            <option value={4}>4</option>
+                            <option value={6}>6</option>
+                            <option value={8}>8</option>
+                            <option value={10}>10</option>
+                        </Input>
+                    </div>
 
-                    <Label>Let players veto trades</Label>
-                    <Input
-                        type="checkbox"
-                        checked={leagueObject.usersVetoTrades}
-                        onChange={() => {
-                            const objectCopy = { ...leagueObject }
-                            objectCopy.usersVetoTrades = !leagueObject.usersVetoTrades
-                            setLeagueObject(objectCopy)
-                        }}></Input>
+                    <div className="leagues-widgets-container">
+                        <Label className="leagues-widget">Allow trade vetoes:</Label>
+                        <Input
+                            disabled
+                            type="checkbox"
+                            checked={leagueObject.usersVetoTrades}
+                            onChange={() => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.usersVetoTrades = !leagueObject.usersVetoTrades
+                                setLeagueObject(objectCopy)
+                            }}
+                        ></Input>
+                    </div>
 
-                    <Label>Randomized Draft Order</Label>
-                    <Input
-                        type="checkbox"
-                        checked={leagueObject.randomizedDraftOrder}
-                        onChange={() => {
-                            const objectCopy = { ...leagueObject }
-                            objectCopy.randomizedDraftOrder = !leagueObject.randomizedDraftOrder
-                            setLeagueObject(objectCopy)
-                        }}
-                    ></Input>
+                    <div className="leagues-widgets-container">
+                        <Label className="leagues-widget">Randomized Draft Order:</Label>
+                        <Input
+                            disabled
+                            type="checkbox"
+                            checked={leagueObject.randomizedDraftOrder}
+                            onChange={() => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.randomizedDraftOrder = !leagueObject.randomizedDraftOrder
+                                setLeagueObject(objectCopy)
+                            }}
+                        ></Input>
+                    </div>
 
-                    <Label>Require league to be full to start</Label>
-                    <Input
-                        type="checkbox"
-                        checked={leagueObject.requiredFullToStart}
-                        onChange={() => {
-                            const objectCopy = { ...leagueObject }
-                            objectCopy.requiredFullToStart = !leagueObject.requiredFullToStart
-                            setLeagueObject(objectCopy)
-                        }}
-                    ></Input>
+                    <div className="leagues-widgets-container">
+                        <Label className="leagues-widget">Require league to be full to start:</Label>
+                        <Input
+                            disabled
+                            type="checkbox"
+                            checked={leagueObject.requiredFullToStart}
+                            onChange={() => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.requiredFullToStart = !leagueObject.requiredFullToStart
+                                setLeagueObject(objectCopy)
+                            }}
+                        ></Input>
+                    </div>
 
-                    <Label>Maximum Roster Size</Label>
-                    <Input
-                        type="select"
-                        onChange={(e) => {
-                            const objectCopy = { ...leagueObject }
-                            objectCopy.maxRosterSize = Number(e.target.value)
-                            setLeagueObject(objectCopy)
-                        }}
-                    >
-                        <option value={15}>15 (Recommended)</option>
-                    </Input>
+                    <div>
+                        <Label>Maximum Roster Size:</Label>
+                        <Input
+                            disabled
+                            type="select"
+                            onChange={(e) => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.maxRosterSize = Number(e.target.value)
+                                setLeagueObject(objectCopy)
+                            }}
+                        >
+                            <option value={15}>15 (Recommended)</option>
+                        </Input>
+                    </div>
 
-                    <Label>Draft Start Time (Rounds to nearest hour):</Label>
-                    <Input
-                        type="datetime-local"
-                        value={toLocalInputValue(leagueObject.draftStartTime)}
-                        onChange={handleDateChange("draftStartTime")}
-                    />
+                    <div>
+                        <Label>Draft Start Time (Rounds to nearest hour):</Label>
+                        <Input
+                            type="datetime-local"
+                            value={toLocalInputValue(leagueObject.draftStartTime)}
+                            onChange={handleDateChange("draftStartTime")}
+                        />
+                    </div>
 
-                    <Label>Create Custom Season?</Label>
-                    <Input
-                        type="checkbox"
-                        checked={!leagueObject.realSeason}
-                        onChange={() => {
-                            const objectCopy = { ...leagueObject }
-                            objectCopy.realSeason = !leagueObject.realSeason
-                            setLeagueObject(objectCopy)
-                        }}
-                    ></Input>
+                    <div className="leagues-widgets-container">
+                        <Label className="leagues-widget">Create Custom Season?</Label>
+                        <Input
+                            disabled
+                            type="checkbox"
+                            checked={!leagueObject.realSeason}
+                            onChange={() => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.realSeason = !leagueObject.realSeason
+                                setLeagueObject(objectCopy)
+                            }}
+                        ></Input>
+                    </div>
                 </FormGroup>
 
                 {!leagueObject.realSeason ? (
                     <FormGroup>
-                        <Label>Season Year</Label>
-                        <Input
-                            type="select"
-                            onChange={(e) => {
-                                const objectCopy = { ...leagueObject }
-                                objectCopy.seasonYear = Number(e.target.value)
-                                setLeagueObject(objectCopy)
-                            }}
-                        >
-                            <option value={2025}>Current Season</option>
-                        </Input>
+                        <div>
+                            <Label>Season Year:</Label>
+                            <Input
+                                disabled
+                                type="select"
+                                onChange={(e) => {
+                                    const objectCopy = { ...leagueObject }
+                                    objectCopy.seasonYear = Number(e.target.value)
+                                    setLeagueObject(objectCopy)
+                                }}
+                            >
+                                <option value={2025}>Current Season</option>
+                            </Input>
+                        </div>
 
-                        <Label>Season Starts On:</Label>
-                        <Input
-                            type="datetime-local"
-                            value={toLocalInputValue(leagueObject.seasonStartDate)}
-                            onChange={handleDateChange("seasonStartDate")}
-                        />
+                        <div>
+                            <Label>Season Starts On:</Label>
+                            <Input
+                                type="datetime-local"
+                                value={toLocalInputValue(leagueObject.seasonStartDate)}
+                                onChange={handleDateChange("seasonStartDate")}
+                            />
+                        </div>
 
-                        <Label>A week of Season time advances...</Label>
-                        <Input
-                            type="select"
-                            onChange={(e) => {
-                                const objectCopy = { ...leagueObject }
-                                objectCopy.advancement = String(e.target.value)
-                                setLeagueObject(objectCopy)
-                            }}
-                        >
-                            <option value={"Weekly"}>Every Week (default)</option>
-                            <option value={"Daily"}>Every Day</option>
-                        </Input>
+                        <div>
+                            <Label>A week of Season time advances...</Label>
+                            <Input
+                                type="select"
+                                onChange={(e) => {
+                                    const objectCopy = { ...leagueObject }
+                                    objectCopy.advancement = String(e.target.value)
+                                    setLeagueObject(objectCopy)
+                                }}
+                            >
+                                <option value={"Weekly"}>Every Week (default)</option>
+                                <option value={"Daily"}>Every Day</option>
+                                <option value={"Hourly"}>Every Hour</option>
+                            </Input>
+                        </div>
                     </FormGroup>
                 ) : null}
 

@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../contexts/AppContext"
 import "./MainPage.css"
 import { MatchupRecap } from "./matchups/MatchupRecap"
+import { PointsForTable } from "./widgets/PointsForTable"
+import { PointsAgainstTable } from "./widgets/PointsAgainstTable"
+import { WinLossTable } from "./widgets/WinLossTable"
 
 
 export const MainPage = () => {
@@ -32,13 +35,26 @@ export const MainPage = () => {
             <div className="mainpage-main-container">
                 <div className="mainpage-league-container">
                     <h4>{selectedLeague.leagueName}</h4>
-                    <div>Final Rankings:</div>
-                    <div>win/loss, PF, PA goes here </div>
+                    <h6>Final Rankings:</h6>
+                    <div className="mainpage-table-container">
+                        <PointsForTable
+                            matchups={matchups}
+                            selectedLeague={selectedLeague}
+                        />
+                        <PointsAgainstTable
+                            matchups={matchups}
+                            selectedLeague={selectedLeague}
+                        />
+                        <WinLossTable
+                            matchups={matchups}
+                            selectedLeague={selectedLeague}
+                        />
+                    </div>
                     <div className="mainpage-matchup-container">
-                        {/* <MatchupRecap weekId={1} />
+                        <MatchupRecap weekId={1} />
                         <MatchupRecap weekId={2} />
                         <MatchupRecap weekId={3} />
-                        <MatchupRecap weekId={4} /> */}
+                        <MatchupRecap weekId={4} />
                     </div>
                     <div className="mainpage-rules-container">League Settings 
                         <div>Player Limit: {selectedLeague.playerLimit}</div>
@@ -55,7 +71,6 @@ export const MainPage = () => {
     return (
         <div className="mainpage-main-container">
             <h1>Testing, attention please!</h1>
-            <aside>View past leagues (NYI)</aside>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 {now < draftStart 
@@ -71,9 +86,12 @@ export const MainPage = () => {
                     ? <button onClick={() => enterDraft()}>Enter the draft!</button>
                     : <></>
                 }
-                <div>League rankings</div>
-                <div>PF, PA tables go here</div>
-                <div className="mainpage-matchup-container">Week {selectedLeague.season.currentWeek} Matchups
+                {/* A different check will be needed for Leagues that don't need all players to start */}
+               
+                <div className="mainpage-matchup-container">
+                    <div className="mainpage-matchup-weekannouncer">
+                        Week {selectedLeague.season.currentWeek} Matchups
+                    </div>
                     <div>
                         {matchups ? matchups
                         .filter((matchup) => matchup.weekId === selectedLeague.season.currentWeek)
@@ -83,10 +101,35 @@ export const MainPage = () => {
                                     {matchup.matchupUsers[0].userProfileDTO.userName} vs. {matchup.matchupUsers[1].userProfileDTO.userName}
                                 </div>
                             )
-                        }) : <div></div>}
+                        }) : <></>}
                     </div>
+                </div>    
+                
+                <div className="mainpage-matchup-container">
+                    <div>Last week recap goes here</div>
+                    {(selectedLeague?.season?.currentWeek - 1) > 0 ? 
+                    <MatchupRecap
+                        weekId={selectedLeague.season.currentWeek - 1}
+                    /> : <></>}
                 </div>
-                <div className="mainpage-rules-container">League Settings 
+                <h6>League rankings</h6>
+                <div className="mainpage-table-container">
+                    <PointsForTable
+                        matchups={matchups}
+                        selectedLeague={selectedLeague}
+                    />
+                    <PointsAgainstTable
+                        matchups={matchups}
+                        selectedLeague={selectedLeague}
+                    />
+                    <WinLossTable
+                        matchups={matchups}
+                        selectedLeague={selectedLeague}
+                    />
+                </div>
+                
+                <div className="mainpage-rules-container">
+                    <div className="mainpage-rules-announcer">League Settings</div>
                     <div>Player Limit: {selectedLeague.playerLimit}</div>
                     {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                     {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}

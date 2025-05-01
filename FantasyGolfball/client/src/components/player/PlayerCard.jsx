@@ -85,12 +85,11 @@ export const PlayerCard = ({ player, isPreseason }) => {
     
     return (
         <tr>
-            <td></td>
             <td>{player.playerFullName}</td>
             <td>{player.position.positionShort}</td>
             <td>{player.status.statusType}</td>
             <td>NYI</td>
-            <td>{isPreseason ? "Preseason" : weekScore ? weekScore.points : "-"}</td>
+            <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
             <td>{seasonTotal ?? "-"}</td>
             <td>{playerRosterCondition}</td>
         </tr>

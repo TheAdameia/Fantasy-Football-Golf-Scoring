@@ -33,9 +33,10 @@ public class WeekAdvancementListenerService
         Console.WriteLine($"Performing updates for Season {season.SeasonYear} now in Week {eventData.NewWeek}");
 
         int previousWeek = eventData.NewWeek - 1;
-        if (previousWeek <= 0)
+        if (previousWeek == 0)
         {
-            throw new Exception($"previousWeek {previousWeek} error for season {eventData.SeasonId}");
+            Console.WriteLine($"Skipping score calculation for season {eventData.SeasonId} because previousWeek is 0.");
+            return;
         }
 
         var leagues = await dbContext.Leagues
@@ -90,19 +91,25 @@ public class WeekAdvancementListenerService
                     var AllRosterPlayers = roster.RosterPlayers
                         .ToList();
 
-                    // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC, so tests break on that
-                    var filteredRosterPlayers = roster.RosterPlayers
-                        .Where(rp => rp.RosterPosition != "bench")
+                    var AllPlayerIds = AllRosterPlayers
                         .Select(rp => rp.PlayerId)
                         .ToList();
                     
                     var scoringEntries = await dbContext.Scorings
                         .Where(s => s.SeasonYear == season.SeasonYear &&
                                     s.SeasonWeek == previousWeek &&
-                                    filteredRosterPlayers.Contains(s.PlayerId))
+                                    AllPlayerIds.Contains(s.PlayerId))
                         .ToListAsync();
                     
-                    float totalScore = scoringEntries.Sum(s => s.Points);
+                    // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC
+                    float totalScore = AllRosterPlayers
+                        .Where(rp => rp.RosterPosition != "bench")
+                        .Sum(rp => 
+                        {
+                            var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
+                            return scoring?.Points ?? 0f; // resorts to 0 if missing
+                        });
+                    
                     scores[matchupUser.UserProfileId] = totalScore;
                     
                     // saves what the roster was so it can be excavated for past matchups display
@@ -113,14 +120,23 @@ public class WeekAdvancementListenerService
                             
                             if (scoring == null)
                             {
-                                throw new Exception($"player {rp.PlayerId} in matchupuser {matchupUser.MatchupUserId} did not have a scoring");
+                                Console.WriteLine($"Warning: Player {rp.PlayerId} in MatchupUser {matchupUser.MatchupUserId} did not have a scoring entry for Week {previousWeek}. Using fallback scoring ID -1.");
+                                
+                                return new MatchupUserSavedPlayer
+                                {
+                                    MatchupUserId = matchupUser.MatchupUserId,
+                                    PlayerId = rp.PlayerId,
+                                    ScoringId = -1, // clear indication that something screwed up
+                                    RosterPlayerPosition = rp.RosterPosition
+                                };
                             }
 
                             return new MatchupUserSavedPlayer
                             {
                                 MatchupUserId = matchupUser.MatchupUserId,
                                 PlayerId = rp.PlayerId,
-                                ScoringId = scoring.ScoringId
+                                ScoringId = scoring.ScoringId,
+                                RosterPlayerPosition = rp.RosterPosition
                             };
                         }).ToList();
                 }

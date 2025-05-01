@@ -2,16 +2,22 @@ import React, { useCallback, useEffect, useState } from "react"
 import * as signalR from "@microsoft/signalr"
 import { useAppContext } from "../contexts/AppContext"
 
-// this file is adapted from chatgpt and was used for the purpose of learning how to implement SignalR.
 const Chat = () => {
     const [connection, setConnection] = useState(null)
     const [messages, setMessages] = useState([])
     const [message, setMessage] = useState("")
     const { loggedInUser } = useAppContext() //loggedInUser.userName is the username
 
+    const getChatHubUrl = () => {
+      if (window.location.hostname === "localhost") {
+        return "https://localhost:5001/chathub";
+      }
+      return "https://fantasygolfball.org/chathub";
+    };
+
     useEffect(() => {
         const newConnection = new signalR.HubConnectionBuilder()
-          .withUrl("https://localhost:5001/chathub", { withCredentials: true })
+          .withUrl(getChatHubUrl(), { withCredentials: true })
           .withAutomaticReconnect()
           .build();
     

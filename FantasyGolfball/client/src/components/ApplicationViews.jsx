@@ -9,7 +9,6 @@ import { LeaguePage } from "./league/LeaguePage";
 import { LeagueForm } from "./league/LeagueForm";
 import Chat from "../clientHubs/exampleClientHub";
 import { DraftPage } from "./draft/DraftPage";
-import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap";
 import { MatchupPage } from "./matchups/MatchupPage";
 import { MainPage } from "./MainPage";
 import { FaqPage } from "./rule-faq/FaqPage";

@@ -58,28 +58,41 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
     }
 
     return (
-        <div>
+        <div className="draft-playerlist-container">
             <h2>Player List</h2>
             <div>
                 <div>Search bar (name)</div>
                 <SearchBar setSearchTerm={setSearchTerm}/>
-                <div>
-                    <label>Position</label>
-                    <select name="position" id="position" onChange={handlePositionChange}>
-                        <option value="Any">Any</option>
-                        <option value="QB">QB</option>
-                        <option value="WR">WR</option>
-                        <option value="RB">RB</option>
-                        <option value="TE">TE</option>
-                        <option value="K">K</option>
-                        <option value="DEF">DEF</option>
-                    </select>
-                    <label>Stats</label>
-                    <select name="stats" id="stats">
-                        <option value="Project Season Average">Projected Season Average</option>
-                        <option value="Season Total">Last Season Total</option>
-                        <option value="Season Average">Last Season Average</option>
-                    </select>
+                <div className="draft-playerlist-widget-container">
+                    <div>
+                        <label className="draft-playerlist-widget">Position</label>
+                        <select 
+                            className="draft-playerlist-widget"
+                            name="position" 
+                            id="position" 
+                            onChange={handlePositionChange}
+                        >
+                            <option value="Any">Any</option>
+                            <option value="QB">QB</option>
+                            <option value="WR">WR</option>
+                            <option value="RB">RB</option>
+                            <option value="TE">TE</option>
+                            <option value="K">K</option>
+                            <option value="DEF">DEF</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label className="draft-playerlist-widget">Stats</label>
+                        <select 
+                            className="draft-playerlist-widget"
+                            name="stats" 
+                            id="stats"
+                        >
+                            <option value="Project Season Average">Projected Season Average</option>
+                            <option value="Season Total">Last Season Total</option>
+                            <option value="Season Average">Last Season Average</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div className="draft-table-container">

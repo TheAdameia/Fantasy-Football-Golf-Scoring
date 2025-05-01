@@ -1,6 +1,6 @@
 const _apiUrl = "/api/matchup"
 
-export const GetMatchupsByLeagueAndUser = (leagueId, userId) => {
-    return fetch(`${_apiUrl}/by-league-and-user?leagueId=${leagueId}&userId=${userId}`)
+export const GetMatchupsByLeague = (leagueId) => {
+    return fetch(`${_apiUrl}/by-league?leagueId=${leagueId}`)
         .then((res) => res.json())
 }

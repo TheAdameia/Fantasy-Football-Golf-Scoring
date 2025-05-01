@@ -10,4 +10,5 @@ public class MatchupUserSavedPlayerDTO
     public PlayerFullExpandDTO Player { get; set; }
     public int ScoringId { get; set; }
     public ScoringDTO Scoring { get; set; }
+    public string RosterPlayerPosition { get; set; }
 }

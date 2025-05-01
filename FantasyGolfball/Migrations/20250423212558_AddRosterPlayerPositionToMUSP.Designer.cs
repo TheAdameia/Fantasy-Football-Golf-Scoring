@@ -3,6 +3,7 @@ using System;
 using FantasyGolfball.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasyGolfball.Migrations
 {
     [DbContext(typeof(FantasyGolfballDbContext))]
-    partial class FantasyGolfballDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250423212558_AddRosterPlayerPositionToMUSP")]
+    partial class AddRosterPlayerPositionToMUSP
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,9 +227,6 @@ namespace FantasyGolfball.Migrations
                     b.Property<bool>("RequiredFullToStart")
                         .HasColumnType("boolean");
 
-                    b.Property<bool>("RequiresPassword")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("SeasonId")
                         .HasColumnType("integer");
 
@@ -251,7 +251,6 @@ namespace FantasyGolfball.Migrations
                             PlayerLimit = 4,
                             RandomizedDraftOrder = true,
                             RequiredFullToStart = true,
-                            RequiresPassword = false,
                             SeasonId = 1,
                             UsersVetoTrades = true
                         });
@@ -7399,13 +7398,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bade97b1-f77c-46ef-ad7e-21c1ad77f05d",
+                            ConcurrencyStamp = "17ea9918-a758-4bbd-ad39-9491e77b1a57",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGQDOHlM98BcxzyFCIF8kVcbjizlTtEn4xxH0RFMrKxuDUTmveVqGEKquYo6xzPp/A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEp0Dz22WjeVb6s/PAJZwPvg9kkYzoEiqTaep0gq3pPBft/tfDXiwgvx9kKt9SlXLA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2734d54b-2a54-4597-a907-bb376b0842c8",
+                            SecurityStamp = "403c7224-ba62-45d8-b271-c01a11eea61f",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

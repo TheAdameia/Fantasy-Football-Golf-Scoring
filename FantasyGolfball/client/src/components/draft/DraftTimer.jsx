@@ -27,12 +27,6 @@ export const DraftTimer = () => {
         }, 1000);
     }
     
-    const resetTimer = () => {
-        clearInterval(intervalRef.current)
-        setSecondsLeft(initialSeconds)
-        startTimer()
-    }
-    
     useEffect(() => {
         // start timer
         startTimer()
@@ -44,9 +38,8 @@ export const DraftTimer = () => {
 
     // cut the reset button after testing
     return (
-        <div>
+        <div className="draft-timer-container">
             <div className="timer-seconds">{secondsLeft}</div>
-            <button onClick={resetTimer}>reset timer</button>
             {currentTurn === loggedInUser.id ? <div className="timer-yourTurn">Your Turn to Draft!</div> 
             : <div className="timer-notYourTurn">Not your turn</div>}
         </div>

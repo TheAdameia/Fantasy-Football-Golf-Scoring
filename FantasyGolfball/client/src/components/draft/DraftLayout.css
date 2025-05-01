@@ -48,10 +48,13 @@
     border-radius: 5px;
   }
 
-  .selected-player-view-grid div {
+  .selected-player-view-grid {
+    border-color: #0056b3;
+    border-width: .1em;
+    border-radius: .4em;
     padding: 3px 5px;
-    border-radius: 3px;
     text-align: center;
+    
   }
   
   .top-row {
@@ -97,15 +100,24 @@
     font-weight: 700;
     background-color: #99CCFF;
     border: 2px groove #1C6EA4;
+    border-radius: .2em;
   }
 
   .timer-yourTurn {
     background-color:rgb(242, 135, 135);
     font-weight: bold;
+    margin: .2em;
+    border: black;
+    border-style: solid;
+    border-radius: .5em;
   }
 
   .timer-notYourTurn {
     background-color: beige;
+    margin: .2em;
+    border: black;
+    border-style: solid;
+    border-radius: .5em;
   }
 
   .queue-container {
@@ -134,11 +146,12 @@
   }
 
   .draft-selectedPlayers-container {
-    border: .2em;
+    border: .3em;
     border-color: #0056b3;
     border-style: solid;
     max-height: 20em;
     overflow-y: scroll;
+    border-radius: .4em;
   }
 
   .draft-selectedPlayers-playerContainer {
@@ -159,6 +172,10 @@
   .draft-DraftUserOrder-container {
     height: 500px;
     overflow-y: scroll;
+    border-color: grey;
+    border-width: .2em;
+    border-style: solid;
+    border-radius: .4em;
     
   }
 
@@ -176,3 +193,23 @@
     font-size: 1.2rem;
   }
   
+  .draft-timer-container {
+    margin: .2em;
+  }
+
+  .draft-playerlist-container {
+    border-color: #0056b3;
+    border-width: .2em;
+    border-radius: .4em;
+  }
+
+  .draft-playerlist-widget-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: .5em;
+  }
+
+  .draft-playerlist-widget {
+    margin: .2em;
+  }

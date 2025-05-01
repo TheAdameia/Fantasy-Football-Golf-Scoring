@@ -84,7 +84,7 @@ export const PlayerPage = () => {
                     <SearchBar setSearchTerm={setSearchTerm}/>
                 </div>
                 <div>
-                    <label>Position</label>
+                    <label className="playerpage-label">Position</label>
                     <select name="position" id="position" onChange={handlePositionChange}>
                         <option value="Any">Any</option>
                         <option value="QB">QB</option>
@@ -96,7 +96,7 @@ export const PlayerPage = () => {
                     </select>
                 </div>
                 <div>
-                    <label>Stats</label>
+                    <label className="playerpage-label">Stats</label>
                     <select name="stats" id="stats">
                         <option value="This week">This Week</option>
                         <option value="Season Total">Season Total</option>
@@ -109,20 +109,19 @@ export const PlayerPage = () => {
                 </div> */}
             </div>
             <div>
-                <label>{playerSlice.sliceStart} - {playerSlice.sliceEnd}</label>
+                <label className="playerpage-label">Players {playerSlice.sliceStart} - {playerSlice.sliceEnd}</label>
                 <button
+                    className="button-view"
                     onClick={() => handleSliceChange(false)}
                 >Previous</button>
                 <button
+                    className="button-view"
                     onClick={() => handleSliceChange(true)}
                 >Next</button>
             </div>
             <Table>
                 <thead>
                     <tr>
-                        <th>
-                            #
-                        </th>
                         <th>
                             Player
                         </th>

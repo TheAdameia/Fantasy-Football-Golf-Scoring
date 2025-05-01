@@ -69,7 +69,7 @@ export const RosterPlayerCard = ({ rp }) => {
                 Week 
             </td>
             <td>
-                {weekScore ? weekScore : "-"}
+                {weekScore ? weekScore.points : "-"}
             </td>
             <td>
                 <button onClick={() => ConfirmDrop(rp.rosterPlayerId)}>-</button>

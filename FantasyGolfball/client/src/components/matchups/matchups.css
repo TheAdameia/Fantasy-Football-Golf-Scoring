@@ -23,3 +23,24 @@
 .week-buttons {
     width: 8%;
 }
+
+.matchup-recap-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.matchup-recap-item {
+    margin-left: .2em;
+    margin-right: .2em;
+}
+
+.matchup-recap-announcer {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.matchup-winner-announcer {
+    font-weight: 700;
+    font-size: 22px;
+}

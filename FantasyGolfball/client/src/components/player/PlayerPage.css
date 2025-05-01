@@ -6,9 +6,17 @@
     background-color: green;
 }
 
+.button-view {
+    margin: .2em
+}
+
 .playerpage-options-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin: .5em;
+}
+
+.playerpage-label {
     margin: .5em;
 }
