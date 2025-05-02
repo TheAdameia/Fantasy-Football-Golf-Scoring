@@ -29,9 +29,6 @@ public class MatchupController : ControllerBase
         }
 
         var matchups = _dbContext.Matchups
-            .Include(m => m.MatchupUsers)
-                .ThenInclude(mu => mu.userProfile)
-                    .ThenInclude(up => up.IdentityUser)
             .Where(m => m.LeagueId == leagueId)
             .Select(m => new MatchupDTO
             {
@@ -78,7 +75,28 @@ public class MatchupController : ControllerBase
                                 StatusType = musp.Player.Status.StatusType,
                                 ViableToPlay = musp.Player.Status.ViableToPlay,
                                 RequiresBackup = musp.Player.Status.RequiresBackup
-                            }
+                            },
+                            PlayerTeams = musp.Player.PlayerTeams.Select(pt => new PlayerTeamDTO
+                            {
+                                PlayerTeamId = pt.PlayerTeamId,
+                                PlayerId = pt.PlayerId,
+                                TeamStartWeek = pt.TeamStartWeek,
+                                TeamEndWeek = pt.TeamEndWeek,
+                                TeamId = pt.TeamId,
+                                Team = new TeamDTO
+                                {
+                                    TeamId = pt.Team.TeamId,
+                                    TeamName = pt.Team.TeamName,
+                                    TeamCity = pt.Team.TeamCity,
+                                    ByeWeek = pt.Team.ByeWeek,
+                                    ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                                    {
+                                        ActivePeriodId = ap.ActivePeriodId,
+                                        Start = ap.Start,
+                                        End = ap.End
+                                    }).ToList()
+                                }
+                            }).ToList()
                         }
                     }).ToList(),
                     UserProfileDTO = new UserProfileSafeExportDTO

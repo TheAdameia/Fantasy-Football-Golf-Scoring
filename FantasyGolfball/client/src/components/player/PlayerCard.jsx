@@ -28,6 +28,13 @@ export const PlayerCard = ({ player, isPreseason }) => {
     }
 
     const ConfirmDrop = () => {
+        if (selectedLeague.isLeagueFinished) {
+            window.alert("I think you're a bit late for that!")
+            return
+        } else if (!selectedLeague.isDraftComplete) {
+            "I think you're a bit early for that!"
+            return
+        }
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
         const confirmed = window.confirm(`Are you sure you want to drop ${rosterPlayer.player.playerFullName}?`)
         if (confirmed) {
@@ -38,6 +45,13 @@ export const PlayerCard = ({ player, isPreseason }) => {
     }
 
     const ConfirmAdd = (rosterId, playerId) => {
+        if (selectedLeague.isLeagueFinished) {
+            window.alert("I think you're a bit late for that!")
+            return
+        } else if (!selectedLeague.isDraftComplete) {
+            "I think you're a bit early for that!"
+            return
+        }
         if (roster.rosterPlayers.length >= selectedLeague.maxRosterSize) {
             console.log(roster.rosterPlayers.length)
             window.alert("You are at the roster size limit!")
@@ -88,7 +102,7 @@ export const PlayerCard = ({ player, isPreseason }) => {
             <td>{player.playerFullName}</td>
             <td>{player.position.positionShort}</td>
             <td>{player.status.statusType}</td>
-            <td>NYI</td>
+            <td>{player.playerTeams[0].team.teamName}</td>
             <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
             <td>{seasonTotal ?? "-"}</td>
             <td>{playerRosterCondition}</td>

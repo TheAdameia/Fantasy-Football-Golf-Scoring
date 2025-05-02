@@ -208,20 +208,6 @@ public class LeagueController : ControllerBase
     {
         var UserLeagues = _dbContext.Leagues
         .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId))
-        .Include(l => l.Season)
-        .Include(l => l.LeagueUsers)
-            .ThenInclude(lu => lu.UserProfile)
-                .ThenInclude(up => up.IdentityUser)
-        .Include(l => l.LeagueUsers)
-            .ThenInclude(lu => lu.Roster)
-                .ThenInclude(r => r.RosterPlayers)
-                    .ThenInclude(rp => rp.Player)
-                        .ThenInclude(p => p.Status)
-        .Include(l => l.LeagueUsers)
-            .ThenInclude(lu => lu.Roster)
-                .ThenInclude(r => r.RosterPlayers)
-                    .ThenInclude(rp => rp.Player)
-                        .ThenInclude(p => p.Position)
         .Select(l => new LeagueFullExpandDTO
         {
             LeagueId = l.LeagueId,
@@ -283,7 +269,28 @@ public class LeagueController : ControllerBase
                                 PositionId = rp.Player.Position.PositionId,
                                 PositionShort = rp.Player.Position.PositionShort,
                                 PositionLong = rp.Player.Position.PositionLong
-                            }
+                            },
+                            PlayerTeams = rp.Player.PlayerTeams.Select(pt => new PlayerTeamDTO
+                            {
+                                PlayerTeamId = pt.PlayerTeamId,
+                                PlayerId = pt.PlayerId,
+                                TeamStartWeek = pt.TeamStartWeek,
+                                TeamEndWeek = pt.TeamEndWeek,
+                                TeamId = pt.TeamId,
+                                Team = new TeamDTO
+                                {
+                                    TeamId = pt.Team.TeamId,
+                                    TeamName = pt.Team.TeamName,
+                                    TeamCity = pt.Team.TeamCity,
+                                    ByeWeek = pt.Team.ByeWeek,
+                                    ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                                    {
+                                        ActivePeriodId = ap.ActivePeriodId,
+                                        Start = ap.Start,
+                                        End = ap.End
+                                    }).ToList()
+                                }
+                            }).ToList()
                         }
                     }).ToList()
                 }

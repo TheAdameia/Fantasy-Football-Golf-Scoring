@@ -23,8 +23,6 @@ public class PlayerController : ControllerBase
     public IActionResult GetAllPlayers()
     {
         var AllPlayers = _dbContext.Players
-            .Include(p => p.Status)
-            .Include(p => p.Position)
             .Select(p => new PlayerFullExpandDTO
             {
                 PlayerId = p.PlayerId,
@@ -44,7 +42,32 @@ public class PlayerController : ControllerBase
                     StatusType = p.Status.StatusType,
                     ViableToPlay = p.Status.ViableToPlay,
                     RequiresBackup = p.Status.RequiresBackup
-                }
+                },
+                PlayerTeams = p.PlayerTeams
+                .OrderByDescending(pt => pt.TeamStartWeek) // how about... get Season, filter by closest to currentWeek. Would require some changes to what this endpoint needs
+                .Select(pt => new PlayerTeamDTO
+                {
+                    PlayerTeamId = pt.PlayerTeamId,
+                    PlayerId = pt.PlayerId,
+                    TeamStartWeek = pt.TeamStartWeek,
+                    TeamEndWeek = pt.TeamEndWeek,
+                    TeamId = pt.TeamId,
+                    Team = new TeamDTO
+                    {
+                        TeamId = pt.Team.TeamId,
+                        TeamName = pt.Team.TeamName,
+                        TeamCity = pt.Team.TeamCity,
+                        ByeWeek = pt.Team.ByeWeek,
+                        ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                        {
+                            ActivePeriodId = ap.ActivePeriodId,
+                            Start = ap.Start,
+                            End = ap.End
+                        }).ToList()
+                    }
+                })
+                .Take(1)
+                .ToList()
             })
             .ToList();
 

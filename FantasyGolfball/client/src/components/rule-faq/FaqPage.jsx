@@ -17,7 +17,7 @@ export const FaqPage = () => {
                         How do I play?
                     </h5>
                     <article className="faq-answer">
-                        Create an account, join a League, go through a live draft, set your roster, and see what happens!
+                    <a href="https://fantasygolfball.org/register" target="_blank" rel="noopener noreferrer">Create an account</a>, join a League, go through a live draft, set your roster, and see what happens!
                     </article>
                 </div>
                 <div className="faq-item">

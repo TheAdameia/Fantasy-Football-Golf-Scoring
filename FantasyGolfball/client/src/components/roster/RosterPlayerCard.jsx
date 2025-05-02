@@ -51,22 +51,19 @@ export const RosterPlayerCard = ({ rp }) => {
                 </RosterPositionDropdown>
             </th>
             <td>
-                {rp.rosterPosition}
-            </td>
-            <td>
                 {rp.player.status.statusType}
             </td>
             <td>
                 {rp.player.position.positionShort}
             </td>
             <td>
-                -
+                {rp.player.playerTeams[0].team.teamName}
             </td>
             <td>
                 {rp.player.playerFullName}
             </td>
             <td>
-                Week 
+                {rp.player.playerTeams[0].team.byeWeek}
             </td>
             <td>
                 {weekScore ? weekScore.points : "-"}

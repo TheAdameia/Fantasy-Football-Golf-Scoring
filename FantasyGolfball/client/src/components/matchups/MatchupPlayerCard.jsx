@@ -19,10 +19,10 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
                 {rp.player.playerFullName}
             </td>
             <td>
-                -
+                {rp.player.playerTeams[0].team.teamName}
             </td>
             <td>
-                -
+                
             </td>
             {displayWeekPoints.display && selectedLeague.season.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
         </tr>
@@ -35,7 +35,7 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
                 -
             </td>
             <td>
-                -
+                {rp.player.playerTeams[0].team.teamName}
             </td>
             <td>
                 {rp.player.playerFullName}

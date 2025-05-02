@@ -21,9 +21,6 @@ export const RosterCard = () => {
                             Select
                         </th>
                         <th>
-                            Position
-                        </th>
-                        <th>
                             Status
                         </th>
                         <th>

@@ -34,6 +34,11 @@ public class RosterController : ControllerBase
             .Include(r => r.RosterPlayers)
                 .ThenInclude(rp => rp.Player)
                     .ThenInclude(p => p.Status)
+            .Include(r => r.RosterPlayers)
+                    .ThenInclude(rp => rp.Player)
+                        .ThenInclude(p => p.PlayerTeams)
+                            .ThenInclude(pt => pt.Team)
+                                .ThenInclude(t => t.ActivePeriods)
             .SingleOrDefault(r => r.UserId == userId && r.LeagueId == leagueId);
 
         if (roster == null)
@@ -70,7 +75,29 @@ public class RosterController : ControllerBase
                         StatusType = rp.Player.Status.StatusType,
                         ViableToPlay = rp.Player.Status.ViableToPlay,
                         RequiresBackup = rp.Player.Status.RequiresBackup
-                    }
+                    },
+                    PlayerTeams = rp.Player.PlayerTeams
+                    .Select(pt => new PlayerTeamDTO
+                    {
+                        PlayerTeamId = pt.PlayerTeamId,
+                        PlayerId = pt.PlayerId,
+                        TeamStartWeek = pt.TeamStartWeek,
+                        TeamEndWeek = pt.TeamEndWeek,
+                        TeamId = pt.TeamId,
+                        Team = new TeamDTO
+                        {
+                            TeamId = pt.Team.TeamId,
+                            TeamName = pt.Team.TeamName,
+                            TeamCity = pt.Team.TeamCity,
+                            ByeWeek = pt.Team.ByeWeek,
+                            ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                            {
+                                ActivePeriodId = ap.ActivePeriodId,
+                                Start = ap.Start,
+                                End = ap.End
+                            }).ToList()
+                        }
+                    }).ToList()
                 }
             }).ToList()
         };

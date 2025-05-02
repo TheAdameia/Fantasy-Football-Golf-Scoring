@@ -11,7 +11,7 @@ export const AppProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState()
   const [userLeagues, setUserLeagues] = useState()
   const [selectedLeague, setSelectedLeague] = useState(null)
-  const [roster, setRoster] = useState()
+  const [roster, setRoster] = useState() // this data is included in selectedLeague... investigate if it's truly redundant
   const [players, setPlayers] = useState()
   const [matchups, setMatchups] = useState(null)
   const [allScores, setAllScores] = useState()

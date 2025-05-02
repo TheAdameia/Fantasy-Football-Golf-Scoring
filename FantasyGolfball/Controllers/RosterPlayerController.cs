@@ -63,6 +63,16 @@ public class RosterPlayerController : ControllerBase
         {
             return BadRequest($"Roster {roster.RosterId} already contains player {rosterPlayerPOSTDTO.PlayerId}.");
         }
+
+        if (league.IsLeagueFinished)
+        {
+            return BadRequest($"League {league.LeagueId} is finished!");
+        }
+
+        if (!league.IsDraftComplete)
+        {
+            return BadRequest($"League {league.LeagueId} hasn't finished its draft yet!");
+        }
         // checks end here
 
         var rosterPlayer = new RosterPlayer
@@ -84,10 +94,20 @@ public class RosterPlayerController : ControllerBase
     {
         RosterPlayer rosterPlayerToDelete = _dbContext.RosterPlayers.SingleOrDefault(rp => rp.RosterPlayerId == rosterPlayerId);
         
+        // checks begin here
         if (rosterPlayerToDelete == null)
         {
             return NotFound();
         }
+
+        var rosterPlayerCheck = _dbContext.RosterPlayers
+            .Where(rp => rp.RosterPlayerId == rosterPlayerId)
+            .SingleOrDefault();
+        
+        if (rosterPlayerCheck == null) {
+            return BadRequest($"No RosterPlayer found for RosterPlayerId {rosterPlayerId}");
+        }
+        // checks end here
         _dbContext.RosterPlayers.Remove(rosterPlayerToDelete);
         _dbContext.SaveChanges();
         
