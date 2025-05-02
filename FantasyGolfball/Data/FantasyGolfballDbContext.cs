@@ -63,10 +63,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             new Season
             {
                 SeasonId = 1,
-                SeasonYear = 2025,
-                SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0),
-                RealSeason = false,
-                LastRecordedWeek = 1
+                SeasonYear = 2025
             }
         });
         modelBuilder.Entity<League>().HasData(new League[]
@@ -83,7 +80,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 IsDraftComplete = false,
                 IsLeagueFinished = false,
                 SeasonId = 1,
-                DraftStartTime = new DateTime(2025, 3, 12, 8, 0, 0)
+                DraftStartTime = new DateTime(2025, 3, 12, 8, 0, 0),
+                SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0)
             }
         });
         modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]
@@ -492,6 +490,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Mason",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -500,6 +499,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Carter",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -508,6 +508,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Henderson",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -516,6 +517,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Wells",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -524,6 +526,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Nash",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -532,6 +535,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "McKinney",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -540,6 +544,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Johnson",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -548,6 +553,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Richards",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -556,6 +562,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Foster",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -564,6 +571,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Griffin",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -572,6 +580,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Burns",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -580,6 +589,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Hunter",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -588,6 +598,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Reed",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -596,6 +607,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Evans",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -604,6 +616,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Bailey",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -612,6 +625,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Farmer",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -620,6 +634,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lowe",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -628,6 +643,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Murphy",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -636,6 +652,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Patterson",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -644,6 +661,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Harrison",
                 PositionId = 1,
                 StatusId = 1,
+                SeasonId = 1
             },
 
             // Tight Ends
@@ -654,6 +672,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Fitzgerald",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -662,6 +681,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Scott",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -670,6 +690,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Brooks",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -678,6 +699,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Douglas",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -686,6 +708,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Cooper",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -694,6 +717,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Garrett",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -702,6 +726,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Thompson",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -710,6 +735,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Pearson",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -718,6 +744,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Dunn",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -726,6 +753,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Cross",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -734,6 +762,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Shelby",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -742,6 +771,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Coleman",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -750,6 +780,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Fowler",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -758,6 +789,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Sanders",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -766,6 +798,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "McLean",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -774,6 +807,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Washington",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -782,6 +816,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Morris",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -790,6 +825,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Bryant",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -798,6 +834,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Holmes",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -806,6 +843,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Davis",
                 PositionId = 4,
                 StatusId = 1,
+                SeasonId = 1
             },
 
             // Kickers
@@ -816,6 +854,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Smith",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -824,6 +863,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Johnson",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -832,6 +872,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Williams",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -840,6 +881,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Jones",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -848,6 +890,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Brown",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -856,6 +899,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Davis",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -864,6 +908,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Miller",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -872,6 +917,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Wilson",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -880,6 +926,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Moore",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -888,6 +935,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Taylor",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -896,6 +944,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Anderson",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -904,6 +953,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Thomas",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -912,6 +962,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Jackson",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -920,6 +971,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "White",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -928,6 +980,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Harris",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -936,6 +989,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Clark",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -944,6 +998,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Rodriguez",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -952,6 +1007,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lewis",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -960,6 +1016,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Walker",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -968,6 +1025,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Adams",
                 PositionId = 5,
                 StatusId = 1,
+                SeasonId = 1
             },
 
             // Wide Receivers
@@ -978,6 +1036,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Miller",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -986,6 +1045,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Brown",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -994,6 +1054,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Jones",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1002,6 +1063,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Garcia",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1010,6 +1072,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Martinez",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1018,6 +1081,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Hernandez",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1026,6 +1090,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lopez",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1034,6 +1099,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Gonzalez",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1042,6 +1108,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Wilson",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1050,6 +1117,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Perez",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1058,6 +1126,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Taylor",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1066,6 +1135,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Anderson",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1074,6 +1144,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Thomas",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1082,6 +1153,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Jackson",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1090,6 +1162,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "White",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1098,6 +1171,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Harris",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1106,6 +1180,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Clark",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1114,6 +1189,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lewis",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1122,6 +1198,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Walker",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1130,6 +1207,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Young",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1138,6 +1216,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "King",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1146,6 +1225,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Scott",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1154,6 +1234,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Adams",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1162,6 +1243,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Baker",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1170,6 +1252,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Collins",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1178,6 +1261,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Cox",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1186,6 +1270,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Stewart",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1194,6 +1279,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Turner",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1202,6 +1288,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Hughes",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1210,6 +1297,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Ramirez",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1218,6 +1306,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Ross",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1226,6 +1315,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Powell",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1234,6 +1324,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Griffin",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1242,6 +1333,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Brooks",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1250,6 +1342,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Kelly",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1258,6 +1351,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Foster",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1266,6 +1360,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Reed",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1274,6 +1369,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Patterson",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1282,6 +1378,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Burns",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1290,6 +1387,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Wilson",
                 PositionId = 2,
                 StatusId = 1,
+                SeasonId = 1
             },
 
             // Running Backs
@@ -1300,6 +1398,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Taylor",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1308,6 +1407,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lee",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1316,6 +1416,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Perez",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1324,6 +1425,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Gonzalez",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1332,6 +1434,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Mitchell",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1340,6 +1443,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Carter",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1348,6 +1452,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Torres",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1356,6 +1461,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Evans",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1364,6 +1470,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Edwards",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1372,6 +1479,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Collins",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1380,6 +1488,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Morris",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1388,6 +1497,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Murphy",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1396,6 +1506,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Powell",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1404,6 +1515,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Sullivan",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1412,6 +1524,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Bryant",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1420,6 +1533,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Newton",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1428,6 +1542,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lambert",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1436,6 +1551,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Cruz",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1444,6 +1560,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Owen",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1452,6 +1569,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Knight",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1460,6 +1578,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lane",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1468,6 +1587,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Hicks",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1476,6 +1596,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Abbott",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1484,6 +1605,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Reeves",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1492,6 +1614,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Jenkins",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1500,6 +1623,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Gibson",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1508,6 +1632,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Parks",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1516,6 +1641,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Greene",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1524,6 +1650,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Austin",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1532,6 +1659,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Wells",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1540,6 +1668,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Wagner",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1548,6 +1677,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Rice",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1556,6 +1686,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Hayes",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1564,6 +1695,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Houston",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1572,6 +1704,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Hale",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1580,6 +1713,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Wallace",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1588,6 +1722,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Leonard",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1596,6 +1731,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Todd",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1604,6 +1740,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Webb",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1612,6 +1749,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Sanders",
                 PositionId = 3,
                 StatusId = 1,
+                SeasonId = 1
             },
 
             // Defense
@@ -1622,6 +1760,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Thunderbirds",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1630,6 +1769,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Vipers",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1638,6 +1778,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Ironhounds",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1646,6 +1787,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Stallions",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1654,6 +1796,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Warhawks",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1662,6 +1805,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Cyclones",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1670,6 +1814,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Guardians",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1678,6 +1823,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Lumberjacks",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1686,6 +1832,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Outlaws",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1694,6 +1841,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Redtails",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1702,6 +1850,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Firestorm",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1710,6 +1859,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Sentinels",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1718,6 +1868,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Hurricanes",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1726,6 +1877,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Tritons",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1734,6 +1886,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Phantoms",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1742,6 +1895,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Cobras",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1750,6 +1904,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Rampage",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1758,6 +1913,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Renegades",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1766,6 +1922,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Mustangs",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
             new Player
             {
@@ -1774,6 +1931,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerLastName = "Scorpions",
                 PositionId = 6,
                 StatusId = 1,
+                SeasonId = 1
             },
 
         });
@@ -1950,7 +2108,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 1,
                 PlayerId = 1,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 5.1F
             },
@@ -1959,7 +2117,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 2,
                 PlayerId = 1,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 5.5F
             },
@@ -1968,7 +2126,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 3,
                 PlayerId = 1,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.7F
             },
@@ -1977,7 +2135,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 4,
                 PlayerId = 1,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 1.4F
             },
@@ -1986,7 +2144,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 5,
                 PlayerId = 2,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.3F
             },
@@ -1995,7 +2153,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 6,
                 PlayerId = 2,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 16.8F
             },
@@ -2004,7 +2162,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 7,
                 PlayerId = 2,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 10.8F
             },
@@ -2013,7 +2171,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 8,
                 PlayerId = 2,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 4.3F
             },
@@ -2022,7 +2180,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 9,
                 PlayerId = 3,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.0F
             },
@@ -2031,7 +2189,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 10,
                 PlayerId = 3,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 0.2F
             },
@@ -2040,7 +2198,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 11,
                 PlayerId = 3,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.2F
             },
@@ -2049,7 +2207,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 12,
                 PlayerId = 3,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -1.1F
             },
@@ -2058,7 +2216,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 13,
                 PlayerId = 4,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.7F
             },
@@ -2067,7 +2225,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 14,
                 PlayerId = 4,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.7F
             },
@@ -2076,7 +2234,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 15,
                 PlayerId = 4,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 18.2F
             },
@@ -2085,7 +2243,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 16,
                 PlayerId = 4,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 2.3F
             },
@@ -2094,7 +2252,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 17,
                 PlayerId = 5,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 15.5F
             },
@@ -2103,7 +2261,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 18,
                 PlayerId = 5,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 6.2F
             },
@@ -2112,7 +2270,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 19,
                 PlayerId = 5,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.6F
             },
@@ -2121,7 +2279,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 20,
                 PlayerId = 5,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.7F
             },
@@ -2130,7 +2288,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 21,
                 PlayerId = 6,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 2.9F
             },
@@ -2139,7 +2297,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 22,
                 PlayerId = 6,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.4F
             },
@@ -2148,7 +2306,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 23,
                 PlayerId = 6,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 0.1F
             },
@@ -2157,7 +2315,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 24,
                 PlayerId = 6,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.2F
             },
@@ -2166,7 +2324,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 25,
                 PlayerId = 7,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -3.1F
             },
@@ -2175,7 +2333,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 26,
                 PlayerId = 7,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.0F
             },
@@ -2184,7 +2342,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 27,
                 PlayerId = 7,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -2.4F
             },
@@ -2193,7 +2351,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 28,
                 PlayerId = 7,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 7.6F
             },
@@ -2202,7 +2360,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 29,
                 PlayerId = 8,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.8F
             },
@@ -2211,7 +2369,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 30,
                 PlayerId = 8,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 14.0F
             },
@@ -2220,7 +2378,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 31,
                 PlayerId = 8,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 16.1F
             },
@@ -2229,7 +2387,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 32,
                 PlayerId = 8,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 7.8F
             },
@@ -2238,7 +2396,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 33,
                 PlayerId = 9,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 17.9F
             },
@@ -2247,7 +2405,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 34,
                 PlayerId = 9,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.2F
             },
@@ -2256,7 +2414,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 35,
                 PlayerId = 9,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -4.5F
             },
@@ -2265,7 +2423,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 36,
                 PlayerId = 9,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -3.3F
             },
@@ -2274,7 +2432,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 37,
                 PlayerId = 10,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 20.0F
             },
@@ -2283,7 +2441,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 38,
                 PlayerId = 10,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.7F
             },
@@ -2292,7 +2450,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 39,
                 PlayerId = 10,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 17.2F
             },
@@ -2301,7 +2459,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 40,
                 PlayerId = 10,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.2F
             },
@@ -2310,7 +2468,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 41,
                 PlayerId = 11,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.8F
             },
@@ -2319,7 +2477,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 42,
                 PlayerId = 11,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 3.9F
             },
@@ -2328,7 +2486,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 43,
                 PlayerId = 11,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -2.6F
             },
@@ -2337,7 +2495,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 44,
                 PlayerId = 11,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.9F
             },
@@ -2346,7 +2504,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 45,
                 PlayerId = 12,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.3F
             },
@@ -2355,7 +2513,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 46,
                 PlayerId = 12,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 17.0F
             },
@@ -2364,7 +2522,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 47,
                 PlayerId = 12,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.5F
             },
@@ -2373,7 +2531,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 48,
                 PlayerId = 12,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.0F
             },
@@ -2382,7 +2540,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 49,
                 PlayerId = 13,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.7F
             },
@@ -2391,7 +2549,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 50,
                 PlayerId = 13,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.2F
             },
@@ -2400,7 +2558,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 51,
                 PlayerId = 13,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.3F
             },
@@ -2409,7 +2567,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 52,
                 PlayerId = 13,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.1F
             },
@@ -2418,7 +2576,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 53,
                 PlayerId = 14,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 0.4F
             },
@@ -2427,7 +2585,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 54,
                 PlayerId = 14,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.9F
             },
@@ -2436,7 +2594,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 55,
                 PlayerId = 14,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -4.8F
             },
@@ -2445,7 +2603,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 56,
                 PlayerId = 14,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 3.6F
             },
@@ -2454,7 +2612,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 57,
                 PlayerId = 15,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.6F
             },
@@ -2463,7 +2621,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 58,
                 PlayerId = 15,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.6F
             },
@@ -2472,7 +2630,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 59,
                 PlayerId = 15,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 2.7F
             },
@@ -2481,7 +2639,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 60,
                 PlayerId = 15,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 4.9F
             },
@@ -2490,7 +2648,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 61,
                 PlayerId = 16,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.7F
             },
@@ -2499,7 +2657,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 62,
                 PlayerId = 16,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.2F
             },
@@ -2508,7 +2666,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 63,
                 PlayerId = 16,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.8F
             },
@@ -2517,7 +2675,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 64,
                 PlayerId = 16,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.8F
             },
@@ -2526,7 +2684,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 65,
                 PlayerId = 17,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 19.5F
             },
@@ -2535,7 +2693,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 66,
                 PlayerId = 17,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 6.6F
             },
@@ -2544,7 +2702,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 67,
                 PlayerId = 17,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 16.6F
             },
@@ -2553,7 +2711,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 68,
                 PlayerId = 17,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 8.3F
             },
@@ -2562,7 +2720,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 69,
                 PlayerId = 18,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.5F
             },
@@ -2571,7 +2729,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 70,
                 PlayerId = 18,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 9.9F
             },
@@ -2580,7 +2738,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 71,
                 PlayerId = 18,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 18.4F
             },
@@ -2589,7 +2747,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 72,
                 PlayerId = 18,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.6F
             },
@@ -2598,7 +2756,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 73,
                 PlayerId = 19,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.8F
             },
@@ -2607,7 +2765,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 74,
                 PlayerId = 19,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.8F
             },
@@ -2616,7 +2774,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 75,
                 PlayerId = 19,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 7.9F
             },
@@ -2625,7 +2783,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 76,
                 PlayerId = 19,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 12.4F
             },
@@ -2634,7 +2792,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 77,
                 PlayerId = 20,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.4F
             },
@@ -2643,7 +2801,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 78,
                 PlayerId = 20,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -3.6F
             },
@@ -2652,7 +2810,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 79,
                 PlayerId = 20,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 0.1F
             },
@@ -2661,7 +2819,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 80,
                 PlayerId = 20,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -1.8F
             },
@@ -2670,7 +2828,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 81,
                 PlayerId = 21,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 1.5F
             },
@@ -2679,7 +2837,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 82,
                 PlayerId = 21,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.4F
             },
@@ -2688,7 +2846,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 83,
                 PlayerId = 21,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.2F
             },
@@ -2697,7 +2855,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 84,
                 PlayerId = 21,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 6.3F
             },
@@ -2706,7 +2864,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 85,
                 PlayerId = 22,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 8.8F
             },
@@ -2715,7 +2873,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 86,
                 PlayerId = 22,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 5.9F
             },
@@ -2724,7 +2882,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 87,
                 PlayerId = 22,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 12.8F
             },
@@ -2733,7 +2891,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 88,
                 PlayerId = 22,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.3F
             },
@@ -2742,7 +2900,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 89,
                 PlayerId = 23,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 1.4F
             },
@@ -2751,7 +2909,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 90,
                 PlayerId = 23,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 10.2F
             },
@@ -2760,7 +2918,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 91,
                 PlayerId = 23,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.1F
             },
@@ -2769,7 +2927,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 92,
                 PlayerId = 23,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 8.8F
             },
@@ -2778,7 +2936,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 93,
                 PlayerId = 24,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.8F
             },
@@ -2787,7 +2945,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 94,
                 PlayerId = 24,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 6.1F
             },
@@ -2796,7 +2954,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 95,
                 PlayerId = 24,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 10.6F
             },
@@ -2805,7 +2963,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 96,
                 PlayerId = 24,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.9F
             },
@@ -2814,7 +2972,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 97,
                 PlayerId = 25,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.2F
             },
@@ -2823,7 +2981,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 98,
                 PlayerId = 25,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.7F
             },
@@ -2832,7 +2990,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 99,
                 PlayerId = 25,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.2F
             },
@@ -2841,7 +2999,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 100,
                 PlayerId = 25,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.9F
             },
@@ -2850,7 +3008,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 101,
                 PlayerId = 26,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.1F
             },
@@ -2859,7 +3017,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 102,
                 PlayerId = 26,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 5.6F
             },
@@ -2868,7 +3026,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 103,
                 PlayerId = 26,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 7.2F
             },
@@ -2877,7 +3035,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 104,
                 PlayerId = 26,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 19.7F
             },
@@ -2886,7 +3044,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 105,
                 PlayerId = 27,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.9F
             },
@@ -2895,7 +3053,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 106,
                 PlayerId = 27,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -3.0F
             },
@@ -2904,7 +3062,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 107,
                 PlayerId = 27,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 10.6F
             },
@@ -2913,7 +3071,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 108,
                 PlayerId = 27,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 12.8F
             },
@@ -2922,7 +3080,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 109,
                 PlayerId = 28,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -1.6F
             },
@@ -2931,7 +3089,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 110,
                 PlayerId = 28,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.0F
             },
@@ -2940,7 +3098,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 111,
                 PlayerId = 28,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -2.6F
             },
@@ -2949,7 +3107,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 112,
                 PlayerId = 28,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 17.5F
             },
@@ -2958,7 +3116,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 113,
                 PlayerId = 29,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 3.2F
             },
@@ -2967,7 +3125,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 114,
                 PlayerId = 29,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 17.2F
             },
@@ -2976,7 +3134,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 115,
                 PlayerId = 29,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.9F
             },
@@ -2985,7 +3143,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 116,
                 PlayerId = 29,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.3F
             },
@@ -2994,7 +3152,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 117,
                 PlayerId = 30,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.6F
             },
@@ -3003,7 +3161,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 118,
                 PlayerId = 30,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.6F
             },
@@ -3012,7 +3170,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 119,
                 PlayerId = 30,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 17.0F
             },
@@ -3021,7 +3179,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 120,
                 PlayerId = 30,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.1F
             },
@@ -3030,7 +3188,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 121,
                 PlayerId = 31,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.6F
             },
@@ -3039,7 +3197,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 122,
                 PlayerId = 31,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.8F
             },
@@ -3048,7 +3206,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 123,
                 PlayerId = 31,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 0.5F
             },
@@ -3057,7 +3215,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 124,
                 PlayerId = 31,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -3.9F
             },
@@ -3066,7 +3224,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 125,
                 PlayerId = 32,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -1.8F
             },
@@ -3075,7 +3233,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 126,
                 PlayerId = 32,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.5F
             },
@@ -3084,7 +3242,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 127,
                 PlayerId = 32,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.6F
             },
@@ -3093,7 +3251,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 128,
                 PlayerId = 32,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.6F
             },
@@ -3102,7 +3260,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 129,
                 PlayerId = 33,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 4.6F
             },
@@ -3111,7 +3269,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 130,
                 PlayerId = 33,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.8F
             },
@@ -3120,7 +3278,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 131,
                 PlayerId = 33,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.9F
             },
@@ -3129,7 +3287,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 132,
                 PlayerId = 33,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.4F
             },
@@ -3138,7 +3296,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 133,
                 PlayerId = 34,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 2.6F
             },
@@ -3147,7 +3305,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 134,
                 PlayerId = 34,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 6.0F
             },
@@ -3156,7 +3314,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 135,
                 PlayerId = 34,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.9F
             },
@@ -3165,7 +3323,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 136,
                 PlayerId = 34,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -2.3F
             },
@@ -3174,7 +3332,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 137,
                 PlayerId = 35,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.8F
             },
@@ -3183,7 +3341,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 138,
                 PlayerId = 35,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 7.9F
             },
@@ -3192,7 +3350,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 139,
                 PlayerId = 35,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 17.1F
             },
@@ -3201,7 +3359,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 140,
                 PlayerId = 35,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 5.7F
             },
@@ -3210,7 +3368,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 141,
                 PlayerId = 36,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 14.3F
             },
@@ -3219,7 +3377,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 142,
                 PlayerId = 36,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 3.1F
             },
@@ -3228,7 +3386,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 143,
                 PlayerId = 36,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -1.2F
             },
@@ -3237,7 +3395,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 144,
                 PlayerId = 36,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 13.2F
             },
@@ -3246,7 +3404,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 145,
                 PlayerId = 37,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.0F
             },
@@ -3255,7 +3413,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 146,
                 PlayerId = 37,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 9.6F
             },
@@ -3264,7 +3422,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 147,
                 PlayerId = 37,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 17.3F
             },
@@ -3273,7 +3431,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 148,
                 PlayerId = 37,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 19.1F
             },
@@ -3282,7 +3440,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 149,
                 PlayerId = 38,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -1.4F
             },
@@ -3291,7 +3449,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 150,
                 PlayerId = 38,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 12.4F
             },
@@ -3300,7 +3458,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 151,
                 PlayerId = 38,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 6.1F
             },
@@ -3309,7 +3467,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 152,
                 PlayerId = 38,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 3.3F
             },
@@ -3318,7 +3476,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 153,
                 PlayerId = 39,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.3F
             },
@@ -3327,7 +3485,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 154,
                 PlayerId = 39,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 19.3F
             },
@@ -3336,7 +3494,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 155,
                 PlayerId = 39,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -1.8F
             },
@@ -3345,7 +3503,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 156,
                 PlayerId = 39,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.6F
             },
@@ -3354,7 +3512,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 157,
                 PlayerId = 40,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 5.5F
             },
@@ -3363,7 +3521,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 158,
                 PlayerId = 40,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 9.1F
             },
@@ -3372,7 +3530,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 159,
                 PlayerId = 40,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.2F
             },
@@ -3381,7 +3539,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 160,
                 PlayerId = 40,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.6F
             },
@@ -3390,7 +3548,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 161,
                 PlayerId = 41,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 8.1F
             },
@@ -3399,7 +3557,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 162,
                 PlayerId = 41,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 14.3F
             },
@@ -3408,7 +3566,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 163,
                 PlayerId = 41,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.4F
             },
@@ -3417,7 +3575,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 164,
                 PlayerId = 41,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.8F
             },
@@ -3426,7 +3584,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 165,
                 PlayerId = 42,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 3.5F
             },
@@ -3435,7 +3593,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 166,
                 PlayerId = 42,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 16.5F
             },
@@ -3444,7 +3602,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 167,
                 PlayerId = 42,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 19.4F
             },
@@ -3453,7 +3611,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 168,
                 PlayerId = 42,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 4.2F
             },
@@ -3462,7 +3620,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 169,
                 PlayerId = 43,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 2.8F
             },
@@ -3471,7 +3629,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 170,
                 PlayerId = 43,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 12.0F
             },
@@ -3480,7 +3638,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 171,
                 PlayerId = 43,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 2.5F
             },
@@ -3489,7 +3647,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 172,
                 PlayerId = 43,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -1.9F
             },
@@ -3498,7 +3656,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 173,
                 PlayerId = 44,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -0.5F
             },
@@ -3507,7 +3665,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 174,
                 PlayerId = 44,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.0F
             },
@@ -3516,7 +3674,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 175,
                 PlayerId = 44,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 3.8F
             },
@@ -3525,7 +3683,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 176,
                 PlayerId = 44,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 13.0F
             },
@@ -3534,7 +3692,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 177,
                 PlayerId = 45,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.2F
             },
@@ -3543,7 +3701,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 178,
                 PlayerId = 45,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 14.1F
             },
@@ -3552,7 +3710,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 179,
                 PlayerId = 45,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 16.6F
             },
@@ -3561,7 +3719,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 180,
                 PlayerId = 45,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.1F
             },
@@ -3570,7 +3728,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 181,
                 PlayerId = 46,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 2.9F
             },
@@ -3579,7 +3737,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 182,
                 PlayerId = 46,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 10.9F
             },
@@ -3588,7 +3746,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 183,
                 PlayerId = 46,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.8F
             },
@@ -3597,7 +3755,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 184,
                 PlayerId = 46,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.4F
             },
@@ -3606,7 +3764,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 185,
                 PlayerId = 47,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.9F
             },
@@ -3615,7 +3773,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 186,
                 PlayerId = 47,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 14.5F
             },
@@ -3624,7 +3782,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 187,
                 PlayerId = 47,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.3F
             },
@@ -3633,7 +3791,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 188,
                 PlayerId = 47,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -1.0F
             },
@@ -3642,7 +3800,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 189,
                 PlayerId = 48,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 2.8F
             },
@@ -3651,7 +3809,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 190,
                 PlayerId = 48,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 3.9F
             },
@@ -3660,7 +3818,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 191,
                 PlayerId = 48,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 2.3F
             },
@@ -3669,7 +3827,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 192,
                 PlayerId = 48,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 11.0F
             },
@@ -3678,7 +3836,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 193,
                 PlayerId = 49,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -1.7F
             },
@@ -3687,7 +3845,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 194,
                 PlayerId = 49,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 7.1F
             },
@@ -3696,7 +3854,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 195,
                 PlayerId = 49,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 11.0F
             },
@@ -3705,7 +3863,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 196,
                 PlayerId = 49,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 12.5F
             },
@@ -3714,7 +3872,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 197,
                 PlayerId = 50,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 8.9F
             },
@@ -3723,7 +3881,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 198,
                 PlayerId = 50,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 3.4F
             },
@@ -3732,7 +3890,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 199,
                 PlayerId = 50,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.9F
             },
@@ -3741,7 +3899,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 200,
                 PlayerId = 50,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 19.6F
             },
@@ -3750,7 +3908,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 201,
                 PlayerId = 51,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.1F
             },
@@ -3759,7 +3917,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 202,
                 PlayerId = 51,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.2F
             },
@@ -3768,7 +3926,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 203,
                 PlayerId = 51,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 12.7F
             },
@@ -3777,7 +3935,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 204,
                 PlayerId = 51,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.4F
             },
@@ -3786,7 +3944,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 205,
                 PlayerId = 52,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.2F
             },
@@ -3795,7 +3953,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 206,
                 PlayerId = 52,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -0.6F
             },
@@ -3804,7 +3962,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 207,
                 PlayerId = 52,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 3.6F
             },
@@ -3813,7 +3971,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 208,
                 PlayerId = 52,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.7F
             },
@@ -3822,7 +3980,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 209,
                 PlayerId = 53,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -2.3F
             },
@@ -3831,7 +3989,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 210,
                 PlayerId = 53,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.2F
             },
@@ -3840,7 +3998,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 211,
                 PlayerId = 53,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 19.1F
             },
@@ -3849,7 +4007,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 212,
                 PlayerId = 53,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 7.7F
             },
@@ -3858,7 +4016,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 213,
                 PlayerId = 54,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 0.6F
             },
@@ -3867,7 +4025,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 214,
                 PlayerId = 54,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 0.9F
             },
@@ -3876,7 +4034,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 215,
                 PlayerId = 54,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 1.5F
             },
@@ -3885,7 +4043,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 216,
                 PlayerId = 54,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -2.4F
             },
@@ -3894,7 +4052,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 217,
                 PlayerId = 55,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 0.7F
             },
@@ -3903,7 +4061,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 218,
                 PlayerId = 55,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -3.3F
             },
@@ -3912,7 +4070,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 219,
                 PlayerId = 55,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 3.3F
             },
@@ -3921,7 +4079,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 220,
                 PlayerId = 55,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.4F
             },
@@ -3930,7 +4088,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 221,
                 PlayerId = 56,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.1F
             },
@@ -3939,7 +4097,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 222,
                 PlayerId = 56,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 14.6F
             },
@@ -3948,7 +4106,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 223,
                 PlayerId = 56,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 18.4F
             },
@@ -3957,7 +4115,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 224,
                 PlayerId = 56,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -3.5F
             },
@@ -3966,7 +4124,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 225,
                 PlayerId = 57,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 15.0F
             },
@@ -3975,7 +4133,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 226,
                 PlayerId = 57,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 7.2F
             },
@@ -3984,7 +4142,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 227,
                 PlayerId = 57,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.5F
             },
@@ -3993,7 +4151,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 228,
                 PlayerId = 57,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 17.0F
             },
@@ -4002,7 +4160,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 229,
                 PlayerId = 58,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 17.0F
             },
@@ -4011,7 +4169,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 230,
                 PlayerId = 58,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 13.0F
             },
@@ -4020,7 +4178,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 231,
                 PlayerId = 58,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.4F
             },
@@ -4029,7 +4187,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 232,
                 PlayerId = 58,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -0.2F
             },
@@ -4038,7 +4196,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 233,
                 PlayerId = 59,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 17.3F
             },
@@ -4047,7 +4205,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 234,
                 PlayerId = 59,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 16.3F
             },
@@ -4056,7 +4214,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 235,
                 PlayerId = 59,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.2F
             },
@@ -4065,7 +4223,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 236,
                 PlayerId = 59,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.6F
             },
@@ -4074,7 +4232,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 237,
                 PlayerId = 60,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 15.4F
             },
@@ -4083,7 +4241,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 238,
                 PlayerId = 60,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 17.0F
             },
@@ -4092,7 +4250,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 239,
                 PlayerId = 60,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 6.0F
             },
@@ -4101,7 +4259,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 240,
                 PlayerId = 60,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 2.8F
             },
@@ -4110,7 +4268,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 241,
                 PlayerId = 61,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -0.1F
             },
@@ -4119,7 +4277,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 242,
                 PlayerId = 61,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 9.1F
             },
@@ -4128,7 +4286,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 243,
                 PlayerId = 61,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.7F
             },
@@ -4137,7 +4295,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 244,
                 PlayerId = 61,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.5F
             },
@@ -4146,7 +4304,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 245,
                 PlayerId = 62,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 17.8F
             },
@@ -4155,7 +4313,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 246,
                 PlayerId = 62,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 14.1F
             },
@@ -4164,7 +4322,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 247,
                 PlayerId = 62,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 17.0F
             },
@@ -4173,7 +4331,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 248,
                 PlayerId = 62,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -0.4F
             },
@@ -4182,7 +4340,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 249,
                 PlayerId = 63,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 7.0F
             },
@@ -4191,7 +4349,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 250,
                 PlayerId = 63,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.7F
             },
@@ -4200,7 +4358,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 251,
                 PlayerId = 63,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.2F
             },
@@ -4209,7 +4367,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 252,
                 PlayerId = 63,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 5.3F
             },
@@ -4218,7 +4376,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 253,
                 PlayerId = 64,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 4.7F
             },
@@ -4227,7 +4385,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 254,
                 PlayerId = 64,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 19.5F
             },
@@ -4236,7 +4394,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 255,
                 PlayerId = 64,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.1F
             },
@@ -4245,7 +4403,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 256,
                 PlayerId = 64,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 6.9F
             },
@@ -4254,7 +4412,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 257,
                 PlayerId = 65,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.1F
             },
@@ -4263,7 +4421,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 258,
                 PlayerId = 65,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -4.3F
             },
@@ -4272,7 +4430,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 259,
                 PlayerId = 65,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.9F
             },
@@ -4281,7 +4439,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 260,
                 PlayerId = 65,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 10.7F
             },
@@ -4290,7 +4448,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 261,
                 PlayerId = 66,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.8F
             },
@@ -4299,7 +4457,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 262,
                 PlayerId = 66,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -0.7F
             },
@@ -4308,7 +4466,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 263,
                 PlayerId = 66,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 6.2F
             },
@@ -4317,7 +4475,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 264,
                 PlayerId = 66,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.1F
             },
@@ -4326,7 +4484,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 265,
                 PlayerId = 67,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 8.3F
             },
@@ -4335,7 +4493,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 266,
                 PlayerId = 67,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 7.0F
             },
@@ -4344,7 +4502,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 267,
                 PlayerId = 67,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 19.2F
             },
@@ -4353,7 +4511,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 268,
                 PlayerId = 67,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.3F
             },
@@ -4362,7 +4520,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 269,
                 PlayerId = 68,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -3.0F
             },
@@ -4371,7 +4529,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 270,
                 PlayerId = 68,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.0F
             },
@@ -4380,7 +4538,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 271,
                 PlayerId = 68,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 3.0F
             },
@@ -4389,7 +4547,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 272,
                 PlayerId = 68,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 6.5F
             },
@@ -4398,7 +4556,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 273,
                 PlayerId = 69,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 17.1F
             },
@@ -4407,7 +4565,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 274,
                 PlayerId = 69,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -4.9F
             },
@@ -4416,7 +4574,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 275,
                 PlayerId = 69,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 8.0F
             },
@@ -4425,7 +4583,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 276,
                 PlayerId = 69,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 17.0F
             },
@@ -4434,7 +4592,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 277,
                 PlayerId = 70,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.5F
             },
@@ -4443,7 +4601,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 278,
                 PlayerId = 70,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 12.4F
             },
@@ -4452,7 +4610,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 279,
                 PlayerId = 70,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.4F
             },
@@ -4461,7 +4619,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 280,
                 PlayerId = 70,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.9F
             },
@@ -4470,7 +4628,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 281,
                 PlayerId = 71,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 4.0F
             },
@@ -4479,7 +4637,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 282,
                 PlayerId = 71,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 0.5F
             },
@@ -4488,7 +4646,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 283,
                 PlayerId = 71,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.7F
             },
@@ -4497,7 +4655,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 284,
                 PlayerId = 71,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 10.8F
             },
@@ -4506,7 +4664,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 285,
                 PlayerId = 72,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.9F
             },
@@ -4515,7 +4673,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 286,
                 PlayerId = 72,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -3.2F
             },
@@ -4524,7 +4682,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 287,
                 PlayerId = 72,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.7F
             },
@@ -4533,7 +4691,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 288,
                 PlayerId = 72,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 19.5F
             },
@@ -4542,7 +4700,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 289,
                 PlayerId = 73,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 14.1F
             },
@@ -4551,7 +4709,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 290,
                 PlayerId = 73,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 9.3F
             },
@@ -4560,7 +4718,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 291,
                 PlayerId = 73,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 1.1F
             },
@@ -4569,7 +4727,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 292,
                 PlayerId = 73,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 10.7F
             },
@@ -4578,7 +4736,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 293,
                 PlayerId = 74,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 3.8F
             },
@@ -4587,7 +4745,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 294,
                 PlayerId = 74,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 17.5F
             },
@@ -4596,7 +4754,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 295,
                 PlayerId = 74,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.5F
             },
@@ -4605,7 +4763,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 296,
                 PlayerId = 74,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 5.1F
             },
@@ -4614,7 +4772,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 297,
                 PlayerId = 75,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 4.4F
             },
@@ -4623,7 +4781,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 298,
                 PlayerId = 75,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.7F
             },
@@ -4632,7 +4790,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 299,
                 PlayerId = 75,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 7.3F
             },
@@ -4641,7 +4799,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 300,
                 PlayerId = 75,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.0F
             },
@@ -4650,7 +4808,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 301,
                 PlayerId = 76,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.3F
             },
@@ -4659,7 +4817,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 302,
                 PlayerId = 76,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.3F
             },
@@ -4668,7 +4826,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 303,
                 PlayerId = 76,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 16.8F
             },
@@ -4677,7 +4835,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 304,
                 PlayerId = 76,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 4.6F
             },
@@ -4686,7 +4844,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 305,
                 PlayerId = 77,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -0.6F
             },
@@ -4695,7 +4853,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 306,
                 PlayerId = 77,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.5F
             },
@@ -4704,7 +4862,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 307,
                 PlayerId = 77,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 19.7F
             },
@@ -4713,7 +4871,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 308,
                 PlayerId = 77,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 17.7F
             },
@@ -4722,7 +4880,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 309,
                 PlayerId = 78,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.9F
             },
@@ -4731,7 +4889,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 310,
                 PlayerId = 78,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 19.2F
             },
@@ -4740,7 +4898,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 311,
                 PlayerId = 78,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.1F
             },
@@ -4749,7 +4907,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 312,
                 PlayerId = 78,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 5.4F
             },
@@ -4758,7 +4916,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 313,
                 PlayerId = 79,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.0F
             },
@@ -4767,7 +4925,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 314,
                 PlayerId = 79,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 18.9F
             },
@@ -4776,7 +4934,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 315,
                 PlayerId = 79,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 12.3F
             },
@@ -4785,7 +4943,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 316,
                 PlayerId = 79,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.3F
             },
@@ -4794,7 +4952,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 317,
                 PlayerId = 80,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -2.2F
             },
@@ -4803,7 +4961,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 318,
                 PlayerId = 80,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.2F
             },
@@ -4812,7 +4970,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 319,
                 PlayerId = 80,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.9F
             },
@@ -4821,7 +4979,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 320,
                 PlayerId = 80,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.0F
             },
@@ -4830,7 +4988,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 321,
                 PlayerId = 81,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 19.9F
             },
@@ -4839,7 +4997,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 322,
                 PlayerId = 81,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -5.0F
             },
@@ -4848,7 +5006,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 323,
                 PlayerId = 81,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 13.5F
             },
@@ -4857,7 +5015,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 324,
                 PlayerId = 81,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.8F
             },
@@ -4866,7 +5024,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 325,
                 PlayerId = 82,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 8.0F
             },
@@ -4875,7 +5033,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 326,
                 PlayerId = 82,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.1F
             },
@@ -4884,7 +5042,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 327,
                 PlayerId = 82,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 10.3F
             },
@@ -4893,7 +5051,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 328,
                 PlayerId = 82,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 3.6F
             },
@@ -4902,7 +5060,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 329,
                 PlayerId = 83,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 19.7F
             },
@@ -4911,7 +5069,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 330,
                 PlayerId = 83,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.8F
             },
@@ -4920,7 +5078,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 331,
                 PlayerId = 83,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 13.7F
             },
@@ -4929,7 +5087,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 332,
                 PlayerId = 83,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.5F
             },
@@ -4938,7 +5096,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 333,
                 PlayerId = 84,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -3.8F
             },
@@ -4947,7 +5105,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 334,
                 PlayerId = 84,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.9F
             },
@@ -4956,7 +5114,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 335,
                 PlayerId = 84,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 1.2F
             },
@@ -4965,7 +5123,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 336,
                 PlayerId = 84,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.8F
             },
@@ -4974,7 +5132,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 337,
                 PlayerId = 85,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 5.9F
             },
@@ -4983,7 +5141,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 338,
                 PlayerId = 85,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.9F
             },
@@ -4992,7 +5150,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 339,
                 PlayerId = 85,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.9F
             },
@@ -5001,7 +5159,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 340,
                 PlayerId = 85,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.1F
             },
@@ -5010,7 +5168,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 341,
                 PlayerId = 86,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 17.2F
             },
@@ -5019,7 +5177,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 342,
                 PlayerId = 86,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.8F
             },
@@ -5028,7 +5186,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 343,
                 PlayerId = 86,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.2F
             },
@@ -5037,7 +5195,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 344,
                 PlayerId = 86,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 12.9F
             },
@@ -5046,7 +5204,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 345,
                 PlayerId = 87,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.6F
             },
@@ -5055,7 +5213,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 346,
                 PlayerId = 87,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.3F
             },
@@ -5064,7 +5222,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 347,
                 PlayerId = 87,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.9F
             },
@@ -5073,7 +5231,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 348,
                 PlayerId = 87,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 3.8F
             },
@@ -5082,7 +5240,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 349,
                 PlayerId = 88,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 7.2F
             },
@@ -5091,7 +5249,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 350,
                 PlayerId = 88,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.3F
             },
@@ -5100,7 +5258,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 351,
                 PlayerId = 88,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.3F
             },
@@ -5109,7 +5267,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 352,
                 PlayerId = 88,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.7F
             },
@@ -5118,7 +5276,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 353,
                 PlayerId = 89,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.9F
             },
@@ -5127,7 +5285,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 354,
                 PlayerId = 89,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.3F
             },
@@ -5136,7 +5294,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 355,
                 PlayerId = 89,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -1.7F
             },
@@ -5145,7 +5303,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 356,
                 PlayerId = 89,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.2F
             },
@@ -5154,7 +5312,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 357,
                 PlayerId = 90,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 1.8F
             },
@@ -5163,7 +5321,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 358,
                 PlayerId = 90,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 3.0F
             },
@@ -5172,7 +5330,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 359,
                 PlayerId = 90,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 13.0F
             },
@@ -5181,7 +5339,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 360,
                 PlayerId = 90,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 11.3F
             },
@@ -5190,7 +5348,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 361,
                 PlayerId = 91,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.5F
             },
@@ -5199,7 +5357,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 362,
                 PlayerId = 91,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.0F
             },
@@ -5208,7 +5366,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 363,
                 PlayerId = 91,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 18.1F
             },
@@ -5217,7 +5375,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 364,
                 PlayerId = 91,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.8F
             },
@@ -5226,7 +5384,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 365,
                 PlayerId = 92,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 7.7F
             },
@@ -5235,7 +5393,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 366,
                 PlayerId = 92,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 6.9F
             },
@@ -5244,7 +5402,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 367,
                 PlayerId = 92,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 11.7F
             },
@@ -5253,7 +5411,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 368,
                 PlayerId = 92,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -2.6F
             },
@@ -5262,7 +5420,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 369,
                 PlayerId = 93,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 5.1F
             },
@@ -5271,7 +5429,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 370,
                 PlayerId = 93,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 13.9F
             },
@@ -5280,7 +5438,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 371,
                 PlayerId = 93,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.3F
             },
@@ -5289,7 +5447,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 372,
                 PlayerId = 93,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 11.7F
             },
@@ -5298,7 +5456,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 373,
                 PlayerId = 94,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 15.8F
             },
@@ -5307,7 +5465,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 374,
                 PlayerId = 94,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -5.0F
             },
@@ -5316,7 +5474,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 375,
                 PlayerId = 94,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.3F
             },
@@ -5325,7 +5483,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 376,
                 PlayerId = 94,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.4F
             },
@@ -5334,7 +5492,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 377,
                 PlayerId = 95,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.7F
             },
@@ -5343,7 +5501,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 378,
                 PlayerId = 95,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.6F
             },
@@ -5352,7 +5510,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 379,
                 PlayerId = 95,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 2.4F
             },
@@ -5361,7 +5519,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 380,
                 PlayerId = 95,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.8F
             },
@@ -5370,7 +5528,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 381,
                 PlayerId = 96,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.2F
             },
@@ -5379,7 +5537,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 382,
                 PlayerId = 96,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 17.7F
             },
@@ -5388,7 +5546,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 383,
                 PlayerId = 96,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 13.7F
             },
@@ -5397,7 +5555,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 384,
                 PlayerId = 96,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 3.6F
             },
@@ -5406,7 +5564,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 385,
                 PlayerId = 97,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.6F
             },
@@ -5415,7 +5573,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 386,
                 PlayerId = 97,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 13.3F
             },
@@ -5424,7 +5582,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 387,
                 PlayerId = 97,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.6F
             },
@@ -5433,7 +5591,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 388,
                 PlayerId = 97,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.0F
             },
@@ -5442,7 +5600,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 389,
                 PlayerId = 98,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 6.6F
             },
@@ -5451,7 +5609,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 390,
                 PlayerId = 98,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 17.1F
             },
@@ -5460,7 +5618,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 391,
                 PlayerId = 98,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.9F
             },
@@ -5469,7 +5627,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 392,
                 PlayerId = 98,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -2.8F
             },
@@ -5478,7 +5636,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 393,
                 PlayerId = 99,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -0.3F
             },
@@ -5487,7 +5645,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 394,
                 PlayerId = 99,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 16.8F
             },
@@ -5496,7 +5654,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 395,
                 PlayerId = 99,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -4.8F
             },
@@ -5505,7 +5663,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 396,
                 PlayerId = 99,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.6F
             },
@@ -5514,7 +5672,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 397,
                 PlayerId = 100,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.4F
             },
@@ -5523,7 +5681,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 398,
                 PlayerId = 100,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 8.3F
             },
@@ -5532,7 +5690,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 399,
                 PlayerId = 100,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.1F
             },
@@ -5541,7 +5699,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 400,
                 PlayerId = 100,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.1F
             },
@@ -5550,7 +5708,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 401,
                 PlayerId = 101,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -3.8F
             },
@@ -5559,7 +5717,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 402,
                 PlayerId = 101,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.8F
             },
@@ -5568,7 +5726,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 403,
                 PlayerId = 101,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.3F
             },
@@ -5577,7 +5735,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 404,
                 PlayerId = 101,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 7.5F
             },
@@ -5586,7 +5744,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 405,
                 PlayerId = 102,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 16.0F
             },
@@ -5595,7 +5753,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 406,
                 PlayerId = 102,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.8F
             },
@@ -5604,7 +5762,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 407,
                 PlayerId = 102,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 10.6F
             },
@@ -5613,7 +5771,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 408,
                 PlayerId = 102,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 8.2F
             },
@@ -5622,7 +5780,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 409,
                 PlayerId = 103,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.7F
             },
@@ -5631,7 +5789,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 410,
                 PlayerId = 103,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 7.5F
             },
@@ -5640,7 +5798,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 411,
                 PlayerId = 103,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -1.2F
             },
@@ -5649,7 +5807,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 412,
                 PlayerId = 103,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 3.6F
             },
@@ -5658,7 +5816,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 413,
                 PlayerId = 104,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 19.6F
             },
@@ -5667,7 +5825,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 414,
                 PlayerId = 104,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.8F
             },
@@ -5676,7 +5834,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 415,
                 PlayerId = 104,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.3F
             },
@@ -5685,7 +5843,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 416,
                 PlayerId = 104,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.9F
             },
@@ -5694,7 +5852,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 417,
                 PlayerId = 105,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -2.2F
             },
@@ -5703,7 +5861,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 418,
                 PlayerId = 105,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.4F
             },
@@ -5712,7 +5870,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 419,
                 PlayerId = 105,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.6F
             },
@@ -5721,7 +5879,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 420,
                 PlayerId = 105,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.4F
             },
@@ -5730,7 +5888,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 421,
                 PlayerId = 106,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 4.3F
             },
@@ -5739,7 +5897,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 422,
                 PlayerId = 106,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.5F
             },
@@ -5748,7 +5906,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 423,
                 PlayerId = 106,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 13.8F
             },
@@ -5757,7 +5915,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 424,
                 PlayerId = 106,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.4F
             },
@@ -5766,7 +5924,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 425,
                 PlayerId = 107,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.5F
             },
@@ -5775,7 +5933,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 426,
                 PlayerId = 107,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 7.7F
             },
@@ -5784,7 +5942,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 427,
                 PlayerId = 107,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 2.7F
             },
@@ -5793,7 +5951,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 428,
                 PlayerId = 107,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 5.0F
             },
@@ -5802,7 +5960,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 429,
                 PlayerId = 108,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 0.9F
             },
@@ -5811,7 +5969,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 430,
                 PlayerId = 108,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.8F
             },
@@ -5820,7 +5978,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 431,
                 PlayerId = 108,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 8.8F
             },
@@ -5829,7 +5987,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 432,
                 PlayerId = 108,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.8F
             },
@@ -5838,7 +5996,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 433,
                 PlayerId = 109,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -1.6F
             },
@@ -5847,7 +6005,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 434,
                 PlayerId = 109,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.4F
             },
@@ -5856,7 +6014,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 435,
                 PlayerId = 109,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.7F
             },
@@ -5865,7 +6023,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 436,
                 PlayerId = 109,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.3F
             },
@@ -5874,7 +6032,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 437,
                 PlayerId = 110,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.2F
             },
@@ -5883,7 +6041,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 438,
                 PlayerId = 110,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.7F
             },
@@ -5892,7 +6050,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 439,
                 PlayerId = 110,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 13.9F
             },
@@ -5901,7 +6059,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 440,
                 PlayerId = 110,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.2F
             },
@@ -5910,7 +6068,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 441,
                 PlayerId = 111,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 5.8F
             },
@@ -5919,7 +6077,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 442,
                 PlayerId = 111,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 16.8F
             },
@@ -5928,7 +6086,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 443,
                 PlayerId = 111,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.5F
             },
@@ -5937,7 +6095,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 444,
                 PlayerId = 111,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.5F
             },
@@ -5946,7 +6104,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 445,
                 PlayerId = 112,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 16.8F
             },
@@ -5955,7 +6113,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 446,
                 PlayerId = 112,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 8.1F
             },
@@ -5964,7 +6122,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 447,
                 PlayerId = 112,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.7F
             },
@@ -5973,7 +6131,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 448,
                 PlayerId = 112,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.9F
             },
@@ -5982,7 +6140,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 449,
                 PlayerId = 113,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 6.6F
             },
@@ -5991,7 +6149,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 450,
                 PlayerId = 113,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.8F
             },
@@ -6000,7 +6158,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 451,
                 PlayerId = 113,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.8F
             },
@@ -6009,7 +6167,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 452,
                 PlayerId = 113,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.7F
             },
@@ -6018,7 +6176,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 453,
                 PlayerId = 114,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -1.3F
             },
@@ -6027,7 +6185,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 454,
                 PlayerId = 114,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 0.3F
             },
@@ -6036,7 +6194,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 455,
                 PlayerId = 114,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 2.9F
             },
@@ -6045,7 +6203,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 456,
                 PlayerId = 114,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 1.9F
             },
@@ -6054,7 +6212,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 457,
                 PlayerId = 115,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.7F
             },
@@ -6063,7 +6221,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 458,
                 PlayerId = 115,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.7F
             },
@@ -6072,7 +6230,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 459,
                 PlayerId = 115,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 16.5F
             },
@@ -6081,7 +6239,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 460,
                 PlayerId = 115,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 8.1F
             },
@@ -6090,7 +6248,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 461,
                 PlayerId = 116,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 4.0F
             },
@@ -6099,7 +6257,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 462,
                 PlayerId = 116,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.6F
             },
@@ -6108,7 +6266,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 463,
                 PlayerId = 116,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 10.5F
             },
@@ -6117,7 +6275,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 464,
                 PlayerId = 116,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 18.6F
             },
@@ -6126,7 +6284,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 465,
                 PlayerId = 117,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 16.3F
             },
@@ -6135,7 +6293,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 466,
                 PlayerId = 117,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 3.5F
             },
@@ -6144,7 +6302,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 467,
                 PlayerId = 117,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 0.9F
             },
@@ -6153,7 +6311,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 468,
                 PlayerId = 117,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -3.4F
             },
@@ -6162,7 +6320,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 469,
                 PlayerId = 118,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 19.4F
             },
@@ -6171,7 +6329,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 470,
                 PlayerId = 118,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 13.6F
             },
@@ -6180,7 +6338,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 471,
                 PlayerId = 118,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 19.6F
             },
@@ -6189,7 +6347,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 472,
                 PlayerId = 118,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 12.9F
             },
@@ -6198,7 +6356,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 473,
                 PlayerId = 119,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 9.2F
             },
@@ -6207,7 +6365,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 474,
                 PlayerId = 119,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 19.8F
             },
@@ -6216,7 +6374,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 475,
                 PlayerId = 119,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 3.2F
             },
@@ -6225,7 +6383,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 476,
                 PlayerId = 119,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -2.2F
             },
@@ -6234,7 +6392,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 477,
                 PlayerId = 120,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.6F
             },
@@ -6243,7 +6401,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 478,
                 PlayerId = 120,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 10.6F
             },
@@ -6252,7 +6410,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 479,
                 PlayerId = 120,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 6.3F
             },
@@ -6261,7 +6419,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 480,
                 PlayerId = 120,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.1F
             },
@@ -6270,7 +6428,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 481,
                 PlayerId = 121,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -3.0F
             },
@@ -6279,7 +6437,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 482,
                 PlayerId = 121,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.8F
             },
@@ -6288,7 +6446,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 483,
                 PlayerId = 121,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 19.8F
             },
@@ -6297,7 +6455,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 484,
                 PlayerId = 121,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.8F
             },
@@ -6306,7 +6464,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 485,
                 PlayerId = 122,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 9.5F
             },
@@ -6315,7 +6473,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 486,
                 PlayerId = 122,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.3F
             },
@@ -6324,7 +6482,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 487,
                 PlayerId = 122,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -2.7F
             },
@@ -6333,7 +6491,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 488,
                 PlayerId = 122,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 8.7F
             },
@@ -6342,7 +6500,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 489,
                 PlayerId = 123,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.6F
             },
@@ -6351,7 +6509,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 490,
                 PlayerId = 123,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.0F
             },
@@ -6360,7 +6518,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 491,
                 PlayerId = 123,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.0F
             },
@@ -6369,7 +6527,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 492,
                 PlayerId = 123,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.2F
             },
@@ -6378,7 +6536,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 493,
                 PlayerId = 124,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 8.2F
             },
@@ -6387,7 +6545,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 494,
                 PlayerId = 124,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.1F
             },
@@ -6396,7 +6554,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 495,
                 PlayerId = 124,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.6F
             },
@@ -6405,7 +6563,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 496,
                 PlayerId = 124,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.0F
             },
@@ -6414,7 +6572,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 497,
                 PlayerId = 125,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.9F
             },
@@ -6423,7 +6581,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 498,
                 PlayerId = 125,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 15.9F
             },
@@ -6432,7 +6590,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 499,
                 PlayerId = 125,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.4F
             },
@@ -6441,7 +6599,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 500,
                 PlayerId = 125,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 8.2F
             },
@@ -6450,7 +6608,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 501,
                 PlayerId = 126,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -0.8F
             },
@@ -6459,7 +6617,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 502,
                 PlayerId = 126,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.0F
             },
@@ -6468,7 +6626,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 503,
                 PlayerId = 126,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -4.5F
             },
@@ -6477,7 +6635,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 504,
                 PlayerId = 126,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 1.7F
             },
@@ -6486,7 +6644,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 505,
                 PlayerId = 127,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 20.0F
             },
@@ -6495,7 +6653,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 506,
                 PlayerId = 127,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.0F
             },
@@ -6504,7 +6662,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 507,
                 PlayerId = 127,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -1.6F
             },
@@ -6513,7 +6671,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 508,
                 PlayerId = 127,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -1.0F
             },
@@ -6522,7 +6680,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 509,
                 PlayerId = 128,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 3.9F
             },
@@ -6531,7 +6689,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 510,
                 PlayerId = 128,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 5.0F
             },
@@ -6540,7 +6698,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 511,
                 PlayerId = 128,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -3.4F
             },
@@ -6549,7 +6707,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 512,
                 PlayerId = 128,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.0F
             },
@@ -6558,7 +6716,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 513,
                 PlayerId = 129,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -5.0F
             },
@@ -6567,7 +6725,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 514,
                 PlayerId = 129,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 3.8F
             },
@@ -6576,7 +6734,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 515,
                 PlayerId = 129,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 18.8F
             },
@@ -6585,7 +6743,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 516,
                 PlayerId = 129,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 7.7F
             },
@@ -6594,7 +6752,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 517,
                 PlayerId = 130,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.1F
             },
@@ -6603,7 +6761,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 518,
                 PlayerId = 130,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 2.8F
             },
@@ -6612,7 +6770,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 519,
                 PlayerId = 130,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 8.6F
             },
@@ -6621,7 +6779,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 520,
                 PlayerId = 130,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 19.7F
             },
@@ -6630,7 +6788,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 521,
                 PlayerId = 131,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 3.0F
             },
@@ -6639,7 +6797,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 522,
                 PlayerId = 131,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 9.4F
             },
@@ -6648,7 +6806,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 523,
                 PlayerId = 131,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.8F
             },
@@ -6657,7 +6815,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 524,
                 PlayerId = 131,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.5F
             },
@@ -6666,7 +6824,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 525,
                 PlayerId = 132,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.9F
             },
@@ -6675,7 +6833,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 526,
                 PlayerId = 132,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 9.2F
             },
@@ -6684,7 +6842,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 527,
                 PlayerId = 132,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 12.5F
             },
@@ -6693,7 +6851,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 528,
                 PlayerId = 132,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 6.0F
             },
@@ -6702,7 +6860,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 529,
                 PlayerId = 133,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.7F
             },
@@ -6711,7 +6869,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 530,
                 PlayerId = 133,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 14.9F
             },
@@ -6720,7 +6878,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 531,
                 PlayerId = 133,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.2F
             },
@@ -6729,7 +6887,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 532,
                 PlayerId = 133,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.7F
             },
@@ -6738,7 +6896,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 533,
                 PlayerId = 134,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 10.0F
             },
@@ -6747,7 +6905,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 534,
                 PlayerId = 134,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 0.8F
             },
@@ -6756,7 +6914,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 535,
                 PlayerId = 134,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.6F
             },
@@ -6765,7 +6923,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 536,
                 PlayerId = 134,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 10.8F
             },
@@ -6774,7 +6932,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 537,
                 PlayerId = 135,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.6F
             },
@@ -6783,7 +6941,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 538,
                 PlayerId = 135,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -4.8F
             },
@@ -6792,7 +6950,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 539,
                 PlayerId = 135,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.3F
             },
@@ -6801,7 +6959,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 540,
                 PlayerId = 135,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 2.2F
             },
@@ -6810,7 +6968,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 541,
                 PlayerId = 136,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.7F
             },
@@ -6819,7 +6977,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 542,
                 PlayerId = 136,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.0F
             },
@@ -6828,7 +6986,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 543,
                 PlayerId = 136,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 15.4F
             },
@@ -6837,7 +6995,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 544,
                 PlayerId = 136,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 14.8F
             },
@@ -6846,7 +7004,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 545,
                 PlayerId = 137,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 12.9F
             },
@@ -6855,7 +7013,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 546,
                 PlayerId = 137,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 18.4F
             },
@@ -6864,7 +7022,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 547,
                 PlayerId = 137,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -4.6F
             },
@@ -6873,7 +7031,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 548,
                 PlayerId = 137,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 12.1F
             },
@@ -6882,7 +7040,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 549,
                 PlayerId = 138,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 6.1F
             },
@@ -6891,7 +7049,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 550,
                 PlayerId = 138,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -1.4F
             },
@@ -6900,7 +7058,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 551,
                 PlayerId = 138,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -1.4F
             },
@@ -6909,7 +7067,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 552,
                 PlayerId = 138,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.9F
             },
@@ -6918,7 +7076,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 553,
                 PlayerId = 139,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 7.6F
             },
@@ -6927,7 +7085,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 554,
                 PlayerId = 139,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 7.0F
             },
@@ -6936,7 +7094,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 555,
                 PlayerId = 139,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 0.8F
             },
@@ -6945,7 +7103,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 556,
                 PlayerId = 139,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 13.6F
             },
@@ -6954,7 +7112,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 557,
                 PlayerId = 140,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 8.2F
             },
@@ -6963,7 +7121,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 558,
                 PlayerId = 140,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 18.9F
             },
@@ -6972,7 +7130,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 559,
                 PlayerId = 140,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 11.8F
             },
@@ -6981,7 +7139,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 560,
                 PlayerId = 140,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 11.2F
             },
@@ -6990,7 +7148,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 561,
                 PlayerId = 141,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.8F
             },
@@ -6999,7 +7157,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 562,
                 PlayerId = 141,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.5F
             },
@@ -7008,7 +7166,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 563,
                 PlayerId = 141,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.0F
             },
@@ -7017,7 +7175,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 564,
                 PlayerId = 141,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 11.9F
             },
@@ -7026,7 +7184,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 565,
                 PlayerId = 142,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.8F
             },
@@ -7035,7 +7193,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 566,
                 PlayerId = 142,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.9F
             },
@@ -7044,7 +7202,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 567,
                 PlayerId = 142,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 9.7F
             },
@@ -7053,7 +7211,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 568,
                 PlayerId = 142,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.8F
             },
@@ -7062,7 +7220,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 569,
                 PlayerId = 143,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -4.3F
             },
@@ -7071,7 +7229,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 570,
                 PlayerId = 143,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 4.4F
             },
@@ -7080,7 +7238,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 571,
                 PlayerId = 143,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 11.1F
             },
@@ -7089,7 +7247,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 572,
                 PlayerId = 143,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 6.6F
             },
@@ -7098,7 +7256,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 573,
                 PlayerId = 144,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 14.1F
             },
@@ -7107,7 +7265,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 574,
                 PlayerId = 144,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 13.2F
             },
@@ -7116,7 +7274,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 575,
                 PlayerId = 144,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 14.3F
             },
@@ -7125,7 +7283,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 576,
                 PlayerId = 144,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.0F
             },
@@ -7134,7 +7292,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 577,
                 PlayerId = 145,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 7.7F
             },
@@ -7143,7 +7301,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 578,
                 PlayerId = 145,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 8.0F
             },
@@ -7152,7 +7310,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 579,
                 PlayerId = 145,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 4.0F
             },
@@ -7161,7 +7319,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 580,
                 PlayerId = 145,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.4F
             },
@@ -7170,7 +7328,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 581,
                 PlayerId = 146,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 17.9F
             },
@@ -7179,7 +7337,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 582,
                 PlayerId = 146,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.5F
             },
@@ -7188,7 +7346,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 583,
                 PlayerId = 146,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 16.9F
             },
@@ -7197,7 +7355,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 584,
                 PlayerId = 146,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 5.8F
             },
@@ -7206,7 +7364,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 585,
                 PlayerId = 147,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 6.2F
             },
@@ -7215,7 +7373,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 586,
                 PlayerId = 147,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -4.6F
             },
@@ -7224,7 +7382,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 587,
                 PlayerId = 147,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 11.9F
             },
@@ -7233,7 +7391,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 588,
                 PlayerId = 147,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 0.9F
             },
@@ -7242,7 +7400,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 589,
                 PlayerId = 148,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.9F
             },
@@ -7251,7 +7409,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 590,
                 PlayerId = 148,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -3.7F
             },
@@ -7260,7 +7418,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 591,
                 PlayerId = 148,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 12.5F
             },
@@ -7269,7 +7427,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 592,
                 PlayerId = 148,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -2.3F
             },
@@ -7278,7 +7436,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 593,
                 PlayerId = 149,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 18.6F
             },
@@ -7287,7 +7445,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 594,
                 PlayerId = 149,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -4.4F
             },
@@ -7296,7 +7454,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 595,
                 PlayerId = 149,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 5.0F
             },
@@ -7305,7 +7463,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 596,
                 PlayerId = 149,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 2.6F
             },
@@ -7314,7 +7472,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 597,
                 PlayerId = 150,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 9.5F
             },
@@ -7323,7 +7481,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 598,
                 PlayerId = 150,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 5.9F
             },
@@ -7332,7 +7490,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 599,
                 PlayerId = 150,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 11.5F
             },
@@ -7341,7 +7499,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 600,
                 PlayerId = 150,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 8.6F
             },
@@ -7350,7 +7508,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 601,
                 PlayerId = 151,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 6.8F
             },
@@ -7359,7 +7517,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 602,
                 PlayerId = 151,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.5F
             },
@@ -7368,7 +7526,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 603,
                 PlayerId = 151,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 19.9F
             },
@@ -7377,7 +7535,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 604,
                 PlayerId = 151,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 16.4F
             },
@@ -7386,7 +7544,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 605,
                 PlayerId = 152,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 7.8F
             },
@@ -7395,7 +7553,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 606,
                 PlayerId = 152,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = -2.8F
             },
@@ -7404,7 +7562,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 607,
                 PlayerId = 152,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 16.8F
             },
@@ -7413,7 +7571,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 608,
                 PlayerId = 152,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 2.3F
             },
@@ -7422,7 +7580,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 609,
                 PlayerId = 153,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -1.6F
             },
@@ -7431,7 +7589,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 610,
                 PlayerId = 153,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 19.5F
             },
@@ -7440,7 +7598,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 611,
                 PlayerId = 153,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -1.7F
             },
@@ -7449,7 +7607,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 612,
                 PlayerId = 153,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 6.8F
             },
@@ -7458,7 +7616,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 613,
                 PlayerId = 154,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 2.3F
             },
@@ -7467,7 +7625,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 614,
                 PlayerId = 154,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 12.4F
             },
@@ -7476,7 +7634,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 615,
                 PlayerId = 154,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -4.7F
             },
@@ -7485,7 +7643,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 616,
                 PlayerId = 154,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 15.2F
             },
@@ -7494,7 +7652,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 617,
                 PlayerId = 155,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -2.5F
             },
@@ -7503,7 +7661,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 618,
                 PlayerId = 155,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.7F
             },
@@ -7512,7 +7670,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 619,
                 PlayerId = 155,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -0.9F
             },
@@ -7521,7 +7679,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 620,
                 PlayerId = 155,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 4.1F
             },
@@ -7530,7 +7688,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 621,
                 PlayerId = 156,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 4.8F
             },
@@ -7539,7 +7697,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 622,
                 PlayerId = 156,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 18.5F
             },
@@ -7548,7 +7706,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 623,
                 PlayerId = 156,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 6.6F
             },
@@ -7557,7 +7715,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 624,
                 PlayerId = 156,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 9.2F
             },
@@ -7566,7 +7724,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 625,
                 PlayerId = 157,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 5.2F
             },
@@ -7575,7 +7733,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 626,
                 PlayerId = 157,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 17.0F
             },
@@ -7584,7 +7742,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 627,
                 PlayerId = 157,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 6.2F
             },
@@ -7593,7 +7751,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 628,
                 PlayerId = 157,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 7.3F
             },
@@ -7602,7 +7760,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 629,
                 PlayerId = 158,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 13.8F
             },
@@ -7611,7 +7769,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 630,
                 PlayerId = 158,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 1.9F
             },
@@ -7620,7 +7778,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 631,
                 PlayerId = 158,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 17.5F
             },
@@ -7629,7 +7787,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 632,
                 PlayerId = 158,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 7.9F
             },
@@ -7638,7 +7796,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 633,
                 PlayerId = 159,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = 11.9F
             },
@@ -7647,7 +7805,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 634,
                 PlayerId = 159,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.3F
             },
@@ -7656,7 +7814,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 635,
                 PlayerId = 159,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = -4.6F
             },
@@ -7665,7 +7823,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 636,
                 PlayerId = 159,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = -4.2F
             },
@@ -7674,7 +7832,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 637,
                 PlayerId = 160,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 1,
                 Points = -5.0F
             },
@@ -7683,7 +7841,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 638,
                 PlayerId = 160,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 2,
                 Points = 11.0F
             },
@@ -7692,7 +7850,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 639,
                 PlayerId = 160,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 3,
                 Points = 3.8F
             },
@@ -7701,7 +7859,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ScoringId = 640,
                 PlayerId = 160,
-                SeasonYear = 2025,
+                SeasonId = 1,
                 SeasonWeek = 4,
                 Points = 12.1F
             },

@@ -66,7 +66,7 @@ export const PlayerCard = ({ player, isPreseason }) => {
     }
 
     useEffect(() => {
-        if (!allScores || selectedLeague?.season?.currentWeek == null) {
+        if (!allScores || selectedLeague?.currentWeek == null) {
             setWeekScore(undefined)
             setSeasonTotal("-")
             return
@@ -74,13 +74,13 @@ export const PlayerCard = ({ player, isPreseason }) => {
 
         const playerScores = allScores.filter(s => s.playerId == player.playerId)
 
-        const thisWeekScore = playerScores.find(s => s.seasonWeek === selectedLeague.season.currentWeek)
+        const thisWeekScore = playerScores.find(s => s.seasonWeek === selectedLeague.currentWeek)
         setWeekScore(thisWeekScore)
 
         const total = playerScores.reduce((sum, s) => sum + s.points, 0)
         setSeasonTotal(total.toFixed(1))
         
-    }, [allScores, selectedLeague?.season?.currentWeek, player])
+    }, [allScores, selectedLeague?.currentWeek, player])
 
     useEffect(() => {
         if (selectedLeague && selectedLeague.leagueUsers.some(lu => lu.userProfileId !== loggedInUser.id 

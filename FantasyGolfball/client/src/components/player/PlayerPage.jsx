@@ -135,7 +135,7 @@ export const PlayerPage = () => {
                             Team
                         </th>
                         <th>
-                            Week {selectedLeague?.season?.currentWeek != null ? selectedLeague.season.currentWeek : "Preseason"} Points
+                            Week {selectedLeague?.currentWeek != null ? selectedLeague.currentWeek : "Preseason"} Points
                         </th>
                         <th>
                             Season Total Points
@@ -151,7 +151,7 @@ export const PlayerPage = () => {
                                 <PlayerCard 
                                     player={player}
                                     key={`player-${player.playerId}`}
-                                    isPreseason={selectedLeague?.season?.currentWeek == null}
+                                    isPreseason={selectedLeague?.currentWeek == null}
                                 />
                     ) : (
                     <tr>

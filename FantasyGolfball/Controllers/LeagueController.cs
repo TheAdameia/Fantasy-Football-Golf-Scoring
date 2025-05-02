@@ -65,32 +65,11 @@ public class LeagueController : ControllerBase
         using var transaction = _dbContext.Database.BeginTransaction();
         try
         {
-            Season season;
+            var season = _dbContext.Seasons.SingleOrDefault(s => s.SeasonYear == leaguePOSTDTO.SeasonYear);
 
-            if (leaguePOSTDTO.RealSeason == false)
+            if (season == null)
             {
-                Console.WriteLine("If you don't see this, RealSeason was true");
-                season = new Season
-                {
-                    RealSeason = leaguePOSTDTO.RealSeason,
-                    SeasonYear = leaguePOSTDTO.SeasonYear,
-                    SeasonStartDate = leaguePOSTDTO.SeasonStartDate.ToUniversalTime(),
-                    Advancement = advancement                
-                };
-
-                _dbContext.Seasons.Add(season);
-                _dbContext.SaveChanges();
-            }
-            else
-            {
-                // finds the real season
-                season = _dbContext.Seasons.FirstOrDefault(s => s.SeasonYear == leaguePOSTDTO.SeasonYear && s.RealSeason);
-
-                if (season == null)
-                {
-                    transaction.Rollback();
-                    return BadRequest($"No real season found for year {leaguePOSTDTO.SeasonYear}");
-                }
+                return BadRequest($"No Season found for {leaguePOSTDTO.SeasonYear}");
             }
 
             var league = new League
@@ -106,7 +85,9 @@ public class LeagueController : ControllerBase
                 IsLeagueFinished =  false,
                 DraftStartTime = leaguePOSTDTO.DraftStartTime.ToUniversalTime(),
                 JoinPassword = leaguePOSTDTO.JoinPassword,
-                RequiresPassword = leaguePOSTDTO.RequiresPassword
+                RequiresPassword = leaguePOSTDTO.RequiresPassword,
+                SeasonStartDate = leaguePOSTDTO.SeasonStartDate.ToUniversalTime(),
+                Advancement = advancement
             };
             
             _dbContext.Leagues.Add(league);
@@ -221,13 +202,12 @@ public class LeagueController : ControllerBase
             IsLeagueFinished = l.IsLeagueFinished,
             SeasonId = l.SeasonId,
             DraftStartTime = l.DraftStartTime,
+            SeasonStartDate = l.SeasonStartDate,
+            Advancement = l.Advancement,
             Season = new SeasonDTO
             {
                 SeasonId = l.Season.SeasonId,
-                SeasonYear = l.Season.SeasonYear,
-                SeasonStartDate = l.Season.SeasonStartDate,
-                RealSeason = l.Season.RealSeason,
-                Advancement = l.Season.Advancement
+                SeasonYear = l.Season.SeasonYear
             },
             LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
             {
@@ -320,12 +300,12 @@ public class LeagueController : ControllerBase
                 RequiredFullToStart = l.RequiredFullToStart,
                 SeasonId = l.SeasonId,
                 RequiresPassword = l.RequiresPassword,
+                SeasonStartDate = l.SeasonStartDate,
+                Advancement = l.Advancement,
                 Season = new SeasonDTO
                 {
                     SeasonId = l.Season.SeasonId,
-                    SeasonYear = l.Season.SeasonYear,
-                    SeasonStartDate = l.Season.SeasonStartDate,
-                    RealSeason = l.Season.RealSeason
+                    SeasonYear = l.Season.SeasonYear
                 },
                 LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserSafeExportDTO
                 {

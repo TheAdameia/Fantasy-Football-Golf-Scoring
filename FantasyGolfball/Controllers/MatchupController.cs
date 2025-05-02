@@ -52,7 +52,6 @@ public class MatchupController : ControllerBase
                         {
                             ScoringId = musp.Scoring.ScoringId,
                             PlayerId = musp.Scoring.PlayerId,
-                            SeasonYear = musp.Scoring.SeasonYear,
                             SeasonWeek = musp.Scoring.SeasonWeek,
                             Points = musp.Scoring.Points
                         },

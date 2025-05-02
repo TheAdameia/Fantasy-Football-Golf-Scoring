@@ -7,7 +7,7 @@ import "./matchups.css"
 export const MatchupPage = () => {
     const { matchups, selectedLeague, loggedInUser } = useAppContext()
     const getInitialWeek = () => {
-        const currentWeek = selectedLeague?.season?.currentWeek ?? 1
+        const currentWeek = selectedLeague?.currentWeek ?? 1
         return Math.min(currentWeek, 4)
     }
     const [week, setWeek] = useState(getInitialWeek)
@@ -32,10 +32,10 @@ export const MatchupPage = () => {
     }
 
     useEffect(() => {
-        const currentWeek = selectedLeague?.season?.currentWeek ?? 1
+        const currentWeek = selectedLeague?.currentWeek ?? 1
         const clampedWeek = Math.min(currentWeek, 4)
         setWeek(clampedWeek)
-    }, [selectedLeague?.season?.currentWeek])
+    }, [selectedLeague?.currentWeek])
 
     useEffect(() => {
         if (matchups) {
@@ -44,7 +44,7 @@ export const MatchupPage = () => {
         }
     }, [loggedInUser.id, matchups])
 
-    if (selectedLeague?.season?.currentWeek != week) {
+    if (selectedLeague?.currentWeek != week) {
         return (
             <div>
                 <div>

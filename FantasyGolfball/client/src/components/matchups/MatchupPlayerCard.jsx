@@ -24,13 +24,13 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             <td>
                 
             </td>
-            {displayWeekPoints.display && selectedLeague.season.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
+            {displayWeekPoints.display && selectedLeague.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
         </tr>
     )
    } else if (slot == false && rp) {
     return (
         <tr>
-            {displayWeekPoints.display && selectedLeague.season.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
+            {displayWeekPoints.display && selectedLeague.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
             <td>
                 -
             </td>

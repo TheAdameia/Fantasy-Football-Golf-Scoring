@@ -13,6 +13,7 @@ public class Player
     public Position Position { get; set; }
     public Status Status { get; set;}
     public ICollection<PlayerTeam> PlayerTeams { get; set; }
+    public int SeasonId { get; set; }
     public string PlayerFullName
     {
         get

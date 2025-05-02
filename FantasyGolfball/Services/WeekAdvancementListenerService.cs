@@ -18,137 +18,131 @@ public class WeekAdvancementListenerService
 
     private async Task HandleWeekAdvanced(WeekAdvancedEvent eventData)
     {
-        Console.WriteLine($"Handling WeekAdvancedEvent for Season {eventData.SeasonId}, New Week: {eventData.NewWeek}");
+        Console.WriteLine($"Performing updates for League {eventData.LeagueId} now in Week {eventData.NewWeek}");
 
         using var scope = _scopeFactory.CreateScope(); // creates a new scope to ensure fresh db
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-        var season = await dbContext.Seasons.FirstOrDefaultAsync(s => s.SeasonId == eventData.SeasonId);
+        var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == eventData.LeagueId);
 
-        if (season == null)
+        if (league == null)
         {
-            throw new Exception($"Season {eventData.SeasonId} not found");
+            throw new Exception($"League {eventData.LeagueId} not found");
         }
-
-        Console.WriteLine($"Performing updates for Season {season.SeasonYear} now in Week {eventData.NewWeek}");
 
         int previousWeek = eventData.NewWeek - 1;
         if (previousWeek == 0)
         {
-            Console.WriteLine($"Skipping score calculation for season {eventData.SeasonId} because previousWeek is 0.");
+            Console.WriteLine($"Skipping score calculation for League {eventData.LeagueId} because previousWeek is 0.");
             return;
         }
 
-        var leagues = await dbContext.Leagues
-            .Where(l => l.SeasonId == season.SeasonId)
+        
+        // league finish code begins here
+        if (previousWeek >= 4 && !league.IsLeagueFinished) // needs to change once we get real seasons
+        {
+            league.IsLeagueFinished = true;
+            Console.WriteLine($"League {league.LeagueId} set to finished");
+            dbContext.SaveChanges();
+            return; 
+        }
+        if (league.IsLeagueFinished)
+        {
+            Console.WriteLine($"League {league.LeagueId} skipped in WALS due to already being done. This shouldn't happen due to WAS filters.");
+            return;
+        }
+
+        // league finish code ends here
+
+        var matchups = await dbContext.Matchups
+            .Where(m => m.LeagueId == league.LeagueId)
+            .Include(m => m.MatchupUsers)
+            .ThenInclude(mu => mu.userProfile)
             .ToListAsync();
 
-        foreach (var league in leagues)
+        foreach (var matchup in matchups)
         {
-            // league finish code begins here
-            if (previousWeek >= 4 && !league.IsLeagueFinished) // needs to change once we get real seasons
+            if (matchup.MatchupUsers.Count != 2)
             {
-                league.IsLeagueFinished = true;
-                Console.WriteLine($"League {league.LeagueId} set to finished");
-                continue; // skips this iteration and continues with the loop
-            }
-            if (league.IsLeagueFinished)
-            {
-                Console.WriteLine($"League {league.LeagueId} skipped in WALS due to already being done");
-                continue;
+                throw new Exception($"matchup {matchup.MatchupId} contains a non-2 number of MU");
             }
 
-            // league finish code ends here
+            var scores = new Dictionary<int, float>(); // key: userprofileid, value: sum score
 
-            var matchups = await dbContext.Matchups
-                .Where(m => m.LeagueId == league.LeagueId)
-                .Include(m => m.MatchupUsers)
-                .ThenInclude(mu => mu.userProfile)
-                .ToListAsync();
-
-            foreach (var matchup in matchups)
+            foreach (var matchupUser in matchup.MatchupUsers)
             {
-                if (matchup.MatchupUsers.Count != 2)
+                var roster = await dbContext.Rosters
+                    .Where(r => r.UserId == matchupUser.UserProfileId && r.LeagueId == league.LeagueId)
+                    .Include(r => r.RosterPlayers)
+                    .FirstOrDefaultAsync();
+                
+                if (roster == null)
                 {
-                    throw new Exception($"matchup {matchup.MatchupId} contains a non-2 number of MU");
+                    throw new Exception($"user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
                 }
 
-                var scores = new Dictionary<int, float>(); // key: userprofileid, value: sum score
+                // for the SavedPlayers
+                var AllRosterPlayers = roster.RosterPlayers
+                    .ToList();
 
-                foreach (var matchupUser in matchup.MatchupUsers)
-                {
-                    var roster = await dbContext.Rosters
-                        .Where(r => r.UserId == matchupUser.UserProfileId && r.LeagueId == league.LeagueId)
-                        .Include(r => r.RosterPlayers)
-                        .FirstOrDefaultAsync();
-                    
-                    if (roster == null)
+                var AllPlayerIds = AllRosterPlayers
+                    .Select(rp => rp.PlayerId)
+                    .ToList();
+                
+                var scoringEntries = await dbContext.Scorings
+                    .Where(s => s.SeasonId == league.SeasonId &&
+                                s.SeasonWeek == previousWeek &&
+                                AllPlayerIds.Contains(s.PlayerId))
+                    .ToListAsync();
+                
+                // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC
+                float totalScore = AllRosterPlayers
+                    .Where(rp => rp.RosterPosition != "bench")
+                    .Sum(rp => 
                     {
-                        throw new Exception($"user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
-                    }
-
-                    // for the SavedPlayers
-                    var AllRosterPlayers = roster.RosterPlayers
-                        .ToList();
-
-                    var AllPlayerIds = AllRosterPlayers
-                        .Select(rp => rp.PlayerId)
-                        .ToList();
-                    
-                    var scoringEntries = await dbContext.Scorings
-                        .Where(s => s.SeasonYear == season.SeasonYear &&
-                                    s.SeasonWeek == previousWeek &&
-                                    AllPlayerIds.Contains(s.PlayerId))
-                        .ToListAsync();
-                    
-                    // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC
-                    float totalScore = AllRosterPlayers
-                        .Where(rp => rp.RosterPosition != "bench")
-                        .Sum(rp => 
+                        var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
+                        return scoring?.Points ?? 0f; // resorts to 0 if missing
+                    });
+                
+                scores[matchupUser.UserProfileId] = totalScore;
+                
+                // saves what the roster was so it can be excavated for past matchups display
+                matchupUser.MatchupUserSavedPlayers = AllRosterPlayers
+                    .Select(rp =>
+                    {
+                        var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
+                        
+                        if (scoring == null)
                         {
-                            var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
-                            return scoring?.Points ?? 0f; // resorts to 0 if missing
-                        });
-                    
-                    scores[matchupUser.UserProfileId] = totalScore;
-                    
-                    // saves what the roster was so it can be excavated for past matchups display
-                    matchupUser.MatchupUserSavedPlayers = AllRosterPlayers
-                        .Select(rp =>
-                        {
-                            var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
+                            Console.WriteLine($"Warning: Player {rp.PlayerId} in MatchupUser {matchupUser.MatchupUserId} did not have a scoring entry for Week {previousWeek}. Using fallback scoring ID -1.");
                             
-                            if (scoring == null)
-                            {
-                                Console.WriteLine($"Warning: Player {rp.PlayerId} in MatchupUser {matchupUser.MatchupUserId} did not have a scoring entry for Week {previousWeek}. Using fallback scoring ID -1.");
-                                
-                                return new MatchupUserSavedPlayer
-                                {
-                                    MatchupUserId = matchupUser.MatchupUserId,
-                                    PlayerId = rp.PlayerId,
-                                    ScoringId = -1, // clear indication that something screwed up
-                                    RosterPlayerPosition = rp.RosterPosition
-                                };
-                            }
-
                             return new MatchupUserSavedPlayer
                             {
                                 MatchupUserId = matchupUser.MatchupUserId,
                                 PlayerId = rp.PlayerId,
-                                ScoringId = scoring.ScoringId,
+                                ScoringId = -1, // this isn't better than an unhandled exception because it'll crash and I need to figure out something better
                                 RosterPlayerPosition = rp.RosterPosition
                             };
-                        }).ToList();
-                }
+                        }
 
-                if (scores.Count == 2)
-                {
-                    var winner = scores.OrderBy(kv => kv.Value).First(); // sorts lowest to highest score, lowest wins
-                    matchup.WinnerId = winner.Key;
-                }
+                        return new MatchupUserSavedPlayer
+                        {
+                            MatchupUserId = matchupUser.MatchupUserId,
+                            PlayerId = rp.PlayerId,
+                            ScoringId = scoring.ScoringId,
+                            RosterPlayerPosition = rp.RosterPosition
+                        };
+                    }).ToList();
+            }
+
+            if (scores.Count == 2)
+            {
+                var winner = scores.OrderBy(kv => kv.Value).First(); // sorts lowest to highest score, lowest wins
+                matchup.WinnerId = winner.Key;
             }
         }
+        
         await dbContext.SaveChangesAsync();
-        Console.WriteLine("Completed Week Advancement matchup processing.");
+        Console.WriteLine($"Completed Week Advancement matchup processing for League {league.LeagueId}.");
     }
 }

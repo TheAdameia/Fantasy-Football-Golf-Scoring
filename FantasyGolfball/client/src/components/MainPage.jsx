@@ -12,7 +12,7 @@ export const MainPage = () => {
     const navigate = useNavigate()
     const now = new Date()
     const draftStart = new Date(selectedLeague?.draftStartTime)
-    const seasonStart = new Date(selectedLeague?.season?.seasonStartDate)
+    const seasonStart = new Date(selectedLeague?.seasonStartDate)
 
     const diffMs = draftStart - now
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
@@ -90,11 +90,11 @@ export const MainPage = () => {
                
                 <div className="mainpage-matchup-container">
                     <div className="mainpage-matchup-weekannouncer">
-                        Week {selectedLeague.season.currentWeek} Matchups
+                        Week {selectedLeague.currentWeek} Matchups
                     </div>
                     <div>
                         {matchups ? matchups
-                        .filter((matchup) => matchup.weekId === selectedLeague.season.currentWeek)
+                        .filter((matchup) => matchup.weekId === selectedLeague.currentWeek)
                         .map((matchup) => {
                             return (
                                 <div key={matchup.matchupId} className="matchup">
@@ -107,9 +107,9 @@ export const MainPage = () => {
                 
                 <div className="mainpage-matchup-container">
                     <div>Last week recap goes here</div>
-                    {(selectedLeague?.season?.currentWeek - 1) > 0 ? 
+                    {(selectedLeague?.currentWeek - 1) > 0 ? 
                     <MatchupRecap
-                        weekId={selectedLeague.season.currentWeek - 1}
+                        weekId={selectedLeague.currentWeek - 1}
                     /> : <></>}
                 </div>
                 <h6>League rankings</h6>
