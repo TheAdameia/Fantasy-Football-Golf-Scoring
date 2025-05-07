@@ -18,11 +18,14 @@ public class ScoringController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
+    [HttpGet("by-season")]
     [Authorize]
-    public IActionResult GetAll()
+    public IActionResult GetAll(int seasonId)
     {
-        return Ok(_dbContext.Scorings.ToList());
+        return Ok(_dbContext.Scorings
+            .Where(s => s.SeasonId == seasonId)
+            .ToList()
+        );
     }
 
     [HttpGet("{id}")]

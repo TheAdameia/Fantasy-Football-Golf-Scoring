@@ -5,7 +5,7 @@ export const GetByPlayer = (playerid) => {
         .then((res) => res.json())
 }
 
-export const GetAllScores = () => {
-    return fetch(_apiUrl)
+export const GetAllScores = (seasonId) => {
+    return fetch(_apiUrl + `/by-season?seasonId=${seasonId}`)
     .then((res) => res.json())
 }

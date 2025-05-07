@@ -18,11 +18,12 @@ public class PlayerController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
+    [HttpGet("by-season")]
     [Authorize]
-    public IActionResult GetAllPlayers()
+    public IActionResult GetAllPlayers(int seasonId)
     {
         var AllPlayers = _dbContext.Players
+            .Where(p => p.SeasonId == seasonId)
             .Select(p => new PlayerFullExpandDTO
             {
                 PlayerId = p.PlayerId,

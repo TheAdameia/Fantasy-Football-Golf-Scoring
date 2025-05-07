@@ -90,7 +90,7 @@ export const MainPage = () => {
                
                 <div className="mainpage-matchup-container">
                     <div className="mainpage-matchup-weekannouncer">
-                        Week {selectedLeague.currentWeek} Matchups
+                        {selectedLeague.currentWeek ? `Week ${selectedLeague.currentWeek} Matchups` : "Preseason"}
                     </div>
                     <div>
                         {matchups ? matchups
@@ -106,7 +106,7 @@ export const MainPage = () => {
                 </div>    
                 
                 <div className="mainpage-matchup-container">
-                    <div>Last week recap goes here</div>
+                    <div>{(selectedLeague?.currentWeek - 1) > 0 ? `Week ${selectedLeague.currentWeek - 1} Recap` : "Draft Recap"}</div>
                     {(selectedLeague?.currentWeek - 1) > 0 ? 
                     <MatchupRecap
                         weekId={selectedLeague.currentWeek - 1}

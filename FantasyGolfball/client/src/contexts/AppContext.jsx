@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
 import { tryGetLoggedInUser } from '../managers/authManager'
-import { GetByUserAndLeague } from '../managers/rosterManager'
 import { GetAllPlayers } from '../managers/playerManager'
 import { GetMatchupsByLeague } from '../managers/matchupManager'
 import { GetAllScores } from '../managers/scoringManager'
@@ -11,14 +10,14 @@ export const AppProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState()
   const [userLeagues, setUserLeagues] = useState()
   const [selectedLeague, setSelectedLeague] = useState(null)
-  const [roster, setRoster] = useState() // this data is included in selectedLeague... investigate if it's truly redundant
+  const [roster, setRoster] = useState()
   const [players, setPlayers] = useState()
   const [matchups, setMatchups] = useState(null)
   const [allScores, setAllScores] = useState()
 
   const getAndSetAllScores = () => {
-    if (loggedInUser) {
-      GetAllScores().then(setAllScores)
+    if (loggedInUser && selectedLeague) {
+      GetAllScores(selectedLeague.seasonId).then(setAllScores)
     }
   }
 
@@ -47,15 +46,18 @@ export const AppProvider = ({ children }) => {
     }
   }
 
-  const getAndSetRoster = () => {
-    if (loggedInUser != null && selectedLeague) {
-      let userId = loggedInUser.id
-      GetByUserAndLeague(userId, selectedLeague.leagueId).then(setRoster)
-    }
+  const getAndSetRoster = () => { 
+    if (loggedInUser != null && selectedLeague) { 
+      let userId = loggedInUser.id 
+      let user = selectedLeague.leagueUsers.filter(lu => lu.userProfileId == userId) 
+      setRoster(user[0].roster) 
+    } 
   }
 
   const getAndSetPlayers = () => {
-    GetAllPlayers().then(setPlayers)
+    if (loggedInUser != null && selectedLeague) {
+      GetAllPlayers(selectedLeague.seasonId).then(setPlayers)
+    }
   }
 
   useEffect(() => {
@@ -96,7 +98,7 @@ export const AppProvider = ({ children }) => {
     if (loggedInUser) {
       getAndSetAllScores()
     }
-  }, [loggedInUser])
+  }, [loggedInUser, selectedLeague])
   
   return (
     <AppContext.Provider value={{ 
