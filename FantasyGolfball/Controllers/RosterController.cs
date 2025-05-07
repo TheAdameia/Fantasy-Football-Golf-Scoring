@@ -82,7 +82,6 @@ public class RosterController : ControllerBase
                         PlayerTeamId = pt.PlayerTeamId,
                         PlayerId = pt.PlayerId,
                         TeamStartWeek = pt.TeamStartWeek,
-                        TeamEndWeek = pt.TeamEndWeek,
                         TeamId = pt.TeamId,
                         Team = new TeamDTO
                         {

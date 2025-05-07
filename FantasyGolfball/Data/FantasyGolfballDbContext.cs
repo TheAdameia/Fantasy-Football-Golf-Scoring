@@ -80,8 +80,9 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 IsDraftComplete = false,
                 IsLeagueFinished = false,
                 SeasonId = 1,
-                DraftStartTime = new DateTime(2025, 3, 12, 8, 0, 0),
-                SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0)
+                DraftStartTime = new DateTime(2025, 3, 12, 8, 0, 0, DateTimeKind.Utc),
+                SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0, DateTimeKind.Utc),
+                Advancement = AdvancementType.Weekly
             }
         });
         modelBuilder.Entity<LeagueUser>().HasData(new LeagueUser[]
@@ -342,141 +343,141 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             {
                 ActivePeriodId = 1, 
                 TeamId = 1, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 2, 
                 TeamId = 2, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 3, 
                 TeamId = 3, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 4, 
                 TeamId = 4, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 5, 
                 TeamId = 5, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 6, 
                 TeamId = 6, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 7, 
                 TeamId = 7, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 8, 
                 TeamId = 8, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 9, 
                 TeamId = 9, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 10, 
                 TeamId = 10, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 11, 
                 TeamId = 11, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 12, 
                 TeamId = 12, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 13, 
                 TeamId = 13, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 14, 
                 TeamId = 14, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 15, 
                 TeamId = 15, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 16, 
                 TeamId = 16, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 17, 
                 TeamId = 17, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 18, 
                 TeamId = 18, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 19, 
                 TeamId = 19, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
             new ActivePeriod
             {
                 ActivePeriodId = 20, 
                 TeamId = 20, 
-                Start = new DateTime(2025, 03, 14, 8, 0, 0), 
-                End = new DateTime(2040, 01, 01, 8, 0, 0)
+                Start = new DateTime(2025, 03, 14, 8, 0, 0, DateTimeKind.Utc), 
+                End = new DateTime(2040, 01, 01, 8, 0, 0, DateTimeKind.Utc)
             },
         });
         modelBuilder.Entity<Player>().HasData(new Player[]
@@ -1937,8 +1938,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
         });
         modelBuilder.Entity<PlayerTeam>()
             .HasIndex(pt => new { pt.PlayerId, pt.TeamStartWeek });
-        modelBuilder.Entity<PlayerTeam>()
-            .HasIndex(pt => new { pt.TeamId, pt.TeamStartWeek, pt.TeamEndWeek });
         modelBuilder.Entity<PlayerTeam>().HasData(new PlayerTeam[]
         {
             new PlayerTeam { PlayerTeamId = 1, PlayerId = 1, TeamId = 1, TeamStartWeek = 1 },
