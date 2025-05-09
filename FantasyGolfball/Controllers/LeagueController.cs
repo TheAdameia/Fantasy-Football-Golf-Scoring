@@ -220,7 +220,7 @@ public class LeagueController : ControllerBase
                     Id = lu.UserProfile.Id,
                     UserName = lu.UserProfile.IdentityUser.UserName
                 },
-                Roster = new RosterFullExpandDTO
+                Roster = new RosterFullExpandDTO //these are used in the current Matchup for opps and I'm not sure if anywhere else
                 {
                     RosterId = lu.RosterId,
                     LeagueId = lu.LeagueId,
@@ -236,7 +236,8 @@ public class LeagueController : ControllerBase
                             PlayerFirstName = rp.Player.PlayerFirstName,
                             PlayerLastName = rp.Player.PlayerLastName,
                             PositionId = rp.Player.PositionId,
-                            PlayerStatuses = rp.Player.PlayerStatuses.Select(ps => new PlayerStatusDTO
+                            PlayerStatuses = rp.Player.PlayerStatuses
+                            .Select(ps => new PlayerStatusDTO
                             {
                                 PlayerStatusId = ps.PlayerStatusId,
                                 PlayerId = ps.PlayerId,

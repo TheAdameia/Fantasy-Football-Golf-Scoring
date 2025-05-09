@@ -9,6 +9,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     const { roster, allScores, selectedLeague } = useAppContext()
 
     const calculateTotalPoints = (rosterPlayers) => {
+        if (!allScores) {
+            return 
+        }
         return rosterPlayers.reduce((total, rp) => {
             if (rp.rosterPosition != "bench" ) {
                 const playerScore = allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)

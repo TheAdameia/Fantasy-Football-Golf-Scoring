@@ -1,4 +1,4 @@
-export const SavedMatchupPlayerCard = ({ musp, slot }) => {
+export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
 
     if (slot) {
         return (

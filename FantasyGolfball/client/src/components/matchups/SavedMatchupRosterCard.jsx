@@ -3,7 +3,7 @@ import { BlankPlayerCard } from "./BlankPlayerCard"
 import { SavedMatchupPlayerCard } from "./SavedMatchupPlayerCard"
 
 
-export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
+export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
 
 
     
@@ -49,6 +49,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -61,6 +62,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -73,6 +75,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -85,6 +88,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -97,6 +101,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -109,6 +114,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -121,6 +127,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -133,6 +140,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -145,6 +153,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -186,6 +195,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -198,6 +208,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -210,6 +221,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -222,6 +234,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -234,6 +247,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -246,6 +260,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -258,6 +273,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -270,6 +286,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (
@@ -282,6 +299,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot }) => {
                                     musp={musp}
                                     key={`musp-${musp.playerId}`}
                                     slot={slot}
+                                    week={week}
                                 ></SavedMatchupPlayerCard>
                             ))
                         ) : (

@@ -1,6 +1,6 @@
 const _apiUrl = "/api/player"
 
-export const GetAllPlayers = (seasonId) => {
-    return fetch(_apiUrl + `/by-season?seasonId=${seasonId}`)
+export const GetAllPlayers = (leagueId) => {
+    return fetch(_apiUrl + `/by-league?leagueId=${leagueId}`)
         .then((res) => res.json())
 }

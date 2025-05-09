@@ -18,12 +18,26 @@ public class PlayerController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet("by-season")]
+    [HttpGet("by-league")]
     [Authorize]
-    public IActionResult GetAllPlayers(int seasonId)
+    public IActionResult GetAllPlayers(int leagueId)
     {
+        League league = _dbContext.Leagues.SingleOrDefault(l => l.LeagueId == leagueId);
+        
+        if (league == null)
+        {
+            return BadRequest($"League {leagueId} not found in Players request");
+        }
+
+        int LeagueWeekValue = 1;
+
+        if (league.CurrentWeek > 1)
+        {
+            LeagueWeekValue = (int)league.CurrentWeek;
+        }
+
         var AllPlayers = _dbContext.Players
-            .Where(p => p.SeasonId == seasonId)
+            .Where(p => p.SeasonId == league.SeasonId)
             .Select(p => new PlayerFullExpandDTO
             {
                 PlayerId = p.PlayerId,
@@ -36,44 +50,49 @@ public class PlayerController : ControllerBase
                     PositionShort = p.Position.PositionShort,
                     PositionLong = p.Position.PositionLong
                 },
-                PlayerStatuses = p.PlayerStatuses.Select(ps => new PlayerStatusDTO
-                {
-                    PlayerStatusId = ps.PlayerStatusId,
-                    PlayerId = ps.PlayerId,
-                    StatusId = ps.StatusId,
-                    StatusStartWeek = ps.StatusStartWeek,
-                    Status = new StatusDTO
+                PlayerStatuses = p.PlayerStatuses
+                    .Where(ps => ps.StatusStartWeek <= LeagueWeekValue)
+                    .OrderByDescending(ps => ps.StatusStartWeek)
+                    .Take(1)
+                    .Select(ps => new PlayerStatusDTO
                     {
-                        StatusId = ps.Status.StatusId,
-                        StatusType = ps.Status.StatusType,
-                        ViableToPlay = ps.Status.ViableToPlay,
-                        RequiresBackup = ps.Status.RequiresBackup
-                    }
-                }).ToList(),
-                PlayerTeams = p.PlayerTeams
-                .OrderByDescending(pt => pt.TeamStartWeek) // how about... get Season, filter by closest to currentWeek. Would require some changes to what this endpoint needs
-                .Select(pt => new PlayerTeamDTO
-                {
-                    PlayerTeamId = pt.PlayerTeamId,
-                    PlayerId = pt.PlayerId,
-                    TeamStartWeek = pt.TeamStartWeek,
-                    TeamId = pt.TeamId,
-                    Team = new TeamDTO
-                    {
-                        TeamId = pt.Team.TeamId,
-                        TeamName = pt.Team.TeamName,
-                        TeamCity = pt.Team.TeamCity,
-                        ByeWeek = pt.Team.ByeWeek,
-                        ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                        PlayerStatusId = ps.PlayerStatusId,
+                        PlayerId = ps.PlayerId,
+                        StatusId = ps.StatusId,
+                        StatusStartWeek = ps.StatusStartWeek,
+                        Status = new StatusDTO
                         {
-                            ActivePeriodId = ap.ActivePeriodId,
-                            Start = ap.Start,
-                            End = ap.End
-                        }).ToList()
-                    }
-                })
-                .Take(1)
-                .ToList()
+                            StatusId = ps.Status.StatusId,
+                            StatusType = ps.Status.StatusType,
+                            ViableToPlay = ps.Status.ViableToPlay,
+                            RequiresBackup = ps.Status.RequiresBackup
+                        }
+                    }).ToList(),
+                PlayerTeams = p.PlayerTeams
+                    .Where(pt => pt.TeamStartWeek <= LeagueWeekValue)
+                    .OrderByDescending(pt => pt.TeamStartWeek)
+                    .Take(1)                 
+                    .Select(pt => new PlayerTeamDTO
+                    {
+                        PlayerTeamId = pt.PlayerTeamId,
+                        PlayerId = pt.PlayerId,
+                        TeamStartWeek = pt.TeamStartWeek,
+                        TeamId = pt.TeamId,
+                        Team = new TeamDTO
+                        {
+                            TeamId = pt.Team.TeamId,
+                            TeamName = pt.Team.TeamName,
+                            TeamCity = pt.Team.TeamCity,
+                            ByeWeek = pt.Team.ByeWeek,
+                            ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                            {
+                                ActivePeriodId = ap.ActivePeriodId,
+                                Start = ap.Start,
+                                End = ap.End
+                            }).ToList()
+                        }
+                    })
+                    .ToList()
             })
             .ToList();
 

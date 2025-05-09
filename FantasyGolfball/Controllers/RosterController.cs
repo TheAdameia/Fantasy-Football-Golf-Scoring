@@ -32,7 +32,7 @@ public class RosterController : ControllerBase
 
         if (league == null)
         {
-            return BadRequest($"Associated League {leagueId} not found.");
+            return BadRequest($"Associated League {leagueId} not found in Roster request.");
         }
 
         if (league.CurrentWeek > 1)
@@ -86,7 +86,7 @@ public class RosterController : ControllerBase
                         PositionLong = rp.Player.Position.PositionLong
                     },
                     PlayerStatuses = rp.Player.PlayerStatuses
-                        .Where(ps => ps.StatusStartWeek <= league.CurrentWeek)
+                        .Where(ps => ps.StatusStartWeek <= LeagueWeekValue)
                         .OrderByDescending(ps => ps.StatusStartWeek)
                         .Take(1) // we still send these in arrays because of the DTO structure. There are instances where we would want to look at the history.
                         .Select(ps => new PlayerStatusDTO
@@ -104,7 +104,7 @@ public class RosterController : ControllerBase
                             }
                         }).ToList(),
                     PlayerTeams = rp.Player.PlayerTeams
-                        .Where(pt => pt.TeamStartWeek <= league.CurrentWeek)
+                        .Where(pt => pt.TeamStartWeek <= LeagueWeekValue)
                         .OrderByDescending(pt => pt.TeamStartWeek)
                         .Take(1) 
                         .Select(pt => new PlayerTeamDTO

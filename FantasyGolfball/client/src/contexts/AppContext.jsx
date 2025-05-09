@@ -57,7 +57,7 @@ export const AppProvider = ({ children }) => {
 
   const getAndSetPlayers = () => {
     if (loggedInUser != null && selectedLeague) {
-      GetAllPlayers(selectedLeague.seasonId).then(setPlayers)
+      GetAllPlayers(selectedLeague.leagueId).then(setPlayers)
     }
   }
 
