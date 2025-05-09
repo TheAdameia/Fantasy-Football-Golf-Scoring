@@ -24,7 +24,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<ActivePeriod> ActivePeriods { get; set; }
     public DbSet<MatchupUserSavedPlayer> MatchupUserSavedPlayers { get; set; }
     public DbSet<PlayerTeam> PlayerTeams { get; set; }
-    public DbSet<PlayerStatus> playerStatuses { get; set; }
+    public DbSet<PlayerStatus> PlayerStatuses { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;

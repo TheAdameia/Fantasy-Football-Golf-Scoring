@@ -3,6 +3,7 @@ import { tryGetLoggedInUser } from '../managers/authManager'
 import { GetAllPlayers } from '../managers/playerManager'
 import { GetMatchupsByLeague } from '../managers/matchupManager'
 import { GetAllScores } from '../managers/scoringManager'
+import { GetByUserAndLeague } from '../managers/rosterManager'
 
 const AppContext = createContext()
 
@@ -46,12 +47,12 @@ export const AppProvider = ({ children }) => {
     }
   }
 
-  const getAndSetRoster = () => { 
-    if (loggedInUser != null && selectedLeague) { 
-      let userId = loggedInUser.id 
-      let user = selectedLeague.leagueUsers.filter(lu => lu.userProfileId == userId) 
-      setRoster(user[0].roster) 
-    } 
+
+  const getAndSetRoster = () => {
+    if (loggedInUser != null && selectedLeague) {
+      let userId = loggedInUser.id
+      GetByUserAndLeague(userId, selectedLeague.leagueId).then(setRoster)
+    }
   }
 
   const getAndSetPlayers = () => {

@@ -1721,7 +1721,7 @@ namespace FantasyGolfball.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("playerStatuses");
+                    b.ToTable("PlayerStatuses");
 
                     b.HasData(
                         new
@@ -9663,13 +9663,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "13c98b23-18c7-4f72-a04b-b214dd2ac294",
+                            ConcurrencyStamp = "9ed5ab02-c73a-45bd-b03f-aa98cf210a81",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEBHhsaQMOF3gWxjvLE9EDlQWu2K4gUkqH71WWBZNoaMRciaE6QglB5uaZpzfradzMg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFkq9m7E61k/L6p1shNat0BzLY9dMRLQYGTP1GCKHocXNAc9QsFE1HLsjr8j+Pmf6w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a948d88f-aea0-429a-a8d3-33781798430e",
+                            SecurityStamp = "59f280a2-cb06-456b-86b0-15e3c94ef942",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
