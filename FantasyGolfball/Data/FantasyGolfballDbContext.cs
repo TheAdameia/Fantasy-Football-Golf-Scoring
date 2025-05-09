@@ -24,6 +24,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<ActivePeriod> ActivePeriods { get; set; }
     public DbSet<MatchupUserSavedPlayer> MatchupUserSavedPlayers { get; set; }
     public DbSet<PlayerTeam> PlayerTeams { get; set; }
+    public DbSet<PlayerStatus> playerStatuses { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -490,7 +491,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jake",
                 PlayerLastName = "Mason",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -499,7 +499,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Evan",
                 PlayerLastName = "Carter",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -508,7 +507,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Derek",
                 PlayerLastName = "Henderson",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -517,7 +515,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Marcus",
                 PlayerLastName = "Wells",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -526,7 +523,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Tyler",
                 PlayerLastName = "Nash",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -535,7 +531,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Brad",
                 PlayerLastName = "McKinney",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -544,7 +539,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Chris",
                 PlayerLastName = "Johnson",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -553,7 +547,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Brandon",
                 PlayerLastName = "Richards",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -562,7 +555,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Kyle",
                 PlayerLastName = "Foster",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -571,7 +563,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Matt",
                 PlayerLastName = "Griffin",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -580,7 +571,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Trevor",
                 PlayerLastName = "Burns",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -589,7 +579,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Grant",
                 PlayerLastName = "Hunter",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -598,7 +587,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Dylan",
                 PlayerLastName = "Reed",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -607,7 +595,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Nick",
                 PlayerLastName = "Evans",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -616,7 +603,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Scott",
                 PlayerLastName = "Bailey",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -625,7 +611,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Troy",
                 PlayerLastName = "Farmer",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -634,7 +619,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Zach",
                 PlayerLastName = "Lowe",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -643,7 +627,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Hunter",
                 PlayerLastName = "Murphy",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -652,7 +635,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Austin",
                 PlayerLastName = "Patterson",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -661,7 +643,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Caleb",
                 PlayerLastName = "Harrison",
                 PositionId = 1,
-                StatusId = 1,
                 SeasonId = 1
             },
 
@@ -672,7 +653,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Ryan",
                 PlayerLastName = "Fitzgerald",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -681,7 +661,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Mason",
                 PlayerLastName = "Scott",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -690,7 +669,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jordan",
                 PlayerLastName = "Brooks",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -699,7 +677,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jason",
                 PlayerLastName = "Douglas",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -708,7 +685,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Alex",
                 PlayerLastName = "Cooper",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -717,7 +693,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Chase",
                 PlayerLastName = "Garrett",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -726,7 +701,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Cody",
                 PlayerLastName = "Thompson",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -735,7 +709,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Landon",
                 PlayerLastName = "Pearson",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -744,7 +717,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jared",
                 PlayerLastName = "Dunn",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -753,7 +725,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Drew",
                 PlayerLastName = "Cross",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -762,7 +733,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Colin",
                 PlayerLastName = "Shelby",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -771,7 +741,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Garrett",
                 PlayerLastName = "Coleman",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -780,7 +749,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Bryce",
                 PlayerLastName = "Fowler",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -789,7 +757,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Clay",
                 PlayerLastName = "Sanders",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -798,7 +765,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Isaac",
                 PlayerLastName = "McLean",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -807,7 +773,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Cole",
                 PlayerLastName = "Washington",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -816,7 +781,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Blake",
                 PlayerLastName = "Morris",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -825,7 +789,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Nate",
                 PlayerLastName = "Bryant",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -834,7 +797,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jesse",
                 PlayerLastName = "Holmes",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -843,7 +805,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Connor",
                 PlayerLastName = "Davis",
                 PositionId = 4,
-                StatusId = 1,
                 SeasonId = 1
             },
 
@@ -854,7 +815,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Lucas",
                 PlayerLastName = "Smith",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -863,7 +823,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Noah",
                 PlayerLastName = "Johnson",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -872,7 +831,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Ethan",
                 PlayerLastName = "Williams",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -881,7 +839,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Logan",
                 PlayerLastName = "Jones",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -890,7 +847,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Mason",
                 PlayerLastName = "Brown",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -899,7 +855,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Oliver",
                 PlayerLastName = "Davis",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -908,7 +863,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Liam",
                 PlayerLastName = "Miller",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -917,7 +871,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jacob",
                 PlayerLastName = "Wilson",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -926,7 +879,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "James",
                 PlayerLastName = "Moore",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -935,7 +887,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Benjamin",
                 PlayerLastName = "Taylor",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -944,7 +895,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Henry",
                 PlayerLastName = "Anderson",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -953,7 +903,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Owen",
                 PlayerLastName = "Thomas",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -962,7 +911,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "William",
                 PlayerLastName = "Jackson",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -971,7 +919,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Elijah",
                 PlayerLastName = "White",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -980,7 +927,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jackson",
                 PlayerLastName = "Harris",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -989,7 +935,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Gabriel",
                 PlayerLastName = "Clark",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -998,7 +943,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Sebastian",
                 PlayerLastName = "Rodriguez",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1007,7 +951,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Daniel",
                 PlayerLastName = "Lewis",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1016,7 +959,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Nathan",
                 PlayerLastName = "Walker",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1025,7 +967,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Ethan",
                 PlayerLastName = "Adams",
                 PositionId = 5,
-                StatusId = 1,
                 SeasonId = 1
             },
 
@@ -1036,7 +977,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Aiden",
                 PlayerLastName = "Miller",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1045,7 +985,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Liam",
                 PlayerLastName = "Brown",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1054,7 +993,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Alexander",
                 PlayerLastName = "Jones",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1063,7 +1001,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Joseph",
                 PlayerLastName = "Garcia",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1072,7 +1009,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Samuel",
                 PlayerLastName = "Martinez",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1081,7 +1017,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Matthew",
                 PlayerLastName = "Hernandez",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1090,7 +1025,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "David",
                 PlayerLastName = "Lopez",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1099,7 +1033,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Andrew",
                 PlayerLastName = "Gonzalez",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1108,7 +1041,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Joshua",
                 PlayerLastName = "Wilson",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1117,7 +1049,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Christopher",
                 PlayerLastName = "Perez",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1126,7 +1057,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Thomas",
                 PlayerLastName = "Taylor",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1135,7 +1065,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "John",
                 PlayerLastName = "Anderson",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1144,7 +1073,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "James",
                 PlayerLastName = "Thomas",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1153,7 +1081,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Brian",
                 PlayerLastName = "Jackson",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1162,7 +1089,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Nicholas",
                 PlayerLastName = "White",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1171,7 +1097,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Justin",
                 PlayerLastName = "Harris",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1180,7 +1105,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Aaron",
                 PlayerLastName = "Clark",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1189,7 +1113,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Zachary",
                 PlayerLastName = "Lewis",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1198,7 +1121,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Paul",
                 PlayerLastName = "Walker",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1207,7 +1129,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Eric",
                 PlayerLastName = "Young",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1216,7 +1137,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Sean",
                 PlayerLastName = "King",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1225,7 +1145,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Ray",
                 PlayerLastName = "Scott",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1234,7 +1153,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Derek",
                 PlayerLastName = "Adams",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1243,7 +1161,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Kevin",
                 PlayerLastName = "Baker",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1252,7 +1169,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Tony",
                 PlayerLastName = "Collins",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1261,7 +1177,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Cameron",
                 PlayerLastName = "Cox",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1270,7 +1185,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Adam",
                 PlayerLastName = "Stewart",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1279,7 +1193,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Kyle",
                 PlayerLastName = "Turner",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1288,7 +1201,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Greg",
                 PlayerLastName = "Hughes",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1297,7 +1209,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Mike",
                 PlayerLastName = "Ramirez",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1306,7 +1217,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Patrick",
                 PlayerLastName = "Ross",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1315,7 +1225,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Alex",
                 PlayerLastName = "Powell",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1324,7 +1233,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Steven",
                 PlayerLastName = "Griffin",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1333,7 +1241,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Bill",
                 PlayerLastName = "Brooks",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1342,7 +1249,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Daniel",
                 PlayerLastName = "Kelly",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1351,7 +1257,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Rob",
                 PlayerLastName = "Foster",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1360,7 +1265,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jeff",
                 PlayerLastName = "Reed",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1369,7 +1273,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Phil",
                 PlayerLastName = "Patterson",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1378,7 +1281,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Larry",
                 PlayerLastName = "Burns",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1387,7 +1289,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jackson",
                 PlayerLastName = "Wilson",
                 PositionId = 2,
-                StatusId = 1,
                 SeasonId = 1
             },
 
@@ -1398,7 +1299,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Owen",
                 PlayerLastName = "Taylor",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1407,7 +1307,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Logan",
                 PlayerLastName = "Lee",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1416,7 +1315,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Dylan",
                 PlayerLastName = "Perez",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1425,7 +1323,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Aiden",
                 PlayerLastName = "Gonzalez",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1434,7 +1331,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Elijah",
                 PlayerLastName = "Mitchell",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1443,7 +1339,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Henry",
                 PlayerLastName = "Carter",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1452,7 +1347,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Ethan",
                 PlayerLastName = "Torres",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1461,7 +1355,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Alexander",
                 PlayerLastName = "Evans",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1470,7 +1363,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Logan",
                 PlayerLastName = "Edwards",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1479,7 +1371,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jackson",
                 PlayerLastName = "Collins",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1488,7 +1379,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Landon",
                 PlayerLastName = "Morris",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1497,7 +1387,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Bryson",
                 PlayerLastName = "Murphy",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1506,7 +1395,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Parker",
                 PlayerLastName = "Powell",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1515,7 +1403,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jameson",
                 PlayerLastName = "Sullivan",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1524,7 +1411,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Bentley",
                 PlayerLastName = "Bryant",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1533,7 +1419,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Carson",
                 PlayerLastName = "Newton",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1542,7 +1427,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Braxton",
                 PlayerLastName = "Lambert",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1551,7 +1435,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Tucker",
                 PlayerLastName = "Cruz",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1560,7 +1443,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Zane",
                 PlayerLastName = "Owen",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1569,7 +1451,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Rowan",
                 PlayerLastName = "Knight",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1578,7 +1459,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Harrison",
                 PlayerLastName = "Lane",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1587,7 +1467,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Weston",
                 PlayerLastName = "Hicks",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1596,7 +1475,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Finley",
                 PlayerLastName = "Abbott",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1605,7 +1483,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Sullivan",
                 PlayerLastName = "Reeves",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1614,7 +1491,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Reid",
                 PlayerLastName = "Jenkins",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1623,7 +1499,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Archer",
                 PlayerLastName = "Gibson",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1632,7 +1507,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Rhys",
                 PlayerLastName = "Parks",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1641,7 +1515,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Knox",
                 PlayerLastName = "Greene",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1650,7 +1523,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Brody",
                 PlayerLastName = "Austin",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1659,7 +1531,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Cade",
                 PlayerLastName = "Wells",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1668,7 +1539,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Theo",
                 PlayerLastName = "Wagner",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1677,7 +1547,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Sterling",
                 PlayerLastName = "Rice",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1686,7 +1555,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Jude",
                 PlayerLastName = "Hayes",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1695,7 +1563,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Crosby",
                 PlayerLastName = "Houston",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1704,7 +1571,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Porter",
                 PlayerLastName = "Hale",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1713,7 +1579,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Beckham",
                 PlayerLastName = "Wallace",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1722,7 +1587,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Judah",
                 PlayerLastName = "Leonard",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1731,7 +1595,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Griffin",
                 PlayerLastName = "Todd",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1740,7 +1603,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Phoenix",
                 PlayerLastName = "Webb",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1749,7 +1611,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Dawson",
                 PlayerLastName = "Sanders",
                 PositionId = 3,
-                StatusId = 1,
                 SeasonId = 1
             },
 
@@ -1760,7 +1621,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Denver",
                 PlayerLastName = "Thunderbirds",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1769,7 +1629,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Atlanta",
                 PlayerLastName = "Vipers",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1778,7 +1637,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Houston",
                 PlayerLastName = "Ironhounds",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1787,7 +1645,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Chicago",
                 PlayerLastName = "Stallions",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1796,7 +1653,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Seattle",
                 PlayerLastName = "Warhawks",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1805,7 +1661,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Orlando",
                 PlayerLastName = "Cyclones",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1814,7 +1669,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Nashville",
                 PlayerLastName = "Guardians",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1823,7 +1677,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Portland",
                 PlayerLastName = "Lumberjacks",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1832,7 +1685,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Las Vegas",
                 PlayerLastName = "Outlaws",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1841,7 +1693,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Kansas City",
                 PlayerLastName = "Redtails",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1850,7 +1701,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Phoenix",
                 PlayerLastName = "Firestorm",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1859,7 +1709,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Brooklyn",
                 PlayerLastName = "Sentinels",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1868,7 +1717,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Miami",
                 PlayerLastName = "Hurricanes",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1877,7 +1725,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "San Diego",
                 PlayerLastName = "Tritons",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1886,7 +1733,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Detroit",
                 PlayerLastName = "Phantoms",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1895,7 +1741,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Carolina",
                 PlayerLastName = "Cobras",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1904,7 +1749,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "New Jersey",
                 PlayerLastName = "Rampage",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1913,7 +1757,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "St. Louis",
                 PlayerLastName = "Renegades",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1922,7 +1765,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Oklahoma City",
                 PlayerLastName = "Mustangs",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
             new Player
@@ -1931,7 +1773,6 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 PlayerFirstName = "Cincinnati",
                 PlayerLastName = "Scorpions",
                 PositionId = 6,
-                StatusId = 1,
                 SeasonId = 1
             },
 
@@ -2100,6 +1941,169 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             new PlayerTeam { PlayerTeamId = 158, PlayerId = 158, TeamId = 18, TeamStartWeek = 1 },
             new PlayerTeam { PlayerTeamId = 159, PlayerId = 159, TeamId = 19, TeamStartWeek = 1 },
             new PlayerTeam { PlayerTeamId = 160, PlayerId = 160, TeamId = 20, TeamStartWeek = 1 }
+        });
+        modelBuilder.Entity<PlayerStatus>().HasData( new PlayerStatus[]
+        {
+            new PlayerStatus {PlayerStatusId = 1, PlayerId = 1, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 2, PlayerId = 2, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 3, PlayerId = 3, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 4, PlayerId = 4, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 5, PlayerId = 5, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 6, PlayerId = 6, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 7, PlayerId = 7, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 8, PlayerId = 8, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 9, PlayerId = 9, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 10, PlayerId = 10, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 11, PlayerId = 11, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 12, PlayerId = 12, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 13, PlayerId = 13, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 14, PlayerId = 14, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 15, PlayerId = 15, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 16, PlayerId = 16, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 17, PlayerId = 17, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 18, PlayerId = 18, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 19, PlayerId = 19, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 20, PlayerId = 20, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 21, PlayerId = 21, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 22, PlayerId = 22, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 23, PlayerId = 23, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 24, PlayerId = 24, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 25, PlayerId = 25, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 26, PlayerId = 26, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 27, PlayerId = 27, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 28, PlayerId = 28, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 29, PlayerId = 29, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 30, PlayerId = 30, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 31, PlayerId = 31, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 32, PlayerId = 32, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 33, PlayerId = 33, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 34, PlayerId = 34, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 35, PlayerId = 35, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 36, PlayerId = 36, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 37, PlayerId = 37, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 38, PlayerId = 38, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 39, PlayerId = 39, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 40, PlayerId = 40, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 41, PlayerId = 41, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 42, PlayerId = 42, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 43, PlayerId = 43, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 44, PlayerId = 44, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 45, PlayerId = 45, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 46, PlayerId = 46, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 47, PlayerId = 47, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 48, PlayerId = 48, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 49, PlayerId = 49, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 50, PlayerId = 50, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 51, PlayerId = 51, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 52, PlayerId = 52, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 53, PlayerId = 53, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 54, PlayerId = 54, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 55, PlayerId = 55, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 56, PlayerId = 56, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 57, PlayerId = 57, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 58, PlayerId = 58, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 59, PlayerId = 59, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 60, PlayerId = 60, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 61, PlayerId = 61, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 62, PlayerId = 62, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 63, PlayerId = 63, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 64, PlayerId = 64, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 65, PlayerId = 65, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 66, PlayerId = 66, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 67, PlayerId = 67, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 68, PlayerId = 68, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 69, PlayerId = 69, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 70, PlayerId = 70, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 71, PlayerId = 71, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 72, PlayerId = 72, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 73, PlayerId = 73, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 74, PlayerId = 74, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 75, PlayerId = 75, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 76, PlayerId = 76, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 77, PlayerId = 77, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 78, PlayerId = 78, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 79, PlayerId = 79, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 80, PlayerId = 80, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 81, PlayerId = 81, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 82, PlayerId = 82, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 83, PlayerId = 83, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 84, PlayerId = 84, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 85, PlayerId = 85, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 86, PlayerId = 86, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 87, PlayerId = 87, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 88, PlayerId = 88, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 89, PlayerId = 89, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 90, PlayerId = 90, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 91, PlayerId = 91, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 92, PlayerId = 92, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 93, PlayerId = 93, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 94, PlayerId = 94, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 95, PlayerId = 95, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 96, PlayerId = 96, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 97, PlayerId = 97, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 98, PlayerId = 98, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 99, PlayerId = 99, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 100, PlayerId = 100, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 101, PlayerId = 101, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 102, PlayerId = 102, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 103, PlayerId = 103, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 104, PlayerId = 104, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 105, PlayerId = 105, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 106, PlayerId = 106, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 107, PlayerId = 107, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 108, PlayerId = 108, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 109, PlayerId = 109, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 110, PlayerId = 110, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 111, PlayerId = 111, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 112, PlayerId = 112, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 113, PlayerId = 113, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 114, PlayerId = 114, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 115, PlayerId = 115, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 116, PlayerId = 116, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 117, PlayerId = 117, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 118, PlayerId = 118, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 119, PlayerId = 119, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 120, PlayerId = 120, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 121, PlayerId = 121, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 122, PlayerId = 122, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 123, PlayerId = 123, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 124, PlayerId = 124, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 125, PlayerId = 125, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 126, PlayerId = 126, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 127, PlayerId = 127, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 128, PlayerId = 128, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 129, PlayerId = 129, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 130, PlayerId = 130, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 131, PlayerId = 131, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 132, PlayerId = 132, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 133, PlayerId = 133, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 134, PlayerId = 134, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 135, PlayerId = 135, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 136, PlayerId = 136, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 137, PlayerId = 137, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 138, PlayerId = 138, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 139, PlayerId = 139, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 140, PlayerId = 140, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 141, PlayerId = 141, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 142, PlayerId = 142, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 143, PlayerId = 143, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 144, PlayerId = 144, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 145, PlayerId = 145, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 146, PlayerId = 146, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 147, PlayerId = 147, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 148, PlayerId = 148, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 149, PlayerId = 149, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 150, PlayerId = 150, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 151, PlayerId = 151, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 152, PlayerId = 152, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 153, PlayerId = 153, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 154, PlayerId = 154, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 155, PlayerId = 155, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 156, PlayerId = 156, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 157, PlayerId = 157, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 158, PlayerId = 158, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 159, PlayerId = 159, StatusId = 1, StatusStartWeek = 1},
+            new PlayerStatus {PlayerStatusId = 160, PlayerId = 160, StatusId = 1, StatusStartWeek = 1},
         });
         modelBuilder.Entity<Scoring>().HasData(new Scoring[]
         {

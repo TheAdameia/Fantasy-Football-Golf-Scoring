@@ -12,7 +12,7 @@ public class PlayerFullExpandDTO
     public int PositionId { get; set; }
     public int StatusId { get; set; }
     public PositionDTO Position { get; set; }
-    public StatusDTO Status { get; set; }
+    public List<PlayerStatusDTO> PlayerStatuses { get; set; }
     public List<PlayerTeamDTO> PlayerTeams { get; set; }
     public string PlayerFullName
     {

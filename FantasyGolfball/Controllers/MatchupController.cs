@@ -61,20 +61,26 @@ public class MatchupController : ControllerBase
                             PlayerFirstName = musp.Player.PlayerFirstName,
                             PlayerLastName = musp.Player.PlayerLastName,
                             PositionId = musp.Player.PositionId,
-                            StatusId = musp.Player.StatusId,
                             Position = new PositionDTO
                             {
                                 PositionId = musp.Player.Position.PositionId,
                                 PositionShort = musp.Player.Position.PositionShort,
                                 PositionLong = musp.Player.Position.PositionLong
                             },
-                            Status = new StatusDTO
+                            PlayerStatuses = musp.Player.PlayerStatuses.Select(ps => new PlayerStatusDTO
                             {
-                                StatusId = musp.Player.Status.StatusId,
-                                StatusType = musp.Player.Status.StatusType,
-                                ViableToPlay = musp.Player.Status.ViableToPlay,
-                                RequiresBackup = musp.Player.Status.RequiresBackup
-                            },
+                                PlayerStatusId = ps.PlayerStatusId,
+                                PlayerId = ps.PlayerId,
+                                StatusId = ps.StatusId,
+                                StatusStartWeek = ps.StatusStartWeek,
+                                Status = new StatusDTO
+                                {
+                                    StatusId = ps.Status.StatusId,
+                                    StatusType = ps.Status.StatusType,
+                                    ViableToPlay = ps.Status.ViableToPlay,
+                                    RequiresBackup = ps.Status.RequiresBackup
+                                }
+                            }).ToList(),
                             PlayerTeams = musp.Player.PlayerTeams.Select(pt => new PlayerTeamDTO
                             {
                                 PlayerTeamId = pt.PlayerTeamId,

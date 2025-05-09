@@ -51,7 +51,7 @@ export const RosterPlayerCard = ({ rp }) => {
                 </RosterPositionDropdown>
             </th>
             <td>
-                {rp.player.status.statusType}
+                {rp.player.playerStatuses[0].status.statusType}
             </td>
             <td>
                 {rp.player.position.positionShort}

@@ -29,7 +29,6 @@ public class PlayerController : ControllerBase
                 PlayerId = p.PlayerId,
                 PlayerFirstName = p.PlayerFirstName,
                 PlayerLastName = p.PlayerLastName,
-                StatusId = p.StatusId,
                 PositionId = p.PositionId,
                 Position = new PositionDTO
                 {
@@ -37,13 +36,20 @@ public class PlayerController : ControllerBase
                     PositionShort = p.Position.PositionShort,
                     PositionLong = p.Position.PositionLong
                 },
-                Status = new StatusDTO
+                PlayerStatuses = p.PlayerStatuses.Select(ps => new PlayerStatusDTO
                 {
-                    StatusId = p.Status.StatusId,
-                    StatusType = p.Status.StatusType,
-                    ViableToPlay = p.Status.ViableToPlay,
-                    RequiresBackup = p.Status.RequiresBackup
-                },
+                    PlayerStatusId = ps.PlayerStatusId,
+                    PlayerId = ps.PlayerId,
+                    StatusId = ps.StatusId,
+                    StatusStartWeek = ps.StatusStartWeek,
+                    Status = new StatusDTO
+                    {
+                        StatusId = ps.Status.StatusId,
+                        StatusType = ps.Status.StatusType,
+                        ViableToPlay = ps.Status.ViableToPlay,
+                        RequiresBackup = ps.Status.RequiresBackup
+                    }
+                }).ToList(),
                 PlayerTeams = p.PlayerTeams
                 .OrderByDescending(pt => pt.TeamStartWeek) // how about... get Season, filter by closest to currentWeek. Would require some changes to what this endpoint needs
                 .Select(pt => new PlayerTeamDTO

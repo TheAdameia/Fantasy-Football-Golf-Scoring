@@ -101,7 +101,7 @@ export const PlayerCard = ({ player, isPreseason }) => {
         <tr>
             <td>{player.playerFullName}</td>
             <td>{player.position.positionShort}</td>
-            <td>{player.status.statusType}</td>
+            <td>{player.playerStatuses[0].status.statusType}</td>
             <td>{player.playerTeams[0].team.teamName}</td>
             <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
             <td>{seasonTotal ?? "-"}</td>

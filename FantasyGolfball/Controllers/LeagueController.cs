@@ -236,14 +236,20 @@ public class LeagueController : ControllerBase
                             PlayerFirstName = rp.Player.PlayerFirstName,
                             PlayerLastName = rp.Player.PlayerLastName,
                             PositionId = rp.Player.PositionId,
-                            StatusId = rp.Player.StatusId,
-                            Status = new StatusDTO
+                            PlayerStatuses = rp.Player.PlayerStatuses.Select(ps => new PlayerStatusDTO
                             {
-                                StatusId = rp.Player.Status.StatusId,
-                                StatusType = rp.Player.Status.StatusType,
-                                ViableToPlay = rp.Player.Status.ViableToPlay,
-                                RequiresBackup = rp.Player.Status.RequiresBackup
-                            },
+                                PlayerStatusId = ps.PlayerStatusId,
+                                PlayerId = ps.PlayerId,
+                                StatusId = ps.StatusId,
+                                StatusStartWeek = ps.StatusStartWeek,
+                                Status = new StatusDTO
+                                {
+                                    StatusId = ps.Status.StatusId,
+                                    StatusType = ps.Status.StatusType,
+                                    ViableToPlay = ps.Status.ViableToPlay,
+                                    RequiresBackup = ps.Status.RequiresBackup
+                                }
+                            }).ToList(),
                             Position = new PositionDTO
                             {
                                 PositionId = rp.Player.Position.PositionId,
