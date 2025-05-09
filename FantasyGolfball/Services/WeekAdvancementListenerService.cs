@@ -55,7 +55,7 @@ public class WeekAdvancementListenerService
         // league finish code ends here
 
         var matchups = await dbContext.Matchups
-            .Where(m => m.LeagueId == league.LeagueId)
+            .Where(m => m.LeagueId == league.LeagueId && m.WeekId == previousWeek)
             .Include(m => m.MatchupUsers)
             .ThenInclude(mu => mu.userProfile)
             .ToListAsync();

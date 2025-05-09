@@ -27,10 +27,10 @@ export const RosterCard = () => {
                             Pos
                         </th>
                         <th>
-                            Team
+                            Player
                         </th>
                         <th>
-                            Player
+                            Team
                         </th>
                         <th>
                             Bye Week

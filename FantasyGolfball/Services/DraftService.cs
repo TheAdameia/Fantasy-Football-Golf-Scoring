@@ -164,16 +164,30 @@ public class DraftService : IDraftService
     {
         using var dbContext = GetDbContext();
 
+        var draftState = await GetDraftState(leagueId);
+        if (draftState == null)
+        {
+            throw new Exception($"Draft state not found for league {leagueId} in CompleteDraft");
+        }
+
         var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == leagueId);
         if (league == null)
         {
             throw new Exception($"League {leagueId} not found");
         }
 
+        var SavedDraftState = new HistoricalDraftState
+        {
+            LeagueId = draftState.LeagueId,
+            PermanentDraftOrder = draftState.PermanentDraftOrder,
+            UserRosters = draftState.UserRosters
+        };
+
+        dbContext.HistoricalDraftStates.Add(SavedDraftState);
         league.IsDraftComplete = true;
         await dbContext.SaveChangesAsync();
 
-        Console.WriteLine($"Draft for League {leagueId} marked as completed.");
+        Console.WriteLine($"Draft for League {leagueId} marked as completed. Historical DraftState saved.");
 
         // publish event
         try

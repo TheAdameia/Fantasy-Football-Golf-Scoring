@@ -57,10 +57,10 @@ export const RosterPlayerCard = ({ rp }) => {
                 {rp.player.position.positionShort}
             </td>
             <td>
-                {rp.player.playerTeams[0].team.teamName}
+                {rp.player.playerFullName}
             </td>
             <td>
-                {rp.player.playerFullName}
+                {rp.player.playerTeams[0].team.teamName}
             </td>
             <td>
                 {rp.player.playerTeams[0].team.byeWeek}
