@@ -21,7 +21,7 @@ public class RosterController : ControllerBase
     [HttpGet]
     [Authorize]
     public IActionResult GetByUserAndLeague(int userId, int leagueId)
-    {
+    { // don't want to get rid of this, despite the overlap with getting fullexpand userleagues, because this is important to draft team display
         if (userId == 0 || leagueId == 0)
         {
             return BadRequest("One or both IDs are 0");
