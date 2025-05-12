@@ -19,7 +19,7 @@ public class HistoricalController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
+    [HttpGet("HistoricalDraftState")]
     [Authorize]
     public IActionResult GetHistoricalDraftStateByLeague(int leagueId)
     {
