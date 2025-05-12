@@ -27,12 +27,12 @@ export const RosterPlayerCard = ({ rp }) => {
     }
 
     useEffect(() => {
-            if (selectedLeague.season.currentWeek == null) {
+            if (selectedLeague.currentWeek == null) {
                 setWeekScore(0)
             }
             if (allScores) {
                 const playerScores = allScores.filter(s => s.playerId == rp.player.playerId)
-                let thisWeekScore = playerScores.find(s => s.seasonWeek == selectedLeague.season.currentWeek)
+                let thisWeekScore = playerScores.find(s => s.seasonWeek == selectedLeague.currentWeek)
                 setWeekScore(thisWeekScore)
     
                 let total = playerScores.reduce((sum, s) => sum + s.points, 0)
@@ -51,22 +51,19 @@ export const RosterPlayerCard = ({ rp }) => {
                 </RosterPositionDropdown>
             </th>
             <td>
-                {rp.rosterPosition}
-            </td>
-            <td>
-                {rp.player.status.statusType}
+                {rp.player.playerStatuses[0].status.statusType}
             </td>
             <td>
                 {rp.player.position.positionShort}
             </td>
             <td>
-                -
-            </td>
-            <td>
                 {rp.player.playerFullName}
             </td>
             <td>
-                Week 
+                {rp.player.playerTeams[0].team.teamName}
+            </td>
+            <td>
+                {rp.player.playerTeams[0].team.byeWeek}
             </td>
             <td>
                 {weekScore ? weekScore.points : "-"}

@@ -28,6 +28,13 @@ export const PlayerCard = ({ player, isPreseason }) => {
     }
 
     const ConfirmDrop = () => {
+        if (selectedLeague.isLeagueFinished) {
+            window.alert("I think you're a bit late for that!")
+            return
+        } else if (!selectedLeague.isDraftComplete) {
+            "I think you're a bit early for that!"
+            return
+        }
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
         const confirmed = window.confirm(`Are you sure you want to drop ${rosterPlayer.player.playerFullName}?`)
         if (confirmed) {
@@ -38,6 +45,13 @@ export const PlayerCard = ({ player, isPreseason }) => {
     }
 
     const ConfirmAdd = (rosterId, playerId) => {
+        if (selectedLeague.isLeagueFinished) {
+            window.alert("I think you're a bit late for that!")
+            return
+        } else if (!selectedLeague.isDraftComplete) {
+            "I think you're a bit early for that!"
+            return
+        }
         if (roster.rosterPlayers.length >= selectedLeague.maxRosterSize) {
             console.log(roster.rosterPlayers.length)
             window.alert("You are at the roster size limit!")
@@ -52,7 +66,7 @@ export const PlayerCard = ({ player, isPreseason }) => {
     }
 
     useEffect(() => {
-        if (!allScores || selectedLeague?.season?.currentWeek == null) {
+        if (!allScores || selectedLeague?.currentWeek == null) {
             setWeekScore(undefined)
             setSeasonTotal("-")
             return
@@ -60,13 +74,13 @@ export const PlayerCard = ({ player, isPreseason }) => {
 
         const playerScores = allScores.filter(s => s.playerId == player.playerId)
 
-        const thisWeekScore = playerScores.find(s => s.seasonWeek === selectedLeague.season.currentWeek)
+        const thisWeekScore = playerScores.find(s => s.seasonWeek === selectedLeague.currentWeek)
         setWeekScore(thisWeekScore)
 
         const total = playerScores.reduce((sum, s) => sum + s.points, 0)
         setSeasonTotal(total.toFixed(1))
         
-    }, [allScores, selectedLeague?.season?.currentWeek, player])
+    }, [allScores, selectedLeague?.currentWeek, player])
 
     useEffect(() => {
         if (selectedLeague && selectedLeague.leagueUsers.some(lu => lu.userProfileId !== loggedInUser.id 
@@ -87,8 +101,8 @@ export const PlayerCard = ({ player, isPreseason }) => {
         <tr>
             <td>{player.playerFullName}</td>
             <td>{player.position.positionShort}</td>
-            <td>{player.status.statusType}</td>
-            <td>NYI</td>
+            <td>{player.playerStatuses[0].status.statusType}</td>
+            <td>{player.playerTeams[0].team.teamName}</td>
             <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
             <td>{seasonTotal ?? "-"}</td>
             <td>{playerRosterCondition}</td>

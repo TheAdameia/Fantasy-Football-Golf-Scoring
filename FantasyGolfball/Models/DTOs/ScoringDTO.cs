@@ -8,7 +8,6 @@ public class ScoringDTO
     [Key]
     public int ScoringId { get; set; }
     public int PlayerId { get; set; }
-    public int SeasonYear { get; set; }
     public int SeasonWeek { get; set; }
     public float Points { get; set; }
 }

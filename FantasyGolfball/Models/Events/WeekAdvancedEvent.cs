@@ -2,12 +2,12 @@ namespace FantasyGolfball.Models.Events;
 
 public class WeekAdvancedEvent
 {
-    public int SeasonId { get; }
+    public int LeagueId { get; }
     public int NewWeek { get; }
 
-    public WeekAdvancedEvent(int seasonId, int newWeek)
+    public WeekAdvancedEvent(int leagueId, int newWeek)
     {
-        SeasonId = seasonId;
+        LeagueId = leagueId;
         NewWeek = newWeek;
     }
 }

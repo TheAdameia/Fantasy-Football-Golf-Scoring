@@ -9,6 +9,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     const { roster, allScores, selectedLeague } = useAppContext()
 
     const calculateTotalPoints = (rosterPlayers) => {
+        if (!allScores) {
+            return 
+        }
         return rosterPlayers.reduce((total, rp) => {
             if (rp.rosterPosition != "bench" ) {
                 const playerScore = allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
@@ -31,7 +34,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     if (slot == true && roster) {
         return ( //position, name, team, injury status, points
             <div>
-                <h5>{displayWeekPoints.display && selectedLeague.season.currentWeek ? userTotalPoints.toFixed(2) : "0"}</h5>
+                <h5>{displayWeekPoints.display && selectedLeague.currentWeek ? userTotalPoints.toFixed(2) : "0"}</h5>
                 <Table striped>
                     <thead>
                         <tr>
@@ -177,7 +180,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     } else if (slot == false && opponentRoster) {
         return (
             <div>
-                <h5>{displayWeekPoints.display && selectedLeague.season.currentWeek ? opponentTotalPoints.toFixed(2) : "0"}</h5>
+                <h5>{displayWeekPoints.display && selectedLeague.currentWeek ? opponentTotalPoints.toFixed(2) : "0"}</h5>
                 <Table striped>
                     <thead>
                         <tr>

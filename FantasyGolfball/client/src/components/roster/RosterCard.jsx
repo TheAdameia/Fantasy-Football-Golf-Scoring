@@ -21,19 +21,16 @@ export const RosterCard = () => {
                             Select
                         </th>
                         <th>
-                            Position
-                        </th>
-                        <th>
                             Status
                         </th>
                         <th>
                             Pos
                         </th>
                         <th>
-                            Team
+                            Player
                         </th>
                         <th>
-                            Player
+                            Team
                         </th>
                         <th>
                             Bye Week

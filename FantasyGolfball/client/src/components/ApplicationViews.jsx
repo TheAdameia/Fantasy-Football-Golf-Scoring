@@ -12,6 +12,7 @@ import { DraftPage } from "./draft/DraftPage";
 import { MatchupPage } from "./matchups/MatchupPage";
 import { MainPage } from "./MainPage";
 import { FaqPage } from "./rule-faq/FaqPage";
+import { RecapDraft } from "./draft/RecapDraft";
 
 
 export default function ApplicationViews() {
@@ -80,6 +81,14 @@ export default function ApplicationViews() {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <MatchupPage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="draft-recap"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <RecapDraft />
             </AuthorizedRoute>
           }
         />

@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
 import { tryGetLoggedInUser } from '../managers/authManager'
-import { GetByUserAndLeague } from '../managers/rosterManager'
 import { GetAllPlayers } from '../managers/playerManager'
 import { GetMatchupsByLeague } from '../managers/matchupManager'
 import { GetAllScores } from '../managers/scoringManager'
+import { GetByUserAndLeague } from '../managers/rosterManager'
 
 const AppContext = createContext()
 
@@ -17,8 +17,8 @@ export const AppProvider = ({ children }) => {
   const [allScores, setAllScores] = useState()
 
   const getAndSetAllScores = () => {
-    if (loggedInUser) {
-      GetAllScores().then(setAllScores)
+    if (loggedInUser && selectedLeague) {
+      GetAllScores(selectedLeague.seasonId).then(setAllScores)
     }
   }
 
@@ -47,6 +47,7 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+
   const getAndSetRoster = () => {
     if (loggedInUser != null && selectedLeague) {
       let userId = loggedInUser.id
@@ -55,7 +56,9 @@ export const AppProvider = ({ children }) => {
   }
 
   const getAndSetPlayers = () => {
-    GetAllPlayers().then(setPlayers)
+    if (loggedInUser != null && selectedLeague) {
+      GetAllPlayers(selectedLeague.leagueId).then(setPlayers)
+    }
   }
 
   useEffect(() => {
@@ -96,7 +99,7 @@ export const AppProvider = ({ children }) => {
     if (loggedInUser) {
       getAndSetAllScores()
     }
-  }, [loggedInUser])
+  }, [loggedInUser, selectedLeague])
   
   return (
     <AppContext.Provider value={{ 

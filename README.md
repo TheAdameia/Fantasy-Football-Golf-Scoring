@@ -1,4 +1,4 @@
-# Fantasy Golfball V0.2.1 (Alpha)
+# Fantasy Golfball V0.3.0 (Alpha)
 Alternatively, Fantasy Football with Golf Scoring (lowest score wins)
 https://fantasygolfball.org
 
@@ -14,7 +14,7 @@ Fantasy Golfball is a fantasy football webapp for those that want to play fantas
 - nginx, certbot, cloudflare
 
 ## Where is the project at now and where is it going?
-Fantasy Golfball is currently in an alpha state, using fake player and scoring data to test the validity of business logic and user experience. Users have the option of accelerating a season using custom timeframes (i.e., a "week" can pass in a day instead of a real time week). Major beta planned features include the addition of past seasons of real NFL fantasy data so that users can recreate those seasons on their own time.
+Fantasy Golfball is currently in an alpha state, using fake player and scoring data to test the validity of business logic and user experience. Users have the option of accelerating a season using custom timeframes (i.e., a "week" can pass in a day instead of a real time week). Major beta planned features include the addition of past seasons of real NFL fantasy data so that users can recreate those seasons on their own time. A more complete preview and tracker can be found in task #71 in the issue tracker.
 
 ## MVP statement
 Minimum Viable Product means that users can do the following:

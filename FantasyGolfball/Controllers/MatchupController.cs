@@ -29,9 +29,6 @@ public class MatchupController : ControllerBase
         }
 
         var matchups = _dbContext.Matchups
-            .Include(m => m.MatchupUsers)
-                .ThenInclude(mu => mu.userProfile)
-                    .ThenInclude(up => up.IdentityUser)
             .Where(m => m.LeagueId == leagueId)
             .Select(m => new MatchupDTO
             {
@@ -55,7 +52,6 @@ public class MatchupController : ControllerBase
                         {
                             ScoringId = musp.Scoring.ScoringId,
                             PlayerId = musp.Scoring.PlayerId,
-                            SeasonYear = musp.Scoring.SeasonYear,
                             SeasonWeek = musp.Scoring.SeasonWeek,
                             Points = musp.Scoring.Points
                         },
@@ -65,20 +61,46 @@ public class MatchupController : ControllerBase
                             PlayerFirstName = musp.Player.PlayerFirstName,
                             PlayerLastName = musp.Player.PlayerLastName,
                             PositionId = musp.Player.PositionId,
-                            StatusId = musp.Player.StatusId,
                             Position = new PositionDTO
                             {
                                 PositionId = musp.Player.Position.PositionId,
                                 PositionShort = musp.Player.Position.PositionShort,
                                 PositionLong = musp.Player.Position.PositionLong
                             },
-                            Status = new StatusDTO
+                            PlayerStatuses = musp.Player.PlayerStatuses.Select(ps => new PlayerStatusDTO
                             {
-                                StatusId = musp.Player.Status.StatusId,
-                                StatusType = musp.Player.Status.StatusType,
-                                ViableToPlay = musp.Player.Status.ViableToPlay,
-                                RequiresBackup = musp.Player.Status.RequiresBackup
-                            }
+                                PlayerStatusId = ps.PlayerStatusId,
+                                PlayerId = ps.PlayerId,
+                                StatusId = ps.StatusId,
+                                StatusStartWeek = ps.StatusStartWeek,
+                                Status = new StatusDTO
+                                {
+                                    StatusId = ps.Status.StatusId,
+                                    StatusType = ps.Status.StatusType,
+                                    ViableToPlay = ps.Status.ViableToPlay,
+                                    RequiresBackup = ps.Status.RequiresBackup
+                                }
+                            }).ToList(),
+                            PlayerTeams = musp.Player.PlayerTeams.Select(pt => new PlayerTeamDTO
+                            {
+                                PlayerTeamId = pt.PlayerTeamId,
+                                PlayerId = pt.PlayerId,
+                                TeamStartWeek = pt.TeamStartWeek,
+                                TeamId = pt.TeamId,
+                                Team = new TeamDTO
+                                {
+                                    TeamId = pt.Team.TeamId,
+                                    TeamName = pt.Team.TeamName,
+                                    TeamCity = pt.Team.TeamCity,
+                                    ByeWeek = pt.Team.ByeWeek,
+                                    ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                                    {
+                                        ActivePeriodId = ap.ActivePeriodId,
+                                        Start = ap.Start,
+                                        End = ap.End
+                                    }).ToList()
+                                }
+                            }).ToList()
                         }
                     }).ToList(),
                     UserProfileDTO = new UserProfileSafeExportDTO

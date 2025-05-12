@@ -12,11 +12,11 @@ export const SavedMatchupCard = ({ matchup }) => {
             <div className="parent-container">
                 <div className="matchup-container">
                     <div>{matchup.matchupUsers[0].userProfileDTO.userName}'s team 
-                        <SavedMatchupRosterCard matchupUser={matchup.matchupUsers[0]} slot={true}/>
+                        <SavedMatchupRosterCard matchupUser={matchup.matchupUsers[0]} week={matchup.weekId} slot={true}/>
                     </div>
                     <div className="vertical-divider"></div>
                     <div>{matchup.matchupUsers[1].userProfileDTO.userName}'s team 
-                        <SavedMatchupRosterCard matchupUser={matchup.matchupUsers[1]} slot={false}/>
+                        <SavedMatchupRosterCard matchupUser={matchup.matchupUsers[1]} week={matchup.weekId} slot={false}/>
                     </div>
                 </div>
             </div>

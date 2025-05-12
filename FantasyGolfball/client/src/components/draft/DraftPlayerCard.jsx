@@ -17,7 +17,10 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
                 {player.position.positionShort}
             </td>
             <td>
-                {player.status.statusType}
+                {player.playerStatuses[0].status.statusType}
+            </td>
+            <td>
+                
             </td>
             <td>
                 NYI

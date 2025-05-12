@@ -3,6 +3,7 @@ using System;
 using FantasyGolfball.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasyGolfball.Migrations
 {
     [DbContext(typeof(FantasyGolfballDbContext))]
-    partial class FantasyGolfballDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250509201014_AddPlayerStatuses")]
+    partial class AddPlayerStatuses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,30 +189,6 @@ namespace FantasyGolfball.Migrations
                             Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
                             TeamId = 20
                         });
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.HistoricalDraftState", b =>
-                {
-                    b.Property<int>("HistoricalDraftStateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HistoricalDraftStateId"));
-
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("PermanentDraftOrderJson")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserRostersJson")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("HistoricalDraftStateId");
-
-                    b.ToTable("HistoricalDraftStates");
                 });
 
             modelBuilder.Entity("FantasyGolfball.Models.League", b =>
@@ -9687,13 +9666,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f9476c0c-3a81-4432-872b-b65121dee51a",
+                            ConcurrencyStamp = "9ed5ab02-c73a-45bd-b03f-aa98cf210a81",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHPcL/VAO/VxcQnnOsuP1UfKSrbmSlY8WhcCCh9pvJ2NM2aoi9rKpmkyAlVd+slOwQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFkq9m7E61k/L6p1shNat0BzLY9dMRLQYGTP1GCKHocXNAc9QsFE1HLsjr8j+Pmf6w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f357d0a9-5aa9-4ba4-b7d8-54ac0e49a69a",
+                            SecurityStamp = "59f280a2-cb06-456b-86b0-15e3c94ef942",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

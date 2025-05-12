@@ -65,32 +65,11 @@ public class LeagueController : ControllerBase
         using var transaction = _dbContext.Database.BeginTransaction();
         try
         {
-            Season season;
+            var season = _dbContext.Seasons.SingleOrDefault(s => s.SeasonYear == leaguePOSTDTO.SeasonYear);
 
-            if (leaguePOSTDTO.RealSeason == false)
+            if (season == null)
             {
-                Console.WriteLine("If you don't see this, RealSeason was true");
-                season = new Season
-                {
-                    RealSeason = leaguePOSTDTO.RealSeason,
-                    SeasonYear = leaguePOSTDTO.SeasonYear,
-                    SeasonStartDate = leaguePOSTDTO.SeasonStartDate.ToUniversalTime(),
-                    Advancement = advancement                
-                };
-
-                _dbContext.Seasons.Add(season);
-                _dbContext.SaveChanges();
-            }
-            else
-            {
-                // finds the real season
-                season = _dbContext.Seasons.FirstOrDefault(s => s.SeasonYear == leaguePOSTDTO.SeasonYear && s.RealSeason);
-
-                if (season == null)
-                {
-                    transaction.Rollback();
-                    return BadRequest($"No real season found for year {leaguePOSTDTO.SeasonYear}");
-                }
+                return BadRequest($"No Season found for {leaguePOSTDTO.SeasonYear}");
             }
 
             var league = new League
@@ -106,7 +85,9 @@ public class LeagueController : ControllerBase
                 IsLeagueFinished =  false,
                 DraftStartTime = leaguePOSTDTO.DraftStartTime.ToUniversalTime(),
                 JoinPassword = leaguePOSTDTO.JoinPassword,
-                RequiresPassword = leaguePOSTDTO.RequiresPassword
+                RequiresPassword = leaguePOSTDTO.RequiresPassword,
+                SeasonStartDate = leaguePOSTDTO.SeasonStartDate.ToUniversalTime(),
+                Advancement = advancement
             };
             
             _dbContext.Leagues.Add(league);
@@ -208,20 +189,6 @@ public class LeagueController : ControllerBase
     {
         var UserLeagues = _dbContext.Leagues
         .Where(l => l.LeagueUsers.Any(lu => lu.UserProfileId == userId))
-        .Include(l => l.Season)
-        .Include(l => l.LeagueUsers)
-            .ThenInclude(lu => lu.UserProfile)
-                .ThenInclude(up => up.IdentityUser)
-        .Include(l => l.LeagueUsers)
-            .ThenInclude(lu => lu.Roster)
-                .ThenInclude(r => r.RosterPlayers)
-                    .ThenInclude(rp => rp.Player)
-                        .ThenInclude(p => p.Status)
-        .Include(l => l.LeagueUsers)
-            .ThenInclude(lu => lu.Roster)
-                .ThenInclude(r => r.RosterPlayers)
-                    .ThenInclude(rp => rp.Player)
-                        .ThenInclude(p => p.Position)
         .Select(l => new LeagueFullExpandDTO
         {
             LeagueId = l.LeagueId,
@@ -235,13 +202,12 @@ public class LeagueController : ControllerBase
             IsLeagueFinished = l.IsLeagueFinished,
             SeasonId = l.SeasonId,
             DraftStartTime = l.DraftStartTime,
+            SeasonStartDate = l.SeasonStartDate,
+            Advancement = l.Advancement,
             Season = new SeasonDTO
             {
                 SeasonId = l.Season.SeasonId,
-                SeasonYear = l.Season.SeasonYear,
-                SeasonStartDate = l.Season.SeasonStartDate,
-                RealSeason = l.Season.RealSeason,
-                Advancement = l.Season.Advancement
+                SeasonYear = l.Season.SeasonYear
             },
             LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
             {
@@ -254,7 +220,7 @@ public class LeagueController : ControllerBase
                     Id = lu.UserProfile.Id,
                     UserName = lu.UserProfile.IdentityUser.UserName
                 },
-                Roster = new RosterFullExpandDTO
+                Roster = new RosterFullExpandDTO //these are used in the current Matchup for opps and I'm not sure if anywhere else
                 {
                     RosterId = lu.RosterId,
                     LeagueId = lu.LeagueId,
@@ -270,20 +236,47 @@ public class LeagueController : ControllerBase
                             PlayerFirstName = rp.Player.PlayerFirstName,
                             PlayerLastName = rp.Player.PlayerLastName,
                             PositionId = rp.Player.PositionId,
-                            StatusId = rp.Player.StatusId,
-                            Status = new StatusDTO
+                            PlayerStatuses = rp.Player.PlayerStatuses
+                            .Select(ps => new PlayerStatusDTO
                             {
-                                StatusId = rp.Player.Status.StatusId,
-                                StatusType = rp.Player.Status.StatusType,
-                                ViableToPlay = rp.Player.Status.ViableToPlay,
-                                RequiresBackup = rp.Player.Status.RequiresBackup
-                            },
+                                PlayerStatusId = ps.PlayerStatusId,
+                                PlayerId = ps.PlayerId,
+                                StatusId = ps.StatusId,
+                                StatusStartWeek = ps.StatusStartWeek,
+                                Status = new StatusDTO
+                                {
+                                    StatusId = ps.Status.StatusId,
+                                    StatusType = ps.Status.StatusType,
+                                    ViableToPlay = ps.Status.ViableToPlay,
+                                    RequiresBackup = ps.Status.RequiresBackup
+                                }
+                            }).ToList(),
                             Position = new PositionDTO
                             {
                                 PositionId = rp.Player.Position.PositionId,
                                 PositionShort = rp.Player.Position.PositionShort,
                                 PositionLong = rp.Player.Position.PositionLong
-                            }
+                            },
+                            PlayerTeams = rp.Player.PlayerTeams.Select(pt => new PlayerTeamDTO
+                            {
+                                PlayerTeamId = pt.PlayerTeamId,
+                                PlayerId = pt.PlayerId,
+                                TeamStartWeek = pt.TeamStartWeek,
+                                TeamId = pt.TeamId,
+                                Team = new TeamDTO
+                                {
+                                    TeamId = pt.Team.TeamId,
+                                    TeamName = pt.Team.TeamName,
+                                    TeamCity = pt.Team.TeamCity,
+                                    ByeWeek = pt.Team.ByeWeek,
+                                    ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
+                                    {
+                                        ActivePeriodId = ap.ActivePeriodId,
+                                        Start = ap.Start,
+                                        End = ap.End
+                                    }).ToList()
+                                }
+                            }).ToList()
                         }
                     }).ToList()
                 }
@@ -313,12 +306,12 @@ public class LeagueController : ControllerBase
                 RequiredFullToStart = l.RequiredFullToStart,
                 SeasonId = l.SeasonId,
                 RequiresPassword = l.RequiresPassword,
+                SeasonStartDate = l.SeasonStartDate,
+                Advancement = l.Advancement,
                 Season = new SeasonDTO
                 {
                     SeasonId = l.Season.SeasonId,
-                    SeasonYear = l.Season.SeasonYear,
-                    SeasonStartDate = l.Season.SeasonStartDate,
-                    RealSeason = l.Season.RealSeason
+                    SeasonYear = l.Season.SeasonYear
                 },
                 LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserSafeExportDTO
                 {

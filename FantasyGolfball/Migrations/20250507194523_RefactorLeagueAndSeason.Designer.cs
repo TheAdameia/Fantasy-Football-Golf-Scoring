@@ -3,6 +3,7 @@ using System;
 using FantasyGolfball.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasyGolfball.Migrations
 {
     [DbContext(typeof(FantasyGolfballDbContext))]
-    partial class FantasyGolfballDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250507194523_RefactorLeagueAndSeason")]
+    partial class RefactorLeagueAndSeason
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,30 +189,6 @@ namespace FantasyGolfball.Migrations
                             Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
                             TeamId = 20
                         });
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.HistoricalDraftState", b =>
-                {
-                    b.Property<int>("HistoricalDraftStateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HistoricalDraftStateId"));
-
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("PermanentDraftOrderJson")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserRostersJson")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("HistoricalDraftStateId");
-
-                    b.ToTable("HistoricalDraftStates");
                 });
 
             modelBuilder.Entity("FantasyGolfball.Models.League", b =>
@@ -428,7 +407,7 @@ namespace FantasyGolfball.Migrations
                     b.Property<int>("SeasonId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("StatusId")
+                    b.Property<int>("StatusId")
                         .HasColumnType("integer");
 
                     b.HasKey("PlayerId");
@@ -446,7 +425,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jake",
                             PlayerLastName = "Mason",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -454,7 +434,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Evan",
                             PlayerLastName = "Carter",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -462,7 +443,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Derek",
                             PlayerLastName = "Henderson",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -470,7 +452,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Marcus",
                             PlayerLastName = "Wells",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -478,7 +461,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Tyler",
                             PlayerLastName = "Nash",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -486,7 +470,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brad",
                             PlayerLastName = "McKinney",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -494,7 +479,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Chris",
                             PlayerLastName = "Johnson",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -502,7 +488,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brandon",
                             PlayerLastName = "Richards",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -510,7 +497,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kyle",
                             PlayerLastName = "Foster",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -518,7 +506,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Matt",
                             PlayerLastName = "Griffin",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -526,7 +515,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Trevor",
                             PlayerLastName = "Burns",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -534,7 +524,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Grant",
                             PlayerLastName = "Hunter",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -542,7 +533,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Dylan",
                             PlayerLastName = "Reed",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -550,7 +542,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nick",
                             PlayerLastName = "Evans",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -558,7 +551,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Scott",
                             PlayerLastName = "Bailey",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -566,7 +560,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Troy",
                             PlayerLastName = "Farmer",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -574,7 +569,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Zach",
                             PlayerLastName = "Lowe",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -582,7 +578,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Hunter",
                             PlayerLastName = "Murphy",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -590,7 +587,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Austin",
                             PlayerLastName = "Patterson",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -598,7 +596,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Caleb",
                             PlayerLastName = "Harrison",
                             PositionId = 1,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -606,7 +605,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ryan",
                             PlayerLastName = "Fitzgerald",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -614,7 +614,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Mason",
                             PlayerLastName = "Scott",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -622,7 +623,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jordan",
                             PlayerLastName = "Brooks",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -630,7 +632,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jason",
                             PlayerLastName = "Douglas",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -638,7 +641,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alex",
                             PlayerLastName = "Cooper",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -646,7 +650,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Chase",
                             PlayerLastName = "Garrett",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -654,7 +659,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cody",
                             PlayerLastName = "Thompson",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -662,7 +668,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Landon",
                             PlayerLastName = "Pearson",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -670,7 +677,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jared",
                             PlayerLastName = "Dunn",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -678,7 +686,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Drew",
                             PlayerLastName = "Cross",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -686,7 +695,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Colin",
                             PlayerLastName = "Shelby",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -694,7 +704,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Garrett",
                             PlayerLastName = "Coleman",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -702,7 +713,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bryce",
                             PlayerLastName = "Fowler",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -710,7 +722,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Clay",
                             PlayerLastName = "Sanders",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -718,7 +731,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Isaac",
                             PlayerLastName = "McLean",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -726,7 +740,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cole",
                             PlayerLastName = "Washington",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -734,7 +749,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Blake",
                             PlayerLastName = "Morris",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -742,7 +758,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nate",
                             PlayerLastName = "Bryant",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -750,7 +767,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jesse",
                             PlayerLastName = "Holmes",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -758,7 +776,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Connor",
                             PlayerLastName = "Davis",
                             PositionId = 4,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -766,7 +785,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Lucas",
                             PlayerLastName = "Smith",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -774,7 +794,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Noah",
                             PlayerLastName = "Johnson",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -782,7 +803,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ethan",
                             PlayerLastName = "Williams",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -790,7 +812,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Logan",
                             PlayerLastName = "Jones",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -798,7 +821,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Mason",
                             PlayerLastName = "Brown",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -806,7 +830,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Oliver",
                             PlayerLastName = "Davis",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -814,7 +839,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Liam",
                             PlayerLastName = "Miller",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -822,7 +848,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jacob",
                             PlayerLastName = "Wilson",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -830,7 +857,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "James",
                             PlayerLastName = "Moore",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -838,7 +866,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Benjamin",
                             PlayerLastName = "Taylor",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -846,7 +875,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Henry",
                             PlayerLastName = "Anderson",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -854,7 +884,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Owen",
                             PlayerLastName = "Thomas",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -862,7 +893,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "William",
                             PlayerLastName = "Jackson",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -870,7 +902,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Elijah",
                             PlayerLastName = "White",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -878,7 +911,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jackson",
                             PlayerLastName = "Harris",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -886,7 +920,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Gabriel",
                             PlayerLastName = "Clark",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -894,7 +929,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sebastian",
                             PlayerLastName = "Rodriguez",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -902,7 +938,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Daniel",
                             PlayerLastName = "Lewis",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -910,7 +947,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nathan",
                             PlayerLastName = "Walker",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -918,7 +956,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ethan",
                             PlayerLastName = "Adams",
                             PositionId = 5,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -926,7 +965,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Aiden",
                             PlayerLastName = "Miller",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -934,7 +974,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Liam",
                             PlayerLastName = "Brown",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -942,7 +983,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alexander",
                             PlayerLastName = "Jones",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -950,7 +992,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Joseph",
                             PlayerLastName = "Garcia",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -958,7 +1001,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Samuel",
                             PlayerLastName = "Martinez",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -966,7 +1010,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Matthew",
                             PlayerLastName = "Hernandez",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -974,7 +1019,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "David",
                             PlayerLastName = "Lopez",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -982,7 +1028,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Andrew",
                             PlayerLastName = "Gonzalez",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -990,7 +1037,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Joshua",
                             PlayerLastName = "Wilson",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -998,7 +1046,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Christopher",
                             PlayerLastName = "Perez",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1006,7 +1055,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Thomas",
                             PlayerLastName = "Taylor",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1014,7 +1064,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "John",
                             PlayerLastName = "Anderson",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1022,7 +1073,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "James",
                             PlayerLastName = "Thomas",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1030,7 +1082,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brian",
                             PlayerLastName = "Jackson",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1038,7 +1091,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nicholas",
                             PlayerLastName = "White",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1046,7 +1100,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Justin",
                             PlayerLastName = "Harris",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1054,7 +1109,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Aaron",
                             PlayerLastName = "Clark",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1062,7 +1118,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Zachary",
                             PlayerLastName = "Lewis",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1070,7 +1127,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Paul",
                             PlayerLastName = "Walker",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1078,7 +1136,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Eric",
                             PlayerLastName = "Young",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1086,7 +1145,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sean",
                             PlayerLastName = "King",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1094,7 +1154,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ray",
                             PlayerLastName = "Scott",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1102,7 +1163,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Derek",
                             PlayerLastName = "Adams",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1110,7 +1172,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kevin",
                             PlayerLastName = "Baker",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1118,7 +1181,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Tony",
                             PlayerLastName = "Collins",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1126,7 +1190,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cameron",
                             PlayerLastName = "Cox",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1134,7 +1199,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Adam",
                             PlayerLastName = "Stewart",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1142,7 +1208,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kyle",
                             PlayerLastName = "Turner",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1150,7 +1217,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Greg",
                             PlayerLastName = "Hughes",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1158,7 +1226,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Mike",
                             PlayerLastName = "Ramirez",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1166,7 +1235,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Patrick",
                             PlayerLastName = "Ross",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1174,7 +1244,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alex",
                             PlayerLastName = "Powell",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1182,7 +1253,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Steven",
                             PlayerLastName = "Griffin",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1190,7 +1262,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bill",
                             PlayerLastName = "Brooks",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1198,7 +1271,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Daniel",
                             PlayerLastName = "Kelly",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1206,7 +1280,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Rob",
                             PlayerLastName = "Foster",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1214,7 +1289,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jeff",
                             PlayerLastName = "Reed",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1222,7 +1298,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Phil",
                             PlayerLastName = "Patterson",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1230,7 +1307,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Larry",
                             PlayerLastName = "Burns",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1238,7 +1316,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jackson",
                             PlayerLastName = "Wilson",
                             PositionId = 2,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1246,7 +1325,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Owen",
                             PlayerLastName = "Taylor",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1254,7 +1334,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Logan",
                             PlayerLastName = "Lee",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1262,7 +1343,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Dylan",
                             PlayerLastName = "Perez",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1270,7 +1352,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Aiden",
                             PlayerLastName = "Gonzalez",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1278,7 +1361,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Elijah",
                             PlayerLastName = "Mitchell",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1286,7 +1370,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Henry",
                             PlayerLastName = "Carter",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1294,7 +1379,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ethan",
                             PlayerLastName = "Torres",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1302,7 +1388,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alexander",
                             PlayerLastName = "Evans",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1310,7 +1397,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Logan",
                             PlayerLastName = "Edwards",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1318,7 +1406,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jackson",
                             PlayerLastName = "Collins",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1326,7 +1415,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Landon",
                             PlayerLastName = "Morris",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1334,7 +1424,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bryson",
                             PlayerLastName = "Murphy",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1342,7 +1433,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Parker",
                             PlayerLastName = "Powell",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1350,7 +1442,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jameson",
                             PlayerLastName = "Sullivan",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1358,7 +1451,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bentley",
                             PlayerLastName = "Bryant",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1366,7 +1460,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Carson",
                             PlayerLastName = "Newton",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1374,7 +1469,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Braxton",
                             PlayerLastName = "Lambert",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1382,7 +1478,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Tucker",
                             PlayerLastName = "Cruz",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1390,7 +1487,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Zane",
                             PlayerLastName = "Owen",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1398,7 +1496,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Rowan",
                             PlayerLastName = "Knight",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1406,7 +1505,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Harrison",
                             PlayerLastName = "Lane",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1414,7 +1514,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Weston",
                             PlayerLastName = "Hicks",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1422,7 +1523,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Finley",
                             PlayerLastName = "Abbott",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1430,7 +1532,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sullivan",
                             PlayerLastName = "Reeves",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1438,7 +1541,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Reid",
                             PlayerLastName = "Jenkins",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1446,7 +1550,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Archer",
                             PlayerLastName = "Gibson",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1454,7 +1559,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Rhys",
                             PlayerLastName = "Parks",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1462,7 +1568,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Knox",
                             PlayerLastName = "Greene",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1470,7 +1577,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brody",
                             PlayerLastName = "Austin",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1478,7 +1586,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cade",
                             PlayerLastName = "Wells",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1486,7 +1595,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Theo",
                             PlayerLastName = "Wagner",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1494,7 +1604,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sterling",
                             PlayerLastName = "Rice",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1502,7 +1613,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jude",
                             PlayerLastName = "Hayes",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1510,7 +1622,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Crosby",
                             PlayerLastName = "Houston",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1518,7 +1631,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Porter",
                             PlayerLastName = "Hale",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1526,7 +1640,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Beckham",
                             PlayerLastName = "Wallace",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1534,7 +1649,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Judah",
                             PlayerLastName = "Leonard",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1542,7 +1658,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Griffin",
                             PlayerLastName = "Todd",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1550,7 +1667,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Phoenix",
                             PlayerLastName = "Webb",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1558,7 +1676,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Dawson",
                             PlayerLastName = "Sanders",
                             PositionId = 3,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1566,7 +1685,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Denver",
                             PlayerLastName = "Thunderbirds",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1574,7 +1694,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Atlanta",
                             PlayerLastName = "Vipers",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1582,7 +1703,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Houston",
                             PlayerLastName = "Ironhounds",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1590,7 +1712,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Chicago",
                             PlayerLastName = "Stallions",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1598,7 +1721,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Seattle",
                             PlayerLastName = "Warhawks",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1606,7 +1730,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Orlando",
                             PlayerLastName = "Cyclones",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1614,7 +1739,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nashville",
                             PlayerLastName = "Guardians",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1622,7 +1748,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Portland",
                             PlayerLastName = "Lumberjacks",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1630,7 +1757,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Las Vegas",
                             PlayerLastName = "Outlaws",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1638,7 +1766,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kansas City",
                             PlayerLastName = "Redtails",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1646,7 +1775,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Phoenix",
                             PlayerLastName = "Firestorm",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1654,7 +1784,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brooklyn",
                             PlayerLastName = "Sentinels",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1662,7 +1793,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Miami",
                             PlayerLastName = "Hurricanes",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1670,7 +1802,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "San Diego",
                             PlayerLastName = "Tritons",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1678,7 +1811,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Detroit",
                             PlayerLastName = "Phantoms",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1686,7 +1820,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Carolina",
                             PlayerLastName = "Cobras",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1694,7 +1829,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "New Jersey",
                             PlayerLastName = "Rampage",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1702,7 +1838,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "St. Louis",
                             PlayerLastName = "Renegades",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1710,7 +1847,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Oklahoma City",
                             PlayerLastName = "Mustangs",
                             PositionId = 6,
-                            SeasonId = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         },
                         new
                         {
@@ -1718,1155 +1856,8 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cincinnati",
                             PlayerLastName = "Scorpions",
                             PositionId = 6,
-                            SeasonId = 1
-                        });
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.PlayerStatus", b =>
-                {
-                    b.Property<int>("PlayerStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PlayerStatusId"));
-
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StatusId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StatusStartWeek")
-                        .HasColumnType("integer");
-
-                    b.HasKey("PlayerStatusId");
-
-                    b.HasIndex("PlayerId");
-
-                    b.HasIndex("StatusId");
-
-                    b.ToTable("PlayerStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            PlayerStatusId = 1,
-                            PlayerId = 1,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 2,
-                            PlayerId = 2,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 3,
-                            PlayerId = 3,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 4,
-                            PlayerId = 4,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 5,
-                            PlayerId = 5,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 6,
-                            PlayerId = 6,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 7,
-                            PlayerId = 7,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 8,
-                            PlayerId = 8,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 9,
-                            PlayerId = 9,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 10,
-                            PlayerId = 10,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 11,
-                            PlayerId = 11,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 12,
-                            PlayerId = 12,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 13,
-                            PlayerId = 13,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 14,
-                            PlayerId = 14,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 15,
-                            PlayerId = 15,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 16,
-                            PlayerId = 16,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 17,
-                            PlayerId = 17,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 18,
-                            PlayerId = 18,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 19,
-                            PlayerId = 19,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 20,
-                            PlayerId = 20,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 21,
-                            PlayerId = 21,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 22,
-                            PlayerId = 22,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 23,
-                            PlayerId = 23,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 24,
-                            PlayerId = 24,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 25,
-                            PlayerId = 25,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 26,
-                            PlayerId = 26,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 27,
-                            PlayerId = 27,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 28,
-                            PlayerId = 28,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 29,
-                            PlayerId = 29,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 30,
-                            PlayerId = 30,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 31,
-                            PlayerId = 31,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 32,
-                            PlayerId = 32,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 33,
-                            PlayerId = 33,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 34,
-                            PlayerId = 34,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 35,
-                            PlayerId = 35,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 36,
-                            PlayerId = 36,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 37,
-                            PlayerId = 37,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 38,
-                            PlayerId = 38,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 39,
-                            PlayerId = 39,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 40,
-                            PlayerId = 40,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 41,
-                            PlayerId = 41,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 42,
-                            PlayerId = 42,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 43,
-                            PlayerId = 43,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 44,
-                            PlayerId = 44,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 45,
-                            PlayerId = 45,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 46,
-                            PlayerId = 46,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 47,
-                            PlayerId = 47,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 48,
-                            PlayerId = 48,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 49,
-                            PlayerId = 49,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 50,
-                            PlayerId = 50,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 51,
-                            PlayerId = 51,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 52,
-                            PlayerId = 52,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 53,
-                            PlayerId = 53,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 54,
-                            PlayerId = 54,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 55,
-                            PlayerId = 55,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 56,
-                            PlayerId = 56,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 57,
-                            PlayerId = 57,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 58,
-                            PlayerId = 58,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 59,
-                            PlayerId = 59,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 60,
-                            PlayerId = 60,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 61,
-                            PlayerId = 61,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 62,
-                            PlayerId = 62,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 63,
-                            PlayerId = 63,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 64,
-                            PlayerId = 64,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 65,
-                            PlayerId = 65,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 66,
-                            PlayerId = 66,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 67,
-                            PlayerId = 67,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 68,
-                            PlayerId = 68,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 69,
-                            PlayerId = 69,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 70,
-                            PlayerId = 70,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 71,
-                            PlayerId = 71,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 72,
-                            PlayerId = 72,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 73,
-                            PlayerId = 73,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 74,
-                            PlayerId = 74,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 75,
-                            PlayerId = 75,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 76,
-                            PlayerId = 76,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 77,
-                            PlayerId = 77,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 78,
-                            PlayerId = 78,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 79,
-                            PlayerId = 79,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 80,
-                            PlayerId = 80,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 81,
-                            PlayerId = 81,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 82,
-                            PlayerId = 82,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 83,
-                            PlayerId = 83,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 84,
-                            PlayerId = 84,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 85,
-                            PlayerId = 85,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 86,
-                            PlayerId = 86,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 87,
-                            PlayerId = 87,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 88,
-                            PlayerId = 88,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 89,
-                            PlayerId = 89,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 90,
-                            PlayerId = 90,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 91,
-                            PlayerId = 91,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 92,
-                            PlayerId = 92,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 93,
-                            PlayerId = 93,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 94,
-                            PlayerId = 94,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 95,
-                            PlayerId = 95,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 96,
-                            PlayerId = 96,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 97,
-                            PlayerId = 97,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 98,
-                            PlayerId = 98,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 99,
-                            PlayerId = 99,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 100,
-                            PlayerId = 100,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 101,
-                            PlayerId = 101,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 102,
-                            PlayerId = 102,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 103,
-                            PlayerId = 103,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 104,
-                            PlayerId = 104,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 105,
-                            PlayerId = 105,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 106,
-                            PlayerId = 106,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 107,
-                            PlayerId = 107,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 108,
-                            PlayerId = 108,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 109,
-                            PlayerId = 109,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 110,
-                            PlayerId = 110,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 111,
-                            PlayerId = 111,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 112,
-                            PlayerId = 112,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 113,
-                            PlayerId = 113,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 114,
-                            PlayerId = 114,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 115,
-                            PlayerId = 115,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 116,
-                            PlayerId = 116,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 117,
-                            PlayerId = 117,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 118,
-                            PlayerId = 118,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 119,
-                            PlayerId = 119,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 120,
-                            PlayerId = 120,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 121,
-                            PlayerId = 121,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 122,
-                            PlayerId = 122,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 123,
-                            PlayerId = 123,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 124,
-                            PlayerId = 124,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 125,
-                            PlayerId = 125,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 126,
-                            PlayerId = 126,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 127,
-                            PlayerId = 127,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 128,
-                            PlayerId = 128,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 129,
-                            PlayerId = 129,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 130,
-                            PlayerId = 130,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 131,
-                            PlayerId = 131,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 132,
-                            PlayerId = 132,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 133,
-                            PlayerId = 133,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 134,
-                            PlayerId = 134,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 135,
-                            PlayerId = 135,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 136,
-                            PlayerId = 136,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 137,
-                            PlayerId = 137,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 138,
-                            PlayerId = 138,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 139,
-                            PlayerId = 139,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 140,
-                            PlayerId = 140,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 141,
-                            PlayerId = 141,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 142,
-                            PlayerId = 142,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 143,
-                            PlayerId = 143,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 144,
-                            PlayerId = 144,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 145,
-                            PlayerId = 145,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 146,
-                            PlayerId = 146,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 147,
-                            PlayerId = 147,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 148,
-                            PlayerId = 148,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 149,
-                            PlayerId = 149,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 150,
-                            PlayerId = 150,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 151,
-                            PlayerId = 151,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 152,
-                            PlayerId = 152,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 153,
-                            PlayerId = 153,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 154,
-                            PlayerId = 154,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 155,
-                            PlayerId = 155,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 156,
-                            PlayerId = 156,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 157,
-                            PlayerId = 157,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 158,
-                            PlayerId = 158,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 159,
-                            PlayerId = 159,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 160,
-                            PlayerId = 160,
-                            StatusId = 1,
-                            StatusStartWeek = 1
+                            SeasonId = 1,
+                            StatusId = 1
                         });
                 });
 
@@ -9687,13 +8678,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f9476c0c-3a81-4432-872b-b65121dee51a",
+                            ConcurrencyStamp = "73ead475-00a6-4d06-9155-dc662a8bae87",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHPcL/VAO/VxcQnnOsuP1UfKSrbmSlY8WhcCCh9pvJ2NM2aoi9rKpmkyAlVd+slOwQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGkzthEBYTXqJkxt7ufDfyY0gL5qqecmkUr1TP502pR93bCP2qfoE0iNHLX6sP/c6Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f357d0a9-5aa9-4ba4-b7d8-54ac0e49a69a",
+                            SecurityStamp = "48649f21-2e0b-4312-9d66-db07d5e43038",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
@@ -9888,26 +8879,13 @@ namespace FantasyGolfball.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FantasyGolfball.Models.Status", null)
-                        .WithMany("Players")
-                        .HasForeignKey("StatusId");
-
-                    b.Navigation("Position");
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.PlayerStatus", b =>
-                {
-                    b.HasOne("FantasyGolfball.Models.Player", null)
-                        .WithMany("PlayerStatuses")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("FantasyGolfball.Models.Status", "Status")
-                        .WithMany()
+                        .WithMany("Players")
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Position");
 
                     b.Navigation("Status");
                 });
@@ -10027,8 +9005,6 @@ namespace FantasyGolfball.Migrations
 
             modelBuilder.Entity("FantasyGolfball.Models.Player", b =>
                 {
-                    b.Navigation("PlayerStatuses");
-
                     b.Navigation("PlayerTeams");
 
                     b.Navigation("RosterPlayers");

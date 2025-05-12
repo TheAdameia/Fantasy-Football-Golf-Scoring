@@ -30,23 +30,25 @@ public class WeekAdvancementService : BackgroundService
         using (var scope = _scopeFactory.CreateScope())
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
-            var seasons = await dbContext.Seasons.ToListAsync(stoppingToken);
+            var leagues = await dbContext.Leagues
+                .Where(l => !l.IsLeagueFinished)
+                .ToListAsync(stoppingToken);
 
-            foreach (var season in seasons)
+            foreach (var league in leagues)
             {
-                int? latestWeek = season.CurrentWeek;
+                int? latestWeek = league.CurrentWeek;
 
-                if (latestWeek >= 5)
-                {
-                    continue; // skips this iteration and continues the loop
-                }
+                // if (latestWeek >= 5)
+                // {
+                //     continue; // skips this iteration and continues the loop. Move to WALS now that it's league? Obsolete
+                // }
 
-                if (latestWeek.HasValue && season.LastRecordedWeek != latestWeek)
+                if (latestWeek.HasValue && league.LastRecordedWeek != latestWeek)
                 {
-                    season.LastRecordedWeek = latestWeek; // updates stored value
+                    league.LastRecordedWeek = latestWeek; // updates stored value
                     await dbContext.SaveChangesAsync(stoppingToken);
 
-                    await _eventBus.Publish(new WeekAdvancedEvent(season.SeasonId, latestWeek.Value)); // triggers event
+                    await _eventBus.Publish(new WeekAdvancedEvent(league.LeagueId, latestWeek.Value)); // triggers event
                 }
             }
         }

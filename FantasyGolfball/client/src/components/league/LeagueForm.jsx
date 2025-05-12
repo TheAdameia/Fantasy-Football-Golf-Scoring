@@ -15,10 +15,8 @@ export const LeagueForm = () => {
         randomizedDraftOrder: true,
         usersVetoTrades: false,
         requiredFullToStart: true,
-        seasonId: 1,
         seasonYear: 2025,
         maxRosterSize: 15,
-        realSeason: false,
         draftStartTime: "",
         seasonStartDate: "",
         advancement: "Weekly",
@@ -205,65 +203,46 @@ export const LeagueForm = () => {
                         />
                     </div>
 
-                    <div className="leagues-widgets-container">
-                        <Label className="leagues-widget">Create Custom Season?</Label>
+                    <div>
+                        <Label>Season Year:</Label>
                         <Input
                             disabled
-                            type="checkbox"
-                            checked={!leagueObject.realSeason}
-                            onChange={() => {
+                            type="select"
+                            onChange={(e) => {
                                 const objectCopy = { ...leagueObject }
-                                objectCopy.realSeason = !leagueObject.realSeason
+                                objectCopy.seasonYear = Number(e.target.value)
                                 setLeagueObject(objectCopy)
                             }}
-                        ></Input>
+                        >
+                            <option value={2025}>Current Season</option>
+                        </Input>
+                    </div>
+
+                    <div>
+                        <Label>Season Starts On:</Label>
+                        <Input
+                            type="datetime-local"
+                            value={toLocalInputValue(leagueObject.seasonStartDate)}
+                            onChange={handleDateChange("seasonStartDate")}
+                        />
+                    </div>
+
+                    <div>
+                        <Label>A week of Season time advances...</Label>
+                        <Input
+                            type="select"
+                            onChange={(e) => {
+                                const objectCopy = { ...leagueObject }
+                                objectCopy.advancement = String(e.target.value)
+                                setLeagueObject(objectCopy)
+                            }}
+                        >
+                            <option value={"Weekly"}>Every Week (default)</option>
+                            <option value={"Daily"}>Every Day</option>
+                            <option value={"Hourly"}>Every Hour</option>
+                        </Input>
                     </div>
                 </FormGroup>
-
-                {!leagueObject.realSeason ? (
-                    <FormGroup>
-                        <div>
-                            <Label>Season Year:</Label>
-                            <Input
-                                disabled
-                                type="select"
-                                onChange={(e) => {
-                                    const objectCopy = { ...leagueObject }
-                                    objectCopy.seasonYear = Number(e.target.value)
-                                    setLeagueObject(objectCopy)
-                                }}
-                            >
-                                <option value={2025}>Current Season</option>
-                            </Input>
-                        </div>
-
-                        <div>
-                            <Label>Season Starts On:</Label>
-                            <Input
-                                type="datetime-local"
-                                value={toLocalInputValue(leagueObject.seasonStartDate)}
-                                onChange={handleDateChange("seasonStartDate")}
-                            />
-                        </div>
-
-                        <div>
-                            <Label>A week of Season time advances...</Label>
-                            <Input
-                                type="select"
-                                onChange={(e) => {
-                                    const objectCopy = { ...leagueObject }
-                                    objectCopy.advancement = String(e.target.value)
-                                    setLeagueObject(objectCopy)
-                                }}
-                            >
-                                <option value={"Weekly"}>Every Week (default)</option>
-                                <option value={"Daily"}>Every Day</option>
-                                <option value={"Hourly"}>Every Hour</option>
-                            </Input>
-                        </div>
-                    </FormGroup>
-                ) : null}
-
                 <button onClick={handleSubmit}>Create League</button>
             </Form>
         </div>

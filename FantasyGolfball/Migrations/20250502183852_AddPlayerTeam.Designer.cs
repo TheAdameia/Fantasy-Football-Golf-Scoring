@@ -3,6 +3,7 @@ using System;
 using FantasyGolfball.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasyGolfball.Migrations
 {
     [DbContext(typeof(FantasyGolfballDbContext))]
-    partial class FantasyGolfballDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250502183852_AddPlayerTeam")]
+    partial class AddPlayerTeam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,167 +52,143 @@ namespace FantasyGolfball.Migrations
                         new
                         {
                             ActivePeriodId = 1,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 1
                         },
                         new
                         {
                             ActivePeriodId = 2,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 2
                         },
                         new
                         {
                             ActivePeriodId = 3,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 3
                         },
                         new
                         {
                             ActivePeriodId = 4,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 4
                         },
                         new
                         {
                             ActivePeriodId = 5,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 5
                         },
                         new
                         {
                             ActivePeriodId = 6,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 6
                         },
                         new
                         {
                             ActivePeriodId = 7,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 7
                         },
                         new
                         {
                             ActivePeriodId = 8,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 8
                         },
                         new
                         {
                             ActivePeriodId = 9,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 9
                         },
                         new
                         {
                             ActivePeriodId = 10,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 10
                         },
                         new
                         {
                             ActivePeriodId = 11,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 11
                         },
                         new
                         {
                             ActivePeriodId = 12,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 12
                         },
                         new
                         {
                             ActivePeriodId = 13,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 13
                         },
                         new
                         {
                             ActivePeriodId = 14,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 14
                         },
                         new
                         {
                             ActivePeriodId = 15,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 15
                         },
                         new
                         {
                             ActivePeriodId = 16,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 16
                         },
                         new
                         {
                             ActivePeriodId = 17,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 17
                         },
                         new
                         {
                             ActivePeriodId = 18,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 18
                         },
                         new
                         {
                             ActivePeriodId = 19,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 19
                         },
                         new
                         {
                             ActivePeriodId = 20,
-                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Utc),
-                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
+                            End = new DateTime(2040, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             TeamId = 20
                         });
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.HistoricalDraftState", b =>
-                {
-                    b.Property<int>("HistoricalDraftStateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HistoricalDraftStateId"));
-
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("PermanentDraftOrderJson")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserRostersJson")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("HistoricalDraftStateId");
-
-                    b.ToTable("HistoricalDraftStates");
                 });
 
             modelBuilder.Entity("FantasyGolfball.Models.League", b =>
@@ -219,9 +198,6 @@ namespace FantasyGolfball.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("LeagueId"));
-
-                    b.Property<int>("Advancement")
-                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DraftStartTime")
                         .HasColumnType("timestamp with time zone");
@@ -234,9 +210,6 @@ namespace FantasyGolfball.Migrations
 
                     b.Property<string>("JoinPassword")
                         .HasColumnType("text");
-
-                    b.Property<int?>("LastRecordedWeek")
-                        .HasColumnType("integer");
 
                     b.Property<string>("LeagueName")
                         .IsRequired()
@@ -260,9 +233,6 @@ namespace FantasyGolfball.Migrations
                     b.Property<int>("SeasonId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("SeasonStartDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<bool>("UsersVetoTrades")
                         .HasColumnType("boolean");
 
@@ -276,8 +246,7 @@ namespace FantasyGolfball.Migrations
                         new
                         {
                             LeagueId = 1,
-                            Advancement = 0,
-                            DraftStartTime = new DateTime(2025, 3, 12, 8, 0, 0, 0, DateTimeKind.Utc),
+                            DraftStartTime = new DateTime(2025, 3, 12, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDraftComplete = false,
                             IsLeagueFinished = false,
                             LeagueName = "testing league",
@@ -287,7 +256,6 @@ namespace FantasyGolfball.Migrations
                             RequiredFullToStart = true,
                             RequiresPassword = false,
                             SeasonId = 1,
-                            SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Utc),
                             UsersVetoTrades = true
                         });
                 });
@@ -425,10 +393,7 @@ namespace FantasyGolfball.Migrations
                     b.Property<int>("PositionId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SeasonId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("StatusId")
+                    b.Property<int>("StatusId")
                         .HasColumnType("integer");
 
                     b.HasKey("PlayerId");
@@ -446,7 +411,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jake",
                             PlayerLastName = "Mason",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -454,7 +419,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Evan",
                             PlayerLastName = "Carter",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -462,7 +427,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Derek",
                             PlayerLastName = "Henderson",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -470,7 +435,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Marcus",
                             PlayerLastName = "Wells",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -478,7 +443,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Tyler",
                             PlayerLastName = "Nash",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -486,7 +451,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brad",
                             PlayerLastName = "McKinney",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -494,7 +459,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Chris",
                             PlayerLastName = "Johnson",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -502,7 +467,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brandon",
                             PlayerLastName = "Richards",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -510,7 +475,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kyle",
                             PlayerLastName = "Foster",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -518,7 +483,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Matt",
                             PlayerLastName = "Griffin",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -526,7 +491,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Trevor",
                             PlayerLastName = "Burns",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -534,7 +499,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Grant",
                             PlayerLastName = "Hunter",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -542,7 +507,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Dylan",
                             PlayerLastName = "Reed",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -550,7 +515,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nick",
                             PlayerLastName = "Evans",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -558,7 +523,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Scott",
                             PlayerLastName = "Bailey",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -566,7 +531,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Troy",
                             PlayerLastName = "Farmer",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -574,7 +539,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Zach",
                             PlayerLastName = "Lowe",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -582,7 +547,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Hunter",
                             PlayerLastName = "Murphy",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -590,7 +555,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Austin",
                             PlayerLastName = "Patterson",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -598,7 +563,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Caleb",
                             PlayerLastName = "Harrison",
                             PositionId = 1,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -606,7 +571,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ryan",
                             PlayerLastName = "Fitzgerald",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -614,7 +579,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Mason",
                             PlayerLastName = "Scott",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -622,7 +587,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jordan",
                             PlayerLastName = "Brooks",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -630,7 +595,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jason",
                             PlayerLastName = "Douglas",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -638,7 +603,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alex",
                             PlayerLastName = "Cooper",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -646,7 +611,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Chase",
                             PlayerLastName = "Garrett",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -654,7 +619,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cody",
                             PlayerLastName = "Thompson",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -662,7 +627,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Landon",
                             PlayerLastName = "Pearson",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -670,7 +635,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jared",
                             PlayerLastName = "Dunn",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -678,7 +643,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Drew",
                             PlayerLastName = "Cross",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -686,7 +651,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Colin",
                             PlayerLastName = "Shelby",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -694,7 +659,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Garrett",
                             PlayerLastName = "Coleman",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -702,7 +667,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bryce",
                             PlayerLastName = "Fowler",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -710,7 +675,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Clay",
                             PlayerLastName = "Sanders",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -718,7 +683,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Isaac",
                             PlayerLastName = "McLean",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -726,7 +691,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cole",
                             PlayerLastName = "Washington",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -734,7 +699,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Blake",
                             PlayerLastName = "Morris",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -742,7 +707,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nate",
                             PlayerLastName = "Bryant",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -750,7 +715,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jesse",
                             PlayerLastName = "Holmes",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -758,7 +723,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Connor",
                             PlayerLastName = "Davis",
                             PositionId = 4,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -766,7 +731,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Lucas",
                             PlayerLastName = "Smith",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -774,7 +739,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Noah",
                             PlayerLastName = "Johnson",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -782,7 +747,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ethan",
                             PlayerLastName = "Williams",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -790,7 +755,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Logan",
                             PlayerLastName = "Jones",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -798,7 +763,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Mason",
                             PlayerLastName = "Brown",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -806,7 +771,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Oliver",
                             PlayerLastName = "Davis",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -814,7 +779,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Liam",
                             PlayerLastName = "Miller",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -822,7 +787,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jacob",
                             PlayerLastName = "Wilson",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -830,7 +795,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "James",
                             PlayerLastName = "Moore",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -838,7 +803,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Benjamin",
                             PlayerLastName = "Taylor",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -846,7 +811,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Henry",
                             PlayerLastName = "Anderson",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -854,7 +819,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Owen",
                             PlayerLastName = "Thomas",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -862,7 +827,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "William",
                             PlayerLastName = "Jackson",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -870,7 +835,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Elijah",
                             PlayerLastName = "White",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -878,7 +843,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jackson",
                             PlayerLastName = "Harris",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -886,7 +851,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Gabriel",
                             PlayerLastName = "Clark",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -894,7 +859,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sebastian",
                             PlayerLastName = "Rodriguez",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -902,7 +867,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Daniel",
                             PlayerLastName = "Lewis",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -910,7 +875,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nathan",
                             PlayerLastName = "Walker",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -918,7 +883,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ethan",
                             PlayerLastName = "Adams",
                             PositionId = 5,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -926,7 +891,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Aiden",
                             PlayerLastName = "Miller",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -934,7 +899,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Liam",
                             PlayerLastName = "Brown",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -942,7 +907,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alexander",
                             PlayerLastName = "Jones",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -950,7 +915,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Joseph",
                             PlayerLastName = "Garcia",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -958,7 +923,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Samuel",
                             PlayerLastName = "Martinez",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -966,7 +931,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Matthew",
                             PlayerLastName = "Hernandez",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -974,7 +939,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "David",
                             PlayerLastName = "Lopez",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -982,7 +947,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Andrew",
                             PlayerLastName = "Gonzalez",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -990,7 +955,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Joshua",
                             PlayerLastName = "Wilson",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -998,7 +963,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Christopher",
                             PlayerLastName = "Perez",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1006,7 +971,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Thomas",
                             PlayerLastName = "Taylor",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1014,7 +979,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "John",
                             PlayerLastName = "Anderson",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1022,7 +987,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "James",
                             PlayerLastName = "Thomas",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1030,7 +995,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brian",
                             PlayerLastName = "Jackson",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1038,7 +1003,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nicholas",
                             PlayerLastName = "White",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1046,7 +1011,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Justin",
                             PlayerLastName = "Harris",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1054,7 +1019,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Aaron",
                             PlayerLastName = "Clark",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1062,7 +1027,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Zachary",
                             PlayerLastName = "Lewis",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1070,7 +1035,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Paul",
                             PlayerLastName = "Walker",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1078,7 +1043,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Eric",
                             PlayerLastName = "Young",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1086,7 +1051,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sean",
                             PlayerLastName = "King",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1094,7 +1059,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ray",
                             PlayerLastName = "Scott",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1102,7 +1067,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Derek",
                             PlayerLastName = "Adams",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1110,7 +1075,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kevin",
                             PlayerLastName = "Baker",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1118,7 +1083,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Tony",
                             PlayerLastName = "Collins",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1126,7 +1091,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cameron",
                             PlayerLastName = "Cox",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1134,7 +1099,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Adam",
                             PlayerLastName = "Stewart",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1142,7 +1107,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kyle",
                             PlayerLastName = "Turner",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1150,7 +1115,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Greg",
                             PlayerLastName = "Hughes",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1158,7 +1123,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Mike",
                             PlayerLastName = "Ramirez",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1166,7 +1131,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Patrick",
                             PlayerLastName = "Ross",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1174,7 +1139,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alex",
                             PlayerLastName = "Powell",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1182,7 +1147,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Steven",
                             PlayerLastName = "Griffin",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1190,7 +1155,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bill",
                             PlayerLastName = "Brooks",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1198,7 +1163,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Daniel",
                             PlayerLastName = "Kelly",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1206,7 +1171,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Rob",
                             PlayerLastName = "Foster",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1214,7 +1179,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jeff",
                             PlayerLastName = "Reed",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1222,7 +1187,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Phil",
                             PlayerLastName = "Patterson",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1230,7 +1195,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Larry",
                             PlayerLastName = "Burns",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1238,7 +1203,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jackson",
                             PlayerLastName = "Wilson",
                             PositionId = 2,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1246,7 +1211,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Owen",
                             PlayerLastName = "Taylor",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1254,7 +1219,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Logan",
                             PlayerLastName = "Lee",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1262,7 +1227,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Dylan",
                             PlayerLastName = "Perez",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1270,7 +1235,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Aiden",
                             PlayerLastName = "Gonzalez",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1278,7 +1243,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Elijah",
                             PlayerLastName = "Mitchell",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1286,7 +1251,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Henry",
                             PlayerLastName = "Carter",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1294,7 +1259,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Ethan",
                             PlayerLastName = "Torres",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1302,7 +1267,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Alexander",
                             PlayerLastName = "Evans",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1310,7 +1275,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Logan",
                             PlayerLastName = "Edwards",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1318,7 +1283,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jackson",
                             PlayerLastName = "Collins",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1326,7 +1291,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Landon",
                             PlayerLastName = "Morris",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1334,7 +1299,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bryson",
                             PlayerLastName = "Murphy",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1342,7 +1307,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Parker",
                             PlayerLastName = "Powell",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1350,7 +1315,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jameson",
                             PlayerLastName = "Sullivan",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1358,7 +1323,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Bentley",
                             PlayerLastName = "Bryant",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1366,7 +1331,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Carson",
                             PlayerLastName = "Newton",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1374,7 +1339,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Braxton",
                             PlayerLastName = "Lambert",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1382,7 +1347,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Tucker",
                             PlayerLastName = "Cruz",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1390,7 +1355,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Zane",
                             PlayerLastName = "Owen",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1398,7 +1363,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Rowan",
                             PlayerLastName = "Knight",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1406,7 +1371,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Harrison",
                             PlayerLastName = "Lane",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1414,7 +1379,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Weston",
                             PlayerLastName = "Hicks",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1422,7 +1387,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Finley",
                             PlayerLastName = "Abbott",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1430,7 +1395,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sullivan",
                             PlayerLastName = "Reeves",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1438,7 +1403,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Reid",
                             PlayerLastName = "Jenkins",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1446,7 +1411,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Archer",
                             PlayerLastName = "Gibson",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1454,7 +1419,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Rhys",
                             PlayerLastName = "Parks",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1462,7 +1427,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Knox",
                             PlayerLastName = "Greene",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1470,7 +1435,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brody",
                             PlayerLastName = "Austin",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1478,7 +1443,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cade",
                             PlayerLastName = "Wells",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1486,7 +1451,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Theo",
                             PlayerLastName = "Wagner",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1494,7 +1459,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Sterling",
                             PlayerLastName = "Rice",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1502,7 +1467,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Jude",
                             PlayerLastName = "Hayes",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1510,7 +1475,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Crosby",
                             PlayerLastName = "Houston",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1518,7 +1483,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Porter",
                             PlayerLastName = "Hale",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1526,7 +1491,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Beckham",
                             PlayerLastName = "Wallace",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1534,7 +1499,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Judah",
                             PlayerLastName = "Leonard",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1542,7 +1507,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Griffin",
                             PlayerLastName = "Todd",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1550,7 +1515,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Phoenix",
                             PlayerLastName = "Webb",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1558,7 +1523,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Dawson",
                             PlayerLastName = "Sanders",
                             PositionId = 3,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1566,7 +1531,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Denver",
                             PlayerLastName = "Thunderbirds",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1574,7 +1539,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Atlanta",
                             PlayerLastName = "Vipers",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1582,7 +1547,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Houston",
                             PlayerLastName = "Ironhounds",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1590,7 +1555,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Chicago",
                             PlayerLastName = "Stallions",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1598,7 +1563,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Seattle",
                             PlayerLastName = "Warhawks",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1606,7 +1571,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Orlando",
                             PlayerLastName = "Cyclones",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1614,7 +1579,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Nashville",
                             PlayerLastName = "Guardians",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1622,7 +1587,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Portland",
                             PlayerLastName = "Lumberjacks",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1630,7 +1595,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Las Vegas",
                             PlayerLastName = "Outlaws",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1638,7 +1603,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Kansas City",
                             PlayerLastName = "Redtails",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1646,7 +1611,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Phoenix",
                             PlayerLastName = "Firestorm",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1654,7 +1619,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Brooklyn",
                             PlayerLastName = "Sentinels",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1662,7 +1627,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Miami",
                             PlayerLastName = "Hurricanes",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1670,7 +1635,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "San Diego",
                             PlayerLastName = "Tritons",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1678,7 +1643,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Detroit",
                             PlayerLastName = "Phantoms",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1686,7 +1651,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Carolina",
                             PlayerLastName = "Cobras",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1694,7 +1659,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "New Jersey",
                             PlayerLastName = "Rampage",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1702,7 +1667,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "St. Louis",
                             PlayerLastName = "Renegades",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1710,7 +1675,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Oklahoma City",
                             PlayerLastName = "Mustangs",
                             PositionId = 6,
-                            SeasonId = 1
+                            StatusId = 1
                         },
                         new
                         {
@@ -1718,1155 +1683,7 @@ namespace FantasyGolfball.Migrations
                             PlayerFirstName = "Cincinnati",
                             PlayerLastName = "Scorpions",
                             PositionId = 6,
-                            SeasonId = 1
-                        });
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.PlayerStatus", b =>
-                {
-                    b.Property<int>("PlayerStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PlayerStatusId"));
-
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StatusId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StatusStartWeek")
-                        .HasColumnType("integer");
-
-                    b.HasKey("PlayerStatusId");
-
-                    b.HasIndex("PlayerId");
-
-                    b.HasIndex("StatusId");
-
-                    b.ToTable("PlayerStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            PlayerStatusId = 1,
-                            PlayerId = 1,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 2,
-                            PlayerId = 2,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 3,
-                            PlayerId = 3,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 4,
-                            PlayerId = 4,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 5,
-                            PlayerId = 5,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 6,
-                            PlayerId = 6,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 7,
-                            PlayerId = 7,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 8,
-                            PlayerId = 8,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 9,
-                            PlayerId = 9,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 10,
-                            PlayerId = 10,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 11,
-                            PlayerId = 11,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 12,
-                            PlayerId = 12,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 13,
-                            PlayerId = 13,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 14,
-                            PlayerId = 14,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 15,
-                            PlayerId = 15,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 16,
-                            PlayerId = 16,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 17,
-                            PlayerId = 17,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 18,
-                            PlayerId = 18,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 19,
-                            PlayerId = 19,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 20,
-                            PlayerId = 20,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 21,
-                            PlayerId = 21,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 22,
-                            PlayerId = 22,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 23,
-                            PlayerId = 23,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 24,
-                            PlayerId = 24,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 25,
-                            PlayerId = 25,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 26,
-                            PlayerId = 26,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 27,
-                            PlayerId = 27,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 28,
-                            PlayerId = 28,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 29,
-                            PlayerId = 29,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 30,
-                            PlayerId = 30,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 31,
-                            PlayerId = 31,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 32,
-                            PlayerId = 32,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 33,
-                            PlayerId = 33,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 34,
-                            PlayerId = 34,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 35,
-                            PlayerId = 35,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 36,
-                            PlayerId = 36,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 37,
-                            PlayerId = 37,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 38,
-                            PlayerId = 38,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 39,
-                            PlayerId = 39,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 40,
-                            PlayerId = 40,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 41,
-                            PlayerId = 41,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 42,
-                            PlayerId = 42,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 43,
-                            PlayerId = 43,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 44,
-                            PlayerId = 44,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 45,
-                            PlayerId = 45,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 46,
-                            PlayerId = 46,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 47,
-                            PlayerId = 47,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 48,
-                            PlayerId = 48,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 49,
-                            PlayerId = 49,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 50,
-                            PlayerId = 50,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 51,
-                            PlayerId = 51,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 52,
-                            PlayerId = 52,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 53,
-                            PlayerId = 53,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 54,
-                            PlayerId = 54,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 55,
-                            PlayerId = 55,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 56,
-                            PlayerId = 56,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 57,
-                            PlayerId = 57,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 58,
-                            PlayerId = 58,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 59,
-                            PlayerId = 59,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 60,
-                            PlayerId = 60,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 61,
-                            PlayerId = 61,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 62,
-                            PlayerId = 62,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 63,
-                            PlayerId = 63,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 64,
-                            PlayerId = 64,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 65,
-                            PlayerId = 65,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 66,
-                            PlayerId = 66,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 67,
-                            PlayerId = 67,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 68,
-                            PlayerId = 68,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 69,
-                            PlayerId = 69,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 70,
-                            PlayerId = 70,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 71,
-                            PlayerId = 71,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 72,
-                            PlayerId = 72,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 73,
-                            PlayerId = 73,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 74,
-                            PlayerId = 74,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 75,
-                            PlayerId = 75,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 76,
-                            PlayerId = 76,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 77,
-                            PlayerId = 77,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 78,
-                            PlayerId = 78,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 79,
-                            PlayerId = 79,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 80,
-                            PlayerId = 80,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 81,
-                            PlayerId = 81,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 82,
-                            PlayerId = 82,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 83,
-                            PlayerId = 83,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 84,
-                            PlayerId = 84,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 85,
-                            PlayerId = 85,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 86,
-                            PlayerId = 86,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 87,
-                            PlayerId = 87,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 88,
-                            PlayerId = 88,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 89,
-                            PlayerId = 89,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 90,
-                            PlayerId = 90,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 91,
-                            PlayerId = 91,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 92,
-                            PlayerId = 92,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 93,
-                            PlayerId = 93,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 94,
-                            PlayerId = 94,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 95,
-                            PlayerId = 95,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 96,
-                            PlayerId = 96,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 97,
-                            PlayerId = 97,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 98,
-                            PlayerId = 98,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 99,
-                            PlayerId = 99,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 100,
-                            PlayerId = 100,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 101,
-                            PlayerId = 101,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 102,
-                            PlayerId = 102,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 103,
-                            PlayerId = 103,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 104,
-                            PlayerId = 104,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 105,
-                            PlayerId = 105,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 106,
-                            PlayerId = 106,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 107,
-                            PlayerId = 107,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 108,
-                            PlayerId = 108,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 109,
-                            PlayerId = 109,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 110,
-                            PlayerId = 110,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 111,
-                            PlayerId = 111,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 112,
-                            PlayerId = 112,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 113,
-                            PlayerId = 113,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 114,
-                            PlayerId = 114,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 115,
-                            PlayerId = 115,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 116,
-                            PlayerId = 116,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 117,
-                            PlayerId = 117,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 118,
-                            PlayerId = 118,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 119,
-                            PlayerId = 119,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 120,
-                            PlayerId = 120,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 121,
-                            PlayerId = 121,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 122,
-                            PlayerId = 122,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 123,
-                            PlayerId = 123,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 124,
-                            PlayerId = 124,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 125,
-                            PlayerId = 125,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 126,
-                            PlayerId = 126,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 127,
-                            PlayerId = 127,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 128,
-                            PlayerId = 128,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 129,
-                            PlayerId = 129,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 130,
-                            PlayerId = 130,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 131,
-                            PlayerId = 131,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 132,
-                            PlayerId = 132,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 133,
-                            PlayerId = 133,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 134,
-                            PlayerId = 134,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 135,
-                            PlayerId = 135,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 136,
-                            PlayerId = 136,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 137,
-                            PlayerId = 137,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 138,
-                            PlayerId = 138,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 139,
-                            PlayerId = 139,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 140,
-                            PlayerId = 140,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 141,
-                            PlayerId = 141,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 142,
-                            PlayerId = 142,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 143,
-                            PlayerId = 143,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 144,
-                            PlayerId = 144,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 145,
-                            PlayerId = 145,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 146,
-                            PlayerId = 146,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 147,
-                            PlayerId = 147,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 148,
-                            PlayerId = 148,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 149,
-                            PlayerId = 149,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 150,
-                            PlayerId = 150,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 151,
-                            PlayerId = 151,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 152,
-                            PlayerId = 152,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 153,
-                            PlayerId = 153,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 154,
-                            PlayerId = 154,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 155,
-                            PlayerId = 155,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 156,
-                            PlayerId = 156,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 157,
-                            PlayerId = 157,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 158,
-                            PlayerId = 158,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 159,
-                            PlayerId = 159,
-                            StatusId = 1,
-                            StatusStartWeek = 1
-                        },
-                        new
-                        {
-                            PlayerStatusId = 160,
-                            PlayerId = 160,
-                            StatusId = 1,
-                            StatusStartWeek = 1
+                            StatusId = 1
                         });
                 });
 
@@ -2881,6 +1698,9 @@ namespace FantasyGolfball.Migrations
                     b.Property<int>("PlayerId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("TeamEndWeek")
+                        .HasColumnType("integer");
+
                     b.Property<int>("TeamId")
                         .HasColumnType("integer");
 
@@ -2889,9 +1709,9 @@ namespace FantasyGolfball.Migrations
 
                     b.HasKey("PlayerTeamId");
 
-                    b.HasIndex("TeamId");
-
                     b.HasIndex("PlayerId", "TeamStartWeek");
+
+                    b.HasIndex("TeamId", "TeamStartWeek", "TeamEndWeek");
 
                     b.ToTable("PlayerTeams");
 
@@ -4145,10 +2965,10 @@ namespace FantasyGolfball.Migrations
                     b.Property<float>("Points")
                         .HasColumnType("real");
 
-                    b.Property<int>("SeasonId")
+                    b.Property<int>("SeasonWeek")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SeasonWeek")
+                    b.Property<int>("SeasonYear")
                         .HasColumnType("integer");
 
                     b.HasKey("ScoringId");
@@ -4161,5120 +2981,5120 @@ namespace FantasyGolfball.Migrations
                             ScoringId = 1,
                             PlayerId = 1,
                             Points = 5.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 2,
                             PlayerId = 1,
                             Points = 5.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 3,
                             PlayerId = 1,
                             Points = 5.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 4,
                             PlayerId = 1,
                             Points = 1.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 5,
                             PlayerId = 2,
                             Points = -4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 6,
                             PlayerId = 2,
                             Points = 16.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 7,
                             PlayerId = 2,
                             Points = 10.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 8,
                             PlayerId = 2,
                             Points = 4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 9,
                             PlayerId = 3,
                             Points = 10f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 10,
                             PlayerId = 3,
                             Points = 0.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 11,
                             PlayerId = 3,
                             Points = -0.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 12,
                             PlayerId = 3,
                             Points = -1.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 13,
                             PlayerId = 4,
                             Points = 18.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 14,
                             PlayerId = 4,
                             Points = 2.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 15,
                             PlayerId = 4,
                             Points = 18.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 16,
                             PlayerId = 4,
                             Points = 2.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 17,
                             PlayerId = 5,
                             Points = 15.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 18,
                             PlayerId = 5,
                             Points = 6.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 19,
                             PlayerId = 5,
                             Points = 9.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 20,
                             PlayerId = 5,
                             Points = -4.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 21,
                             PlayerId = 6,
                             Points = 2.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 22,
                             PlayerId = 6,
                             Points = 1.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 23,
                             PlayerId = 6,
                             Points = 0.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 24,
                             PlayerId = 6,
                             Points = 0.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 25,
                             PlayerId = 7,
                             Points = -3.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 26,
                             PlayerId = 7,
                             Points = 15f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 27,
                             PlayerId = 7,
                             Points = -2.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 28,
                             PlayerId = 7,
                             Points = 7.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 29,
                             PlayerId = 8,
                             Points = 12.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 30,
                             PlayerId = 8,
                             Points = 14f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 31,
                             PlayerId = 8,
                             Points = 16.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 32,
                             PlayerId = 8,
                             Points = 7.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 33,
                             PlayerId = 9,
                             Points = 17.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 34,
                             PlayerId = 9,
                             Points = 2.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 35,
                             PlayerId = 9,
                             Points = -4.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 36,
                             PlayerId = 9,
                             Points = -3.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 37,
                             PlayerId = 10,
                             Points = 20f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 38,
                             PlayerId = 10,
                             Points = -2.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 39,
                             PlayerId = 10,
                             Points = 17.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 40,
                             PlayerId = 10,
                             Points = 18.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 41,
                             PlayerId = 11,
                             Points = 10.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 42,
                             PlayerId = 11,
                             Points = 3.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 43,
                             PlayerId = 11,
                             Points = -2.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 44,
                             PlayerId = 11,
                             Points = 18.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 45,
                             PlayerId = 12,
                             Points = 12.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 46,
                             PlayerId = 12,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 47,
                             PlayerId = 12,
                             Points = 4.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 48,
                             PlayerId = 12,
                             Points = -4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 49,
                             PlayerId = 13,
                             Points = -4.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 50,
                             PlayerId = 13,
                             Points = -1.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 51,
                             PlayerId = 13,
                             Points = 9.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 52,
                             PlayerId = 13,
                             Points = 16.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 53,
                             PlayerId = 14,
                             Points = 0.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 54,
                             PlayerId = 14,
                             Points = 4.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 55,
                             PlayerId = 14,
                             Points = -4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 56,
                             PlayerId = 14,
                             Points = 3.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 57,
                             PlayerId = 15,
                             Points = 12.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 58,
                             PlayerId = 15,
                             Points = -2.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 59,
                             PlayerId = 15,
                             Points = 2.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 60,
                             PlayerId = 15,
                             Points = 4.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 61,
                             PlayerId = 16,
                             Points = 13.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 62,
                             PlayerId = 16,
                             Points = -2.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 63,
                             PlayerId = 16,
                             Points = 9.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 64,
                             PlayerId = 16,
                             Points = 9.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 65,
                             PlayerId = 17,
                             Points = 19.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 66,
                             PlayerId = 17,
                             Points = 6.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 67,
                             PlayerId = 17,
                             Points = 16.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 68,
                             PlayerId = 17,
                             Points = 8.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 69,
                             PlayerId = 18,
                             Points = -4.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 70,
                             PlayerId = 18,
                             Points = 9.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 71,
                             PlayerId = 18,
                             Points = 18.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 72,
                             PlayerId = 18,
                             Points = -4.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 73,
                             PlayerId = 19,
                             Points = -4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 74,
                             PlayerId = 19,
                             Points = 1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 75,
                             PlayerId = 19,
                             Points = 7.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 76,
                             PlayerId = 19,
                             Points = 12.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 77,
                             PlayerId = 20,
                             Points = 10.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 78,
                             PlayerId = 20,
                             Points = -3.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 79,
                             PlayerId = 20,
                             Points = 0.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 80,
                             PlayerId = 20,
                             Points = -1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 81,
                             PlayerId = 21,
                             Points = 1.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 82,
                             PlayerId = 21,
                             Points = 2.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 83,
                             PlayerId = 21,
                             Points = 15.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 84,
                             PlayerId = 21,
                             Points = 6.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 85,
                             PlayerId = 22,
                             Points = 8.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 86,
                             PlayerId = 22,
                             Points = 5.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 87,
                             PlayerId = 22,
                             Points = 12.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 88,
                             PlayerId = 22,
                             Points = 14.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 89,
                             PlayerId = 23,
                             Points = 1.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 90,
                             PlayerId = 23,
                             Points = 10.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 91,
                             PlayerId = 23,
                             Points = 4.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 92,
                             PlayerId = 23,
                             Points = 8.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 93,
                             PlayerId = 24,
                             Points = 12.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 94,
                             PlayerId = 24,
                             Points = 6.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 95,
                             PlayerId = 24,
                             Points = 10.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 96,
                             PlayerId = 24,
                             Points = -4.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 97,
                             PlayerId = 25,
                             Points = 11.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 98,
                             PlayerId = 25,
                             Points = -2.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 99,
                             PlayerId = 25,
                             Points = -3.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 100,
                             PlayerId = 25,
                             Points = 15.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 101,
                             PlayerId = 26,
                             Points = 13.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 102,
                             PlayerId = 26,
                             Points = 5.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 103,
                             PlayerId = 26,
                             Points = 7.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 104,
                             PlayerId = 26,
                             Points = 19.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 105,
                             PlayerId = 27,
                             Points = 12.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 106,
                             PlayerId = 27,
                             Points = -3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 107,
                             PlayerId = 27,
                             Points = 10.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 108,
                             PlayerId = 27,
                             Points = 12.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 109,
                             PlayerId = 28,
                             Points = -1.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 110,
                             PlayerId = 28,
                             Points = 11f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 111,
                             PlayerId = 28,
                             Points = -2.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 112,
                             PlayerId = 28,
                             Points = 17.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 113,
                             PlayerId = 29,
                             Points = 3.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 114,
                             PlayerId = 29,
                             Points = 17.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 115,
                             PlayerId = 29,
                             Points = 9.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 116,
                             PlayerId = 29,
                             Points = 18.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 117,
                             PlayerId = 30,
                             Points = 18.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 118,
                             PlayerId = 30,
                             Points = -1.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 119,
                             PlayerId = 30,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 120,
                             PlayerId = 30,
                             Points = 16.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 121,
                             PlayerId = 31,
                             Points = 13.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 122,
                             PlayerId = 31,
                             Points = -2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 123,
                             PlayerId = 31,
                             Points = 0.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 124,
                             PlayerId = 31,
                             Points = -3.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 125,
                             PlayerId = 32,
                             Points = -1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 126,
                             PlayerId = 32,
                             Points = -2.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 127,
                             PlayerId = 32,
                             Points = -3.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 128,
                             PlayerId = 32,
                             Points = 14.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 129,
                             PlayerId = 33,
                             Points = 4.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 130,
                             PlayerId = 33,
                             Points = 11.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 131,
                             PlayerId = 33,
                             Points = -0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 132,
                             PlayerId = 33,
                             Points = 9.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 133,
                             PlayerId = 34,
                             Points = 2.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 134,
                             PlayerId = 34,
                             Points = 6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 135,
                             PlayerId = 34,
                             Points = -3.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 136,
                             PlayerId = 34,
                             Points = -2.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 137,
                             PlayerId = 35,
                             Points = 11.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 138,
                             PlayerId = 35,
                             Points = 7.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 139,
                             PlayerId = 35,
                             Points = 17.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 140,
                             PlayerId = 35,
                             Points = 5.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 141,
                             PlayerId = 36,
                             Points = 14.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 142,
                             PlayerId = 36,
                             Points = 3.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 143,
                             PlayerId = 36,
                             Points = -1.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 144,
                             PlayerId = 36,
                             Points = 13.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 145,
                             PlayerId = 37,
                             Points = 12f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 146,
                             PlayerId = 37,
                             Points = 9.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 147,
                             PlayerId = 37,
                             Points = 17.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 148,
                             PlayerId = 37,
                             Points = 19.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 149,
                             PlayerId = 38,
                             Points = -1.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 150,
                             PlayerId = 38,
                             Points = 12.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 151,
                             PlayerId = 38,
                             Points = 6.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 152,
                             PlayerId = 38,
                             Points = 3.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 153,
                             PlayerId = 39,
                             Points = 18.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 154,
                             PlayerId = 39,
                             Points = 19.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 155,
                             PlayerId = 39,
                             Points = -1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 156,
                             PlayerId = 39,
                             Points = 18.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 157,
                             PlayerId = 40,
                             Points = 5.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 158,
                             PlayerId = 40,
                             Points = 9.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 159,
                             PlayerId = 40,
                             Points = 15.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 160,
                             PlayerId = 40,
                             Points = 18.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 161,
                             PlayerId = 41,
                             Points = 8.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 162,
                             PlayerId = 41,
                             Points = 14.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 163,
                             PlayerId = 41,
                             Points = 15.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 164,
                             PlayerId = 41,
                             Points = 16.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 165,
                             PlayerId = 42,
                             Points = 3.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 166,
                             PlayerId = 42,
                             Points = 16.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 167,
                             PlayerId = 42,
                             Points = 19.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 168,
                             PlayerId = 42,
                             Points = 4.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 169,
                             PlayerId = 43,
                             Points = 2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 170,
                             PlayerId = 43,
                             Points = 12f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 171,
                             PlayerId = 43,
                             Points = 2.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 172,
                             PlayerId = 43,
                             Points = -1.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 173,
                             PlayerId = 44,
                             Points = -0.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 174,
                             PlayerId = 44,
                             Points = 4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 175,
                             PlayerId = 44,
                             Points = 3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 176,
                             PlayerId = 44,
                             Points = 13f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 177,
                             PlayerId = 45,
                             Points = 13.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 178,
                             PlayerId = 45,
                             Points = 14.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 179,
                             PlayerId = 45,
                             Points = 16.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 180,
                             PlayerId = 45,
                             Points = 14.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 181,
                             PlayerId = 46,
                             Points = 2.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 182,
                             PlayerId = 46,
                             Points = 10.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 183,
                             PlayerId = 46,
                             Points = 14.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 184,
                             PlayerId = 46,
                             Points = 15.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 185,
                             PlayerId = 47,
                             Points = 13.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 186,
                             PlayerId = 47,
                             Points = 14.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 187,
                             PlayerId = 47,
                             Points = -0.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 188,
                             PlayerId = 47,
                             Points = -1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 189,
                             PlayerId = 48,
                             Points = 2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 190,
                             PlayerId = 48,
                             Points = 3.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 191,
                             PlayerId = 48,
                             Points = 2.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 192,
                             PlayerId = 48,
                             Points = 11f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 193,
                             PlayerId = 49,
                             Points = -1.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 194,
                             PlayerId = 49,
                             Points = 7.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 195,
                             PlayerId = 49,
                             Points = 11f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 196,
                             PlayerId = 49,
                             Points = 12.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 197,
                             PlayerId = 50,
                             Points = 8.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 198,
                             PlayerId = 50,
                             Points = 3.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 199,
                             PlayerId = 50,
                             Points = 4.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 200,
                             PlayerId = 50,
                             Points = 19.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 201,
                             PlayerId = 51,
                             Points = 13.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 202,
                             PlayerId = 51,
                             Points = -2.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 203,
                             PlayerId = 51,
                             Points = 12.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 204,
                             PlayerId = 51,
                             Points = 18.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 205,
                             PlayerId = 52,
                             Points = 18.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 206,
                             PlayerId = 52,
                             Points = -0.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 207,
                             PlayerId = 52,
                             Points = 3.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 208,
                             PlayerId = 52,
                             Points = 15.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 209,
                             PlayerId = 53,
                             Points = -2.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 210,
                             PlayerId = 53,
                             Points = 1.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 211,
                             PlayerId = 53,
                             Points = 19.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 212,
                             PlayerId = 53,
                             Points = 7.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 213,
                             PlayerId = 54,
                             Points = 0.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 214,
                             PlayerId = 54,
                             Points = 0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 215,
                             PlayerId = 54,
                             Points = 1.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 216,
                             PlayerId = 54,
                             Points = -2.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 217,
                             PlayerId = 55,
                             Points = 0.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 218,
                             PlayerId = 55,
                             Points = -3.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 219,
                             PlayerId = 55,
                             Points = 3.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 220,
                             PlayerId = 55,
                             Points = 14.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 221,
                             PlayerId = 56,
                             Points = -4.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 222,
                             PlayerId = 56,
                             Points = 14.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 223,
                             PlayerId = 56,
                             Points = 18.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 224,
                             PlayerId = 56,
                             Points = -3.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 225,
                             PlayerId = 57,
                             Points = 15f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 226,
                             PlayerId = 57,
                             Points = 7.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 227,
                             PlayerId = 57,
                             Points = -3.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 228,
                             PlayerId = 57,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 229,
                             PlayerId = 58,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 230,
                             PlayerId = 58,
                             Points = 13f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 231,
                             PlayerId = 58,
                             Points = 14.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 232,
                             PlayerId = 58,
                             Points = -0.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 233,
                             PlayerId = 59,
                             Points = 17.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 234,
                             PlayerId = 59,
                             Points = 16.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 235,
                             PlayerId = 59,
                             Points = -0.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 236,
                             PlayerId = 59,
                             Points = 16.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 237,
                             PlayerId = 60,
                             Points = 15.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 238,
                             PlayerId = 60,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 239,
                             PlayerId = 60,
                             Points = 6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 240,
                             PlayerId = 60,
                             Points = 2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 241,
                             PlayerId = 61,
                             Points = -0.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 242,
                             PlayerId = 61,
                             Points = 9.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 243,
                             PlayerId = 61,
                             Points = 4.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 244,
                             PlayerId = 61,
                             Points = 15.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 245,
                             PlayerId = 62,
                             Points = 17.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 246,
                             PlayerId = 62,
                             Points = 14.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 247,
                             PlayerId = 62,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 248,
                             PlayerId = 62,
                             Points = -0.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 249,
                             PlayerId = 63,
                             Points = 7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 250,
                             PlayerId = 63,
                             Points = 15.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 251,
                             PlayerId = 63,
                             Points = 15.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 252,
                             PlayerId = 63,
                             Points = 5.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 253,
                             PlayerId = 64,
                             Points = 4.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 254,
                             PlayerId = 64,
                             Points = 19.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 255,
                             PlayerId = 64,
                             Points = 9.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 256,
                             PlayerId = 64,
                             Points = 6.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 257,
                             PlayerId = 65,
                             Points = 10.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 258,
                             PlayerId = 65,
                             Points = -4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 259,
                             PlayerId = 65,
                             Points = -0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 260,
                             PlayerId = 65,
                             Points = 10.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 261,
                             PlayerId = 66,
                             Points = 10.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 262,
                             PlayerId = 66,
                             Points = -0.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 263,
                             PlayerId = 66,
                             Points = 6.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 264,
                             PlayerId = 66,
                             Points = 15.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 265,
                             PlayerId = 67,
                             Points = 8.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 266,
                             PlayerId = 67,
                             Points = 7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 267,
                             PlayerId = 67,
                             Points = 19.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 268,
                             PlayerId = 67,
                             Points = 15.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 269,
                             PlayerId = 68,
                             Points = -3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 270,
                             PlayerId = 68,
                             Points = 15f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 271,
                             PlayerId = 68,
                             Points = 3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 272,
                             PlayerId = 68,
                             Points = 6.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 273,
                             PlayerId = 69,
                             Points = 17.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 274,
                             PlayerId = 69,
                             Points = -4.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 275,
                             PlayerId = 69,
                             Points = 8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 276,
                             PlayerId = 69,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 277,
                             PlayerId = 70,
                             Points = 10.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 278,
                             PlayerId = 70,
                             Points = 12.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 279,
                             PlayerId = 70,
                             Points = 14.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 280,
                             PlayerId = 70,
                             Points = 9.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 281,
                             PlayerId = 71,
                             Points = 4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 282,
                             PlayerId = 71,
                             Points = 0.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 283,
                             PlayerId = 71,
                             Points = 9.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 284,
                             PlayerId = 71,
                             Points = 10.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 285,
                             PlayerId = 72,
                             Points = 10.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 286,
                             PlayerId = 72,
                             Points = -3.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 287,
                             PlayerId = 72,
                             Points = -3.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 288,
                             PlayerId = 72,
                             Points = 19.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 289,
                             PlayerId = 73,
                             Points = 14.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 290,
                             PlayerId = 73,
                             Points = 9.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 291,
                             PlayerId = 73,
                             Points = 1.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 292,
                             PlayerId = 73,
                             Points = 10.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 293,
                             PlayerId = 74,
                             Points = 3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 294,
                             PlayerId = 74,
                             Points = 17.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 295,
                             PlayerId = 74,
                             Points = 15.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 296,
                             PlayerId = 74,
                             Points = 5.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 297,
                             PlayerId = 75,
                             Points = 4.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 298,
                             PlayerId = 75,
                             Points = -1.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 299,
                             PlayerId = 75,
                             Points = 7.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 300,
                             PlayerId = 75,
                             Points = 16f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 301,
                             PlayerId = 76,
                             Points = 10.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 302,
                             PlayerId = 76,
                             Points = -1.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 303,
                             PlayerId = 76,
                             Points = 16.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 304,
                             PlayerId = 76,
                             Points = 4.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 305,
                             PlayerId = 77,
                             Points = -0.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 306,
                             PlayerId = 77,
                             Points = 4.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 307,
                             PlayerId = 77,
                             Points = 19.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 308,
                             PlayerId = 77,
                             Points = 17.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 309,
                             PlayerId = 78,
                             Points = 18.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 310,
                             PlayerId = 78,
                             Points = 19.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 311,
                             PlayerId = 78,
                             Points = 4.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 312,
                             PlayerId = 78,
                             Points = 5.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 313,
                             PlayerId = 79,
                             Points = 12f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 314,
                             PlayerId = 79,
                             Points = 18.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 315,
                             PlayerId = 79,
                             Points = 12.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 316,
                             PlayerId = 79,
                             Points = 0.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 317,
                             PlayerId = 80,
                             Points = -2.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 318,
                             PlayerId = 80,
                             Points = -1.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 319,
                             PlayerId = 80,
                             Points = 15.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 320,
                             PlayerId = 80,
                             Points = 14f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 321,
                             PlayerId = 81,
                             Points = 19.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 322,
                             PlayerId = 81,
                             Points = -5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 323,
                             PlayerId = 81,
                             Points = 13.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 324,
                             PlayerId = 81,
                             Points = 0.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 325,
                             PlayerId = 82,
                             Points = 8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 326,
                             PlayerId = 82,
                             Points = 1.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 327,
                             PlayerId = 82,
                             Points = 10.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 328,
                             PlayerId = 82,
                             Points = 3.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 329,
                             PlayerId = 83,
                             Points = 19.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 330,
                             PlayerId = 83,
                             Points = 2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 331,
                             PlayerId = 83,
                             Points = 13.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 332,
                             PlayerId = 83,
                             Points = 15.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 333,
                             PlayerId = 84,
                             Points = -3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 334,
                             PlayerId = 84,
                             Points = 11.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 335,
                             PlayerId = 84,
                             Points = 1.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 336,
                             PlayerId = 84,
                             Points = -4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 337,
                             PlayerId = 85,
                             Points = 5.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 338,
                             PlayerId = 85,
                             Points = 15.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 339,
                             PlayerId = 85,
                             Points = 15.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 340,
                             PlayerId = 85,
                             Points = 18.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 341,
                             PlayerId = 86,
                             Points = 17.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 342,
                             PlayerId = 86,
                             Points = 11.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 343,
                             PlayerId = 86,
                             Points = 4.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 344,
                             PlayerId = 86,
                             Points = 12.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 345,
                             PlayerId = 87,
                             Points = 11.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 346,
                             PlayerId = 87,
                             Points = 15.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 347,
                             PlayerId = 87,
                             Points = 14.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 348,
                             PlayerId = 87,
                             Points = 3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 349,
                             PlayerId = 88,
                             Points = 7.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 350,
                             PlayerId = 88,
                             Points = 11.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 351,
                             PlayerId = 88,
                             Points = 14.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 352,
                             PlayerId = 88,
                             Points = 18.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 353,
                             PlayerId = 89,
                             Points = -4.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 354,
                             PlayerId = 89,
                             Points = 4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 355,
                             PlayerId = 89,
                             Points = -1.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 356,
                             PlayerId = 89,
                             Points = -4.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 357,
                             PlayerId = 90,
                             Points = 1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 358,
                             PlayerId = 90,
                             Points = 3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 359,
                             PlayerId = 90,
                             Points = 13f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 360,
                             PlayerId = 90,
                             Points = 11.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 361,
                             PlayerId = 91,
                             Points = 11.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 362,
                             PlayerId = 91,
                             Points = 1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 363,
                             PlayerId = 91,
                             Points = 18.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 364,
                             PlayerId = 91,
                             Points = 15.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 365,
                             PlayerId = 92,
                             Points = 7.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 366,
                             PlayerId = 92,
                             Points = 6.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 367,
                             PlayerId = 92,
                             Points = 11.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 368,
                             PlayerId = 92,
                             Points = -2.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 369,
                             PlayerId = 93,
                             Points = 5.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 370,
                             PlayerId = 93,
                             Points = 13.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 371,
                             PlayerId = 93,
                             Points = 14.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 372,
                             PlayerId = 93,
                             Points = 11.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 373,
                             PlayerId = 94,
                             Points = 15.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 374,
                             PlayerId = 94,
                             Points = -5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 375,
                             PlayerId = 94,
                             Points = 14.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 376,
                             PlayerId = 94,
                             Points = 14.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 377,
                             PlayerId = 95,
                             Points = 10.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 378,
                             PlayerId = 95,
                             Points = -2.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 379,
                             PlayerId = 95,
                             Points = 2.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 380,
                             PlayerId = 95,
                             Points = 14.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 381,
                             PlayerId = 96,
                             Points = 18.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 382,
                             PlayerId = 96,
                             Points = 17.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 383,
                             PlayerId = 96,
                             Points = 13.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 384,
                             PlayerId = 96,
                             Points = 3.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 385,
                             PlayerId = 97,
                             Points = 10.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 386,
                             PlayerId = 97,
                             Points = 13.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 387,
                             PlayerId = 97,
                             Points = 5.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 388,
                             PlayerId = 97,
                             Points = 18f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 389,
                             PlayerId = 98,
                             Points = 6.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 390,
                             PlayerId = 98,
                             Points = 17.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 391,
                             PlayerId = 98,
                             Points = -3.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 392,
                             PlayerId = 98,
                             Points = -2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 393,
                             PlayerId = 99,
                             Points = -0.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 394,
                             PlayerId = 99,
                             Points = 16.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 395,
                             PlayerId = 99,
                             Points = -4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 396,
                             PlayerId = 99,
                             Points = 9.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 397,
                             PlayerId = 100,
                             Points = 13.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 398,
                             PlayerId = 100,
                             Points = 8.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 399,
                             PlayerId = 100,
                             Points = -0.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 400,
                             PlayerId = 100,
                             Points = -4.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 401,
                             PlayerId = 101,
                             Points = -3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 402,
                             PlayerId = 101,
                             Points = -2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 403,
                             PlayerId = 101,
                             Points = 4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 404,
                             PlayerId = 101,
                             Points = 7.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 405,
                             PlayerId = 102,
                             Points = 16f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 406,
                             PlayerId = 102,
                             Points = 2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 407,
                             PlayerId = 102,
                             Points = 10.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 408,
                             PlayerId = 102,
                             Points = 8.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 409,
                             PlayerId = 103,
                             Points = 18.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 410,
                             PlayerId = 103,
                             Points = 7.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 411,
                             PlayerId = 103,
                             Points = -1.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 412,
                             PlayerId = 103,
                             Points = 3.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 413,
                             PlayerId = 104,
                             Points = 19.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 414,
                             PlayerId = 104,
                             Points = -1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 415,
                             PlayerId = 104,
                             Points = 4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 416,
                             PlayerId = 104,
                             Points = 16.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 417,
                             PlayerId = 105,
                             Points = -2.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 418,
                             PlayerId = 105,
                             Points = 11.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 419,
                             PlayerId = 105,
                             Points = 14.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 420,
                             PlayerId = 105,
                             Points = 15.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 421,
                             PlayerId = 106,
                             Points = 4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 422,
                             PlayerId = 106,
                             Points = -2.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 423,
                             PlayerId = 106,
                             Points = 13.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 424,
                             PlayerId = 106,
                             Points = 0.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 425,
                             PlayerId = 107,
                             Points = 13.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 426,
                             PlayerId = 107,
                             Points = 7.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 427,
                             PlayerId = 107,
                             Points = 2.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 428,
                             PlayerId = 107,
                             Points = 5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 429,
                             PlayerId = 108,
                             Points = 0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 430,
                             PlayerId = 108,
                             Points = 1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 431,
                             PlayerId = 108,
                             Points = 8.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 432,
                             PlayerId = 108,
                             Points = 15.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 433,
                             PlayerId = 109,
                             Points = -1.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 434,
                             PlayerId = 109,
                             Points = 2.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 435,
                             PlayerId = 109,
                             Points = 15.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 436,
                             PlayerId = 109,
                             Points = -4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 437,
                             PlayerId = 110,
                             Points = 13.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 438,
                             PlayerId = 110,
                             Points = 15.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 439,
                             PlayerId = 110,
                             Points = 13.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 440,
                             PlayerId = 110,
                             Points = 18.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 441,
                             PlayerId = 111,
                             Points = 5.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 442,
                             PlayerId = 111,
                             Points = 16.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 443,
                             PlayerId = 111,
                             Points = 9.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 444,
                             PlayerId = 111,
                             Points = 0.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 445,
                             PlayerId = 112,
                             Points = 16.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 446,
                             PlayerId = 112,
                             Points = 8.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 447,
                             PlayerId = 112,
                             Points = 5.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 448,
                             PlayerId = 112,
                             Points = 0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 449,
                             PlayerId = 113,
                             Points = 6.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 450,
                             PlayerId = 113,
                             Points = 4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 451,
                             PlayerId = 113,
                             Points = -3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 452,
                             PlayerId = 113,
                             Points = 18.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 453,
                             PlayerId = 114,
                             Points = -1.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 454,
                             PlayerId = 114,
                             Points = 0.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 455,
                             PlayerId = 114,
                             Points = 2.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 456,
                             PlayerId = 114,
                             Points = 1.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 457,
                             PlayerId = 115,
                             Points = 18.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 458,
                             PlayerId = 115,
                             Points = 4.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 459,
                             PlayerId = 115,
                             Points = 16.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 460,
                             PlayerId = 115,
                             Points = 8.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 461,
                             PlayerId = 116,
                             Points = 4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 462,
                             PlayerId = 116,
                             Points = -1.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 463,
                             PlayerId = 116,
                             Points = 10.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 464,
                             PlayerId = 116,
                             Points = 18.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 465,
                             PlayerId = 117,
                             Points = 16.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 466,
                             PlayerId = 117,
                             Points = 3.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 467,
                             PlayerId = 117,
                             Points = 0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 468,
                             PlayerId = 117,
                             Points = -3.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 469,
                             PlayerId = 118,
                             Points = 19.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 470,
                             PlayerId = 118,
                             Points = 13.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 471,
                             PlayerId = 118,
                             Points = 19.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 472,
                             PlayerId = 118,
                             Points = 12.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 473,
                             PlayerId = 119,
                             Points = 9.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 474,
                             PlayerId = 119,
                             Points = 19.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 475,
                             PlayerId = 119,
                             Points = 3.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 476,
                             PlayerId = 119,
                             Points = -2.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 477,
                             PlayerId = 120,
                             Points = 10.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 478,
                             PlayerId = 120,
                             Points = 10.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 479,
                             PlayerId = 120,
                             Points = 6.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 480,
                             PlayerId = 120,
                             Points = -4.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 481,
                             PlayerId = 121,
                             Points = -3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 482,
                             PlayerId = 121,
                             Points = 1.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 483,
                             PlayerId = 121,
                             Points = 19.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 484,
                             PlayerId = 121,
                             Points = 15.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 485,
                             PlayerId = 122,
                             Points = 9.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 486,
                             PlayerId = 122,
                             Points = 4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 487,
                             PlayerId = 122,
                             Points = -2.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 488,
                             PlayerId = 122,
                             Points = 8.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 489,
                             PlayerId = 123,
                             Points = -4.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 490,
                             PlayerId = 123,
                             Points = 15f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 491,
                             PlayerId = 123,
                             Points = 14f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 492,
                             PlayerId = 123,
                             Points = 9.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 493,
                             PlayerId = 124,
                             Points = 8.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 494,
                             PlayerId = 124,
                             Points = 2.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 495,
                             PlayerId = 124,
                             Points = 5.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 496,
                             PlayerId = 124,
                             Points = 16f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 497,
                             PlayerId = 125,
                             Points = 13.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 498,
                             PlayerId = 125,
                             Points = 15.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 499,
                             PlayerId = 125,
                             Points = -0.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 500,
                             PlayerId = 125,
                             Points = 8.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 501,
                             PlayerId = 126,
                             Points = -0.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 502,
                             PlayerId = 126,
                             Points = -2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 503,
                             PlayerId = 126,
                             Points = -4.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 504,
                             PlayerId = 126,
                             Points = 1.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 505,
                             PlayerId = 127,
                             Points = 20f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 506,
                             PlayerId = 127,
                             Points = 4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 507,
                             PlayerId = 127,
                             Points = -1.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 508,
                             PlayerId = 127,
                             Points = -1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 509,
                             PlayerId = 128,
                             Points = 3.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 510,
                             PlayerId = 128,
                             Points = 5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 511,
                             PlayerId = 128,
                             Points = -3.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 512,
                             PlayerId = 128,
                             Points = 0f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 513,
                             PlayerId = 129,
                             Points = -5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 514,
                             PlayerId = 129,
                             Points = 3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 515,
                             PlayerId = 129,
                             Points = 18.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 516,
                             PlayerId = 129,
                             Points = 7.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 517,
                             PlayerId = 130,
                             Points = 11.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 518,
                             PlayerId = 130,
                             Points = 2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 519,
                             PlayerId = 130,
                             Points = 8.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 520,
                             PlayerId = 130,
                             Points = 19.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 521,
                             PlayerId = 131,
                             Points = 3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 522,
                             PlayerId = 131,
                             Points = 9.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 523,
                             PlayerId = 131,
                             Points = 4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 524,
                             PlayerId = 131,
                             Points = 15.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 525,
                             PlayerId = 132,
                             Points = 11.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 526,
                             PlayerId = 132,
                             Points = 9.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 527,
                             PlayerId = 132,
                             Points = 12.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 528,
                             PlayerId = 132,
                             Points = 6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 529,
                             PlayerId = 133,
                             Points = 10.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 530,
                             PlayerId = 133,
                             Points = 14.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 531,
                             PlayerId = 133,
                             Points = 14.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 532,
                             PlayerId = 133,
                             Points = 15.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 533,
                             PlayerId = 134,
                             Points = 10f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 534,
                             PlayerId = 134,
                             Points = 0.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 535,
                             PlayerId = 134,
                             Points = 5.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 536,
                             PlayerId = 134,
                             Points = 10.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 537,
                             PlayerId = 135,
                             Points = 11.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 538,
                             PlayerId = 135,
                             Points = -4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 539,
                             PlayerId = 135,
                             Points = 5.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 540,
                             PlayerId = 135,
                             Points = 2.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 541,
                             PlayerId = 136,
                             Points = 12.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 542,
                             PlayerId = 136,
                             Points = -2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 543,
                             PlayerId = 136,
                             Points = 15.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 544,
                             PlayerId = 136,
                             Points = 14.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 545,
                             PlayerId = 137,
                             Points = 12.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 546,
                             PlayerId = 137,
                             Points = 18.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 547,
                             PlayerId = 137,
                             Points = -4.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 548,
                             PlayerId = 137,
                             Points = 12.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 549,
                             PlayerId = 138,
                             Points = 6.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 550,
                             PlayerId = 138,
                             Points = -1.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 551,
                             PlayerId = 138,
                             Points = -1.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 552,
                             PlayerId = 138,
                             Points = 9.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 553,
                             PlayerId = 139,
                             Points = 7.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 554,
                             PlayerId = 139,
                             Points = 7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 555,
                             PlayerId = 139,
                             Points = 0.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 556,
                             PlayerId = 139,
                             Points = 13.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 557,
                             PlayerId = 140,
                             Points = 8.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 558,
                             PlayerId = 140,
                             Points = 18.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 559,
                             PlayerId = 140,
                             Points = 11.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 560,
                             PlayerId = 140,
                             Points = 11.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 561,
                             PlayerId = 141,
                             Points = 11.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 562,
                             PlayerId = 141,
                             Points = -2.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 563,
                             PlayerId = 141,
                             Points = 5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 564,
                             PlayerId = 141,
                             Points = 11.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 565,
                             PlayerId = 142,
                             Points = 11.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 566,
                             PlayerId = 142,
                             Points = 11.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 567,
                             PlayerId = 142,
                             Points = 9.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 568,
                             PlayerId = 142,
                             Points = 9.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 569,
                             PlayerId = 143,
                             Points = -4.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 570,
                             PlayerId = 143,
                             Points = 4.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 571,
                             PlayerId = 143,
                             Points = 11.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 572,
                             PlayerId = 143,
                             Points = 6.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 573,
                             PlayerId = 144,
                             Points = 14.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 574,
                             PlayerId = 144,
                             Points = 13.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 575,
                             PlayerId = 144,
                             Points = 14.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 576,
                             PlayerId = 144,
                             Points = -4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 577,
                             PlayerId = 145,
                             Points = 7.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 578,
                             PlayerId = 145,
                             Points = 8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 579,
                             PlayerId = 145,
                             Points = 4f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 580,
                             PlayerId = 145,
                             Points = -4.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 581,
                             PlayerId = 146,
                             Points = 17.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 582,
                             PlayerId = 146,
                             Points = -2.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 583,
                             PlayerId = 146,
                             Points = 16.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 584,
                             PlayerId = 146,
                             Points = 5.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 585,
                             PlayerId = 147,
                             Points = 6.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 586,
                             PlayerId = 147,
                             Points = -4.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 587,
                             PlayerId = 147,
                             Points = 11.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 588,
                             PlayerId = 147,
                             Points = 0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 589,
                             PlayerId = 148,
                             Points = 18.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 590,
                             PlayerId = 148,
                             Points = -3.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 591,
                             PlayerId = 148,
                             Points = 12.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 592,
                             PlayerId = 148,
                             Points = -2.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 593,
                             PlayerId = 149,
                             Points = 18.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 594,
                             PlayerId = 149,
                             Points = -4.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 595,
                             PlayerId = 149,
                             Points = 5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 596,
                             PlayerId = 149,
                             Points = 2.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 597,
                             PlayerId = 150,
                             Points = 9.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 598,
                             PlayerId = 150,
                             Points = 5.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 599,
                             PlayerId = 150,
                             Points = 11.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 600,
                             PlayerId = 150,
                             Points = 8.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 601,
                             PlayerId = 151,
                             Points = 6.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 602,
                             PlayerId = 151,
                             Points = 11.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 603,
                             PlayerId = 151,
                             Points = 19.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 604,
                             PlayerId = 151,
                             Points = 16.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 605,
                             PlayerId = 152,
                             Points = 7.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 606,
                             PlayerId = 152,
                             Points = -2.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 607,
                             PlayerId = 152,
                             Points = 16.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 608,
                             PlayerId = 152,
                             Points = 2.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 609,
                             PlayerId = 153,
                             Points = -1.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 610,
                             PlayerId = 153,
                             Points = 19.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 611,
                             PlayerId = 153,
                             Points = -1.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 612,
                             PlayerId = 153,
                             Points = 6.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 613,
                             PlayerId = 154,
                             Points = 2.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 614,
                             PlayerId = 154,
                             Points = 12.4f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 615,
                             PlayerId = 154,
                             Points = -4.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 616,
                             PlayerId = 154,
                             Points = 15.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 617,
                             PlayerId = 155,
                             Points = -2.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 618,
                             PlayerId = 155,
                             Points = 11.7f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 619,
                             PlayerId = 155,
                             Points = -0.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 620,
                             PlayerId = 155,
                             Points = 4.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 621,
                             PlayerId = 156,
                             Points = 4.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 622,
                             PlayerId = 156,
                             Points = 18.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 623,
                             PlayerId = 156,
                             Points = 6.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 624,
                             PlayerId = 156,
                             Points = 9.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 625,
                             PlayerId = 157,
                             Points = 5.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 626,
                             PlayerId = 157,
                             Points = 17f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 627,
                             PlayerId = 157,
                             Points = 6.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 628,
                             PlayerId = 157,
                             Points = 7.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 629,
                             PlayerId = 158,
                             Points = 13.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 630,
                             PlayerId = 158,
                             Points = 1.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 631,
                             PlayerId = 158,
                             Points = 17.5f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 632,
                             PlayerId = 158,
                             Points = 7.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 633,
                             PlayerId = 159,
                             Points = 11.9f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 634,
                             PlayerId = 159,
                             Points = 11.3f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 635,
                             PlayerId = 159,
                             Points = -4.6f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 636,
                             PlayerId = 159,
                             Points = -4.2f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 637,
                             PlayerId = 160,
                             Points = -5f,
-                            SeasonId = 1,
-                            SeasonWeek = 1
+                            SeasonWeek = 1,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 638,
                             PlayerId = 160,
                             Points = 11f,
-                            SeasonId = 1,
-                            SeasonWeek = 2
+                            SeasonWeek = 2,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 639,
                             PlayerId = 160,
                             Points = 3.8f,
-                            SeasonId = 1,
-                            SeasonWeek = 3
+                            SeasonWeek = 3,
+                            SeasonYear = 2025
                         },
                         new
                         {
                             ScoringId = 640,
                             PlayerId = 160,
                             Points = 12.1f,
-                            SeasonId = 1,
-                            SeasonWeek = 4
+                            SeasonWeek = 4,
+                            SeasonYear = 2025
                         });
                 });
 
@@ -9285,6 +8105,18 @@ namespace FantasyGolfball.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("SeasonId"));
+
+                    b.Property<int>("Advancement")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("LastRecordedWeek")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("RealSeason")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("SeasonStartDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("SeasonYear")
                         .HasColumnType("integer");
@@ -9297,6 +8129,10 @@ namespace FantasyGolfball.Migrations
                         new
                         {
                             SeasonId = 1,
+                            Advancement = 0,
+                            LastRecordedWeek = 1,
+                            RealSeason = false,
+                            SeasonStartDate = new DateTime(2025, 3, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             SeasonYear = 2025
                         });
                 });
@@ -9687,13 +8523,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f9476c0c-3a81-4432-872b-b65121dee51a",
+                            ConcurrencyStamp = "3205a74c-504f-498a-98dd-c6272fe313e1",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHPcL/VAO/VxcQnnOsuP1UfKSrbmSlY8WhcCCh9pvJ2NM2aoi9rKpmkyAlVd+slOwQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG6k1wuV+WNxIkaKw/Ji0g1uKp1pKuRCkb6lhlcvzyamUhCZK/BjGrNMCUYCDolo4Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f357d0a9-5aa9-4ba4-b7d8-54ac0e49a69a",
+                            SecurityStamp = "6e2d7c53-2344-49b5-861a-69947f6621ae",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
@@ -9888,26 +8724,13 @@ namespace FantasyGolfball.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FantasyGolfball.Models.Status", null)
-                        .WithMany("Players")
-                        .HasForeignKey("StatusId");
-
-                    b.Navigation("Position");
-                });
-
-            modelBuilder.Entity("FantasyGolfball.Models.PlayerStatus", b =>
-                {
-                    b.HasOne("FantasyGolfball.Models.Player", null)
-                        .WithMany("PlayerStatuses")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("FantasyGolfball.Models.Status", "Status")
-                        .WithMany()
+                        .WithMany("Players")
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Position");
 
                     b.Navigation("Status");
                 });
@@ -10027,8 +8850,6 @@ namespace FantasyGolfball.Migrations
 
             modelBuilder.Entity("FantasyGolfball.Models.Player", b =>
                 {
-                    b.Navigation("PlayerStatuses");
-
                     b.Navigation("PlayerTeams");
 
                     b.Navigation("RosterPlayers");

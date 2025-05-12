@@ -60,14 +60,11 @@ public class DraftService : IDraftService
 
             var availablePlayers = await dbContext.Players
                 .Where(p => !p.RosterPlayers.Any(rp => rp.Roster.LeagueId == leagueId))
-                .Include(p => p.Status)
-                .Include(p => p.Position)
                 .Select(p => new PlayerFullExpandDTO
                 {
                     PlayerId = p.PlayerId,
                     PlayerFirstName = p.PlayerFirstName,
                     PlayerLastName = p.PlayerLastName,
-                    StatusId = p.StatusId,
                     PositionId = p.PositionId,
                     Position = new PositionDTO
                     {
@@ -75,13 +72,20 @@ public class DraftService : IDraftService
                         PositionShort = p.Position.PositionShort,
                         PositionLong = p.Position.PositionLong
                     },
-                    Status = new StatusDTO
+                    PlayerStatuses = p.PlayerStatuses.Select(ps => new PlayerStatusDTO
                     {
-                        StatusId = p.Status.StatusId,
-                        StatusType = p.Status.StatusType,
-                        ViableToPlay = p.Status.ViableToPlay,
-                        RequiresBackup = p.Status.RequiresBackup
-                    }
+                        PlayerStatusId = ps.PlayerStatusId,
+                        PlayerId = ps.PlayerId,
+                        StatusId = ps.StatusId,
+                        StatusStartWeek = ps.StatusStartWeek,
+                        Status = new StatusDTO
+                        {
+                            StatusId = ps.Status.StatusId,
+                            StatusType = ps.Status.StatusType,
+                            ViableToPlay = ps.Status.ViableToPlay,
+                            RequiresBackup = ps.Status.RequiresBackup
+                        }
+                    }).ToList(),
                 })
                 .ToListAsync();
             
@@ -160,16 +164,30 @@ public class DraftService : IDraftService
     {
         using var dbContext = GetDbContext();
 
+        var draftState = await GetDraftState(leagueId);
+        if (draftState == null)
+        {
+            throw new Exception($"Draft state not found for league {leagueId} in CompleteDraft");
+        }
+
         var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == leagueId);
         if (league == null)
         {
             throw new Exception($"League {leagueId} not found");
         }
 
+        var SavedDraftState = new HistoricalDraftState
+        {
+            LeagueId = draftState.LeagueId,
+            PermanentDraftOrder = draftState.PermanentDraftOrder,
+            UserRosters = draftState.UserRosters
+        };
+
+        dbContext.HistoricalDraftStates.Add(SavedDraftState);
         league.IsDraftComplete = true;
         await dbContext.SaveChangesAsync();
 
-        Console.WriteLine($"Draft for League {leagueId} marked as completed.");
+        Console.WriteLine($"Draft for League {leagueId} marked as completed. Historical DraftState saved.");
 
         // publish event
         try
