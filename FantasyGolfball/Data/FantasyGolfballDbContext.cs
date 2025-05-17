@@ -150,7 +150,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             new Status
             {
                 StatusId = 1,
-                StatusType = "Green",
+                StatusType = "Healthy",
                 ViableToPlay = true,
                 RequiresBackup = false
             },

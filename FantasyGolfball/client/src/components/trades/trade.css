@@ -1,0 +1,61 @@
+.trade-form-container {
+    padding: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.trade-form-selects-container {
+    display: flex;
+    gap: 2rem; /* spacing between the two columns */
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 1em;
+}
+
+.trade-form-selects-container > div {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.trade-player-card {
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.trade-player-info {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    margin-right: .5rem;
+}
+
+.trade-remove-button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+    background-color: #dc3545;
+}
+
+.trade-remove-button:hover {
+    background-color: #c82333;
+}
+
+.trade-form-inputs-box {
+    min-height: 150px;
+}
+
+.trade-form-finalize-button {
+    background-color: rgba(0, 128, 0, 0.855);
+}
+
+.trade-form-finalize-button:hover {
+    background-color: green
+}
