@@ -14,6 +14,7 @@ import { MainPage } from "./MainPage";
 import { FaqPage } from "./rule-faq/FaqPage";
 import { RecapDraft } from "./draft/RecapDraft";
 import { TradeForm } from "./trades/TradeForm";
+import { TradePage } from "./trades/TradePage";
 
 
 export default function ApplicationViews() {
@@ -98,6 +99,14 @@ export default function ApplicationViews() {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <TradeForm />
+            </AuthorizedRoute>
+          }
+        />
+        <Route 
+          path="trades"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <TradePage />
             </AuthorizedRoute>
           }
         />

@@ -1,6 +1,6 @@
-namespace FantasyGolfball.Models;
+namespace FantasyGolfball.Models.DTOs;
 
-public class TradePlayer
+public class TradePlayerDTO
 {
     public int TradePlayerId { get; set; }
     public int TradeId { get; set; }

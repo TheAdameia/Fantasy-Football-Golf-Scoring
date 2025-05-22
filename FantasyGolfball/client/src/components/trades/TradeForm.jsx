@@ -3,6 +3,8 @@ import { useAppContext } from "../../contexts/AppContext"
 import { Input, Label, Spinner } from "reactstrap"
 import { TradePlayerCard } from "./TradePlayerCard"
 import "./trade.css"
+import { PostTrade } from "../../managers/tradeManager"
+import { useNavigate } from "react-router-dom"
 
 
 export const TradeForm = () => {
@@ -15,6 +17,24 @@ export const TradeForm = () => {
         secondPartyOffering: []
     })
     const [secondPartyRoster, setSecondPartyRoster] = useState()
+    const navigate = useNavigate()
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const newTrade = {...tradeOffer}
+
+        if (newTrade.firstPartyOffering.length < 1) {
+            window.alert("You must offer something in a trade!")
+            return
+        } else if (newTrade.secondPartyOffering.length < 1) {
+            window.alert("You must ask for something in a trade!")
+            return
+        } else {
+            PostTrade(newTrade).then(() => {
+                navigate("/")
+            })
+        }
+    }
 
     useEffect(() => {
         if (roster?.rosterId && selectedLeague) {
@@ -139,7 +159,7 @@ export const TradeForm = () => {
                         </div>
                     </div>
                 </div>
-                <button className="trade-form-finalize-button">Finalize Trade Offer</button>
+                <button className="trade-form-finalize-button" onClick={handleSubmit}>Finalize Trade Offer</button>
             </div>
         )
     } else {

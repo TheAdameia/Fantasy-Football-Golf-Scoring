@@ -45,30 +45,62 @@ public class TradeController : ControllerBase
             return BadRequest($"Error: SecondPartyRoster {tradePOSTDTO.SecondPartyRosterId} in Trade creation was null");
         }
 
+        var league = _dbContext.Leagues.SingleOrDefault(l => l.LeagueId == tradePOSTDTO.LeagueId);
+        int TradeWeek = 0;
+
+        if (league == null)
+        {
+            return BadRequest($"Error: League {tradePOSTDTO.LeagueId} not found for trade creation.");
+        }
+
+        if (league.CurrentWeek == null)
+        {
+            TradeWeek = 2;
+        }
+        else
+        {
+            TradeWeek = (int)league.CurrentWeek;
+        }
+
         // checks end
 
         var tradePlayers = new List<TradePlayer>();
 
-        foreach (var playerId in tradePOSTDTO.TradePieces)
+        foreach (var playerId in tradePOSTDTO.FirstPartyOffering)
         {
-            var fromFirstParty = FirstPartyRoster.RosterPlayers.Any(rp => rp.PlayerId == playerId);
-            var fromSecondParty = SecondPartyRoster.RosterPlayers.Any(rp => rp.PlayerId == playerId);
-
-            if (!fromFirstParty && !fromSecondParty)
+            var playerExists = FirstPartyRoster.RosterPlayers.Any(rp => rp.PlayerId == playerId);
+            if (!playerExists)
             {
-                return BadRequest($"PlayerId {playerId} not found on Roster {FirstPartyRoster.RosterId} or Roster {SecondPartyRoster.RosterId}.");
+                return BadRequest($"PlayerId {playerId} is not on Roster {FirstPartyRoster.RosterId}.");
             }
 
             var tradePlayer = new TradePlayer
             {
                 PlayerId = playerId,
-                GivingRosterId = fromFirstParty ? tradePOSTDTO.FirstPartyRosterId : tradePOSTDTO.SecondPartyRosterId,
-                ReceivingRosterId = fromFirstParty ? tradePOSTDTO.SecondPartyRosterId : tradePOSTDTO.FirstPartyRosterId
+                GivingRosterId = tradePOSTDTO.FirstPartyRosterId,
+                ReceivingRosterId = tradePOSTDTO.SecondPartyRosterId
             };
 
             tradePlayers.Add(tradePlayer);
         }
 
+        foreach (var playerId in tradePOSTDTO.SecondPartyOffering)
+        {
+            var playerExists = SecondPartyRoster.RosterPlayers.Any(rp => rp.PlayerId == playerId);
+            if (!playerExists)
+            {
+                return BadRequest($"PlayerId {playerId} is not on Roster {SecondPartyRoster.RosterId}.");
+            }
+
+            var tradePlayer = new TradePlayer
+            {
+                PlayerId = playerId,
+                GivingRosterId = tradePOSTDTO.SecondPartyRosterId,
+                ReceivingRosterId = tradePOSTDTO.FirstPartyRosterId
+            };
+
+            tradePlayers.Add(tradePlayer);
+        }
 
         var NewTrade = new Trade
         {
@@ -78,7 +110,7 @@ public class TradeController : ControllerBase
             FirstPartyAcceptance = true,
             SecondPartyAcceptance = false,
             TradeComplete = false,
-            WeekActivation = tradePOSTDTO.WeekActivation, // I have to think about how I want to do this one
+            WeekActivation = TradeWeek,
             TradePlayers = tradePlayers
         };
 
@@ -86,6 +118,48 @@ public class TradeController : ControllerBase
         _dbContext.SaveChanges();
 
         return Ok();
+    }
+
+    [HttpGet]
+    [Authorize]
+    public IActionResult GetByLeagueAndUser(int rosterId, int leagueId)
+    {
+        // checks start here
+        if (rosterId == 0 || leagueId == 0)
+        {
+            return BadRequest("One or both of rosterId, leagueId was 0 for Get Trades");
+        }
+
+        var userTrades = _dbContext.Trades
+            .Where(t => t.LeagueId == leagueId)
+            .Where(t => t.FirstPartyRosterId == rosterId || t.SecondPartyRosterId == rosterId)
+            .Where(t => t.TradeComplete == false)
+            .Select(t => new TradeDTO
+            {
+                TradeId = t.TradeId,
+                LeagueId = t.LeagueId,
+                FirstPartyRosterId = t.FirstPartyRosterId,
+                SecondPartyRosterId = t.SecondPartyRosterId,
+                FirstPartyAcceptance = t.FirstPartyAcceptance,
+                SecondPartyAcceptance = t.SecondPartyAcceptance,
+                WeekActivation = t.WeekActivation,
+                TradeComplete = t.TradeComplete,
+                TradePlayers = t.TradePlayers.Select(tp => new TradePlayerDTO
+                {
+                    TradePlayerId = tp.TradePlayerId,
+                    TradeId = tp.TradeId,
+                    GivingRosterId = tp.GivingRosterId,
+                    ReceivingRosterId = tp.ReceivingRosterId,
+                    PlayerId = tp.PlayerId
+                }).ToList()
+            });
+
+        if (userTrades == null)
+        {
+            return BadRequest($"No available trades found for Roster {rosterId} League {leagueId}");
+        }
+
+        return Ok(userTrades);
     }
     
 }

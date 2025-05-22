@@ -52,6 +52,11 @@ return (
                     </NavLink>
                 </NavItem>
                 <NavItem>
+                    <NavLink tag={RRNavLink} to="/trades">
+                        Trades
+                    </NavLink>
+                </NavItem>
+                <NavItem>
                     <NavLink tag={RRNavLink} to="/faq">
                         FAQ
                     </NavLink>

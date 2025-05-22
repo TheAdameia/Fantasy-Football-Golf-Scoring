@@ -4,6 +4,7 @@ import { GetAllPlayers } from '../managers/playerManager'
 import { GetMatchupsByLeague } from '../managers/matchupManager'
 import { GetAllScores } from '../managers/scoringManager'
 import { GetByUserAndLeague } from '../managers/rosterManager'
+import { GetTradesByLeagueAndUser } from '../managers/tradeManager'
 
 const AppContext = createContext()
 
@@ -15,6 +16,7 @@ export const AppProvider = ({ children }) => {
   const [players, setPlayers] = useState()
   const [matchups, setMatchups] = useState(null)
   const [allScores, setAllScores] = useState()
+  const [activeTrades, setActiveTrades] = useState()
 
   const getAndSetAllScores = () => {
     if (loggedInUser && selectedLeague) {
@@ -61,6 +63,12 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  const getAndSetTrades = () => {
+    if (loggedInUser != null && selectedLeague && roster) {
+      GetTradesByLeagueAndUser(roster.rosterId, selectedLeague.leagueId).then(setActiveTrades)
+    }
+  }
+
   useEffect(() => {
     tryGetLoggedInUser().then((user) => {
       setLoggedInUser(user)
@@ -100,6 +108,12 @@ export const AppProvider = ({ children }) => {
       getAndSetAllScores()
     }
   }, [loggedInUser, selectedLeague])
+
+  useEffect(() => {
+    if (loggedInUser != null && selectedLeague && roster) {
+      getAndSetTrades()
+    }
+  }, [loggedInUser, roster, selectedLeague])
   
   return (
     <AppContext.Provider value={{ 
@@ -114,7 +128,8 @@ export const AppProvider = ({ children }) => {
       setUserLeagues,
       selectedLeague,
       matchups,
-      allScores }}>
+      allScores,
+      activeTrades }}>
       {children}
     </AppContext.Provider>
   )

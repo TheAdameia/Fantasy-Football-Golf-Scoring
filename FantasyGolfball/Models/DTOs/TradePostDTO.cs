@@ -6,6 +6,6 @@ public class TradePOSTDTO
     public int LeagueId { get; set; }
     public int FirstPartyRosterId { get; set; }
     public int SecondPartyRosterId { get; set; }
-    public required List<int> TradePieces { get; set; }
-    public int WeekActivation { get; set; } // indicates when the trade will take effect
+    public required List<int> FirstPartyOffering { get; set; }
+    public required List<int> SecondPartyOffering { get; set; }
 }
