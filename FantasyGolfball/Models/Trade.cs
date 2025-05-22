@@ -10,4 +10,5 @@ public class Trade
     public int WeekActivation { get; set; } // indicates when the trade will take effect
     public bool FirstPartyAcceptance { get; set; }
     public bool SecondPartyAcceptance { get; set; }
+    public bool TradeComplete { get; set; }
 }
