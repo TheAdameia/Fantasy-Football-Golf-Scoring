@@ -59,3 +59,53 @@
 .trade-form-finalize-button:hover {
     background-color: green
 }
+
+.trade-card-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: .5em;
+    padding: .5em;
+}
+
+.trade-card-offer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.trade-page-container {
+    padding: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.trade-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.trade-withdraw-button {
+    margin: .5em;
+    background-color: #dc3545;
+}
+
+.trade-withdraw-button:hover {
+    background-color: #c82333;
+}
+
+.trade-accept-button {
+    margin: .5em;
+    background-color: rgba(0, 128, 0, 0.855);
+}
+
+.trade-accept-button:hover {
+    background-color: green
+}
+
+.trade-modify-button {
+    margin: .5em;
+}
+
+.trade-announcer {
+    margin: .5em;
+}

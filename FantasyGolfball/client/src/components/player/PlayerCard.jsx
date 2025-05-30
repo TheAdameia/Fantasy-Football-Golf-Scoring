@@ -6,7 +6,7 @@ import "./PlayerPage.css"
 export const PlayerCard = ({ player, isPreseason }) => {
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
-    const [playerRosterCondition, setPlayerRosterCondition] = useState(<div></div>)
+    const [playerRosterCondition, setPlayerRosterCondition] = useState(<></>)
     const { roster, getAndSetRoster, selectedLeague, loggedInUser, allScores, getAndSetPlayers } = useAppContext()
 
     const HandleDropPlayer = () => {
@@ -49,7 +49,7 @@ export const PlayerCard = ({ player, isPreseason }) => {
             window.alert("I think you're a bit late for that!")
             return
         } else if (!selectedLeague.isDraftComplete) {
-            "I think you're a bit early for that!"
+            window.alert("I think you're a bit early for that!")
             return
         }
         if (roster.rosterPlayers.length >= selectedLeague.maxRosterSize) {
@@ -83,9 +83,14 @@ export const PlayerCard = ({ player, isPreseason }) => {
     }, [allScores, selectedLeague?.currentWeek, player])
 
     useEffect(() => {
-        if (selectedLeague && selectedLeague.leagueUsers.some(lu => lu.userProfileId !== loggedInUser.id 
-            && lu.roster.rosterPlayers.some(rp => rp.playerId === player.playerId))) {
-                setPlayerRosterCondition(<div>Taken</div>) // on another team
+        if (!selectedLeague || !roster || !player) return
+
+        const owner = selectedLeague.leagueUsers.find(
+            lu => lu.userProfileId !== loggedInUser.id && lu.roster.rosterPlayers.some(rp => rp.playerId === player.playerId)
+        )
+
+        if (owner){
+            setPlayerRosterCondition(<div>Rostered by {owner.userProfile.userName}</div>) // on other's team
         } else if (roster && roster.rosterPlayers.some(rp => rp.player.playerId === player.playerId)) {
             setPlayerRosterCondition(<button className="button-drop" onClick={() => ConfirmDrop()}>-</button>) // on your team
         } else if (roster && !roster.rosterPlayers.some(rp => rp.player.playerId === player.playerId) ){

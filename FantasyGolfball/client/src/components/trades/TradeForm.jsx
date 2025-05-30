@@ -50,7 +50,7 @@ export const TradeForm = () => {
             <div className="trade-form-container">
                 <h4>Create a Trade Offer</h4>
                 <div className="trade-form-selects-container">
-                    <div className="trade-form-select-box">
+                    <div>
                         <div className="trade-form-inputs-box">
                             <Label>Select Your Players:</Label>
                             <Input
@@ -79,7 +79,7 @@ export const TradeForm = () => {
                                 })}
                             </Input>
                         </div>
-                        <div className="trade-form-selected-box">
+                        <div>
                             {tradeOffer.firstPartyOffering.map(p => {
                                 return (
                                     <TradePlayerCard key={p} playerId={p} setTradeOffer={setTradeOffer}/>
@@ -88,7 +88,7 @@ export const TradeForm = () => {
                         </div>
                     </div>
 
-                    <div className="trade-form-select-box">
+                    <div>
                         <div className="trade-form-inputs-box">
                             <Label>Select the second party:</Label>
                             <Input
@@ -150,7 +150,7 @@ export const TradeForm = () => {
                                 })}
                             </Input>
                         </div>
-                        <div className="trade-form-selected-box">
+                        <div>
                             {tradeOffer.secondPartyOffering.map(p => {
                                 return (
                                     <TradePlayerCard key={p} playerId={p} setTradeOffer={setTradeOffer}/>

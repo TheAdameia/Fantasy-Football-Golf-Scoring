@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 public class WeekAdvancementListenerService
 {
     private readonly IServiceScopeFactory _scopeFactory;
+    private readonly IEventBus _eventBus;
 
     public WeekAdvancementListenerService(IEventBus eventBus, IServiceScopeFactory scopeFactory)
     {
         _scopeFactory = scopeFactory;
+        _eventBus = eventBus;
 
         eventBus.Subscribe<WeekAdvancedEvent>(HandleWeekAdvanced);
     }
@@ -27,7 +29,7 @@ public class WeekAdvancementListenerService
 
         if (league == null)
         {
-            throw new Exception($"League {eventData.LeagueId} not found");
+            throw new Exception($"League {eventData.LeagueId} not found in WALS");
         }
 
         int previousWeek = eventData.NewWeek - 1;
@@ -37,14 +39,14 @@ public class WeekAdvancementListenerService
             return;
         }
 
-        
+
         // league finish code begins here
         if (previousWeek >= 4 && !league.IsLeagueFinished) // needs to change once we get real seasons
         {
             league.IsLeagueFinished = true;
             Console.WriteLine($"League {league.LeagueId} set to finished");
             dbContext.SaveChanges();
-            return; 
+            return;
         }
         if (league.IsLeagueFinished)
         {
@@ -75,7 +77,7 @@ public class WeekAdvancementListenerService
                     .Where(r => r.UserId == matchupUser.UserProfileId && r.LeagueId == league.LeagueId)
                     .Include(r => r.RosterPlayers)
                     .FirstOrDefaultAsync();
-                
+
                 if (roster == null)
                 {
                     throw new Exception($"user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
@@ -88,34 +90,34 @@ public class WeekAdvancementListenerService
                 var AllPlayerIds = AllRosterPlayers
                     .Select(rp => rp.PlayerId)
                     .ToList();
-                
+
                 var scoringEntries = await dbContext.Scorings
                     .Where(s => s.SeasonId == league.SeasonId &&
                                 s.SeasonWeek == previousWeek &&
                                 AllPlayerIds.Contains(s.PlayerId))
                     .ToListAsync();
-                
+
                 // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC
                 float totalScore = AllRosterPlayers
                     .Where(rp => rp.RosterPosition != "bench")
-                    .Sum(rp => 
+                    .Sum(rp =>
                     {
                         var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
                         return scoring?.Points ?? 0f; // resorts to 0 if missing
                     });
-                
+
                 scores[matchupUser.UserProfileId] = totalScore;
-                
+
                 // saves what the roster was so it can be excavated for past matchups display
                 matchupUser.MatchupUserSavedPlayers = AllRosterPlayers
                     .Select(rp =>
                     {
                         var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
-                        
+
                         if (scoring == null)
                         {
                             Console.WriteLine($"Warning: Player {rp.PlayerId} in MatchupUser {matchupUser.MatchupUserId} did not have a scoring entry for Week {previousWeek}. Using fallback scoring ID -1.");
-                            
+
                             return new MatchupUserSavedPlayer
                             {
                                 MatchupUserId = matchupUser.MatchupUserId,
@@ -141,8 +143,11 @@ public class WeekAdvancementListenerService
                 matchup.WinnerId = winner.Key;
             }
         }
-        
+
         await dbContext.SaveChangesAsync();
         Console.WriteLine($"Completed Week Advancement matchup processing for League {league.LeagueId}.");
+
+        await _eventBus.Publish(new TradeProcessingEvent(league.LeagueId, previousWeek));
+        Console.WriteLine($"Trade check event fired for League {league.LeagueId}.");
     }
 }
