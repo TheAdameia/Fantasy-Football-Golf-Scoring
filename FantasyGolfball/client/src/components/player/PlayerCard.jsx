@@ -7,7 +7,7 @@ export const PlayerCard = ({ player, isPreseason }) => {
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
     const [playerRosterCondition, setPlayerRosterCondition] = useState(<></>)
-    const { roster, getAndSetRoster, selectedLeague, loggedInUser, allScores, getAndSetPlayers } = useAppContext()
+    const { roster, getAndSetRoster, selectedLeague, loggedInUser, allScores, getAndSetPlayers, activeTrades } = useAppContext()
 
     const HandleDropPlayer = () => {
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
@@ -32,7 +32,10 @@ export const PlayerCard = ({ player, isPreseason }) => {
             window.alert("I think you're a bit late for that!")
             return
         } else if (!selectedLeague.isDraftComplete) {
-            "I think you're a bit early for that!"
+            window.alert("I think you're a bit early for that!")
+            return
+        } else if (activeTrades.some(at => at.playerId == player.playerId)) {
+            window.alert("Can't drop a player in a trade offer! (Check your trades)")
             return
         }
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)

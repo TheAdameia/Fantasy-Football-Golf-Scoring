@@ -7,13 +7,14 @@ import "./trade.css"
 export const TradePage = () => {
     const { activeTrades } = useAppContext()
     const navigate = useNavigate()
-    // display a notification icon on the navbar IF any unresolved trades OR both-accepted unresolved trades
+    // display a notification icon on the navbar IF any unresolved trades
 
 
     // safeguards I need to have in for trade:
-    // Can't make more than one trade offer using your same player
+    // Can't make more than one trade offer using your same player ✓
     // Can't accept more than one trade offer in exchange for the same one of your player
-    // Can't drop a player in a trade offer
+    // Can't drop a player in a trade offer ✓ (frontend only)
+    // Decide if you would rather push trades to next week or delete them
 
     if (activeTrades) {
         if (activeTrades.length == 0) {

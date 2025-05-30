@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 
 export const TradeForm = () => {
-    const { selectedLeague, roster, loggedInUser } = useAppContext()
+    const { selectedLeague, roster, loggedInUser, activeTrades } = useAppContext()
     const [tradeOffer, setTradeOffer] = useState({
         leagueId: 0,
         firstPartyRosterId: 0,
@@ -17,6 +17,7 @@ export const TradeForm = () => {
         secondPartyOffering: []
     })
     const [secondPartyRoster, setSecondPartyRoster] = useState()
+    const [unavailablePlayerIds, setUnavailablePlayerIds] = useState([])
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {
@@ -28,6 +29,9 @@ export const TradeForm = () => {
             return
         } else if (newTrade.secondPartyOffering.length < 1) {
             window.alert("You must ask for something in a trade!")
+            return
+        }else if (tradeOffer.firstPartyOffering.some(pId => unavailablePlayerIds.includes(pId))) {
+            window.alert("One or more of your selected players are already in a trade you created!")
             return
         } else {
             PostTrade(newTrade).then(() => {
@@ -44,6 +48,20 @@ export const TradeForm = () => {
             setTradeOffer(objectCopy)
         }
     }, [roster])
+
+    useEffect(() => {
+    if (activeTrades && roster?.rosterId) {
+        const unavailable = []
+        activeTrades.forEach(trade => {
+            trade.tradePlayers.forEach(tp => {
+                if (tp.givingRosterId === roster.rosterId) {
+                    unavailable.push(tp.playerId)
+                }
+            })
+        })
+        setUnavailablePlayerIds(unavailable)
+    }
+}, [activeTrades, roster])
 
     if (roster && selectedLeague) {
         return (
@@ -70,7 +88,9 @@ export const TradeForm = () => {
                                 }}
                             >
                                 <option>-</option>
-                                {roster.rosterPlayers.map(rp => {
+                                {roster.rosterPlayers
+                                    .filter(rp => !unavailablePlayerIds.includes(rp.playerId))
+                                    .map(rp => {
                                     return (
                                         <option key={rp.playerId} value={rp.playerId}>
                                             {rp.player.position.positionShort} {rp.player.playerFullName}, {rp.player.playerTeams[0].team.teamCity} {rp.player.playerTeams[0].team.teamName}, {rp.player.playerStatuses[0].status.statusType}

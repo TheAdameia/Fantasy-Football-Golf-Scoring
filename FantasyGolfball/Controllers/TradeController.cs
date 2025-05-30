@@ -62,6 +62,30 @@ public class TradeController : ControllerBase
             TradeWeek = (int)league.CurrentWeek;
         }
 
+        var activeTrades = _dbContext.Trades
+            .Include(t => t.TradePlayers)
+            .Where(t => t.LeagueId == league.LeagueId)
+            .Where(t => t.TradeComplete == false)
+            .ToList();
+
+        var offeredPlayerIds = tradePOSTDTO.FirstPartyOffering
+            .Concat(tradePOSTDTO.SecondPartyOffering)
+            .ToHashSet(); // faster lookup (or so I'm told)
+        
+        var conflictingPlayers = activeTrades
+            .SelectMany(t => t.TradePlayers)
+            .Where(tp => offeredPlayerIds.Contains(tp.PlayerId))
+            .Select(tp => tp.PlayerId)
+            .Distinct()
+            .ToList();
+
+        if (conflictingPlayers.Any())
+        {
+            var conflictedIds = string.Join(", ", conflictingPlayers);
+            return BadRequest($"Trade offer includes players already involved in an active trade: {conflictedIds}");
+        }
+
+
         // checks end
 
         var tradePlayers = new List<TradePlayer>();
