@@ -3,13 +3,45 @@ import { useAppContext } from "../../contexts/AppContext"
 import { TradePlayerCard } from "./TradePlayerCard"
 import { Spinner } from "reactstrap"
 import "./trade.css"
+import { AcceptTrade, DeleteTrade } from "../../managers/tradeManager"
 
 
 export const TradeCard = ({ trade }) => {
-    const { selectedLeague, roster, loggedInUser } = useAppContext()
+    const { selectedLeague, roster, loggedInUser, getAndSetTrades } = useAppContext()
     const [creator, setCreator] = useState("")
     const [receiver, setReceiver] = useState("")
     const [isCollapsed, setIsCollapsed] = useState(false)
+
+
+    const ConfirmAccept = (tradeId) => {
+        const confirmed = window.confirm(`Are you sure you want to accept this trade?`)
+        if (confirmed) {
+            HandleAccept(tradeId)
+        } else {
+            return
+        }
+    }
+
+    const HandleAccept = (tradeId) => {
+        AcceptTrade(tradeId).then(() => {
+            getAndSetTrades()
+        })
+    }
+
+    const ConfirmReject = (tradeId) => {
+        const confirmed = window.confirm(`Are you sure you want to reject this trade?`)
+        if (confirmed) {
+            HandleRejectTrade(tradeId)
+        } else {
+            return
+        }
+    }
+
+    const HandleRejectTrade = (tradeId) => {
+        DeleteTrade(tradeId).then(() => {
+            getAndSetTrades()
+        })
+    }
 
     useEffect(() => {
        if (selectedLeague && trade) {
@@ -44,6 +76,7 @@ export const TradeCard = ({ trade }) => {
                     <div className="trade-form-selects-container">
                     <div className="trade-card-offer">
                         <div>What {creator.userProfile.userName} is offering</div>
+                        {trade.firstPartyAcceptance ? <div className="trade-acceptance">Accepted ✓</div>: <></>}
                         {trade.tradePlayers
                             .filter(tp => tp.givingRosterId == roster.rosterId)
                             .map((tp) => {
@@ -54,6 +87,7 @@ export const TradeCard = ({ trade }) => {
                         </div>
                         <div>
                             <div>what {receiver.userProfile.userName} is getting</div>
+                            {trade.secondPartyAcceptance ? <div className="trade-acceptance">Accepted ✓</div>: <></>}
                             {trade.tradePlayers
                                 .filter(tp => tp.receivingRosterId == roster.rosterId)
                                 .map((tp) => {
@@ -65,17 +99,17 @@ export const TradeCard = ({ trade }) => {
                     </div>
                     <div className="trade-buttons-container">
                         {loggedInUser.id === receiver.userProfile.id && !trade.secondPartyAcceptance && (
-                            <button className="trade-accept-button">accept trade</button>
+                            <button className="trade-accept-button" onClick={() => ConfirmAccept(trade.tradeId)}>accept trade</button>
                         )}
 
-                        {loggedInUser.id === receiver.userProfile.id && (
-                            <button className="trade-modify-button">make a counteroffer (PUT)</button>
+                        {loggedInUser.id === receiver.userProfile.id && trade.secondPartyAcceptance === false && (
+                            <button className="trade-modify-button">make a counteroffer (WIP)</button>
                         )}
 
                         {loggedInUser.id === creator.userProfile.id ? (
-                            <button className="trade-withdraw-button">withdraw trade offer</button>
+                            <button className="trade-withdraw-button" onClick={() => ConfirmReject(trade.tradeId)}>withdraw trade offer</button>
                         ) : (
-                            <button className="trade-withdraw-button">reject trade offer</button>
+                            <button className="trade-withdraw-button" onClick={() => ConfirmReject(trade.tradeId)}>reject trade offer</button>
                         )}
                     </div>
                 </>

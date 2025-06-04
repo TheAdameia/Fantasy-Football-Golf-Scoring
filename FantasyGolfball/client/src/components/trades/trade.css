@@ -109,3 +109,7 @@
 .trade-announcer {
     margin: .5em;
 }
+
+.trade-acceptance {
+    font-weight: 600;
+}

@@ -14,10 +14,10 @@ public class TradeEffectuationService
         _scopeFactory = scopeFactory;
         _eventBus = eventBus;
 
-        eventBus.Subscribe<TradeProcessingEvent>(HandleTrackChecks);
+        eventBus.Subscribe<TradeProcessingEvent>(HandleTradeChecks);
     }
 
-    private async Task HandleTrackChecks(TradeProcessingEvent eventData)
+    private async Task HandleTradeChecks(TradeProcessingEvent eventData)
     {
         using var scope = _scopeFactory.CreateScope(); // creates a new scope to ensure fresh db
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
@@ -40,6 +40,13 @@ public class TradeEffectuationService
         {
             return;
         }
+
+        var rolloverTrades = await dbContext.Trades
+            .Where(t => t.LeagueId == eventData.LeagueId)
+            .Where(t => t.TradeComplete == false)
+            .Where(t => t.WeekActivation < eventData.NewWeek)
+            .Where(t => t.FirstPartyAcceptance == true && t.SecondPartyAcceptance == false)
+            .ToListAsync();
 
         await using var transaction = await dbContext.Database.BeginTransactionAsync();
 
@@ -92,6 +99,15 @@ public class TradeEffectuationService
                 trade.TradeComplete = true;
             }
 
+            if (rolloverTrades != null)
+            {
+                foreach (var trade in rolloverTrades)
+                {
+                    trade.WeekActivation = eventData.NewWeek + 1;
+                }
+            }
+            
+
             await dbContext.SaveChangesAsync();
             await transaction.CommitAsync();
             Console.WriteLine($"Trades in League {league.LeagueId} for new week {eventData.NewWeek} committed.");
@@ -105,13 +121,3 @@ public class TradeEffectuationService
         
     }
 }
-
-
-// listen for ?? 
-// have WALS fire an event for a League when it finishes, I guess. Safest way to avoid screwing with score/MUSP calculations.
-// get trades where new week == WeekActivation AND FirstPartyAcceptance AND SecondPartyAcceptance
-// get each roster
-// find rps that go A => B, change rosterId
-// find rps that go B => A, change rosterId
-// mark the trade as completed? delete the trade? probably not delete
-// save changes

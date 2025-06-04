@@ -71,7 +71,7 @@ public class TradeController : ControllerBase
         var offeredPlayerIds = tradePOSTDTO.FirstPartyOffering
             .Concat(tradePOSTDTO.SecondPartyOffering)
             .ToHashSet(); // faster lookup (or so I'm told)
-        
+
         var conflictingPlayers = activeTrades
             .SelectMany(t => t.TradePlayers)
             .Where(tp => offeredPlayerIds.Contains(tp.PlayerId))
@@ -185,5 +185,51 @@ public class TradeController : ControllerBase
 
         return Ok(userTrades);
     }
-    
+
+
+    [HttpDelete]
+    [Authorize]
+    public IActionResult DeleteTradeOffer(int tradeId)
+    {
+        if (tradeId == 0)
+        {
+            return BadRequest();
+        }
+
+        var TradeToDelete = _dbContext.Trades.SingleOrDefault(t => t.TradeId == tradeId);
+
+        if (TradeToDelete == null)
+        {
+            return BadRequest($"No Trade found for {tradeId}");
+        }
+
+        _dbContext.Trades.Remove(TradeToDelete);
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
+    [HttpPut]
+    [Authorize]
+    public IActionResult AcceptTradeOffer(int tradeId)
+    {
+
+        if (tradeId == 0)
+        {
+            return BadRequest();
+        }
+
+        Trade TradeToAccept = _dbContext.Trades.SingleOrDefault(t => t.TradeId == tradeId);
+
+        if (TradeToAccept == null)
+        {
+            return BadRequest($"No Trade found for {tradeId}");
+        }
+
+        
+        TradeToAccept.SecondPartyAcceptance = true;
+
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
 }
