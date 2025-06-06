@@ -97,13 +97,14 @@ export const TradeCard = ({ trade }) => {
                                 })}
                         </div>
                     </div>
+                    <div>Trade takes effect in Week {trade.weekActivation} if accepted</div>
                     <div className="trade-buttons-container">
                         {loggedInUser.id === receiver.userProfile.id && !trade.secondPartyAcceptance && (
                             <button className="trade-accept-button" onClick={() => ConfirmAccept(trade.tradeId)}>accept trade</button>
                         )}
 
                         {loggedInUser.id === receiver.userProfile.id && trade.secondPartyAcceptance === false && (
-                            <button className="trade-modify-button">make a counteroffer (WIP)</button>
+                            <button className="trade-modify-button">make a counteroffer (NYI)</button>
                         )}
 
                         {loggedInUser.id === creator.userProfile.id ? (
