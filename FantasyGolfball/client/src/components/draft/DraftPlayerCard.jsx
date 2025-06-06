@@ -25,7 +25,17 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
         } else {
             console.warn("It's not your turn!")
         }
-    };
+    }
+
+    const ConfirmDraft = (playerId) => {
+        
+        const confirmed = window.confirm(`Draft ${player.playerFullName}?`)
+        if (confirmed) {
+           handleDraftPlayer(playerId)
+        } else {
+            return
+        }
+    }
 
     return (
         <tr>
@@ -49,6 +59,9 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
             </td>
             <td>
                 <button onClick={() => setSelectedPlayer(player)}>View</button>
+            </td>
+            <td>
+                <button onClick={() => ConfirmDraft(player.playerId)}>Draft</button>
             </td>
         </tr>
     )

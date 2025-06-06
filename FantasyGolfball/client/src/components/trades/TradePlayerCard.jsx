@@ -11,6 +11,9 @@ export const TradePlayerCard = ({ playerId, setTradeOffer }) => {
     const urlEndsWithCreate = location.pathname.endsWith("create-trade")
 
     useEffect(() => {
+        if (players == null) {
+            return
+        }
         const thisPlayer = players.filter(p => p.playerId == playerId)
         SetPlayer(thisPlayer[0])
     }, [playerId, players])

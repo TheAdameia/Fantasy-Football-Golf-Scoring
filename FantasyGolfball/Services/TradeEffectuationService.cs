@@ -54,6 +54,7 @@ public class TradeEffectuationService
         {
             foreach (var trade in trades)
             {
+                Console.WriteLine($"Processing Trade {trade.TradeId}");
                 var FirstLeagueUser = league.LeagueUsers.SingleOrDefault(lu => lu.RosterId == trade.FirstPartyRosterId);
                 var SecondLeagueUser = league.LeagueUsers.SingleOrDefault(lu => lu.RosterId == trade.SecondPartyRosterId);
 

@@ -7,11 +7,10 @@ import { AcceptTrade, DeleteTrade } from "../../managers/tradeManager"
 
 
 export const TradeCard = ({ trade }) => {
-    const { selectedLeague, roster, loggedInUser, getAndSetTrades } = useAppContext()
+    const { selectedLeague, roster, loggedInUser, getAndSetTrades, activeTrades } = useAppContext()
     const [creator, setCreator] = useState("")
     const [receiver, setReceiver] = useState("")
     const [isCollapsed, setIsCollapsed] = useState(false)
-
 
     const ConfirmAccept = (tradeId) => {
         const confirmed = window.confirm(`Are you sure you want to accept this trade?`)
@@ -23,6 +22,21 @@ export const TradeCard = ({ trade }) => {
     }
 
     const HandleAccept = (tradeId) => {
+        let validTrade = true
+        const activeTradePlayerIds = activeTrades
+            .filter(t => t.firstPartyAcceptance && t.secondPartyAcceptance)
+            .flatMap(t => t.tradePlayers.map(tp => tp.playerId))
+        for (const tp of trade.tradePlayers) {
+            if (activeTradePlayerIds.includes(tp.playerId)) {
+                validTrade = false
+            }
+        }
+
+        if (!validTrade) {
+            window.alert(`You have already accepted a trade for a player listed in this trade!`)
+            return
+        }
+        
         AcceptTrade(tradeId).then(() => {
             getAndSetTrades()
         })

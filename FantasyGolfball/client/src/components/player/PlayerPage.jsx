@@ -9,7 +9,9 @@ export const PlayerPage = () => {
     const [searchTerm, setSearchTerm] = useState("")
     const [positionFilter, setPositionFilter] = useState("Any")
     const [playerSlice, setPlayerSlice] = useState({sliceStart: 0, sliceEnd: 24})
-    const { players, selectedLeague } = useAppContext()
+    const [showMyTeam, setShowMyTeam] = useState(false)
+    const [showOtherTeam, setShowOtherTeam] = useState(false)
+    const { players, selectedLeague, loggedInUser } = useAppContext()
 
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
@@ -35,36 +37,56 @@ export const PlayerPage = () => {
     }
     
     useEffect(() => {
-        if (players){
-            const foundPlayers = players.filter(player => 
+        if (players && selectedLeague){
+            // first: filter by search
+            let foundPlayers = players.filter(player => 
                 player.playerFullName.toLowerCase().includes(searchTerm.toLowerCase()) 
             )
 
+            // second: filter by position
             switch(positionFilter) {
-                case "Any":
-                    setFilteredPlayers(foundPlayers)
-                    break
                 case "QB":
-                    setFilteredPlayers(foundPlayers.filter(p => p.position.positionShort == "QB"))
+                    foundPlayers = (foundPlayers.filter(p => p.position.positionShort == "QB"))
                     break
                 case "WR":
-                    setFilteredPlayers(foundPlayers.filter(p => p.position.positionShort == "WR"))
+                    foundPlayers = (foundPlayers.filter(p => p.position.positionShort == "WR"))
                     break
                 case "RB":
-                    setFilteredPlayers(foundPlayers.filter(p => p.position.positionShort == "RB"))
+                    foundPlayers = (foundPlayers.filter(p => p.position.positionShort == "RB"))
                     break
                 case "TE":
-                    setFilteredPlayers(foundPlayers.filter(p => p.position.positionShort == "TE"))
+                    foundPlayers = (foundPlayers.filter(p => p.position.positionShort == "TE"))
                     break
                 case "K":
-                    setFilteredPlayers(foundPlayers.filter(p => p.position.positionShort == "K"))
+                    foundPlayers = (foundPlayers.filter(p => p.position.positionShort == "K"))
                     break
                 case "DEF":
-                    setFilteredPlayers(foundPlayers.filter(p => p.position.positionShort == "DEF"))
+                    foundPlayers = (foundPlayers.filter(p => p.position.positionShort == "DEF"))
                     break
             }
+
+            // third: filter by roster
+            foundPlayers = foundPlayers.filter(p => {
+                const ownerRoster = selectedLeague.leagueUsers.find(lu =>
+                    lu.roster.rosterPlayers.some(rp => rp.playerId === p.playerId)
+                )
+
+                const isUserPlayer = ownerRoster?.userProfileId === loggedInUser.id
+
+                if (isUserPlayer && !showMyTeam) {
+                    return false
+                }
+                if (!isUserPlayer && !showOtherTeam && ownerRoster) {
+                    return false
+                }
+
+                return true
+            })
+
+            // final
+            setFilteredPlayers(foundPlayers)
         } 
-    }, [searchTerm, players, positionFilter])
+    }, [searchTerm, players, positionFilter, showMyTeam, showOtherTeam, loggedInUser, selectedLeague])
 
     if (!players) {
         return (
@@ -103,10 +125,26 @@ export const PlayerPage = () => {
                         <option value="Season Average">Season Average</option>
                     </select>
                 </div>
-                {/* <div>Checkboxes: include my team, include other team
-                    <input type="checkbox" id="my-team" name="Include my team"/>
-                    <input type="checkbox" id="other-teams" name="Include other teams"/>
-                </div> */}
+                <div> 
+                    <div>Include My Team</div>
+                    <input 
+                        type="checkbox" 
+                        id="my-team" 
+                        name="Include my team"
+                        checked={showMyTeam}
+                        onChange={() => {setShowMyTeam(!showMyTeam)}}
+                    />
+                </div>
+                <div>
+                    <div>Include Other Teams</div>
+                    <input 
+                        type="checkbox" 
+                        id="other-teams" 
+                        name="Include other teams"
+                        checked={showOtherTeam}
+                        onChange={() => {setShowOtherTeam(!showOtherTeam)}}
+                    />
+                </div>
             </div>
             <div>
                 <label className="playerpage-label">Players {playerSlice.sliceStart} - {playerSlice.sliceEnd}</label>

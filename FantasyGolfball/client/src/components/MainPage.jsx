@@ -5,6 +5,7 @@ import { MatchupRecap } from "./matchups/MatchupRecap"
 import { PointsForTable } from "./widgets/PointsForTable"
 import { PointsAgainstTable } from "./widgets/PointsAgainstTable"
 import { WinLossTable } from "./widgets/WinLossTable"
+import { useEffect, useState } from "react"
 
 
 export const MainPage = () => {
@@ -13,6 +14,7 @@ export const MainPage = () => {
     const now = new Date()
     const draftStart = new Date(selectedLeague?.draftStartTime)
     const seasonStart = new Date(selectedLeague?.seasonStartDate)
+    const [advancementType, setAdvancementType] = useState(<></>)
 
     const diffMs = draftStart - now
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
@@ -23,6 +25,21 @@ export const MainPage = () => {
         console.log(`now: ${now}`)
         navigate(`/live-draft`)
     }
+
+    useEffect(() => {
+        if (selectedLeague?.advancement)
+        switch(selectedLeague.advancement) {
+            case 0:
+                setAdvancementType(<div>A Season's "Week" advances in a week of real time.</div>)
+                return
+            case 1:
+                setAdvancementType(<div>A Season's "Week" advances in a day of real time.</div>)
+                return
+            case 2:
+                setAdvancementType(<div>A Season's "Week" advances in an hour of real time.</div>)
+                return
+        }
+    }, [selectedLeague])
 
     if (!selectedLeague) {
         return (
@@ -134,6 +151,7 @@ export const MainPage = () => {
                     {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                     {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}
                     {selectedLeague.requiredFullToStart ? <div>League must be full to start</div> : <div>League does not need to be full to start</div>}
+                    <div>{advancementType}</div>
                 </div>
             </div>
         </div>

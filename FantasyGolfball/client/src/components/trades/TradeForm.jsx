@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 
 export const TradeForm = () => {
-    const { selectedLeague, roster, loggedInUser, activeTrades } = useAppContext()
+    const { selectedLeague, roster, loggedInUser, activeTrades, getAndSetTrades } = useAppContext()
     const [tradeOffer, setTradeOffer] = useState({
         leagueId: 0,
         firstPartyRosterId: 0,
@@ -36,6 +36,7 @@ export const TradeForm = () => {
         } else {
             PostTrade(newTrade).then(() => {
                 navigate("/")
+                getAndSetTrades()
             })
         }
     }

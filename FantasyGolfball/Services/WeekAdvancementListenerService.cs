@@ -147,7 +147,7 @@ public class WeekAdvancementListenerService
         await dbContext.SaveChangesAsync();
         Console.WriteLine($"Completed Week Advancement matchup processing for League {league.LeagueId}.");
 
-        await _eventBus.Publish(new TradeProcessingEvent(league.LeagueId, previousWeek));
-        Console.WriteLine($"Trade check event fired for League {league.LeagueId}.");
+        await _eventBus.Publish(new TradeProcessingEvent(league.LeagueId, eventData.NewWeek));
+        Console.WriteLine($"Trade check event fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
     }
 }

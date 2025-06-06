@@ -37,8 +37,9 @@ builder.Services.AddScoped<FantasyGolfballDbContext>();
 
 builder.Services.AddSingleton<IMatchupService, MatchupService>();
 builder.Services.AddSingleton<IEventBus, EventBus>();
-builder.Services.AddHostedService<WeekAdvancementService>(); // cronjob to see when seasonweeks change
+builder.Services.AddHostedService<WeekAdvancementService>(); // cronjob to see when currentWeek changes
 builder.Services.AddSingleton<WeekAdvancementListenerService>(); // listens for week change
+builder.Services.AddSingleton<TradeEffectuationService>(); // checks for trades after WALS calculations
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
