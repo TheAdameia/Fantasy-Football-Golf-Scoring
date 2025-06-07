@@ -22,7 +22,12 @@ public class TradeEffectuationService
         using var scope = _scopeFactory.CreateScope(); // creates a new scope to ensure fresh db
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-        var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == eventData.LeagueId);
+        // good test case for explain analyze if the database ever gets big. Few different ways this could be done.
+        var league = await dbContext.Leagues
+            .Include(l => l.LeagueUsers)
+                .ThenInclude(lu => lu.Roster)
+                    .ThenInclude(r => r.RosterPlayers)
+            .FirstOrDefaultAsync(l => l.LeagueId == eventData.LeagueId);
 
         if (league == null)
         {
@@ -30,16 +35,12 @@ public class TradeEffectuationService
         }
 
         var trades = await dbContext.Trades
+            .Include(t => t.TradePlayers)
             .Where(t => t.LeagueId == eventData.LeagueId)
             .Where(t => t.TradeComplete == false)
             .Where(t => t.WeekActivation == eventData.NewWeek)
             .Where(t => t.FirstPartyAcceptance == true && t.SecondPartyAcceptance == true)
             .ToListAsync();
-
-        if (trades == null)
-        {
-            return;
-        }
 
         var rolloverTrades = await dbContext.Trades
             .Where(t => t.LeagueId == eventData.LeagueId)
@@ -48,59 +49,67 @@ public class TradeEffectuationService
             .Where(t => t.FirstPartyAcceptance == true && t.SecondPartyAcceptance == false)
             .ToListAsync();
 
+        if (!trades.Any() && !rolloverTrades.Any())
+        {
+            Console.WriteLine($"No trades to process for League {eventData.LeagueId}, week {eventData.NewWeek}");
+            return;
+        }
+
         await using var transaction = await dbContext.Database.BeginTransactionAsync();
 
         try
         {
-            foreach (var trade in trades)
+            if (trades.Any())
             {
-                Console.WriteLine($"Processing Trade {trade.TradeId}");
-                var FirstLeagueUser = league.LeagueUsers.SingleOrDefault(lu => lu.RosterId == trade.FirstPartyRosterId);
-                var SecondLeagueUser = league.LeagueUsers.SingleOrDefault(lu => lu.RosterId == trade.SecondPartyRosterId);
-
-                if (FirstLeagueUser == null)
+                foreach (var trade in trades)
                 {
-                    Console.WriteLine($"LeagueUser not found for RosterId {trade.FirstPartyRosterId} in TES");
-                    continue;
-                }
-                if (SecondLeagueUser == null)
-                {
-                    Console.WriteLine($"LeagueUser not found for RosterId {trade.SecondPartyRosterId} in TES");
-                    continue;
-                }
+                    Console.WriteLine($"Processing Trade {trade.TradeId}");
+                    var firstLeagueUser = league.LeagueUsers.SingleOrDefault(lu => lu.RosterId == trade.FirstPartyRosterId);
+                    var secondLeagueUser = league.LeagueUsers.SingleOrDefault(lu => lu.RosterId == trade.SecondPartyRosterId);
 
-                foreach (var tp in trade.TradePlayers)
-                {
-                    var rosterPlayer = league.LeagueUsers
-                        .Where(lu => lu.LeagueId == trade.LeagueId)
-                        .SelectMany(lu => lu.Roster.RosterPlayers)
-                        .FirstOrDefault(rp => rp.PlayerId == tp.PlayerId);
-
-                    if (rosterPlayer == null)
+                    if (firstLeagueUser == null)
                     {
-                        Console.WriteLine($"No matching RosterPlayer found for PlayerId {tp.PlayerId} in League {trade.LeagueId} in TES.");
-                        return;
+                        Console.WriteLine($"LeagueUser not found for RosterId {trade.FirstPartyRosterId} in TES");
+                        continue;
+                    }
+                    if (secondLeagueUser == null)
+                    {
+                        Console.WriteLine($"LeagueUser not found for RosterId {trade.SecondPartyRosterId} in TES");
+                        continue;
                     }
 
-                    var alreadyExists = await dbContext.RosterPlayers
-                        .AnyAsync(rp => rp.RosterId == tp.ReceivingRosterId && rp.PlayerId == tp.PlayerId);
-
-                    if (!alreadyExists)
+                    foreach (var tp in trade.TradePlayers)
                     {
-                        rosterPlayer.RosterId = tp.ReceivingRosterId;
-                        rosterPlayer.RosterPosition = "bench";
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Player {tp.PlayerId} already exists in receiving Roster {tp.ReceivingRosterId} in TES.");
-                    }
+                        var rosterPlayer = league.LeagueUsers
+                            .Where(lu => lu.LeagueId == trade.LeagueId)
+                            .SelectMany(lu => lu.Roster.RosterPlayers)
+                            .FirstOrDefault(rp => rp.PlayerId == tp.PlayerId && rp.RosterId == tp.GivingRosterId);
 
+                        if (rosterPlayer == null)
+                        {
+                            Console.WriteLine($"No matching RosterPlayer found for PlayerId {tp.PlayerId} in League {trade.LeagueId} in TES.");
+                            continue;
+                        }
+
+                        var alreadyExists = await dbContext.RosterPlayers
+                            .AnyAsync(rp => rp.RosterId == tp.ReceivingRosterId && rp.PlayerId == tp.PlayerId);
+
+                        if (!alreadyExists)
+                        {
+                            rosterPlayer.RosterId = tp.ReceivingRosterId;
+                            rosterPlayer.RosterPosition = "bench";
+                            Console.WriteLine($"Player {rosterPlayer.PlayerId} moved to Roster {rosterPlayer.RosterId}, {tp.ReceivingRosterId}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Player {tp.PlayerId} already exists in receiving Roster {tp.ReceivingRosterId} in TES.");
+                        }
+                    }
+                    trade.TradeComplete = true;
                 }
-
-                trade.TradeComplete = true;
             }
 
-            if (rolloverTrades != null)
+            if (rolloverTrades.Any())
             {
                 foreach (var trade in rolloverTrades)
                 {
