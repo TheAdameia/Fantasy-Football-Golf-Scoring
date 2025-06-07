@@ -3,7 +3,7 @@ import { JoinLeague } from "../../managers/leagueManager"
 import { useAppContext } from "../../contexts/AppContext"
 import "./League.css"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 export const LeagueCard = ({ league, getAndSetLeagues }) => {
@@ -11,6 +11,7 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
     let openSlots = (league.playerLimit - league.leagueUsers.length)
     const navigate = useNavigate()
     const [isCollapsed, setIsCollapsed] = useState(false)
+    const [advancementType, setAdvancementType] = useState(<></>)
 
     const handleJoin = async (event) => {
         event.preventDefault()
@@ -22,7 +23,6 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
             window.alert("Already joined that league!")
             return
         }
-        
 
         if (league.requiresPassword) {
             userPassword = window.prompt("Enter the password for this League:")
@@ -43,6 +43,21 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
         
     }
 
+
+    useEffect(() => {
+        switch(league.advancement) {
+            case 0:
+                setAdvancementType(<div>A Season's "Week" advances in a week of real time.</div>)
+                return
+            case 1:
+                setAdvancementType(<div>A Season's "Week" advances in a day of real time.</div>)
+                return
+            case 2:
+                setAdvancementType(<div>A Season's "Week" advances in an hour of real time.</div>)
+                return
+        }
+    }, [league])
+
     return (
         <div className="league-card">
             <h4
@@ -61,6 +76,9 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
                         )
                     })}
                     <div>{openSlots} Open Slots</div>
+                    <div>Draft starts at {new Date(league.draftStartTime).toLocaleString('en-US')}</div>
+                    <div>Season starts {new Date(league.seasonStartDate).toLocaleString('en-US')}</div>
+                    <div>{advancementType}</div>
                     <div className="rules-card">
                         <div>League rules:</div>
                         <div>Player Limit: {league.playerLimit}</div>

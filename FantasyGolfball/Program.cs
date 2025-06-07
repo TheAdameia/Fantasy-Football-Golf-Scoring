@@ -64,7 +64,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddIdentityCore<IdentityUser>(config =>
             {
-                //for demonstration only - change these for other projects
                 config.Password.RequireDigit = false;
                 config.Password.RequiredLength = 3;
                 config.Password.RequireLowercase = false;
@@ -96,14 +95,15 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Creating a SignalR hub for testing
+// Creating a SignalR hub for draft chat
 app.MapHub<ChatHub>("/chathub");
-// Creating a SignalR hub for live draft
+// Creating a SignalR hub for draft services
 app.MapHub<LiveDraftHub>("/draftHub");
 
-// forcing MatchupService to initialize when the app starts to run
+// forcing services to initialize when the app starts to run
 var matchupService = app.Services.GetRequiredService<IMatchupService>();
 var weekListenerService = app.Services.GetRequiredService<WeekAdvancementListenerService>();
+var tradeEffectuationService = app.Services.GetRequiredService<TradeEffectuationService>();
 
 
 app.MapControllers();

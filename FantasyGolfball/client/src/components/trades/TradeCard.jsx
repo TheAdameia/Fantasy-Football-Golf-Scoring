@@ -90,7 +90,7 @@ export const TradeCard = ({ trade }) => {
                     <div className="trade-form-selects-container">
                     <div className="trade-card-offer">
                         <div>What {creator.userProfile.userName} is offering</div>
-                        {trade.firstPartyAcceptance ? <div className="trade-acceptance">Accepted ✓</div>: <></>}
+                        {trade.firstPartyAcceptance ? <div className="trade-acceptance">Accepted ✓</div>: <div className="trade-acceptance">Not Accepted</div>}
                         {trade.tradePlayers
                             .filter(tp => tp.givingRosterId == roster.rosterId)
                             .map((tp) => {
@@ -101,7 +101,7 @@ export const TradeCard = ({ trade }) => {
                         </div>
                         <div>
                             <div>what {receiver.userProfile.userName} is getting</div>
-                            {trade.secondPartyAcceptance ? <div className="trade-acceptance">Accepted ✓</div>: <></>}
+                            {trade.secondPartyAcceptance ? <div className="trade-acceptance">Accepted ✓</div>: <div className="trade-acceptance">Not Accepted</div>}
                             {trade.tradePlayers
                                 .filter(tp => tp.receivingRosterId == roster.rosterId)
                                 .map((tp) => {

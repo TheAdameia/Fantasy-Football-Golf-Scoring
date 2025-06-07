@@ -59,7 +59,7 @@ public class TradeController : ControllerBase
         }
         else
         {
-            TradeWeek = (int)league.CurrentWeek;
+            TradeWeek = (int)league.CurrentWeek + 1;
         }
 
         var activeTrades = _dbContext.Trades
