@@ -5,7 +5,7 @@ import { RosterPositionDropdown } from "./RosterPositionDropdown"
 
 
 export const RosterPlayerCard = ({ rp }) => {
-    const  { getAndSetRoster, allScores, selectedLeague, getAndSetPlayers } = useAppContext()
+    const  { getAndSetRoster, allScores, selectedLeague, getAndSetPlayers, activeTrades } = useAppContext()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState() // might want to fit this in later
 
@@ -18,6 +18,16 @@ export const RosterPlayerCard = ({ rp }) => {
     }
 
     const ConfirmDrop = (rosterPlayerId) => {
+        if (selectedLeague.isLeagueFinished) {
+            window.alert("I think you're a bit late for that!")
+            return
+        } else if (!selectedLeague.isDraftComplete) {
+            window.alert("I think you're a bit early for that! How did you get this??")
+            return
+        } else if (activeTrades.some(at => at.playerId == rp.playerId)) {
+            window.alert("Can't drop a player in a trade offer! (Check your trades)")
+            return
+        }
         const confirmed = window.confirm(`Are you sure you want to drop ${rp.player.playerFullName}?`)
         if (confirmed) {
             HandleDropPlayer(rosterPlayerId)

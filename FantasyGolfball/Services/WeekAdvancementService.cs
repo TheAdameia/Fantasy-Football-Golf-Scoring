@@ -38,11 +38,6 @@ public class WeekAdvancementService : BackgroundService
             {
                 int? latestWeek = league.CurrentWeek;
 
-                // if (latestWeek >= 5)
-                // {
-                //     continue; // skips this iteration and continues the loop. Move to WALS now that it's league? Obsolete
-                // }
-
                 if (latestWeek.HasValue && league.LastRecordedWeek != latestWeek)
                 {
                     league.LastRecordedWeek = latestWeek; // updates stored value

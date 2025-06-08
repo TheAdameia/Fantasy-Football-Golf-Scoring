@@ -5,6 +5,7 @@
     width: 50%;
     margin: .5em;
     border-radius: .5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .leagues-container {
@@ -19,6 +20,7 @@
     border-color: aquamarine;
     border-style: groove;
     border-radius: .5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .leagues-h2 {

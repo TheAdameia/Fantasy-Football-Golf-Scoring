@@ -16,7 +16,7 @@ export const MatchupCard = ({ matchup, week }) => {
     
     useEffect(() => {
         if (matchup) {
-            if (matchup.winnerId != 0) {
+            if (matchup.winnerId != 0 && matchup.winnerId != null) {
                 let newDisplay = {...displayWeekPoints}
                 newDisplay.display = true
                 setDisplayWeekPoints(newDisplay)

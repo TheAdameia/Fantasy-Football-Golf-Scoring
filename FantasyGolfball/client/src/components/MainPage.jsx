@@ -5,6 +5,7 @@ import { MatchupRecap } from "./matchups/MatchupRecap"
 import { PointsForTable } from "./widgets/PointsForTable"
 import { PointsAgainstTable } from "./widgets/PointsAgainstTable"
 import { WinLossTable } from "./widgets/WinLossTable"
+import { useEffect, useState } from "react"
 
 
 export const MainPage = () => {
@@ -13,16 +14,115 @@ export const MainPage = () => {
     const now = new Date()
     const draftStart = new Date(selectedLeague?.draftStartTime)
     const seasonStart = new Date(selectedLeague?.seasonStartDate)
-
-    const diffMs = draftStart - now
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
-    const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60))
+    const [advancementType, setAdvancementType] = useState(<></>)
+    const [timeUntilNextWeek, setTimeUntilNextWeek] = useState("")
+    const [timeUntilDraft, setTimeUntilDraft] = useState("")
 
     const enterDraft = () => {
         console.log(`now: ${now}`)
         navigate(`/live-draft`)
     }
+
+    useEffect(() => {
+        if (selectedLeague?.advancement)
+        switch(selectedLeague.advancement) {
+            case 0:
+                setAdvancementType(<div>A Season's "Week" advances in a week of real time.</div>)
+                return
+            case 1:
+                setAdvancementType(<div>A Season's "Week" advances in a day of real time.</div>)
+                return
+            case 2:
+                setAdvancementType(<div>A Season's "Week" advances in an hour of real time.</div>)
+                return
+        }
+    }, [selectedLeague])
+
+    useEffect(() => {
+        if (!selectedLeague || selectedLeague.currentWeek < 1 || !selectedLeague.seasonStartDate) return;
+
+        const seasonStart = new Date(selectedLeague.seasonStartDate);
+        let msPerWeek;
+
+        switch (selectedLeague.advancement) {
+            case 0:
+                msPerWeek = 1000 * 60 * 60 * 24 * 7;
+                break;
+            case 1:
+                msPerWeek = 1000 * 60 * 60 * 24;
+                break;
+            case 2:
+                msPerWeek = 1000 * 60 * 60;
+                break;
+            default:
+                msPerWeek = 0;
+        }
+
+        if (msPerWeek === 0) return;
+
+        const updateCountdown = () => {
+            const now = new Date();
+            const nextWeekStart = new Date(seasonStart.getTime() + selectedLeague.currentWeek * msPerWeek);
+            const diff = nextWeekStart - now;
+
+            if (diff <= 0) {
+                setTimeUntilNextWeek("Week change in progress...");
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            let formatted = "";
+            if (days > 0) formatted += `${days}d `;
+            if (hours > 0 || days > 0) formatted += `${hours}h `;
+            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `;
+            formatted += `${seconds}s`;
+
+            setTimeUntilNextWeek(formatted);
+        };
+
+        updateCountdown(); // Initial call
+        const interval = setInterval(updateCountdown, 1000); // update every second
+
+        return () => clearInterval(interval);
+    }, [selectedLeague]);
+
+
+    useEffect(() => {
+        if (!selectedLeague?.draftStartTime) return;
+
+        const draftStart = new Date(selectedLeague.draftStartTime);
+
+        const updateDraftCountdown = () => {
+            const now = new Date();
+            const diff = draftStart - now;
+
+            if (diff <= 0) {
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            let formatted = "";
+            if (days > 0) formatted += `${days}d `;
+            if (hours > 0 || days > 0) formatted += `${hours}h `;
+            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `;
+            formatted += `${seconds}s`;
+
+            setTimeUntilDraft(formatted);
+        };
+
+        updateDraftCountdown(); // initial call
+        const interval = setInterval(updateDraftCountdown, 1000);
+
+        return () => clearInterval(interval);
+    }, [selectedLeague]);
 
     if (!selectedLeague) {
         return (
@@ -73,10 +173,12 @@ export const MainPage = () => {
             <h1>Testing, attention please!</h1>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
-                {now < draftStart 
-                    ? <div>Draft starts on {draftStart.toLocaleString('en-US')}, in {diffDays} days, {diffHours} hours and {diffMinutes} minutes.</div> 
-                    : <div></div>
-                }
+                {timeUntilDraft && !selectedLeague.isDraftComplete && (
+                    <div className="mainpage-timer">
+                        Draft starts on {new Date(selectedLeague.draftStartTime).toLocaleString('en-US')}<br />
+                        in {timeUntilDraft}
+                    </div>
+                )}
                 {now < seasonStart
                     ? <div>Season begins {seasonStart.toLocaleString('en-US')}</div>
                     : <div></div>}
@@ -103,6 +205,9 @@ export const MainPage = () => {
                             )
                         }) : <></>}
                     </div>
+                    {timeUntilNextWeek && selectedLeague.isDraftComplete &&(
+                        <div className="mainpage-timer">Next week begins in: {timeUntilNextWeek}</div>
+                    )}
                 </div>    
                 
                 <div className="mainpage-matchup-container">
@@ -134,6 +239,7 @@ export const MainPage = () => {
                     {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                     {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}
                     {selectedLeague.requiredFullToStart ? <div>League must be full to start</div> : <div>League does not need to be full to start</div>}
+                    <div>{advancementType}</div>
                 </div>
             </div>
         </div>

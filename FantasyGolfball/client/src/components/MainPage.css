@@ -17,12 +17,15 @@
     border-radius: 2em;
     padding: 2em;
     margin: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
 }
 
 .mainpage-main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .mainpage-rules-container {
@@ -46,4 +49,8 @@
     flex-direction: row;
     align-items: center;
     align-self: center;
+}
+
+.mainpage-timer {
+    font-weight: 600;
 }

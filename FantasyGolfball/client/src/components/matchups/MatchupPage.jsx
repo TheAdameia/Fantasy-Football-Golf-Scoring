@@ -44,7 +44,7 @@ export const MatchupPage = () => {
         }
     }, [loggedInUser.id, matchups])
 
-    if (selectedLeague?.currentWeek != week) {
+    if (selectedLeague?.currentWeek != week && selectedLeague?.currentWeek != 0) {
         return (
             <div>
                 <div>

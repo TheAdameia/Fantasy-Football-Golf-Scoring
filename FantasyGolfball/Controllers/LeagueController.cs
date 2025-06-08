@@ -296,6 +296,7 @@ public class LeagueController : ControllerBase
                 .ThenInclude(lu => lu.UserProfile)
                     .ThenInclude(up => up.IdentityUser)
             .Where(l => l.LeagueUsers.Count < l.PlayerLimit)
+            .Where(l => !l.IsDraftComplete && !l.IsLeagueFinished)
             .Select(l => new LeagueSafeExportDTO
             {
                 LeagueId = l.LeagueId,
@@ -308,6 +309,7 @@ public class LeagueController : ControllerBase
                 RequiresPassword = l.RequiresPassword,
                 SeasonStartDate = l.SeasonStartDate,
                 Advancement = l.Advancement,
+                DraftStartTime = l.DraftStartTime,
                 Season = new SeasonDTO
                 {
                     SeasonId = l.Season.SeasonId,

@@ -26,6 +26,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<PlayerTeam> PlayerTeams { get; set; }
     public DbSet<PlayerStatus> PlayerStatuses { get; set; }
     public DbSet<HistoricalDraftState> HistoricalDraftStates { get; set; }
+    public DbSet<Trade> Trades { get; set; }
+    public DbSet<TradePlayer> TradePlayers { get;  set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -150,7 +152,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             new Status
             {
                 StatusId = 1,
-                StatusType = "Green",
+                StatusType = "Healthy",
                 ViableToPlay = true,
                 RequiresBackup = false
             },

@@ -6,6 +6,9 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
     const { allScores, selectedLeague } = useAppContext()
 
     const playerScore = useMemo(() => {
+        if (!allScores) {
+            return
+        }
         return allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
     }, [allScores, displayWeekPoints.week, rp.playerId])
 

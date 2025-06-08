@@ -1,4 +1,8 @@
 .widgets-table-container {
     margin-left: 1em;
     margin-right: 1em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background-color: aliceblue;
 }
