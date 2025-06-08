@@ -45,7 +45,7 @@ public class TradeEffectuationService
         var rolloverTrades = await dbContext.Trades
             .Where(t => t.LeagueId == eventData.LeagueId)
             .Where(t => t.TradeComplete == false)
-            .Where(t => t.WeekActivation < eventData.NewWeek)
+            .Where(t => t.WeekActivation <= eventData.NewWeek)
             .Where(t => t.FirstPartyAcceptance == true && t.SecondPartyAcceptance == false)
             .ToListAsync();
 
