@@ -25,6 +25,7 @@ export const DraftPage = () => {
     const [draftGraphic, setDraftGraphic] = useState(false)
     const { selectedLeague } = useAppContext()
     const navigate = useNavigate()
+    const [confirmCheck, setConfirmCheck] = useState(true)
 
     // handle dequeueing a player
     const deQueuePlayer = (removePlayer) => {
@@ -145,7 +146,10 @@ export const DraftPage = () => {
                         queuedPlayers={queuedPlayers}
                         deQueuePlayer={deQueuePlayer}
                     />
-                    <DraftTeamDisplay />
+                    <DraftTeamDisplay 
+                        confirmCheck={confirmCheck}
+                        setConfirmCheck={setConfirmCheck}
+                    />
                     <Chat />
                 </div>
                 <div className="center-box">
@@ -157,7 +161,10 @@ export const DraftPage = () => {
                         leagueId={leagueId}
                         
                     />
-                    <DraftPlayerList setSelectedPlayer={setSelectedPlayer}/>
+                    <DraftPlayerList 
+                        setSelectedPlayer={setSelectedPlayer}
+                        confirmCheck={confirmCheck}
+                    />
                 </div>
             </div>
         </DraftContext.Provider>

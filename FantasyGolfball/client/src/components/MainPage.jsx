@@ -170,7 +170,6 @@ export const MainPage = () => {
     // this is what people will see most of the time
     return (
         <div className="mainpage-main-container">
-            <h1>Testing, attention please!</h1>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 {timeUntilDraft && !selectedLeague.isDraftComplete && (

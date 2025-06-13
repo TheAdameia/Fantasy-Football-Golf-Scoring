@@ -3,7 +3,7 @@ import { useAppContext } from "../../contexts/AppContext"
 import { DraftContext } from "./DraftPage"
 
 
-export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
+export const DraftPlayerCard = ({ player, setSelectedPlayer, confirmCheck }) => {
     // need to source data for previous season scores, if applicable
     const { loggedInUser, selectedLeague, getAndSetRoster } = useAppContext()
     const { connection, currentTurn } = useContext(DraftContext)
@@ -28,6 +28,9 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer }) => {
     }
 
     const ConfirmDraft = (playerId) => {
+        if (confirmCheck) {
+            handleDraftPlayer(playerId)
+        }
         
         const confirmed = window.confirm(`Draft ${player.playerFullName}?`)
         if (confirmed) {
