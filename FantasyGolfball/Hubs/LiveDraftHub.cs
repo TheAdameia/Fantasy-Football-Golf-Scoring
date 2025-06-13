@@ -89,10 +89,7 @@ public class LiveDraftHub : Hub
                 Console.WriteLine("Draft has ended. No more turns to notify.");
                 await Clients.Group($"League_{leagueId}").SendAsync("DraftCompleted");
             }
-
             
-            // var nextUserId = updatedState.CurrentUserId;
-            // await NotifyTurn(leagueId, nextUserId);
         }
         catch (Exception ex)
         {
