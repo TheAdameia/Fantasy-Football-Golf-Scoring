@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupRosterCard } from "./MatchupRosterCard"
 import "./matchups.css"
+import { MatchupRevealContext } from "./MatchupRevealContext"
 
 
 export const MatchupCard = ({ matchup, week }) => {
@@ -9,11 +10,13 @@ export const MatchupCard = ({ matchup, week }) => {
     const opponent = matchup.matchupUsers.find((user) => user.userProfileId !== loggedInUser.id)
     const opponentLeagueUser = selectedLeague.leagueUsers.find((lu) => lu.userProfileId === opponent.userProfileId)
     const opponentRoster = opponentLeagueUser.roster
+    const { revealedPositions } = useContext(MatchupRevealContext)
     const [displayWeekPoints, setDisplayWeekPoints] = useState({
         week: week,
-        display: false
+        display: false,
+        revealedPositions
     })
-    
+
     useEffect(() => {
         if (matchup) {
             if (matchup.winnerId != 0 && matchup.winnerId != null) {

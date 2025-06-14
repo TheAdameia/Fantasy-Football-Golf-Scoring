@@ -39,13 +39,13 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             <td>
                 {playerStatusFiltered.status.statusType}
             </td>
-            {displayWeekPoints.display && selectedLeague.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
+            {displayWeekPoints.revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
         </tr>
     )
    } else if (slot == false && rp) {
     return (
         <tr>
-            {displayWeekPoints.display && selectedLeague.currentWeek ? <td>{playerScore.points}</td>:<td>0</td>}
+            {displayWeekPoints.revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
             <td>
                 {playerStatusFiltered.status.statusType}
             </td>
