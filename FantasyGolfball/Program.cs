@@ -40,6 +40,7 @@ builder.Services.AddSingleton<IEventBus, EventBus>();
 builder.Services.AddHostedService<WeekAdvancementService>(); // cronjob to see when currentWeek changes
 builder.Services.AddSingleton<WeekAdvancementListenerService>(); // listens for week change
 builder.Services.AddSingleton<TradeEffectuationService>(); // checks for trades after WALS calculations
+builder.Services.AddSingleton<ScoreRevealService>(); // handles score reveal for matchups
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -99,6 +100,8 @@ app.UseAuthorization();
 app.MapHub<ChatHub>("/chathub");
 // Creating a SignalR hub for draft services
 app.MapHub<LiveDraftHub>("/draftHub");
+// SignalR hub for score reveal
+app.MapHub<ScoreRevealHub>("/scorerevealhub");
 
 // forcing services to initialize when the app starts to run
 var matchupService = app.Services.GetRequiredService<IMatchupService>();
