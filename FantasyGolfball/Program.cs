@@ -107,6 +107,7 @@ app.MapHub<ScoreRevealHub>("/scorerevealhub");
 var matchupService = app.Services.GetRequiredService<IMatchupService>();
 var weekListenerService = app.Services.GetRequiredService<WeekAdvancementListenerService>();
 var tradeEffectuationService = app.Services.GetRequiredService<TradeEffectuationService>();
+var scoreRevealService = app.Services.GetRequiredService<ScoreRevealService>();
 
 
 app.MapControllers();

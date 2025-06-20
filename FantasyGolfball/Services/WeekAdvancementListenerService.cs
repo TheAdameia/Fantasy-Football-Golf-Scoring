@@ -148,6 +148,9 @@ public class WeekAdvancementListenerService
         Console.WriteLine($"Completed Week Advancement matchup processing for League {league.LeagueId}.");
 
         await _eventBus.Publish(new TradeProcessingEvent(league.LeagueId, eventData.NewWeek));
-        Console.WriteLine($"Trade check event fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
+        Console.WriteLine($"TPE fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
+
+        await _eventBus.Publish(new ScoreRevealEvent(league.LeagueId, eventData.NewWeek));
+        Console.WriteLine($"SRE fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
     }
 }

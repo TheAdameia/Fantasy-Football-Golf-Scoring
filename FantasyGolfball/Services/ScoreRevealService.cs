@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Concurrent;
 using FantasyGolfball.Data;
 using Microsoft.AspNetCore.SignalR;
+using FantasyGolfball.Models;
+using FantasyGolfball.Models.Events;
 
 namespace FantasyGolfball.Services;
 
@@ -14,10 +16,16 @@ public class ScoreRevealService
     private readonly ConcurrentDictionary<int, Task> _leagueTasks = new();
     private readonly ConcurrentDictionary<int, CancellationTokenSource> _cancellationTokens = new();
 
-    public ScoreRevealService(IServiceScopeFactory scopeFactory, IHubContext<ScoreRevealHub> hubContext)
+    public ScoreRevealService(IServiceScopeFactory scopeFactory, IHubContext<ScoreRevealHub> hubContext, IEventBus eventBus)
     {
         _scopeFactory = scopeFactory;
         _hubContext = hubContext;
+        eventBus.Subscribe<ScoreRevealEvent>(async e =>
+        {
+            Console.WriteLine($"ScoreRevealService received event for League {e.LeagueId}, Week {e.WeekNumber}");
+            StartRevealLoopForLeague(e.LeagueId);
+            await Task.CompletedTask;
+        });
     }
 
     public void StartRevealLoopForLeague(int leagueId)
@@ -52,18 +60,71 @@ public class ScoreRevealService
             var db = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
             var revealSequence = new[] { "DEF", "K", "FLEX", "RB2", "WR2", "RB1", "WR1", "QB1" };
-            var delayPerPosition = TimeSpan.FromSeconds(30); // can change this to be dependent on advancement
+
+            // make it so that it starts firing in time for them to be all done by the time of the week advancement
+
+             var league = await db.Leagues
+                .FirstOrDefaultAsync(l => l.LeagueId == leagueId, token);
+
+            if (league == null || league.CurrentWeek == null)
+            {
+                Console.WriteLine($"Exiting SRS for League {leagueId}, CurrentWeek or league was null");
+                return;
+            }
+
+            var startTime = DateTime.UtcNow;
+
+            // calculates when next week starts
+            DateTime nextWeekTime;
+            switch (league.Advancement)
+            {
+                case AdvancementType.Weekly:
+                    nextWeekTime = league.SeasonStartDate.AddDays(7 * league.CurrentWeek.Value);
+                    break;
+                case AdvancementType.Daily:
+                    nextWeekTime = league.SeasonStartDate.AddDays(league.CurrentWeek.Value);
+                    break;
+                case AdvancementType.Hourly:
+                    nextWeekTime = league.SeasonStartDate.AddHours(league.CurrentWeek.Value);
+                    break;
+                default:
+                    throw new InvalidOperationException("Unknown AdvancementType.");
+            }
+
+            // calculates total reveal window
+            TimeSpan totalRevealDuration;
+            switch (league.Advancement)
+            {
+                case AdvancementType.Weekly:
+                    totalRevealDuration = TimeSpan.FromHours(8);
+                    break;
+                case AdvancementType.Daily:
+                    totalRevealDuration = TimeSpan.FromMinutes(60);
+                    break;
+                case AdvancementType.Hourly:
+                    totalRevealDuration = TimeSpan.FromMinutes(10);
+                    break;
+                default:
+                    totalRevealDuration = TimeSpan.FromMinutes(30);
+                    break;
+            }
+
+            var revealStartTime = nextWeekTime - totalRevealDuration;
+            var now = DateTime.UtcNow;
+
+            // sets task to activate when relevant
+            if (now < revealStartTime)
+            {
+                var waitTime = revealStartTime - now;
+                Console.WriteLine($"[League {leagueId}] Waiting {waitTime} until reveal starts.");
+                await Task.Delay(waitTime, token);
+            }
+
+            var revealInterval = TimeSpan.FromMilliseconds(totalRevealDuration.TotalMilliseconds / revealSequence.Length);
 
             foreach (var position in revealSequence)
             {
                 if (token.IsCancellationRequested) break;
-
-                await Task.Delay(delayPerPosition, token);
-
-                var league = await db.Leagues
-                    .FirstOrDefaultAsync(l => l.LeagueId == leagueId, token);
-
-                if (league == null) continue;
 
                 var matchups = await db.Matchups
                     .Where(m => m.LeagueId == leagueId && m.WeekId == league.CurrentWeek)
