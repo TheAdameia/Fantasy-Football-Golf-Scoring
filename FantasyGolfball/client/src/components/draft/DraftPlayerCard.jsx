@@ -28,8 +28,9 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer, confirmCheck }) => 
     }
 
     const ConfirmDraft = (playerId) => {
-        if (confirmCheck) {
+        if (!confirmCheck) {
             handleDraftPlayer(playerId)
+            return
         }
         
         const confirmed = window.confirm(`Draft ${player.playerFullName}?`)

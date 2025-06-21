@@ -36,10 +36,6 @@ export const MatchupRevealProvider = ({ children }) => {
                 await newConnection.start()
                 console.log("Connected to ScoreRevealHub")
 
-                // If you have a JoinGroup method in your hub
-                await newConnection.invoke("JoinMatchupChannel", selectedLeague.leagueId, loggedInUser.id)
-                    .catch(err => console.error("JoinMatchupChannel failed", err))
-
                 setConnection(newConnection)
             } catch (err) {
                 console.error("SignalR connection failed:", err)

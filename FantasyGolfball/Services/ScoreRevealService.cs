@@ -59,7 +59,7 @@ public class ScoreRevealService
             using var scope = _scopeFactory.CreateScope();
             var db = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-            var revealSequence = new[] { "DEF", "K", "FLEX", "RB2", "WR2", "RB1", "WR1", "QB1" };
+            var revealSequence = new[] { "DEF", "K", "FLEX", "TE1", "RB2", "WR2", "RB1", "WR1", "QB1" };
 
             // make it so that it starts firing in time for them to be all done by the time of the week advancement
 

@@ -36,6 +36,7 @@ public class WeekAdvancementListenerService
         if (previousWeek == 0)
         {
             Console.WriteLine($"Skipping score calculation for League {eventData.LeagueId} because previousWeek is 0.");
+            // I think SRE is not firing in week 0 -> 1 because of this, but that is easily remedied here
             return;
         }
 
