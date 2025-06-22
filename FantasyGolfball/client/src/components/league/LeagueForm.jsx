@@ -7,7 +7,7 @@ import "./League.css"
 
 
 export const LeagueForm = () => {
-    const { loggedInUser } = useAppContext()
+    const { loggedInUser, getAndSetLeagues } = useAppContext()
     const [leagueObject, setLeagueObject] = useState({
         creatorId: loggedInUser.id,
         leagueName: "",
@@ -68,6 +68,7 @@ export const LeagueForm = () => {
 
         if (newLeague.leagueName !== "") {
             PostLeague(newLeague).then(() => {
+                getAndSetLeagues()
                 navigate("/league")
             })
         } else {

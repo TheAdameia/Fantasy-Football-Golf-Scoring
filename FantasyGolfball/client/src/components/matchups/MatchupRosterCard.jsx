@@ -2,18 +2,22 @@ import { Table } from "reactstrap"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupPlayerCard } from "./MatchupPlayerCard"
 import { BlankPlayerCard } from "./BlankPlayerCard"
-import { useMemo } from "react"
+import { useMemo, useContext } from "react"
+import { MatchupRevealContext } from "./MatchupRevealContext"
+
 
 
 export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) => {
     const { roster, allScores, selectedLeague } = useAppContext()
+    const { revealedPositions } = useContext(MatchupRevealContext)
+
 
     const calculateTotalPoints = (rosterPlayers) => {
-        if (!allScores) {
+        if (!allScores || !revealedPositions) {
             return 
         }
         return rosterPlayers.reduce((total, rp) => {
-            if (rp.rosterPosition != "bench" ) {
+            if (rp.rosterPosition != "bench" && revealedPositions.includes(rp.rosterPosition)) {
                 const playerScore = allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
             return total + (playerScore ? playerScore.points : 0)
             }
@@ -24,17 +28,17 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     const userTotalPoints = useMemo(() => 
                                 slot && roster ? 
                                 calculateTotalPoints(roster.rosterPlayers) 
-                                : 0, [roster, allScores, displayWeekPoints.week])
+                                : 0, [roster, allScores, displayWeekPoints.week, revealedPositions])
     const opponentTotalPoints = useMemo(() => 
                                 !slot && opponentRoster ? 
                                 calculateTotalPoints(opponentRoster.rosterPlayers) 
-                                : 0, [opponentRoster, allScores, displayWeekPoints.week])
+                                : 0, [opponentRoster, allScores, displayWeekPoints.week, revealedPositions])
 
     
     if (slot == true && roster) {
         return ( //position, name, team, injury status, points
             <div>
-                <h5>{displayWeekPoints.display && selectedLeague.currentWeek ? userTotalPoints.toFixed(2) : "0"}</h5>
+                <h5>{userTotalPoints.toFixed(2)}</h5>
                 <Table striped>
                     <thead>
                         <tr>
@@ -180,7 +184,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     } else if (slot == false && opponentRoster) {
         return (
             <div>
-                <h5>{displayWeekPoints.display && selectedLeague.currentWeek ? opponentTotalPoints.toFixed(2) : "0"}</h5>
+                <h5>{opponentTotalPoints.toFixed(2)}</h5>
                 <Table striped>
                     <thead>
                         <tr>

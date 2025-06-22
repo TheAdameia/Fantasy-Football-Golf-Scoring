@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 public class ScoreRevealHub : Hub
 {
     // call to reveal per rosterPosition
-    public async Task SendScoreReveal(int leagueId, int userId, string rosterPosition, object revealedData)
+    public async Task SendScoreReveal(int leagueId, string rosterPosition)
     {
         await Clients.Group($"League-{leagueId}")
-            .SendAsync("ReceiveScoreReveal", userId, rosterPosition, revealedData);
+            .SendAsync("ReceiveScoreReveal", rosterPosition);
     }
 
     public override async Task OnConnectedAsync()

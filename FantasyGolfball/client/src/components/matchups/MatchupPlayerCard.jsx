@@ -1,9 +1,12 @@
-import { useMemo } from "react"
+import { useMemo, useContext } from "react"
 import { useAppContext } from "../../contexts/AppContext"
+import { MatchupRevealContext } from "./MatchupRevealContext"
 
 
 export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
-    const { allScores, selectedLeague } = useAppContext()
+    const { allScores } = useAppContext()
+    const { revealedPositions } = useContext(MatchupRevealContext)
+    const bubkis = ["QB1", "WR2"]
 
     const playerScore = useMemo(() => {
         if (!allScores) {
@@ -39,13 +42,13 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             <td>
                 {playerStatusFiltered.status.statusType}
             </td>
-            {displayWeekPoints.revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
+            {revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
         </tr>
     )
    } else if (slot == false && rp) {
     return (
         <tr>
-            {displayWeekPoints.revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
+            {revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
             <td>
                 {playerStatusFiltered.status.statusType}
             </td>
@@ -61,8 +64,10 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
         </tr>
     )
    } else {
-    <div>
-        loading...
-    </div>
+    return (
+        <div>
+            loading...
+        </div>
+    )
    }
 }

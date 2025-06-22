@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom"
 
 
 export const RosterPage = () => {
-    const { loggedInUser } = useAppContext()
+    const { loggedInUser, selectedLeague } = useAppContext()
     const navigate = useNavigate()
 
     return (
         <div>
             <div>
                 <h2>{loggedInUser.userName}'s team</h2>
+                {!selectedLeague.isLeagueFinished ? <h5>Time until roster locks</h5>: <></>}
                 <div>
                     <Button onClick={() => navigate(`/create-trade`)}>Create a trade</Button>
                 </div>

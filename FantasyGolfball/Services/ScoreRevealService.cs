@@ -136,13 +136,13 @@ public class ScoreRevealService
 
                 foreach (var matchup in matchups)
                 {
-                    foreach (var user in matchup.MatchupUsers)
-                    {
-                        await _hubContext.Clients
-                            .Group($"League-{league.LeagueId}")
-                            .SendAsync("ReceiveScoreReveal", user.UserProfileId, position, cancellationToken: token);
-                    }
+                    
+                    await _hubContext.Clients
+                        .Group($"League-{league.LeagueId}")
+                        .SendAsync("ReceiveScoreReveal", position, cancellationToken: token);
                 }
+
+                await Task.Delay(revealInterval, token);
             }
 
             StopRevealLoop(leagueId); //cleanup when sequence completes

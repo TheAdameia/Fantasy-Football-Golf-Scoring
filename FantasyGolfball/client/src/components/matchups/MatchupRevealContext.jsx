@@ -17,6 +17,15 @@ export const MatchupRevealProvider = ({ children }) => {
     }
 
     useEffect(() => {
+        const key = `revealed-${selectedLeague?.leagueId}-${selectedLeague?.currentWeek}`
+
+        const saved = localStorage.getItem(key)
+        if (saved) {
+            setRevealedPositions(JSON.parse(saved))
+        }
+    }, [selectedLeague])
+
+    useEffect(() => {
         if (!selectedLeague || selectedLeague.currentWeek === 0 || !loggedInUser) {
             return
         }
@@ -27,9 +36,14 @@ export const MatchupRevealProvider = ({ children }) => {
                 .withAutomaticReconnect()
                 .build()
 
-            newConnection.on("ReceiveScoreReveal", (userId, rosterPosition, revealData) => {
-                console.log("Reveal received:", rosterPosition, revealData)
-                setRevealedPositions(prev => [...new Set([...prev, rosterPosition])])
+            newConnection.on("ReceiveScoreReveal", (rosterPosition) => {
+                console.log("Reveal received:", rosterPosition)
+                setRevealedPositions(prev => {
+                    const updated = [...new Set([...prev, rosterPosition])]
+                    const key = `revealed-${selectedLeague?.leagueId}-${selectedLeague?.currentWeek}`
+                    localStorage.setItem(key, JSON.stringify(updated)) // persists reveals in local storage
+                    return updated
+                })
             })
 
             try {
@@ -50,6 +64,15 @@ export const MatchupRevealProvider = ({ children }) => {
             }
         }
     }, [selectedLeague, loggedInUser])
+
+
+    useEffect(() => { // judiciously erases past or future keys for the league
+        const allKeys = Object.keys(localStorage)
+        const prefix = `revealed-${selectedLeague?.leagueId}-`
+        allKeys
+            .filter(k => k.startsWith(prefix) && !k.endsWith(`-${selectedLeague?.currentWeek}`))
+            .forEach(k => localStorage.removeItem(k))
+    }, [selectedLeague])
 
     return (
         <MatchupRevealContext.Provider value={{ revealedPositions }}>
