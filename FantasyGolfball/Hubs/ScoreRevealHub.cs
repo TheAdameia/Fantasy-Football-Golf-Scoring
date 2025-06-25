@@ -1,3 +1,4 @@
+using FantasyGolfball.Models;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
@@ -29,6 +30,12 @@ public class ScoreRevealHub : Hub
 
         await base.OnConnectedAsync();
     }
+
+    public async Task<List<string>> GetRevealedPositions(int leagueId, int weekId)
+    {
+        return ScoreRevealCache.GetRevealedPositions(leagueId, weekId);
+    }
+
 
     public override async Task OnDisconnectedAsync(Exception exception)
     {

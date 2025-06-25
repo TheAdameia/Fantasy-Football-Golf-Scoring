@@ -38,7 +38,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     if (slot == true && roster) {
         return ( //position, name, team, injury status, points
             <div>
-                <h5>{userTotalPoints.toFixed(2)}</h5>
+                <h5>{userTotalPoints?.toFixed(2)}</h5>
                 <Table striped>
                     <thead>
                         <tr>
@@ -184,7 +184,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
     } else if (slot == false && opponentRoster) {
         return (
             <div>
-                <h5>{opponentTotalPoints.toFixed(2)}</h5>
+                <h5>{opponentTotalPoints?.toFixed(2)}</h5>
                 <Table striped>
                     <thead>
                         <tr>

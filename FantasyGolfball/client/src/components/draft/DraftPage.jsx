@@ -23,7 +23,7 @@ export const DraftPage = () => {
     const [queuedPlayers, setQueuedPlayers] = useState([])
     const [leagueId, setLeagueId] = useState(0)
     const [draftGraphic, setDraftGraphic] = useState(false)
-    const { selectedLeague } = useAppContext()
+    const { selectedLeague, getAndSetLeagues, getAndSetMatchups } = useAppContext()
     const navigate = useNavigate()
     const [confirmCheck, setConfirmCheck] = useState(true)
 
@@ -81,6 +81,8 @@ export const DraftPage = () => {
             });
 
             newConnection.on("DraftCompleted", () => {
+                getAndSetLeagues() //
+                getAndSetMatchups() // these are here to mitigate the possibility of seeing information a user shouldn't
                 console.log("Draft completed!")
                 setDraftGraphic(true)
 

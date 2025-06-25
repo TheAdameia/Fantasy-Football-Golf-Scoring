@@ -3,6 +3,7 @@ import { useAppContext } from "../../contexts/AppContext"
 import { MatchupCard } from "./MatchupCard"
 import { SavedMatchupCard } from "./SavedMatchupCard"
 import "./matchups.css"
+import { getRevealTimes } from "../widgets/GetRevealTimes"
 
 export const MatchupPage = () => {
     const { matchups, selectedLeague, loggedInUser } = useAppContext()
@@ -12,6 +13,7 @@ export const MatchupPage = () => {
     }
     const [week, setWeek] = useState(getInitialWeek)
     const [filteredMatchups, setFilteredMatchups] = useState()
+    const [revealCountdownText, setRevealCountdownText] = useState("")
 
     const handleWeekChange = (arg) => {
         if (arg == true && (week + 1) > 4) {
@@ -31,6 +33,14 @@ export const MatchupPage = () => {
         }
     }
 
+    const formatTime = (ms) => {
+        if (ms <= 0) return "now"
+        const totalSeconds = Math.floor(ms / 1000)
+        const minutes = Math.floor(totalSeconds / 60)
+        const seconds = totalSeconds % 60
+        return `${minutes}m ${seconds}s`
+    }
+
     useEffect(() => {
         const currentWeek = selectedLeague?.currentWeek ?? 1
         const clampedWeek = Math.min(currentWeek, 4)
@@ -43,6 +53,38 @@ export const MatchupPage = () => {
             setFilteredMatchups(newMatchups)
         }
     }, [loggedInUser.id, matchups])
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const times = getRevealTimes(selectedLeague)
+            if (!times) return
+
+            const now = new Date().getTime()
+            const start = times.revealStartTime.getTime()
+            const end = times.nextWeekTime.getTime()
+
+            if (now < start) {
+                const diff = start - now
+                setRevealCountdownText("Reveals begin in " + formatTime(diff))
+            } else if (now >= start && now < end) {
+                const revealIndex = Math.floor((now - start) / times.revealInterval)
+                const nextRevealTime = start + (revealIndex + 1) * times.revealInterval
+                const diff = nextRevealTime - now
+
+                if (revealIndex < times.revealSequence.length) {
+                    const nextPosition = times.revealSequence[revealIndex + 1] || "Final"
+                    setRevealCountdownText(`${nextPosition} revealed in ${formatTime(diff)}`)
+                } else {
+                    setRevealCountdownText("All positions revealed.")
+                }
+            } else {
+                setRevealCountdownText("All positions revealed.")
+            }
+        }, 1000)
+
+        return () => clearInterval(interval)
+    }, [selectedLeague])
+
 
     if (selectedLeague?.currentWeek != week && selectedLeague?.currentWeek != 0) {
         return (
@@ -80,15 +122,19 @@ export const MatchupPage = () => {
         return (
             <div>
                 <div>
-                <button
-                    className="week-buttons"
-                    onClick={() => handleWeekChange(false)}
-                >Previous</button>
-                <label className="week-label">Week {week}</label>
-                <button
-                    className="week-buttons"
-                    onClick={() => handleWeekChange(true)}
-                >Next</button>
+                    <button
+                        className="week-buttons"
+                        onClick={() => handleWeekChange(false)}
+                    >Previous</button>
+                    <label className="week-label">Week {week}</label>
+                    <button
+                        className="week-buttons"
+                        onClick={() => handleWeekChange(true)}
+                    >Next</button>
+                    <div className="reveal-timer">
+                        {revealCountdownText}
+                    </div>
+
                 </div>
             
                 <div>

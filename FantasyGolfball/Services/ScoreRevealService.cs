@@ -129,6 +129,9 @@ public class ScoreRevealService
                 await _hubContext.Clients
                     .Group($"League-{league.LeagueId}")
                     .SendAsync("ReceiveScoreReveal", position, cancellationToken: token);
+                
+                ScoreRevealCache.AddRevealedPosition(league.LeagueId, league.CurrentWeek.Value, position);
+
 
                 await Task.Delay(revealInterval, token);
             }

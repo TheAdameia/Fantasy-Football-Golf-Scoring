@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using FantasyGolfball.Data;
 using FantasyGolfball.Services;
 using FantasyGolfball.Models.Events;
+using FantasyGolfball.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +109,9 @@ var matchupService = app.Services.GetRequiredService<IMatchupService>();
 var weekListenerService = app.Services.GetRequiredService<WeekAdvancementListenerService>();
 var tradeEffectuationService = app.Services.GetRequiredService<TradeEffectuationService>();
 var scoreRevealService = app.Services.GetRequiredService<ScoreRevealService>();
+
+// cleanup initializer
+ScoreRevealCache.StartCleanup(TimeSpan.FromHours(2));
 
 
 app.MapControllers();

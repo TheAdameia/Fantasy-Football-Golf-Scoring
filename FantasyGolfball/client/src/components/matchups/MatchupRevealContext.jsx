@@ -26,9 +26,9 @@ export const MatchupRevealProvider = ({ children }) => {
     }, [selectedLeague])
 
     useEffect(() => {
-        if (!selectedLeague || selectedLeague.currentWeek === 0 || !loggedInUser) {
+        if (!selectedLeague || selectedLeague.currentWeek === 0){
             return
-        }
+        } 
 
         const connect = async () => {
             const newConnection = new HubConnectionBuilder()
@@ -36,19 +36,32 @@ export const MatchupRevealProvider = ({ children }) => {
                 .withAutomaticReconnect()
                 .build()
 
-            newConnection.on("ReceiveScoreReveal", (rosterPosition) => {
-                console.log("Reveal received:", rosterPosition)
-                setRevealedPositions(prev => {
-                    const updated = [...new Set([...prev, rosterPosition])]
-                    const key = `revealed-${selectedLeague?.leagueId}-${selectedLeague?.currentWeek}`
-                    localStorage.setItem(key, JSON.stringify(updated)) // persists reveals in local storage
-                    return updated
-                })
-            })
-
             try {
                 await newConnection.start()
                 console.log("Connected to ScoreRevealHub")
+
+                // ask backend for already-revealed positions
+                const alreadyRevealed = await newConnection.invoke(
+                    "GetRevealedPositions",
+                    selectedLeague.leagueId,
+                    selectedLeague.currentWeek
+                )
+
+                console.log("Already revealed from server:", alreadyRevealed)
+
+                const key = `revealed-${selectedLeague.leagueId}-${selectedLeague.currentWeek}`
+                localStorage.setItem(key, JSON.stringify(alreadyRevealed))
+                setRevealedPositions(alreadyRevealed)
+
+                // set up handler after syncing state
+                newConnection.on("ReceiveScoreReveal", (rosterPosition) => {
+                    console.log("Reveal received:", rosterPosition)
+                    setRevealedPositions(prev => {
+                        const updated = [...new Set([...prev, rosterPosition])]
+                        localStorage.setItem(key, JSON.stringify(updated))
+                        return updated
+                    })
+                })
 
                 setConnection(newConnection)
             } catch (err) {
@@ -63,7 +76,8 @@ export const MatchupRevealProvider = ({ children }) => {
                 connection.stop().catch(err => console.error("Failed to stop connection:", err))
             }
         }
-    }, [selectedLeague, loggedInUser])
+    }, [selectedLeague])
+
 
 
     useEffect(() => { // judiciously erases past or future keys for the league
