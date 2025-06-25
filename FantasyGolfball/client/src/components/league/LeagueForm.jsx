@@ -241,6 +241,7 @@ export const LeagueForm = () => {
                             <option value={"Weekly"}>Every Week (default)</option>
                             <option value={"Daily"}>Every Day</option>
                             <option value={"Hourly"}>Every Hour</option>
+                            <option value={"Turbo"}>Every 15 Minutes</option>
                         </Input>
                     </div>
                 </FormGroup>

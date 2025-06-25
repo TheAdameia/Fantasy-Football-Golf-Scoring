@@ -20,6 +20,9 @@ export const getRevealTimes = (selectedLeague) => {
         case 2:
             nextWeekTime = new Date(seasonStart.getTime() + 60 * 60 * 1000 * week)
             break
+        case 3:
+            nextWeekTime = new Date(seasonStart.getTime() + 60 * 15 * 1000 * week)
+            break
         default:
             return null
     }
@@ -34,6 +37,9 @@ export const getRevealTimes = (selectedLeague) => {
             break
         case 2:
             totalRevealDuration = 10 * 60 * 1000 // 10 minutes
+            break
+        case 3:
+            totalRevealDuration = 5 * 60 * 1000 // 5 minutes
             break
         default:
             totalRevealDuration = 30 * 60 * 1000

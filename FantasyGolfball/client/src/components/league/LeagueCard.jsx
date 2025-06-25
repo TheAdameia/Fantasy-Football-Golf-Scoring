@@ -55,6 +55,9 @@ export const LeagueCard = ({ league, getAndSetLeagues }) => {
             case 2:
                 setAdvancementType(<div>A Season's "Week" advances in an hour of real time.</div>)
                 return
+            case 3:
+                setAdvancementType(<div>A Season's "Week" advances in 15 minutes of real time.</div>)
+                return
         }
     }, [league])
 

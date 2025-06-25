@@ -87,6 +87,9 @@ public class ScoreRevealService
                 case AdvancementType.Hourly:
                     nextWeekTime = league.SeasonStartDate.AddHours(league.CurrentWeek.Value);
                     break;
+                case AdvancementType.Turbo:
+                    nextWeekTime = league.SeasonStartDate.AddMinutes(15 * league.CurrentWeek.Value);
+                    break;
                 default:
                     throw new InvalidOperationException("Unknown AdvancementType.");
             }
@@ -103,6 +106,9 @@ public class ScoreRevealService
                     break;
                 case AdvancementType.Hourly:
                     totalRevealDuration = TimeSpan.FromMinutes(10);
+                    break;
+                case AdvancementType.Turbo:
+                    totalRevealDuration = TimeSpan.FromMinutes(5);
                     break;
                 default:
                     totalRevealDuration = TimeSpan.FromMinutes(30);
