@@ -1,13 +1,14 @@
 import { useMemo, useContext } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupRevealContext } from "./MatchupRevealContext"
+import "./matchups.css"
 
 
 export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
     const { allScores } = useAppContext()
     const { revealedPositions } = useContext(MatchupRevealContext)
-    const bubkis = ["QB1", "WR2"]
 
+    
     const playerScore = useMemo(() => {
         if (!allScores) {
             return
@@ -42,13 +43,17 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             <td>
                 {playerStatusFiltered.status.statusType}
             </td>
-            {revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
+            <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in" : ""}>
+                {revealedPositions?.includes(rp.rosterPosition) ? playerScore.points : 0}
+            </td>
         </tr>
     )
    } else if (slot == false && rp) {
     return (
         <tr>
-            {revealedPositions?.includes(rp.rosterPosition) ? <td>{playerScore.points}</td>:<td>0</td>}
+            <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in" : ""}>
+                {revealedPositions?.includes(rp.rosterPosition) ? playerScore.points : 0}
+            </td>
             <td>
                 {playerStatusFiltered.status.statusType}
             </td>

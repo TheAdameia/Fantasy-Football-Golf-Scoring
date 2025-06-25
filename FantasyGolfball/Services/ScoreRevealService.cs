@@ -125,22 +125,10 @@ public class ScoreRevealService
             foreach (var position in revealSequence)
             {
                 if (token.IsCancellationRequested) break;
-
-                var matchups = await db.Matchups
-                    .Where(m => m.LeagueId == leagueId && m.WeekId == league.CurrentWeek)
-                    .Include(m => m.MatchupUsers)
-                    .ToListAsync(token);
-
-                if (!matchups.Any()) continue;
-
-
-                foreach (var matchup in matchups)
-                {
                     
-                    await _hubContext.Clients
-                        .Group($"League-{league.LeagueId}")
-                        .SendAsync("ReceiveScoreReveal", position, cancellationToken: token);
-                }
+                await _hubContext.Clients
+                    .Group($"League-{league.LeagueId}")
+                    .SendAsync("ReceiveScoreReveal", position, cancellationToken: token);
 
                 await Task.Delay(revealInterval, token);
             }
