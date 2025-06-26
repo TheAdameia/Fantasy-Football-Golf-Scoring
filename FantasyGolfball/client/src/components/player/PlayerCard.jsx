@@ -11,7 +11,7 @@ export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
 
     const HandleDropPlayer = () => {
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
-        DeleteRosterPlayer(rosterPlayer.rosterPlayerId).then(() => {
+        DeleteRosterPlayer(rosterPlayer.rosterPlayerId, selectedLeague.leagueId).then(() => {
             getAndSetRoster(),
             getAndSetPlayers()
         })
@@ -20,7 +20,7 @@ export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
     const HandleAddPlayer = (rosterId, playerId) => {
         let rosterPlayerPostDTO = {
             "playerId": playerId,
-            "rosterId": rosterId,
+            "rosterId": rosterId
         }
         AddRosterPlayer(rosterPlayerPostDTO).then(() => {
             getAndSetRoster()

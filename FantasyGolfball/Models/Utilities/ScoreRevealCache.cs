@@ -1,5 +1,5 @@
 using System.Collections.Concurrent;
-namespace FantasyGolfball.Models;
+namespace FantasyGolfball.Models.Utilities;
 
 public class RevealEntry
 {

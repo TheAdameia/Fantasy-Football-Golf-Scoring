@@ -4,6 +4,7 @@ using FantasyGolfball.Data;
 using Microsoft.AspNetCore.SignalR;
 using FantasyGolfball.Models;
 using FantasyGolfball.Models.Events;
+using FantasyGolfball.Models.Utilities;
 
 namespace FantasyGolfball.Services;
 

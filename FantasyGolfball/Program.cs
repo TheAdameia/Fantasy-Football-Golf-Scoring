@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using FantasyGolfball.Data;
 using FantasyGolfball.Services;
 using FantasyGolfball.Models.Events;
-using FantasyGolfball.Models;
+using FantasyGolfball.Models.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 

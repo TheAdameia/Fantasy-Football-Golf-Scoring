@@ -1,4 +1,4 @@
-using FantasyGolfball.Models;
+using FantasyGolfball.Models.Utilities;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 

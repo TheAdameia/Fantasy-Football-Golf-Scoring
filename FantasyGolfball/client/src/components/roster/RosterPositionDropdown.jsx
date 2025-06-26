@@ -7,7 +7,7 @@ import { ChangeRosterPlayerPosition } from "../../managers/rosterPlayerManager"
 export const RosterPositionDropdown = ({ rp, rosterLock }) => {
     const [dropDownOpen, setDropdownOpen] = useState()
     const toggle = () => setDropdownOpen((prevState) => !prevState)
-    const { roster, getAndSetRoster } = useAppContext()
+    const { roster, getAndSetRoster, selectedLeague } = useAppContext()
     const rosterOptions = ["bench", "QB1", "WR1", "WR2", "RB1", "RB2", "FLEX", "TE1", "K", "DEF"]
 
     const HandlePositionChange = async (newPosition) => {  // needs to be async to make sure db updates before refresh
@@ -18,7 +18,7 @@ export const RosterPositionDropdown = ({ rp, rosterLock }) => {
         if (roster.rosterPlayers.some((rosterPlayer) => rosterPlayer.rosterPosition === newPosition) && newPosition != "bench") {
             window.alert("Player already has that role")
         } else {
-            await ChangeRosterPlayerPosition(rp.rosterPlayerId, newPosition)
+            await ChangeRosterPlayerPosition(rp.rosterPlayerId, newPosition, selectedLeague.leagueId)
             await getAndSetRoster()
         }
     }

@@ -11,7 +11,7 @@ export const RosterPlayerCard = ({ rp, rosterLock }) => {
 
 
     const HandleDropPlayer = (rosterPlayerId) => {
-        DeleteRosterPlayer(rosterPlayerId).then(() => {
+        DeleteRosterPlayer(rosterPlayerId, selectedLeague.leagueId).then(() => {
             getAndSetRoster(),
             getAndSetPlayers()
         })

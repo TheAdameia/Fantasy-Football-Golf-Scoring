@@ -228,6 +228,7 @@ export const MainPage = () => {
                         {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                         {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}
                         {selectedLeague.requiredFullToStart ? <div>League must be full to start</div> : <div>League does not need to be full to start</div>}
+                        <div>{advancementType}</div>
                     </div>
                 </div>
             </div>
@@ -274,7 +275,7 @@ export const MainPage = () => {
                     {timeUntilNextWeek && selectedLeague.isDraftComplete &&(
                         <div className="mainpage-timer">Next week begins in: {timeUntilNextWeek}</div>
                     )}
-                    {timeUntilReveals && selectedLeague.isDraftComplete && (
+                    {timeUntilReveals && selectedLeague.isDraftComplete && selectedLeague.currentWeek != null &&(
                         <div className="mainpage-timer">{timeUntilReveals}</div>
                     )}
                 </div>    

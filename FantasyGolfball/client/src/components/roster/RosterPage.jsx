@@ -81,7 +81,7 @@ export const RosterPage = () => {
         <div>
             <div>
                 <h2>{loggedInUser.userName}'s team</h2>
-                {!selectedLeague.isLeagueFinished && (
+                {!selectedLeague?.isLeagueFinished && (
                     <h5>{timeUntilReveals}</h5>
                 )}
                 <div>
