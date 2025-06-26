@@ -218,7 +218,8 @@ export const MainPage = () => {
                         />
                     </div>
                     <div className="mainpage-matchup-container">
-                        <MatchupRecap weekId={1} />
+                        {/* behooves me to change this but I'll do it later */}
+                        <MatchupRecap weekId={1} /> 
                         <MatchupRecap weekId={2} />
                         <MatchupRecap weekId={3} />
                         <MatchupRecap weekId={4} />

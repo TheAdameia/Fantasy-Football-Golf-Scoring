@@ -26,7 +26,7 @@ public class DraftService : IDraftService
         _eventBus = eventBus;
     }
 
-     private FantasyGolfballDbContext GetDbContext()
+    private FantasyGolfballDbContext GetDbContext()
     {
         var scope = _scopeFactory.CreateScope();
         return scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();

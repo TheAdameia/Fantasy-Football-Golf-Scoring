@@ -35,8 +35,22 @@ public class MatchupService : IMatchupService
     {
         Console.WriteLine($"Attempting to generate matchups for {leagueId}");
 
-        int totalWeeks = 4; // I need to change League to have these properties... eventually
-        int gamesPerPlayer = 4;
+        using var dbContext = GetDbContext();
+
+        League league = await dbContext.Leagues
+            .Include(l => l.Season)
+            .FirstOrDefaultAsync();
+
+        if (league == null)
+        {
+            Console.WriteLine($"Error: No League found for {leagueId}. Aborting Matchup Generation.");
+            return;
+        }
+
+        Console.WriteLine($"Generation matchups for {leagueId} with {league.Season.SeasonWeeks} total weeks...");
+
+        int totalWeeks = league.Season.SeasonWeeks; 
+        int gamesPerPlayer = league.Season.SeasonWeeks; // these should normally be the same but if you wanted something funky you could make them different.
         try
         {
             await GenerateMatchups(leagueId, totalWeeks, gamesPerPlayer);

@@ -25,7 +25,9 @@ public class WeekAdvancementListenerService
         using var scope = _scopeFactory.CreateScope(); // creates a new scope to ensure fresh db
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-        var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == eventData.LeagueId);
+        var league = await dbContext.Leagues
+            .Include(l => l.Season)
+            .FirstOrDefaultAsync(l => l.LeagueId == eventData.LeagueId);
 
         if (league == null)
         {
@@ -44,7 +46,7 @@ public class WeekAdvancementListenerService
 
 
         // league finish code begins here
-        if (previousWeek >= 4 && !league.IsLeagueFinished) // needs to change once we get real seasons
+        if (previousWeek >= league.Season.SeasonWeeks && !league.IsLeagueFinished)
         {
             league.IsLeagueFinished = true;
             Console.WriteLine($"League {league.LeagueId} set to finished");
