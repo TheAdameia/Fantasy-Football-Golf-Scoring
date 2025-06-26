@@ -68,12 +68,16 @@ export const MatchupPage = () => {
                 setRevealCountdownText("Reveals begin in " + formatTime(diff))
             } else if (now >= start && now < end) {
                 const revealIndex = Math.floor((now - start) / times.revealInterval)
-                const nextRevealTime = start + (revealIndex + 1) * times.revealInterval
-                const diff = nextRevealTime - now
 
                 if (revealIndex < times.revealSequence.length) {
-                    const nextPosition = times.revealSequence[revealIndex + 1] || "Final"
-                    setRevealCountdownText(`${nextPosition} revealed in ${formatTime(diff)}`)
+                    const nextRevealTime = start + (revealIndex + 1) * times.revealInterval
+                    const diff = nextRevealTime - now
+                    const nextPosition = times.revealSequence[revealIndex + 1]
+                    setRevealCountdownText(
+                        nextPosition
+                            ? `${nextPosition} revealed in ${formatTime(diff)}`
+                            : "All positions revealed."
+                    )
                 } else {
                     setRevealCountdownText("All positions revealed.")
                 }
@@ -84,6 +88,7 @@ export const MatchupPage = () => {
 
         return () => clearInterval(interval)
     }, [selectedLeague])
+
 
 
     if (selectedLeague?.currentWeek != week && selectedLeague?.currentWeek != 0) {

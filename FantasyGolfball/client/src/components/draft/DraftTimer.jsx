@@ -36,7 +36,6 @@ export const DraftTimer = () => {
         
     },[])
 
-    // cut the reset button after testing
     return (
         <div className="draft-timer-container">
             <div className="timer-seconds">{secondsLeft}</div>

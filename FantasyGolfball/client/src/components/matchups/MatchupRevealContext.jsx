@@ -26,7 +26,7 @@ export const MatchupRevealProvider = ({ children }) => {
     }, [selectedLeague])
 
     useEffect(() => {
-        if (!selectedLeague || selectedLeague.currentWeek === 0){
+        if (!selectedLeague || selectedLeague.currentWeek === 0 || selectedLeague.currentWeek === null){
             return
         } 
 

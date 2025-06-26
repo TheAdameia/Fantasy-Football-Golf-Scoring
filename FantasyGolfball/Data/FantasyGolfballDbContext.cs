@@ -67,7 +67,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
             new Season
             {
                 SeasonId = 1,
-                SeasonYear = 2025
+                SeasonYear = 2025,
+                SeasonWeeks = 4
             }
         });
         modelBuilder.Entity<League>().HasData(new League[]

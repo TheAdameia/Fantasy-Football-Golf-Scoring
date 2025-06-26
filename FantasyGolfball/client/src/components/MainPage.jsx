@@ -17,9 +17,10 @@ export const MainPage = () => {
     const [advancementType, setAdvancementType] = useState(<></>)
     const [timeUntilNextWeek, setTimeUntilNextWeek] = useState("")
     const [timeUntilDraft, setTimeUntilDraft] = useState("")
+    const [timeUntilReveals, setTimeUntilReveals] = useState("")
+
 
     const enterDraft = () => {
-        console.log(`now: ${now}`)
         navigate(`/live-draft`)
     }
 
@@ -130,6 +131,66 @@ export const MainPage = () => {
         return () => clearInterval(interval)
     }, [selectedLeague])
 
+    useEffect(() => {
+        if (!selectedLeague || selectedLeague.currentWeek < 1 || !selectedLeague.seasonStartDate) return
+
+        const seasonStart = new Date(selectedLeague.seasonStartDate)
+        let msPerWeek, totalRevealDuration
+
+        switch (selectedLeague.advancement) {
+            case 0: // Weekly
+                msPerWeek = 1000 * 60 * 60 * 24 * 7
+                totalRevealDuration = 1000 * 60 * 60 * 8
+                break
+            case 1: // Daily
+                msPerWeek = 1000 * 60 * 60 * 24
+                totalRevealDuration = 1000 * 60 * 60
+                break
+            case 2: // Hourly
+                msPerWeek = 1000 * 60 * 60
+                totalRevealDuration = 1000 * 60 * 10
+                break
+            case 3: // Turbo
+                msPerWeek = 1000 * 60 * 15
+                totalRevealDuration = 1000 * 60 * 5
+                break
+            default:
+                return
+        }
+
+        const nextWeekTime = new Date(seasonStart.getTime() + selectedLeague.currentWeek * msPerWeek)
+        const revealStartTime = new Date(nextWeekTime.getTime() - totalRevealDuration)
+
+        const updateRevealCountdown = () => {
+            const now = new Date()
+            const diff = revealStartTime - now
+
+            if (diff <= 0) {
+                setTimeUntilReveals("Reveals in progress or completed.")
+                return
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+            let formatted = ""
+            if (days > 0) formatted += `${days}d `
+            if (hours > 0 || days > 0) formatted += `${hours}h `
+            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `
+            formatted += `${seconds}s`
+
+            setTimeUntilReveals("Reveals begin and Rosters lock in: " + formatted)
+        }
+
+        updateRevealCountdown()
+        const interval = setInterval(updateRevealCountdown, 1000)
+
+        return () => clearInterval(interval)
+    }, [selectedLeague])
+
+
     if (!selectedLeague) {
         return (
             <div>No leagues joined!</div>
@@ -212,6 +273,9 @@ export const MainPage = () => {
                     </div>
                     {timeUntilNextWeek && selectedLeague.isDraftComplete &&(
                         <div className="mainpage-timer">Next week begins in: {timeUntilNextWeek}</div>
+                    )}
+                    {timeUntilReveals && selectedLeague.isDraftComplete && (
+                        <div className="mainpage-timer">{timeUntilReveals}</div>
                     )}
                 </div>    
                 

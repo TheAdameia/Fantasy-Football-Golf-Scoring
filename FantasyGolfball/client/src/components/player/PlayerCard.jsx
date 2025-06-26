@@ -3,7 +3,7 @@ import { useAppContext } from "../../contexts/AppContext"
 import { AddRosterPlayer, DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 import "./PlayerPage.css"
 
-export const PlayerCard = ({ player, isPreseason }) => {
+export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
     const [playerRosterCondition, setPlayerRosterCondition] = useState(<></>)
@@ -37,6 +37,9 @@ export const PlayerCard = ({ player, isPreseason }) => {
         } else if (activeTrades.some(at => at.playerId == player.playerId)) {
             window.alert("Can't drop a player in a trade offer! (Check your trades)")
             return
+        } else if (rosterLock == true) {
+            window.alert("Can't do that while matches are ongoing!")
+            return
         }
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
         const confirmed = window.confirm(`Are you sure you want to drop ${rosterPlayer.player.playerFullName}?`)
@@ -54,9 +57,10 @@ export const PlayerCard = ({ player, isPreseason }) => {
         } else if (!selectedLeague.isDraftComplete) {
             window.alert("I think you're a bit early for that!")
             return
-        }
-        if (roster.rosterPlayers.length >= selectedLeague.maxRosterSize) {
-            console.log(roster.rosterPlayers.length)
+        } else if (rosterLock == true) {
+            window.alert("Can't do that while matches are ongoing!")
+            return
+        } else if (roster.rosterPlayers.length >= selectedLeague.maxRosterSize) {
             window.alert("You are at the roster size limit!")
             return
         }

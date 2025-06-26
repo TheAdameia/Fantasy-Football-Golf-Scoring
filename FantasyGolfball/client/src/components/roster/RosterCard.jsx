@@ -5,7 +5,7 @@ import "./Roster.css"
 import { BlankRosterPlayerCard } from "./BlankRosterPlayerCard";
 
 
-export const RosterCard = () => {
+export const RosterCard = ({ rosterLock }) => {
     const { roster } = useAppContext()
     
     if (!roster || !Array.isArray(roster.rosterPlayers)) {
@@ -52,6 +52,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -65,6 +66,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -78,6 +80,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -91,6 +94,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -104,6 +108,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -117,6 +122,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -130,6 +136,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -143,6 +150,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 
@@ -156,6 +164,7 @@ export const RosterCard = () => {
                                     <RosterPlayerCard
                                         rp={rp}
                                         key={`rp-${rp.rosterPlayerId}`}
+                                        rosterLock={rosterLock}
                                     ></RosterPlayerCard>
                                 )
                         }) : 

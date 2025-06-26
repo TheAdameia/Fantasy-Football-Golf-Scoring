@@ -33,6 +33,10 @@ public class ScoreRevealHub : Hub
 
     public async Task<List<string>> GetRevealedPositions(int leagueId, int weekId)
     {
+        if (leagueId <= 0 || weekId <= 0)
+        {
+            Console.WriteLine($"Invalid call in SRH: leagueId {leagueId}, weekId {weekId}");
+        }
         return ScoreRevealCache.GetRevealedPositions(leagueId, weekId);
     }
 

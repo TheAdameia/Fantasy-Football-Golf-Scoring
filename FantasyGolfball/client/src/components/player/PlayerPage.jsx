@@ -11,6 +11,7 @@ export const PlayerPage = () => {
     const [playerSlice, setPlayerSlice] = useState({sliceStart: 0, sliceEnd: 24})
     const [showMyTeam, setShowMyTeam] = useState(false)
     const [showOtherTeam, setShowOtherTeam] = useState(false)
+    const [rosterLock, setRosterLock] = useState(false)
     const { players, selectedLeague, loggedInUser } = useAppContext()
 
     const handlePositionChange = (event) => {
@@ -35,6 +36,46 @@ export const PlayerPage = () => {
             }
         }
     }
+
+    useEffect(() => {
+        if (!selectedLeague || selectedLeague.currentWeek < 1 || !selectedLeague.seasonStartDate) return
+
+        const seasonStart = new Date(selectedLeague.seasonStartDate)
+        let msPerWeek, totalRevealDuration
+
+        switch (selectedLeague.advancement) {
+            case 0: // Weekly
+                msPerWeek = 1000 * 60 * 60 * 24 * 7
+                totalRevealDuration = 1000 * 60 * 60 * 8
+                break
+            case 1: // Daily
+                msPerWeek = 1000 * 60 * 60 * 24
+                totalRevealDuration = 1000 * 60 * 60
+                break
+            case 2: // Hourly
+                msPerWeek = 1000 * 60 * 60
+                totalRevealDuration = 1000 * 60 * 10
+                break
+            case 3: // Turbo
+                msPerWeek = 1000 * 60 * 15
+                totalRevealDuration = 1000 * 60 * 5
+                break
+            default:
+                return
+        }
+
+        const nextWeekTime = new Date(seasonStart.getTime() + selectedLeague.currentWeek * msPerWeek)
+        const revealStartTime = new Date(nextWeekTime.getTime() - totalRevealDuration)
+
+        const checkRevealStatus = () => {
+            const now = new Date().getTime()
+            setRosterLock(now >= revealStartTime.getTime() && now <= nextWeekTime.getTime())
+        }
+
+        checkRevealStatus()
+        const interval = setInterval(checkRevealStatus, 1000)
+        return () => clearInterval(interval)
+    }, [selectedLeague])
     
     useEffect(() => {
         if (players && selectedLeague){
@@ -190,6 +231,7 @@ export const PlayerPage = () => {
                                     player={player}
                                     key={`player-${player.playerId}`}
                                     isPreseason={selectedLeague?.currentWeek == null}
+                                    rosterLock={rosterLock}
                                 />
                     ) : (
                     <tr>
