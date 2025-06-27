@@ -41,6 +41,10 @@ public class LeagueFullExpandDTO
                 {
                     weekNumber = (int)((now - SeasonStartDate).TotalHours / 1) + 1; // treats each hour as a "week"
                 }
+                else if (Advancement == AdvancementType.Turbo)
+                {
+                    weekNumber = (int)((now - SeasonStartDate).TotalMinutes / 15) + 1; // treats every 15 minutes as a "week"
+                }
 
                 return weekNumber;
             }

@@ -130,7 +130,9 @@ export const AppProvider = ({ children }) => {
       matchups,
       allScores,
       activeTrades,
-      getAndSetTrades }}>
+      getAndSetTrades,
+      getAndSetLeagues,
+      getAndSetMatchups }}>
       {children}
     </AppContext.Provider>
   )

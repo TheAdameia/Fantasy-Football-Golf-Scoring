@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
 using FantasyGolfball.Models.DTOs;
+using FantasyGolfball.Models.Utilities;
 
 namespace FantasyGolfball.Controllers;
 [ApiController]
@@ -47,15 +48,19 @@ public class RosterPlayerController : ControllerBase
             return BadRequest($"No roster found for RosterId{rosterPlayerPOSTDTO.RosterId}");
         }
 
-        var league = _dbContext.Leagues
-            .Where(l => l.LeagueId == roster.LeagueId)
-            .SingleOrDefault();
-
-        if (league == null) {
-            return BadRequest($"No League found for LeagueId{roster.LeagueId}");
+        League league = _dbContext.Leagues.SingleOrDefault(l => l.LeagueId == roster.LeagueId);
+        if (league == null)
+        {
+            return BadRequest($"No League found for LeagueId {roster.LeagueId}");
         }
 
-        if (roster.RosterPlayers.Count() >= league.MaxRosterSize) {
+        if (RosterLockCheck.IsRosterLocked(league))
+        {
+            return StatusCode(403, "Roster is locked during score reveal.");
+        }
+        
+        if (roster.RosterPlayers.Count() >= league.MaxRosterSize)
+        {
             return BadRequest($"Request would exceed maximum roster size of {league.MaxRosterSize}");
         }
 
@@ -88,13 +93,25 @@ public class RosterPlayerController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("{rosterPlayerId}")]
+    [HttpDelete("delete")]
     [Authorize]
-    public IActionResult Delete(int rosterPlayerId)
+    public IActionResult Delete(int rosterPlayerId, int leagueId)
     {
         RosterPlayer rosterPlayerToDelete = _dbContext.RosterPlayers.SingleOrDefault(rp => rp.RosterPlayerId == rosterPlayerId);
-        
+
         // checks begin here
+
+        League league = _dbContext.Leagues.SingleOrDefault(l => l.LeagueId == leagueId);
+        if (league == null)
+        {
+            return BadRequest($"No League found for LeagueId {leagueId} in RP controller");
+        }
+
+        if (RosterLockCheck.IsRosterLocked(league))
+        {
+            return StatusCode(403, "Roster is locked during score reveal.");
+        }
+        
         if (rosterPlayerToDelete == null)
         {
             return NotFound();
@@ -116,10 +133,11 @@ public class RosterPlayerController : ControllerBase
 
     [HttpPut("roster-position")]
     [Authorize]
-    public IActionResult SetRosterPosition(int rosterPlayerId, string position)
+    public IActionResult SetRosterPosition(int rosterPlayerId, string position, int leagueId)
     {
         RosterPlayer rosterPlayer = _dbContext.RosterPlayers.SingleOrDefault(rp => rp.RosterPlayerId == rosterPlayerId);
 
+        // checks start here
         if (rosterPlayer == null)
         {
             return NotFound();
@@ -131,6 +149,19 @@ public class RosterPlayerController : ControllerBase
         {
             return NotFound("No Roster found for RosterPlayer");
         }
+
+        League league = _dbContext.Leagues.SingleOrDefault(l => l.LeagueId == leagueId);
+        if (league == null)
+        {
+            return BadRequest($"No League found for LeagueId {leagueId} in RP controller");
+        }
+
+        if (RosterLockCheck.IsRosterLocked(league))
+        {
+            return StatusCode(403, "Roster is locked during score reveal.");
+        }
+
+        // checks end here
 
         if (position == "bench")
         {

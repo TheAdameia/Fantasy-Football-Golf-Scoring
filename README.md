@@ -1,4 +1,4 @@
-# Fantasy Golfball V0.4.0 (Alpha)
+# Fantasy Golfball V0.5.0 (Alpha)
 Alternatively, Fantasy Football with Golf Scoring (lowest score wins)
 https://fantasygolfball.org
 

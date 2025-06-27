@@ -17,9 +17,10 @@ export const MainPage = () => {
     const [advancementType, setAdvancementType] = useState(<></>)
     const [timeUntilNextWeek, setTimeUntilNextWeek] = useState("")
     const [timeUntilDraft, setTimeUntilDraft] = useState("")
+    const [timeUntilReveals, setTimeUntilReveals] = useState("")
+
 
     const enterDraft = () => {
-        console.log(`now: ${now}`)
         navigate(`/live-draft`)
     }
 
@@ -35,94 +36,160 @@ export const MainPage = () => {
             case 2:
                 setAdvancementType(<div>A Season's "Week" advances in an hour of real time.</div>)
                 return
+            case 3:
+                setAdvancementType(<div>A Season's "Week" advances in 15 minutes of real time.</div>)
+                return
         }
     }, [selectedLeague])
 
     useEffect(() => {
-        if (!selectedLeague || selectedLeague.currentWeek < 1 || !selectedLeague.seasonStartDate) return;
+        if (!selectedLeague || selectedLeague.currentWeek < 1 || !selectedLeague.seasonStartDate) return
 
-        const seasonStart = new Date(selectedLeague.seasonStartDate);
-        let msPerWeek;
+        const seasonStart = new Date(selectedLeague.seasonStartDate)
+        let msPerWeek
 
         switch (selectedLeague.advancement) {
             case 0:
-                msPerWeek = 1000 * 60 * 60 * 24 * 7;
-                break;
+                msPerWeek = 1000 * 60 * 60 * 24 * 7
+                break
             case 1:
-                msPerWeek = 1000 * 60 * 60 * 24;
-                break;
+                msPerWeek = 1000 * 60 * 60 * 24
+                break
             case 2:
-                msPerWeek = 1000 * 60 * 60;
-                break;
+                msPerWeek = 1000 * 60 * 60
+                break
+            case 3:
+                msPerWeek = 1000 * 60 * 15
+                break
             default:
-                msPerWeek = 0;
+                msPerWeek = 0
         }
 
-        if (msPerWeek === 0) return;
+        if (msPerWeek === 0) return
 
         const updateCountdown = () => {
-            const now = new Date();
-            const nextWeekStart = new Date(seasonStart.getTime() + selectedLeague.currentWeek * msPerWeek);
-            const diff = nextWeekStart - now;
+            const now = new Date()
+            const nextWeekStart = new Date(seasonStart.getTime() + selectedLeague.currentWeek * msPerWeek)
+            const diff = nextWeekStart - now
 
             if (diff <= 0) {
-                setTimeUntilNextWeek("Week change in progress...");
-                return;
+                setTimeUntilNextWeek("Week change in progress...")
+                return
             }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-            let formatted = "";
-            if (days > 0) formatted += `${days}d `;
-            if (hours > 0 || days > 0) formatted += `${hours}h `;
-            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `;
-            formatted += `${seconds}s`;
+            let formatted = ""
+            if (days > 0) formatted += `${days}d `
+            if (hours > 0 || days > 0) formatted += `${hours}h `
+            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `
+            formatted += `${seconds}s`
 
-            setTimeUntilNextWeek(formatted);
-        };
+            setTimeUntilNextWeek(formatted)
+        }
 
-        updateCountdown(); // Initial call
-        const interval = setInterval(updateCountdown, 1000); // update every second
+        updateCountdown() // Initial call
+        const interval = setInterval(updateCountdown, 1000) // update every second
 
-        return () => clearInterval(interval);
-    }, [selectedLeague]);
+        return () => clearInterval(interval)
+    }, [selectedLeague])
 
 
     useEffect(() => {
-        if (!selectedLeague?.draftStartTime) return;
+        if (!selectedLeague?.draftStartTime) return
 
-        const draftStart = new Date(selectedLeague.draftStartTime);
+        const draftStart = new Date(selectedLeague.draftStartTime)
 
         const updateDraftCountdown = () => {
-            const now = new Date();
-            const diff = draftStart - now;
+            const now = new Date()
+            const diff = draftStart - now
 
             if (diff <= 0) {
-                return;
+                return
             }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-            let formatted = "";
-            if (days > 0) formatted += `${days}d `;
-            if (hours > 0 || days > 0) formatted += `${hours}h `;
-            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `;
-            formatted += `${seconds}s`;
+            let formatted = ""
+            if (days > 0) formatted += `${days}d `
+            if (hours > 0 || days > 0) formatted += `${hours}h `
+            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `
+            formatted += `${seconds}s`
 
-            setTimeUntilDraft(formatted);
-        };
+            setTimeUntilDraft(formatted)
+        }
 
-        updateDraftCountdown(); // initial call
-        const interval = setInterval(updateDraftCountdown, 1000);
+        updateDraftCountdown() // initial call
+        const interval = setInterval(updateDraftCountdown, 1000)
 
-        return () => clearInterval(interval);
-    }, [selectedLeague]);
+        return () => clearInterval(interval)
+    }, [selectedLeague])
+
+    useEffect(() => {
+        if (!selectedLeague || selectedLeague.currentWeek < 1 || !selectedLeague.seasonStartDate) return
+
+        const seasonStart = new Date(selectedLeague.seasonStartDate)
+        let msPerWeek, totalRevealDuration
+
+        switch (selectedLeague.advancement) {
+            case 0: // Weekly
+                msPerWeek = 1000 * 60 * 60 * 24 * 7
+                totalRevealDuration = 1000 * 60 * 60 * 8
+                break
+            case 1: // Daily
+                msPerWeek = 1000 * 60 * 60 * 24
+                totalRevealDuration = 1000 * 60 * 60
+                break
+            case 2: // Hourly
+                msPerWeek = 1000 * 60 * 60
+                totalRevealDuration = 1000 * 60 * 10
+                break
+            case 3: // Turbo
+                msPerWeek = 1000 * 60 * 15
+                totalRevealDuration = 1000 * 60 * 5
+                break
+            default:
+                return
+        }
+
+        const nextWeekTime = new Date(seasonStart.getTime() + selectedLeague.currentWeek * msPerWeek)
+        const revealStartTime = new Date(nextWeekTime.getTime() - totalRevealDuration)
+
+        const updateRevealCountdown = () => {
+            const now = new Date()
+            const diff = revealStartTime - now
+
+            if (diff <= 0) {
+                setTimeUntilReveals("Reveals in progress or completed.")
+                return
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+            let formatted = ""
+            if (days > 0) formatted += `${days}d `
+            if (hours > 0 || days > 0) formatted += `${hours}h `
+            if (minutes > 0 || hours > 0 || days > 0) formatted += `${minutes}m `
+            formatted += `${seconds}s`
+
+            setTimeUntilReveals("Reveals begin and Rosters lock in: " + formatted)
+        }
+
+        updateRevealCountdown()
+        const interval = setInterval(updateRevealCountdown, 1000)
+
+        return () => clearInterval(interval)
+    }, [selectedLeague])
+
 
     if (!selectedLeague) {
         return (
@@ -151,7 +218,8 @@ export const MainPage = () => {
                         />
                     </div>
                     <div className="mainpage-matchup-container">
-                        <MatchupRecap weekId={1} />
+                        {/* behooves me to change this but I'll do it later */}
+                        <MatchupRecap weekId={1} /> 
                         <MatchupRecap weekId={2} />
                         <MatchupRecap weekId={3} />
                         <MatchupRecap weekId={4} />
@@ -161,6 +229,7 @@ export const MainPage = () => {
                         {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                         {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}
                         {selectedLeague.requiredFullToStart ? <div>League must be full to start</div> : <div>League does not need to be full to start</div>}
+                        <div>{advancementType}</div>
                     </div>
                 </div>
             </div>
@@ -170,7 +239,6 @@ export const MainPage = () => {
     // this is what people will see most of the time
     return (
         <div className="mainpage-main-container">
-            <h1>Testing, attention please!</h1>
             <div className="mainpage-league-container">
                 <h4>{selectedLeague.leagueName}</h4>
                 {timeUntilDraft && !selectedLeague.isDraftComplete && (
@@ -207,6 +275,9 @@ export const MainPage = () => {
                     </div>
                     {timeUntilNextWeek && selectedLeague.isDraftComplete &&(
                         <div className="mainpage-timer">Next week begins in: {timeUntilNextWeek}</div>
+                    )}
+                    {timeUntilReveals && selectedLeague.isDraftComplete && selectedLeague.currentWeek != null &&(
+                        <div className="mainpage-timer">{timeUntilReveals}</div>
                     )}
                 </div>    
                 

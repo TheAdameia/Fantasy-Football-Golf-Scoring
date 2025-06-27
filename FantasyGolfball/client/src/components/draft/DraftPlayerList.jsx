@@ -6,7 +6,7 @@ import { DraftContext } from "./DraftPage"
 import "./DraftLayout.css"
 
 
-export const DraftPlayerList = ({ setSelectedPlayer }) => {
+export const DraftPlayerList = ({ setSelectedPlayer, confirmCheck }) => {
     // get score data from DraftContext (eventually)
     const [filteredPlayers, setFilteredPlayers] = useState() // for display
     // using a scroll for the playerlist instead of the slice used in PlayerPage should reduce state overhead
@@ -126,6 +126,7 @@ export const DraftPlayerList = ({ setSelectedPlayer }) => {
                                     player={player}
                                     key={`player-${player.playerId}`}
                                     setSelectedPlayer={setSelectedPlayer}
+                                    confirmCheck={confirmCheck}
                                 />
                             )
                         }) : <tr>

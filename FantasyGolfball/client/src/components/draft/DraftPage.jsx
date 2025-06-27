@@ -23,8 +23,9 @@ export const DraftPage = () => {
     const [queuedPlayers, setQueuedPlayers] = useState([])
     const [leagueId, setLeagueId] = useState(0)
     const [draftGraphic, setDraftGraphic] = useState(false)
-    const { selectedLeague } = useAppContext()
+    const { selectedLeague, getAndSetLeagues, getAndSetMatchups } = useAppContext()
     const navigate = useNavigate()
+    const [confirmCheck, setConfirmCheck] = useState(true)
 
     // handle dequeueing a player
     const deQueuePlayer = (removePlayer) => {
@@ -80,6 +81,8 @@ export const DraftPage = () => {
             });
 
             newConnection.on("DraftCompleted", () => {
+                getAndSetLeagues() //
+                getAndSetMatchups() // these are here to mitigate the possibility of seeing information a user shouldn't
                 console.log("Draft completed!")
                 setDraftGraphic(true)
 
@@ -145,7 +148,10 @@ export const DraftPage = () => {
                         queuedPlayers={queuedPlayers}
                         deQueuePlayer={deQueuePlayer}
                     />
-                    <DraftTeamDisplay />
+                    <DraftTeamDisplay 
+                        confirmCheck={confirmCheck}
+                        setConfirmCheck={setConfirmCheck}
+                    />
                     <Chat />
                 </div>
                 <div className="center-box">
@@ -157,7 +163,10 @@ export const DraftPage = () => {
                         leagueId={leagueId}
                         
                     />
-                    <DraftPlayerList setSelectedPlayer={setSelectedPlayer}/>
+                    <DraftPlayerList 
+                        setSelectedPlayer={setSelectedPlayer}
+                        confirmCheck={confirmCheck}
+                    />
                 </div>
             </div>
         </DraftContext.Provider>

@@ -25,7 +25,9 @@ public class WeekAdvancementListenerService
         using var scope = _scopeFactory.CreateScope(); // creates a new scope to ensure fresh db
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-        var league = await dbContext.Leagues.FirstOrDefaultAsync(l => l.LeagueId == eventData.LeagueId);
+        var league = await dbContext.Leagues
+            .Include(l => l.Season)
+            .FirstOrDefaultAsync(l => l.LeagueId == eventData.LeagueId);
 
         if (league == null)
         {
@@ -36,12 +38,15 @@ public class WeekAdvancementListenerService
         if (previousWeek == 0)
         {
             Console.WriteLine($"Skipping score calculation for League {eventData.LeagueId} because previousWeek is 0.");
+            // I think SRE is not firing in week 0 -> 1 because of this, but that is easily remedied here
+            await _eventBus.Publish(new ScoreRevealEvent(league.LeagueId, eventData.NewWeek));
+            Console.WriteLine($"SRE fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
             return;
         }
 
 
         // league finish code begins here
-        if (previousWeek >= 4 && !league.IsLeagueFinished) // needs to change once we get real seasons
+        if (previousWeek >= league.Season.SeasonWeeks && !league.IsLeagueFinished)
         {
             league.IsLeagueFinished = true;
             Console.WriteLine($"League {league.LeagueId} set to finished");
@@ -148,6 +153,9 @@ public class WeekAdvancementListenerService
         Console.WriteLine($"Completed Week Advancement matchup processing for League {league.LeagueId}.");
 
         await _eventBus.Publish(new TradeProcessingEvent(league.LeagueId, eventData.NewWeek));
-        Console.WriteLine($"Trade check event fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
+        Console.WriteLine($"TPE fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
+
+        await _eventBus.Publish(new ScoreRevealEvent(league.LeagueId, eventData.NewWeek));
+        Console.WriteLine($"SRE fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
     }
 }

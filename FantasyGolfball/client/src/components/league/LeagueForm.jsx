@@ -7,7 +7,7 @@ import "./League.css"
 
 
 export const LeagueForm = () => {
-    const { loggedInUser } = useAppContext()
+    const { loggedInUser, getAndSetLeagues } = useAppContext()
     const [leagueObject, setLeagueObject] = useState({
         creatorId: loggedInUser.id,
         leagueName: "",
@@ -32,18 +32,26 @@ export const LeagueForm = () => {
         return local.toISOString().slice(0, 16)
     }
 
-    const roundToNearestHour = (date) => {
+    const roundToNearest30Minutes = (date) => {
         const rounded = new Date(date)
-        if (rounded.getMinutes() >= 30) {
+        const minutes = rounded.getMinutes()
+        if (minutes < 15) {
+            rounded.setMinutes(0)
+        } else if (minutes < 45) {
+            rounded.setMinutes(30)
+        } else {
             rounded.setHours(rounded.getHours() + 1)
+            rounded.setMinutes(0)
         }
-        rounded.setMinutes(0, 0, 0)
+        rounded.setSeconds(0)
+        rounded.setMilliseconds(0)
         return rounded
     }
 
+
     const handleDateChange = (key) => (e) => {
         const localDate = new Date(e.target.value)
-        const roundedDate = roundToNearestHour(localDate)
+        const roundedDate = roundToNearest30Minutes(localDate)
         const utcDateString = roundedDate.toISOString()
 
         setLeagueObject((prev) => ({
@@ -68,6 +76,7 @@ export const LeagueForm = () => {
 
         if (newLeague.leagueName !== "") {
             PostLeague(newLeague).then(() => {
+                getAndSetLeagues()
                 navigate("/league")
             })
         } else {
@@ -195,7 +204,7 @@ export const LeagueForm = () => {
                     </div>
 
                     <div>
-                        <Label>Draft Start Time (Rounds to nearest hour):</Label>
+                        <Label>Draft Start Time (Rounds to 30 minute interval):</Label>
                         <Input
                             type="datetime-local"
                             value={toLocalInputValue(leagueObject.draftStartTime)}
@@ -240,6 +249,7 @@ export const LeagueForm = () => {
                             <option value={"Weekly"}>Every Week (default)</option>
                             <option value={"Daily"}>Every Day</option>
                             <option value={"Hourly"}>Every Hour</option>
+                            <option value={"Turbo"}>Every 15 Minutes</option>
                         </Input>
                     </div>
                 </FormGroup>

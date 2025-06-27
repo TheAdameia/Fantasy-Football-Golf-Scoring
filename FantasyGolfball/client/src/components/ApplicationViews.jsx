@@ -1,20 +1,20 @@
-import { Route, Routes } from "react-router-dom";
-import { AuthorizedRoute } from "./auth/AuthorizedRoute";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import { RosterPage } from "./roster/RosterPage";
-import { useAppContext } from "../contexts/AppContext";
-import { PlayerPage } from "./player/PlayerPage";
-import { LeaguePage } from "./league/LeaguePage";
-import { LeagueForm } from "./league/LeagueForm";
-import Chat from "../clientHubs/exampleClientHub";
-import { DraftPage } from "./draft/DraftPage";
-import { MatchupPage } from "./matchups/MatchupPage";
-import { MainPage } from "./MainPage";
-import { FaqPage } from "./rule-faq/FaqPage";
-import { RecapDraft } from "./draft/RecapDraft";
-import { TradeForm } from "./trades/TradeForm";
-import { TradePage } from "./trades/TradePage";
+import { Route, Routes } from "react-router-dom"
+import { AuthorizedRoute } from "./auth/AuthorizedRoute"
+import Login from "./auth/Login"
+import Register from "./auth/Register"
+import { RosterPage } from "./roster/RosterPage"
+import { useAppContext } from "../contexts/AppContext"
+import { PlayerPage } from "./player/PlayerPage"
+import { LeaguePage } from "./league/LeaguePage"
+import { LeagueForm } from "./league/LeagueForm"
+import Chat from "../clientHubs/exampleClientHub"
+import { DraftPage } from "./draft/DraftPage"
+import { MainPage } from "./MainPage"
+import { FaqPage } from "./rule-faq/FaqPage"
+import { RecapDraft } from "./draft/RecapDraft"
+import { TradeForm } from "./trades/TradeForm"
+import { TradePage } from "./trades/TradePage"
+import { MatchupPageOuter } from "./matchups/MatchupPageOuter"
 
 
 export default function ApplicationViews() {
@@ -82,7 +82,7 @@ export default function ApplicationViews() {
           path="matchups"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <MatchupPage />
+              <MatchupPageOuter/>
             </AuthorizedRoute>
           }
         />

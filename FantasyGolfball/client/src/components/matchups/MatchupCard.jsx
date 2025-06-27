@@ -13,7 +13,7 @@ export const MatchupCard = ({ matchup, week }) => {
         week: week,
         display: false
     })
-    
+
     useEffect(() => {
         if (matchup) {
             if (matchup.winnerId != 0 && matchup.winnerId != null) {
