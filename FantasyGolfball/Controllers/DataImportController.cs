@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
-using FantasyGolfball.Models.DTOs;
-using System.Transactions;
+using FantasyGolfball.Services;
 
 namespace FantasyGolfball.Controllers;
 
@@ -13,18 +12,32 @@ namespace FantasyGolfball.Controllers;
 
 public class DataImportController : ControllerBase
 {
-    private FantasyGolfballDbContext _dbContext;
+    private readonly FantasyGolfballDbContext _dbContext;
+    private readonly IPlayerImportService _playerImportService;
 
-    public DataImportController(FantasyGolfballDbContext context)
+    public DataImportController(FantasyGolfballDbContext context, IPlayerImportService playerImportService)
     {
         _dbContext = context;
+        _playerImportService = playerImportService;
     }
 
-    [HttpPost]
+    [HttpPost("players")]
     [Authorize]
-    public IActionResult ImportData()
+    public async Task<IActionResult> ImportPlayers(IFormFile file, [FromQuery] int seasonId, CancellationToken cancellationToken)
     {
-        Console.WriteLine("Bubkis Galore!");
-        return Ok();
+        if (file == null || file.Length == 0)
+        {
+            return BadRequest("File is empty or missing.");
+        }
+
+        try
+        {
+            var importCount = await _playerImportService.ImportPlayersFromCsvAsync(file.OpenReadStream(), seasonId, cancellationToken);
+            return Ok(new { Message = $"Successfully imported {importCount} players." });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Import failed: {ex.Message}");
+        }
     }
 }
