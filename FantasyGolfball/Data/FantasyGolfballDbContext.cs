@@ -194,6 +194,13 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 StatusType = "SSPD",
                 ViableToPlay = false,
                 RequiresBackup = true
+            },
+            new Status
+            {
+                StatusId = 7,
+                StatusType = "DNP",
+                ViableToPlay = false,
+                RequiresBackup = true
             }
         });
         // Ton of fabricated data for testing purposes

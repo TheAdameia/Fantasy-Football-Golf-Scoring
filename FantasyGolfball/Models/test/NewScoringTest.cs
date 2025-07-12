@@ -41,7 +41,7 @@ public class NewScoringTest
     public int? Safety { get; set; }
     public int? TouchdownsDefense { get; set; }
     public int? TouchdownsReturn { get; set; }
-    // not going to include blocked kicks because that's not in my data set.
+    public int? BlockedKicks { get; set; }
 
     public float Points
     {
@@ -84,6 +84,7 @@ public class NewScoringTest
                 totalPoints += (DefenseFumbleRecovery ?? 0) * 2;
                 totalPoints += (TouchdownsReturn ?? 0) * 6;
                 totalPoints += (Safety ?? 0) * 2;
+                totalPoints += (BlockedKicks ?? 0) * 2;
             }
 
             return totalPoints;

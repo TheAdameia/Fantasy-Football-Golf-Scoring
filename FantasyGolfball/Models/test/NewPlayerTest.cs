@@ -7,8 +7,8 @@ public class NewPlayerTest
 {
     [Key]
     public int PlayerId { get; set; }
-    public string PlayerFirstName { get; set;}
-    public string PlayerLastName { get; set; }
+    public required string PlayerFirstName { get; set; }
+    public required string PlayerLastName { get; set; }
     public int PositionId { get; set; }
     public ICollection<NewScoringTest> NewScoringTests { get; set; } // new
     public ICollection<RosterPlayer> RosterPlayers { get; set; }
@@ -24,4 +24,5 @@ public class NewPlayerTest
             return $"{PlayerFirstName} {PlayerLastName}";
         }
     }
+    public required string ExternalId { get; set; }
 }

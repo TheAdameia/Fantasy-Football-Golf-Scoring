@@ -7,6 +7,7 @@ public class Team
     public int TeamId { get; set; }
     public string TeamName { get; set; }
     public string TeamCity { get; set; }
+    public string? Abbreviation { get; set; }
     public int? ByeWeek { get; set; }
     public List<ActivePeriod> ActivePeriods { get; set; } = new();
 

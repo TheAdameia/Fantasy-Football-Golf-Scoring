@@ -6,21 +6,36 @@ import { PostNewSeason } from "../../managers/seasonManager"
 
 export const DataImportPage = () => {
     const [file, setFile] = useState(null)
+    const [scoringFile, setScoringFile] = useState(null)
     const [seasonId, setSeasonId] = useState("")
+    const [seasonIdScoring, setSeasonIdScoring] = useState("")
     const [status, setStatus] = useState("")
+    const [scoringStatus, setScoringStatus] = useState()
 
-    const [seasonYear, setSeasonYear] = useState(0) // REMEMBER TO PARSE INT WHEN YOU SUBMIT THESE
+    const [seasonYear, setSeasonYear] = useState(0)
     const [seasonWeeks, setSeasonWeeks] = useState(18)
 
+
+    // I could make elegant handlers here, but why would I put in the effort for something
+    // that will be used extremely infrequently?
+    
     const handleFileChange = (e) => {
         setFile(e.target.files[0])
+    }
+
+    const handleScoringFileChange = (e) => {
+        setScoringFile(e.target.files[0])
     }
 
     const handleSeasonIdChange = (e) => {
         setSeasonId(e.target.value)
     }
 
-    const handleUpload = async () => {
+    const handleScoringSeasonIdChange = (e) => {
+        setSeasonIdScoring(e.target.value)
+    }
+
+    const handlePlayerUpload = async () => {
         if (!file || !seasonId) {
             setStatus("Please select a file and enter a season ID.")
             return
@@ -41,6 +56,29 @@ export const DataImportPage = () => {
             } catch (error) {
                 setStatus(`Upload failed: ${error.message}`)
         }
+    }
+
+    const handleScoringUpload = async () => {
+        if (!scoringFile || !seasonIdScoring) {
+            setStatus("Please select a file and enter a season ID.")
+            return
+        }
+
+        const formData = new FormData()
+        formData.append("file", scoringFile)
+
+        // try {
+        //     const response = await (seasonIdScoring, formData)
+        //     if (response.ok) {
+        //         const result = await response.json()
+        //         setScoringStatus(result.message || "Upload successful!")
+        //     } else {
+        //         const errorText = await response.text()
+        //         setScoringStatus(`Upload failed: ${errorText}`)
+        //     }
+        //     } catch (error) {
+        //         setScoringStatus(`Upload failed: ${error.message}`)
+        // }
     }
 
     const ConfirmSeason = () => {
@@ -84,6 +122,8 @@ export const DataImportPage = () => {
             <div className="taco">
                 <button onClick={ConfirmSeason}>Create new Season</button>
             </div>
+
+
             <h2 className="taco">Upload Player CSV</h2>
             <div className="taco">
                 <label>Season ID:</label>
@@ -96,8 +136,25 @@ export const DataImportPage = () => {
             <div className="taco">
                 <input type="file" accept=".csv" onChange={handleFileChange} />
             </div>
-            <button onClick={handleUpload}>Upload</button>
+            <button onClick={handlePlayerUpload}>Upload Players</button>
             {status && <p>{status}</p>}
+
+
+            <h2 className="taco">Upload Scoring CSV (PLAYERS MUST BE DONE FIRST)</h2>
+            <div className="taco">
+                <label>Scoring Season ID:</label>
+                <input
+                    type="number"
+                    value={seasonIdScoring}
+                    onChange={handleScoringSeasonIdChange}
+                />
+            </div>
+            <div className="taco">
+                <input type="file" accept=".csv" onChange={handleScoringFileChange} />
+            </div>
+            <button onClick={handleScoringUpload}>Upload Scoring</button>
+            {scoringStatus && <p>{scoringStatus}</p>}
+            
         </div>
     )
 }

@@ -15,6 +15,7 @@ public class PlayerCsvRow
     public string Pos { get; set; }
     public int GP { get; set; }
     public string PlayerID { get; set; }
+    
 }
 
 public interface IPlayerImportService
@@ -84,7 +85,8 @@ public class PlayerImportService : IPlayerImportService
                 NewScoringTests = new List<NewScoringTest>(),
                 RosterPlayers = new List<RosterPlayer>(),
                 PlayerStatuses = new List<PlayerStatus>(),
-                PlayerTeams = new List<PlayerTeam>()
+                PlayerTeams = new List<PlayerTeam>(),
+                ExternalId = row.PlayerID
             };
 
             playersToAdd.Add(newPlayer);
