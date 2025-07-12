@@ -13,7 +13,7 @@
 5. Suspended, Out players, or Bye Week players will incur a penalty for the user if set as active.
 -- good rule, but not implemented.
 
-7. Users will incur a penalty if any of their pick slots cannot be filled.
+7. Users will incur a penalty if any of their active roster slots cannot be filled.
 -- good rule, but not implemented.
 
 8. Roster/Bench structure remains the same as normal fantasy football (QB, 2 WR, 2 RB, 1 TE, 1 W/R/T("FLEX"), K, DEF).

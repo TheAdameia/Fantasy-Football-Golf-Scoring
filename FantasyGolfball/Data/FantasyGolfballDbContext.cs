@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using FantasyGolfball.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using FantasyGolfball.Models.Test;
 
 namespace FantasyGolfball.Data;
 public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
@@ -28,6 +29,8 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
     public DbSet<HistoricalDraftState> HistoricalDraftStates { get; set; }
     public DbSet<Trade> Trades { get; set; }
     public DbSet<TradePlayer> TradePlayers { get;  set; }
+    public DbSet<NewPlayerTest> NewPlayerTests { get; set; }
+    public DbSet<NewScoringTest> NewScoringTests { get; set; }
     public FantasyGolfballDbContext(DbContextOptions<FantasyGolfballDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
