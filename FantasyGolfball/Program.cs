@@ -42,6 +42,7 @@ builder.Services.AddHostedService<WeekAdvancementService>(); // cronjob to see w
 builder.Services.AddSingleton<WeekAdvancementListenerService>(); // listens for week change
 builder.Services.AddSingleton<TradeEffectuationService>(); // checks for trades after WALS calculations
 builder.Services.AddSingleton<ScoreRevealService>(); // handles score reveal for matchups
+builder.Services.AddScoped<IPlayerImportService, PlayerImportService>(); // handles admin data upload
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
