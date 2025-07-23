@@ -26,6 +26,8 @@ public class NewScoringTest
     public int? Interceptions { get; set; }
     public int? Targets { get; set; }
     public int? Receptions { get; set; }
+    public int? YardsReceiving { get; set; }
+    public int? TouchdownsReceiving { get; set; }
     public int? AttemptsRushing { get; set; }
     public int? YardsRushing { get; set; }
     public int? TouchdownsRushing { get; set; }
@@ -34,6 +36,8 @@ public class NewScoringTest
     public int? TwoExtraPoints { get; set; }
     public int? FieldGoalAttempts { get; set; } // not breaking these down by distance for stat reasons
     public int? FieldGoalsMade { get; set; }
+    public int? ExtraPointAttempts { get; set; }
+    public int? ExtraPointMade { get; set; }
     public int? PointsAgainst { get; set; } // DEF only stat, check IsDefense before factoring in
     public int? Sacks { get; set; }
     public int? InterceptionDefense { get; set; }
@@ -52,8 +56,11 @@ public class NewScoringTest
             if (!IsDefense)
             {
                 totalPoints += (FieldGoalsMade ?? 0) * 3;
+                totalPoints += (ExtraPointMade ?? 0) * 1;
                 totalPoints += (TwoExtraPoints ?? 0) * 2;
                 totalPoints += (Receptions ?? 0) * 0.5f;
+                totalPoints += (YardsReceiving ?? 0) * 0.1f;
+                totalPoints += (TouchdownsReceiving ?? 0) * 6;
                 totalPoints += (YardsPassing ?? 0) * 0.04f;
                 totalPoints += (TouchdownsPassing ?? 0) * 4;
                 totalPoints += (YardsRushing ?? 0) * 0.1f;
