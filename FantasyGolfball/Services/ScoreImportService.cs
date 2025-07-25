@@ -3,7 +3,7 @@ using CsvHelper;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models.Test;
 using Microsoft.EntityFrameworkCore;
-
+using System.Text.RegularExpressions;
 
 // this will assuredly be a horrible kluge of switch case due to how the data is formatted.
 // however, I have some options.
@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FantasyGolfball.Services;
 // make sure to instantiate this in program.cs
 
-public class ScoringCvsRow
+public class ScoringCsvRow
 {
     public int Completions { get; set; }
     public int AttemptsPassing { get; set; }
@@ -73,7 +73,7 @@ public class ScoringImportService : IScoringImportService
 
         using var reader = new StreamReader(fileStream);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-        var records = csv.GetRecords<PlayerCsvRow>();
+        var records = csv.GetRecords<ScoringCsvRow>();
 
         foreach (var row in records)
         {
@@ -81,14 +81,74 @@ public class ScoringImportService : IScoringImportService
             // find the right player to assign the PlayerId
             // create the scoring
 
+            int weekSanitized = 99;
+
+            if (string.IsNullOrEmpty(row.Week))
+            {
+                Console.WriteLine($"Warning: week {row.Week} for player {row.PlayerID} is invalid, skipping.");
+            }
+            else
+            {
+                var match = Regex.Match(row.Week, @"(\d+)$"); // match one or more digits at the end
+                if (match.Success)
+                {
+                    weekSanitized = int.Parse(match.Value);
+                }
+                else
+                {
+                    Console.WriteLine($"Warning: Could not extract week number from '{row.Week}' for player {row.PlayerID}, skipping.");
+                    continue;
+                }
+            }
+
+            var relevantPlayer = dbContext.NewPlayerTests.SingleOrDefault(npt => npt.ExternalId == row.PlayerID);
+            if (relevantPlayer == null)
+            {
+                Console.WriteLine($"Warning: Could not find player for ID {row.PlayerID}, week {row.Week}, skipping.");
+                continue;
+            };
+
             var newScoring = new NewScoringTest
             {
                 SeasonId = seasonId,
                 IsDefense = false,
-                PlayerId = ,
-                
+                PlayerId = relevantPlayer.PlayerId,
+                SeasonWeek = weekSanitized,
+                Completions = row.Completions,
+                AttemptsPassing = row.AttemptsPassing,
+                YardsPassing = row.YardsPassing,
+                TouchdownsPassing = row.TouchdownsPassing,
+                Interceptions = row.Interceptions,
+                Targets = row.Targets,
+                Receptions = row.Receptions,
+                YardsReceiving = row.YardsReceiving,
+                TouchdownsReceiving = row.TouchdownsReceiving,
+                AttemptsRushing = row.AttemptsRushing,
+                YardsRushing = row.YardsRushing,
+                TouchdownsRushing = row.TouchdownsRushing,
+                Fumbles = row.Fumbles,
+                FumbleLost = row.FumblesLost,
+                TwoExtraPoints = row.TwoExtraPoints,
+                FieldGoalAttempts = row.FieldGoalAttempts,
+                FieldGoalsMade = row.FieldGoalsMade,
+                ExtraPointAttempts = row.ExtraPointAttempts,
+                ExtraPointMade = row.ExtraPointMade,
+                PointsAgainst = row.PointsAgainst,
+                Sacks = row.Sacks,
+                InterceptionDefense = row.InterceptionDefense,
+                DefenseFumbleRecovery = row.DefenseFumbleRecovery,
+                Safety = row.Safety,
+                TouchdownsDefense = row.TouchdownsDefense,
+                TouchdownsReturn = row.TouchdownsReturn,
+                BlockedKicks = row.BlockedKicks
             };
-            
+
+            scoresToAdd.Add(newScoring);
+
         }
+
+        dbContext.NewScoringTests.AddRange(scoresToAdd);
+        var result = await dbContext.SaveChangesAsync(cancellationToken);
+        return result;
     }
 }

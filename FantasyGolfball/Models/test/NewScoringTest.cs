@@ -15,7 +15,6 @@ public class NewScoringTest
     public int PlayerId { get; set; }
     public int SeasonId { get; set; }
     public int SeasonWeek { get; set; }
-    // public float Points { get; set; }
     public bool IsDefense { get; set; }
 
     // stats start here
