@@ -77,10 +77,11 @@ public class ScoringImportService : IScoringImportService
 
         foreach (var row in records)
         {
-            // iterate through each row
-            // find the right player to assign the PlayerId
-            // create the scoring
-
+            // ok, so what else does this need?
+            // needs to detect if team changes from one week to the next
+            // do I want an invalid status? Maybe later?
+            // Definitely later.
+            
             int weekSanitized = 99;
 
             if (string.IsNullOrEmpty(row.Week))
