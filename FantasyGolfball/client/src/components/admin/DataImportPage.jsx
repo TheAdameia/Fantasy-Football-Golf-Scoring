@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ImportPlayerData } from "../../managers/importDataManager"
+import { ImportPlayerData, ImportScoringData } from "../../managers/importDataManager"
 import "./DataImport.css"
 import { PostNewSeason } from "../../managers/seasonManager"
 
@@ -67,18 +67,18 @@ export const DataImportPage = () => {
         const formData = new FormData()
         formData.append("file", scoringFile)
 
-        // try {
-        //     const response = await (seasonIdScoring, formData)
-        //     if (response.ok) {
-        //         const result = await response.json()
-        //         setScoringStatus(result.message || "Upload successful!")
-        //     } else {
-        //         const errorText = await response.text()
-        //         setScoringStatus(`Upload failed: ${errorText}`)
-        //     }
-        //     } catch (error) {
-        //         setScoringStatus(`Upload failed: ${error.message}`)
-        // }
+        try {
+            const response = await ImportScoringData(seasonIdScoring, formData)
+            if (response.ok) {
+                const result = await response.json()
+                setScoringStatus(result.message || "Upload successful!")
+            } else {
+                const errorText = await response.text()
+                setScoringStatus(`Upload failed: ${errorText}`)
+            }
+            } catch (error) {
+                setScoringStatus(`Upload failed: ${error.message}`)
+        }
     }
 
     const ConfirmSeason = () => {

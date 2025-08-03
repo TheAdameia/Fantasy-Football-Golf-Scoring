@@ -8,3 +8,10 @@ export const ImportPlayerData = (seasonId, formData) => {
         body: formData
     })
 }
+
+export const ImportScoringData = (seasonId, formData) => {
+    return fetch(_apiUrl + `/scoring?seasonId=${seasonId}`, {
+        method: "POST",
+        body: formData
+    })
+}
