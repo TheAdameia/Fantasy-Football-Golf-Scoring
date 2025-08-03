@@ -48,6 +48,7 @@ public class ScoringCsvRow
     public string Week { get; set; }
     public string PlayerID { get; set; }
     public string Position { get; set; }
+    public string Team { get; set; }
 }
 
 public interface IScoringImportService
@@ -75,37 +76,33 @@ public class ScoringImportService : IScoringImportService
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         var records = csv.GetRecords<ScoringCsvRow>();
 
+        // this runs off the assumption, which should be safe here, that the weeks are sequential in order and the players are sequential.
+        string? previousPlayerId = null;
+        string? previousTeam = null;
+
         foreach (var row in records)
         {
-            // ok, so what else does this need?
-            // needs to detect if team changes from one week to the next
-            // do I want an invalid status? Maybe later?
-            // Definitely later.
-            
-            int weekSanitized = 99;
-
-            if (string.IsNullOrEmpty(row.Week))
+            if (string.IsNullOrWhiteSpace(row.Week))
             {
-                Console.WriteLine($"Warning: week {row.Week} for player {row.PlayerID} is invalid, skipping.");
+                Console.WriteLine($"Warning: week '{row.Week}' for player '{row.PlayerID}' is null or whitespace, skipping.");
+                continue;
+            }
+            
+            var match = Regex.Match(row.Week, @"(\d+)$"); // match one or more digits at the end
+            if (match.Success && int.TryParse(match.Value, out var weekSanitized))
+            {
+                weekSanitized = int.Parse(match.Value);
             }
             else
             {
-                var match = Regex.Match(row.Week, @"(\d+)$"); // match one or more digits at the end
-                if (match.Success)
-                {
-                    weekSanitized = int.Parse(match.Value);
-                }
-                else
-                {
-                    Console.WriteLine($"Warning: Could not extract week number from '{row.Week}' for player {row.PlayerID}, skipping.");
-                    continue;
-                }
+                Console.WriteLine($"Warning: Could not extract week number from '{row.Week}' for player '{row.PlayerID}', skipping.");
+                continue;
             }
 
-            var relevantPlayer = dbContext.NewPlayerTests.SingleOrDefault(npt => npt.ExternalId == row.PlayerID);
+            var relevantPlayer = dbContext.NewPlayerTests.SingleOrDefault(npt => npt.ExternalId == row.PlayerID); // potential performance increase here by caching the player
             if (relevantPlayer == null)
             {
-                Console.WriteLine($"Warning: Could not find player for ID {row.PlayerID}, week {row.Week}, skipping.");
+                Console.WriteLine($"Warning: Could not find player for ID '{row.PlayerID}', week '{row.Week}', skipping.");
                 continue;
             };
 
@@ -143,6 +140,19 @@ public class ScoringImportService : IScoringImportService
                 TouchdownsReturn = row.TouchdownsReturn,
                 BlockedKicks = row.BlockedKicks
             };
+
+            if (previousPlayerId != null && previousTeam != null)
+            {
+                if (previousPlayerId == row.PlayerID && previousTeam != row.Team)
+                {
+                    // create new PlayerTeam
+                    // only gonna work if I use real teams and not the Test placeholder
+                    Console.WriteLine($"Player '{previousPlayerId}' changed from '{previousTeam}' to '{row.Team}' in week '{weekSanitized}' ");
+                }
+            }
+
+            previousPlayerId = row.PlayerID;
+            previousTeam = row.Team;
 
             scoresToAdd.Add(newScoring);
 
