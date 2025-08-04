@@ -9,15 +9,4 @@ public class Team
     public string TeamCity { get; set; }
     public string? Abbreviation { get; set; }
     public int? ByeWeek { get; set; }
-    public List<ActivePeriod> ActivePeriods { get; set; } = new();
-
-    public bool PlayerMovePossible
-    {
-        get
-        {
-            DateTime now = DateTime.UtcNow;
-            return ActivePeriods.Any(period => now >= period.Start && now <= period.End);
-        }
-    }
-
 }

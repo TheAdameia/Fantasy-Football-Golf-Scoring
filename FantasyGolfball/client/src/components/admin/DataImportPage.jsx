@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ImportPlayerData, ImportScoringData } from "../../managers/importDataManager"
 import "./DataImport.css"
-import { PostNewSeason } from "../../managers/seasonManager"
+import { GetAllSeasons, PostNewSeason } from "../../managers/seasonManager"
 
 
 export const DataImportPage = () => {
@@ -11,6 +11,7 @@ export const DataImportPage = () => {
     const [seasonIdScoring, setSeasonIdScoring] = useState("")
     const [status, setStatus] = useState("")
     const [scoringStatus, setScoringStatus] = useState()
+    const [seasons, setSeasons] = useState()
 
     const [seasonYear, setSeasonYear] = useState(0)
     const [seasonWeeks, setSeasonWeeks] = useState(18)
@@ -91,11 +92,27 @@ export const DataImportPage = () => {
     }
 
     const handleCreateSeason = (seasonYear, seasonWeeks) => {
-        PostNewSeason(seasonYear, seasonWeeks)
+        PostNewSeason(seasonYear, seasonWeeks).then(getAndSetSeasons())
     }
+
+    const getAndSetSeasons = () => {
+        GetAllSeasons().then(setSeasons)
+    }
+
+    useEffect(() => {
+        getAndSetSeasons()
+    }, [])
 
     return (
         <div>
+            <h4 className="taco"> Season List</h4>
+            {seasons ?
+            seasons.map(s =>
+                <div key={s.seasonId}>
+                    Season Year: {s.seasonYear}, SeasonId: {s.seasonId}, Season Weeks: {s.seasonWeeks}
+                </div>
+            )
+            : <></>}
             <h4 className="taco">Create Season by Year, total weeks</h4>
             <div className="taco">
                 <label className="taco">Season Year:</label>

@@ -9,12 +9,12 @@ namespace FantasyGolfball.Services;
 
 public class PlayerCsvRow
 {
-    public string Rank { get; set; }
-    public string Name { get; set; }
-    public string Team { get; set; }
-    public string Pos { get; set; }
+    public required string Rank { get; set; }
+    public required string Name { get; set; }
+    public required string Team { get; set; }
+    public required string Pos { get; set; }
     public int GP { get; set; }
-    public string PlayerID { get; set; }
+    public required string PlayerID { get; set; }
     
 }
 

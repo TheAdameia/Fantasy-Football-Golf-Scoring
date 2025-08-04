@@ -17,9 +17,9 @@ public class SeasonController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
+    [HttpGet("all-seasons")]
     [Authorize]
-    public IActionResult GetAll() // unused currently but can integrate with LeagueForm
+    public IActionResult GetAll()
     {
         return Ok(_dbContext.Seasons);
     }
