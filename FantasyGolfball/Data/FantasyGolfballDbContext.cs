@@ -212,6 +212,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Thunderbirds",
                 TeamCity = "Denver",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -219,6 +220,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Vipers",
                 TeamCity = "Atlanta",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -226,6 +228,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Ironhounds",
                 TeamCity = "Houston",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -233,6 +236,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Stallions",
                 TeamCity = "Chicago",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -240,6 +244,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Warhawks",
                 TeamCity = "Seattle",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -247,6 +252,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Cyclones",
                 TeamCity = "Orlando",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -254,6 +260,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Guardians",
                 TeamCity = "Nashville",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -261,6 +268,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Lumberjacks",
                 TeamCity = "Portland",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -268,6 +276,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Outlaws",
                 TeamCity = "Las Vegas",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -275,6 +284,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Redtails",
                 TeamCity = "Kansas City",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -282,6 +292,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Firestorm",
                 TeamCity = "Phoenix",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -289,6 +300,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Sentinels",
                 TeamCity = "Brooklyn",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -296,6 +308,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Hurricanes",
                 TeamCity = "Miami",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -303,6 +316,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Tritons",
                 TeamCity = "San Diego",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -310,6 +324,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Phantoms",
                 TeamCity = "Detroit",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -317,6 +332,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Cobras",
                 TeamCity = "Carolina",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -324,6 +340,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Rampage",
                 TeamCity = "New Jersey",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -331,6 +348,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Renegades",
                 TeamCity = "St. Louis",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -338,6 +356,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Mustangs",
                 TeamCity = "Oklahoma City",
                 ByeWeek = 0,
+                SeasonId = 1
             },
             new Team
             {
@@ -345,6 +364,7 @@ public class FantasyGolfballDbContext : IdentityDbContext<IdentityUser>
                 TeamName = "Scorpions",
                 TeamCity = "Cincinnati",
                 ByeWeek = 0,
+                SeasonId = 1
             }
         }); 
         modelBuilder.Entity<Player>().HasData(new Player[]
