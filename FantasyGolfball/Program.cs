@@ -44,6 +44,7 @@ builder.Services.AddSingleton<TradeEffectuationService>(); // checks for trades 
 builder.Services.AddSingleton<ScoreRevealService>(); // handles score reveal for matchups
 builder.Services.AddScoped<IPlayerImportService, PlayerImportService>(); // handles admin data upload
 builder.Services.AddScoped<IScoringImportService, ScoringImportService>(); // ditto
+builder.Services.AddScoped<IDefenseImportService, DefenseImportService>(); // ditto 2
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>

@@ -1,13 +1,3 @@
-
-
-// take note of which week is skipped for each team; save that as the bye week
-// check if all bye weeks recorded for that season
-
-// log anomalies if score != fpoints
-
-// make sure to register the service in program.cs
-
-
 using System.Globalization;
 using CsvHelper;
 using FantasyGolfball.Data;
@@ -206,7 +196,6 @@ public class DefenseImportService : IDefenseImportService
                 Console.WriteLine($"Warning: could not find player for ID '{row.PlayerID}', week '{row.Week}', skipping.");
                 continue;
             }
-            ;
 
             var newScoring = new NewScoringTest
             {
@@ -243,9 +232,58 @@ public class DefenseImportService : IDefenseImportService
                 BlockedKicks = row.BlockedKicks ?? 0
             };
 
-            scoresToAdd.Add(newScoring);
+            if ((decimal)newScoring.Points == row.FantasyPoints)
+            {
+                Console.WriteLine($"Scoring anomaly detected: PlayerId '{newScoring.PlayerId}', week '{newScoring.SeasonWeek}', calculated score '{newScoring.Points}', imported score '{row.FantasyPoints}'");
+            }
 
+            scoresToAdd.Add(newScoring);
         }
+
+        // bye week inference begins
+        var groupedByTeam = scoresToAdd
+            .GroupBy(s => s.PlayerId)
+            .ToList();
+
+        foreach (var teamGroup in groupedByTeam)
+        {
+            var teamWeeks = teamGroup.Select(s => s.SeasonWeek).Distinct().ToList();
+            var byeWeek = Enumerable.Range(1, season.SeasonWeeks)
+                                    .Except(teamWeeks)
+                                    .SingleOrDefault();
+
+            if (byeWeek > 0)
+            {
+                var playerId = teamGroup.Key;
+
+                // get the ExternalId for this player (so we can find its team)
+                var player = await dbContext.NewPlayerTests
+                    .FirstOrDefaultAsync(p => p.PlayerId == playerId, cancellationToken);
+
+                if (player != null)
+                {
+                    // ExternalId format = DEF-XXX-YYYY
+                    var abbrev = player.ExternalId.Split('-')[1];
+
+                    var team = await dbContext.Teams
+                        .FirstOrDefaultAsync(t => t.SeasonId == season.SeasonId &&
+                                                t.Abbreviation == abbrev,
+                                                cancellationToken);
+
+                    if (team != null)
+                    {
+                        team.ByeWeek = byeWeek;
+                        Console.WriteLine($"Set bye week for {team.TeamName} ({season.SeasonYear}) to {byeWeek}");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Warning: could not determine bye week for PlayerId '{teamGroup.Key}'");
+            }
+        }
+
+        // bye week inference ends
         
         dbContext.NewScoringTests.AddRange(scoresToAdd);
         var result = await dbContext.SaveChangesAsync(cancellationToken);
