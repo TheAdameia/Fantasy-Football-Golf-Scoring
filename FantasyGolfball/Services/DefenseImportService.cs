@@ -142,7 +142,7 @@ public class DefenseImportService : IDefenseImportService
                     PlayerLastName = t.TeamName,
                     PositionId = 6,
                     SeasonId = season.SeasonId,
-                    GamesPlayed = 0,
+                    GamesPlayed = season.SeasonWeeks,
                     ExternalId = $"DEF-{t.Abbreviation}-{season.SeasonYear}"
                 };
 
@@ -190,12 +190,26 @@ public class DefenseImportService : IDefenseImportService
                 continue;
             }
 
-            var relevantPlayer = dbContext.NewPlayerTests.SingleOrDefault(npt => npt.ExternalId == row.PlayerID); // potential performance increase here by caching the player
-            if (relevantPlayer == null)
+            var teamAbbrev = row.Team;
+
+            if (string.IsNullOrWhiteSpace(teamAbbrev))
             {
-                Console.WriteLine($"Warning: could not find player for ID '{row.PlayerID}', week '{row.Week}', skipping.");
+                Console.WriteLine($"Warning: missing team in row for week '{row.Week}', season '{season.SeasonYear}', skipping.");
                 continue;
             }
+
+            var expectedExternalId = $"DEF-{teamAbbrev}-{season.SeasonYear}";
+
+            var relevantPlayer = dbContext.NewPlayerTests
+                .SingleOrDefault(npt => npt.ExternalId == expectedExternalId);
+
+            if (relevantPlayer == null)
+            {
+                Console.WriteLine($"Warning: could not find defense for team '{teamAbbrev}', week '{row.Week}', season '{season.SeasonYear}', skipping.");
+                continue;
+            }
+
+
 
             var newScoring = new NewScoringTest
             {

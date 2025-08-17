@@ -15,14 +15,17 @@ public class DataImportController : ControllerBase
     private readonly FantasyGolfballDbContext _dbContext;
     private readonly IPlayerImportService _playerImportService;
     private readonly IScoringImportService _scoringImportService;
+    private readonly IDefenseImportService _defenseImportService;
 
     public DataImportController(FantasyGolfballDbContext context,
                                 IPlayerImportService playerImportService,
-                                IScoringImportService scoringImportService)
+                                IScoringImportService scoringImportService,
+                                IDefenseImportService defenseImportService)
     {
         _dbContext = context;
         _playerImportService = playerImportService;
         _scoringImportService = scoringImportService;
+        _defenseImportService = defenseImportService;
     }
 
     [HttpPost("players")]
@@ -57,6 +60,26 @@ public class DataImportController : ControllerBase
         try
         {
             var importCount = await _scoringImportService.ImportScoringFromCsvAsync(file.OpenReadStream(), seasonId, cancellationToken);
+            return Ok(new { Message = $"Successfully imported {importCount} scores" });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Import failed: {ex.Message}");
+        }
+    }
+
+    [HttpPost("defense")]
+    [Authorize]
+    public async Task<IActionResult> ImportDefense(IFormFile file, [FromQuery] int seasonId, CancellationToken cancellationToken)
+    {
+        if (file == null || file.Length == 0)
+        {
+            return BadRequest("File is empty or missing.");
+        }
+
+        try
+        {
+            var importCount = await _defenseImportService.ImportDefenseFromCsvAsync(file.OpenReadStream(), seasonId, cancellationToken);
             return Ok(new { Message = $"Successfully imported {importCount} scores" });
         }
         catch (Exception ex)

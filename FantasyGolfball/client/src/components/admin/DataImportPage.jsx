@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ImportPlayerData, ImportScoringData } from "../../managers/importDataManager"
+import { ImportDefenseData, ImportPlayerData, ImportScoringData } from "../../managers/importDataManager"
 import "./DataImport.css"
 import { GetAllSeasons, PostNewSeason } from "../../managers/seasonManager"
 
@@ -7,10 +7,13 @@ import { GetAllSeasons, PostNewSeason } from "../../managers/seasonManager"
 export const DataImportPage = () => {
     const [file, setFile] = useState(null)
     const [scoringFile, setScoringFile] = useState(null)
+    const [defenseFile, setDefenseFile] = useState(null)
     const [seasonId, setSeasonId] = useState("")
     const [seasonIdScoring, setSeasonIdScoring] = useState("")
+    const [seasonIdDefense, setSeasonIdDefense] = useState("")
     const [status, setStatus] = useState("")
     const [scoringStatus, setScoringStatus] = useState()
+    const [defenseStatus, setDefenseStatus] = useState()
     const [seasons, setSeasons] = useState()
 
     const [seasonYear, setSeasonYear] = useState(0)
@@ -28,12 +31,20 @@ export const DataImportPage = () => {
         setScoringFile(e.target.files[0])
     }
 
+    const handleDefenseFileChange = (e) => {
+        setDefenseFile(e.target.files[0])
+    }
+
     const handleSeasonIdChange = (e) => {
         setSeasonId(e.target.value)
     }
 
     const handleScoringSeasonIdChange = (e) => {
         setSeasonIdScoring(e.target.value)
+    }
+
+    const handleDefenseSeasonIdChange = (e) => {
+        setSeasonIdDefense(e.target.value)
     }
 
     const handlePlayerUpload = async () => {
@@ -79,6 +90,29 @@ export const DataImportPage = () => {
             }
             } catch (error) {
                 setScoringStatus(`Upload failed: ${error.message}`)
+        }
+    }
+
+    const handleDefenseUpload = async () => {
+        if (!defenseFile || !seasonIdDefense) {
+            setStatus("Please select a file and enter a season ID.")
+            return
+        }
+
+        const formData = new FormData()
+        formData.append("file", defenseFile)
+
+        try {
+            const response = await ImportDefenseData(seasonIdDefense, formData)
+            if (response.ok) {
+                const result = await response.json()
+                setDefenseStatus(result.message || "Upload successful!")
+            } else {
+                const errorText = await response.text()
+                setDefenseStatus(`Upload failed: ${errorText}`)
+            }
+            } catch (error) {
+                setDefenseStatus(`Upload failed: ${error.message}`)
         }
     }
 
@@ -171,6 +205,21 @@ export const DataImportPage = () => {
             </div>
             <button onClick={handleScoringUpload}>Upload Scoring</button>
             {scoringStatus && <p>{scoringStatus}</p>}
+
+            <h2 className="taco">Upload Defense CSV</h2>
+            <div className="taco">
+                <label>Defense season ID:</label>
+                <input 
+                    type="number"
+                    value={seasonIdDefense}
+                    onChange={handleDefenseSeasonIdChange}
+                />
+            </div>
+            <div className="taco">
+                <input type="file" accept=".csv" onChange={handleDefenseFileChange}/>
+            </div>
+            <button onClick={handleDefenseUpload}>Upload Defense</button>
+            {defenseStatus && <p>{defenseStatus}</p>}
             
         </div>
     )
