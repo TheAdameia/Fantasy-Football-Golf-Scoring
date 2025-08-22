@@ -173,7 +173,21 @@ export const DataImportPage = () => {
             <div className="taco">
                 <button onClick={ConfirmSeason}>Create new Season</button>
             </div>
-
+            
+                <h2 className="taco">Upload Defense CSV</h2>
+                <div className="taco">
+                    <label>Defense season ID:</label>
+                    <input 
+                        type="number"
+                        value={seasonIdDefense}
+                        onChange={handleDefenseSeasonIdChange}
+                    />
+                </div>
+                <div className="taco">
+                    <input type="file" accept=".csv" onChange={handleDefenseFileChange}/>
+                </div>
+                <button onClick={handleDefenseUpload}>Upload Defense</button>
+                {defenseStatus && <p>{defenseStatus}</p>}
 
             <h2 className="taco">Upload Player CSV</h2>
             <div className="taco">
@@ -206,20 +220,7 @@ export const DataImportPage = () => {
             <button onClick={handleScoringUpload}>Upload Scoring</button>
             {scoringStatus && <p>{scoringStatus}</p>}
 
-            <h2 className="taco">Upload Defense CSV</h2>
-            <div className="taco">
-                <label>Defense season ID:</label>
-                <input 
-                    type="number"
-                    value={seasonIdDefense}
-                    onChange={handleDefenseSeasonIdChange}
-                />
-            </div>
-            <div className="taco">
-                <input type="file" accept=".csv" onChange={handleDefenseFileChange}/>
-            </div>
-            <button onClick={handleDefenseUpload}>Upload Defense</button>
-            {defenseStatus && <p>{defenseStatus}</p>}
+            
             
         </div>
     )

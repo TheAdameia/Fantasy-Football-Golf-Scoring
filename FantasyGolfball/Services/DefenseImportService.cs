@@ -1,7 +1,6 @@
 using System.Globalization;
 using CsvHelper;
 using FantasyGolfball.Data;
-using FantasyGolfball.Models.Test;
 using FantasyGolfball.Models.Utilities;
 using FantasyGolfball.Models;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +27,7 @@ public class DefenseImportService : IDefenseImportService
         using var scope = _scopeFactory.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-        var scoresToAdd = new List<NewScoringTest>();
+        var scoresToAdd = new List<Scoring>();
 
         using var reader = new StreamReader(fileStream);
 
@@ -131,12 +130,14 @@ public class DefenseImportService : IDefenseImportService
             .Where(t => !existingTeams.Contains(t.Abbreviation))
             .ToList();
 
+        var defensePlayers = new List<Player>();
+        var playerTeamsToAdd = new List<PlayerTeam>();
+
         if (newTeams.Any())
         {
-            var teamPlayers = new List<NewPlayerTest>();
             foreach (var t in newTeams)
             {
-                var defensePlayer = new NewPlayerTest
+                var defensePlayer = new Player
                 {
                     PlayerFirstName = t.TeamCity,
                     PlayerLastName = t.TeamName,
@@ -146,26 +147,16 @@ public class DefenseImportService : IDefenseImportService
                     ExternalId = $"DEF-{t.Abbreviation}-{season.SeasonYear}"
                 };
 
-                teamPlayers.Add(defensePlayer);
+                defensePlayers.Add(defensePlayer);
+
+                playerTeamsToAdd.Add(new PlayerTeam
+                {
+                    Player = defensePlayer, // uses navigational property instead of hard coding thanks to EFC magic
+                    Team = t,
+                    TeamStartWeek = 1
+                });
             }
 
-            dbContext.Teams.AddRange(newTeams);
-            await dbContext.SaveChangesAsync(cancellationToken);
-
-            // foreach (var team in newTeams) // this can be integrated when the switch to real classes is made
-            // {
-            //     var defensePlayer = teamPlayers.First(tp => tp.ExternalId == $"DEF-{team.Abbreviation}-{season.SeasonYear}");
-
-            //     dbContext.PlayerTeams.Add(new PlayerTeam
-            //     {
-            //         PlayerId = defensePlayer.PlayerId,
-            //         TeamId = team.TeamId,
-            //         SeasonId = season.SeasonId
-            //     });
-            // }
-
-            dbContext.NewPlayerTests.AddRange(teamPlayers);
-            await dbContext.SaveChangesAsync(cancellationToken);
             Console.WriteLine($"'{newTeams.Count()}' new teams were added to SeasonYear '{season.SeasonYear}'.");
         }
         else
@@ -200,8 +191,15 @@ public class DefenseImportService : IDefenseImportService
 
             var expectedExternalId = $"DEF-{teamAbbrev}-{season.SeasonYear}";
 
-            var relevantPlayer = dbContext.NewPlayerTests
+            var relevantPlayer = defensePlayers
                 .SingleOrDefault(npt => npt.ExternalId == expectedExternalId);
+
+            if (relevantPlayer == null)
+            {
+                relevantPlayer = await dbContext.Players
+                    .SingleOrDefaultAsync(p => p.ExternalId == expectedExternalId, cancellationToken);
+            }
+
 
             if (relevantPlayer == null)
             {
@@ -211,11 +209,11 @@ public class DefenseImportService : IDefenseImportService
 
 
 
-            var newScoring = new NewScoringTest
+            var newScoring = new Scoring
             {
                 SeasonId = seasonId,
                 IsDefense = true,
-                PlayerId = relevantPlayer.PlayerId,
+                Player = relevantPlayer,
                 SeasonWeek = weekSanitized,
                 Completions = row.Completions ?? 0,
                 AttemptsPassing = row.AttemptsPassing ?? 0,
@@ -266,23 +264,26 @@ public class DefenseImportService : IDefenseImportService
                                     .Except(teamWeeks)
                                     .SingleOrDefault();
 
+            Console.WriteLine($"Weeks '{teamWeeks}', bye week '{byeWeek}'");
+
             if (byeWeek > 0)
             {
                 var playerId = teamGroup.Key;
 
-                // get the ExternalId for this player (so we can find its team)
-                var player = await dbContext.NewPlayerTests
+                // again, db as fallback
+                var player = teamGroup.First().Player ?? await dbContext.Players
                     .FirstOrDefaultAsync(p => p.PlayerId == playerId, cancellationToken);
 
                 if (player != null)
                 {
-                    // ExternalId format = DEF-XXX-YYYY
+                    // ExternalId format: DEF-XXX-YYYY
                     var abbrev = player.ExternalId.Split('-')[1];
 
-                    var team = await dbContext.Teams
-                        .FirstOrDefaultAsync(t => t.SeasonId == season.SeasonId &&
-                                                t.Abbreviation == abbrev,
-                                                cancellationToken);
+                    var team = dbContext.Teams.Local    // local is a new one, can't use new teams because fallback might have triggered prior
+                        .FirstOrDefault(t => t.SeasonId == season.SeasonId &&
+                                                t.Abbreviation == abbrev)
+                        ?? await dbContext.Teams
+                            .FirstOrDefaultAsync(t => t.SeasonId == season.SeasonId && t.Abbreviation == abbrev, cancellationToken);
 
                     if (team != null)
                     {
@@ -298,8 +299,11 @@ public class DefenseImportService : IDefenseImportService
         }
 
         // bye week inference ends
-        
-        dbContext.NewScoringTests.AddRange(scoresToAdd);
+        dbContext.Teams.AddRange(newTeams);
+        dbContext.Players.AddRange(defensePlayers);
+        dbContext.PlayerTeams.AddRange(playerTeamsToAdd);
+        dbContext.Scorings.AddRange(scoresToAdd);
+
         var result = await dbContext.SaveChangesAsync(cancellationToken);
         return result;
     }

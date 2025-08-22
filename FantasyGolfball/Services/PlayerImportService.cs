@@ -2,7 +2,6 @@ using System.Globalization;
 using CsvHelper;
 using FantasyGolfball.Data;
 using FantasyGolfball.Models;
-using FantasyGolfball.Models.Test;
 using Microsoft.EntityFrameworkCore;
 
 namespace FantasyGolfball.Services;
@@ -37,7 +36,7 @@ public class PlayerImportService : IPlayerImportService
         using var scope = _scopeFactory.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-        var playersToAdd = new List<NewPlayerTest>();
+        var playersToAdd = new List<Player>();
 
         using var reader = new StreamReader(fileStream);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
@@ -75,14 +74,14 @@ public class PlayerImportService : IPlayerImportService
             if (position == 0)
                 throw new Exception($"Position '{row.Pos}' not found for {row.Name}.");
 
-            var newPlayer = new NewPlayerTest
+            var newPlayer = new Player
             {
                 PlayerFirstName = firstName,
                 PlayerLastName = lastName,
                 PositionId = position,
                 GamesPlayed = row.GP,
                 SeasonId = seasonId,
-                NewScoringTests = new List<NewScoringTest>(),
+                Scorings = new List<Scoring>(),
                 RosterPlayers = new List<RosterPlayer>(),
                 PlayerStatuses = new List<PlayerStatus>(),
                 PlayerTeams = new List<PlayerTeam>(),
@@ -92,7 +91,7 @@ public class PlayerImportService : IPlayerImportService
             playersToAdd.Add(newPlayer);
         }
 
-        dbContext.NewPlayerTests.AddRange(playersToAdd);
+        dbContext.Players.AddRange(playersToAdd);
         var result = await dbContext.SaveChangesAsync(cancellationToken);
         return result;
     }

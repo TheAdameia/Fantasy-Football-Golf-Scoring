@@ -1,10 +1,10 @@
 using System.Globalization;
 using CsvHelper;
 using FantasyGolfball.Data;
-using FantasyGolfball.Models.Test;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using FantasyGolfball.Models.Utilities;
+using FantasyGolfball.Models;
 namespace FantasyGolfball.Services;
 
 
@@ -27,7 +27,8 @@ public class ScoringImportService : IScoringImportService
         using var scope = _scopeFactory.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
-        var scoresToAdd = new List<NewScoringTest>();
+        var scoresToAdd = new List<Scoring>();
+        var playerTeamsToAdd = new List<PlayerTeam>();
 
         using var reader = new StreamReader(fileStream);
 
@@ -54,14 +55,14 @@ public class ScoringImportService : IScoringImportService
                 continue;
             }
 
-            var relevantPlayer = dbContext.NewPlayerTests.SingleOrDefault(npt => npt.ExternalId == row.PlayerID); // potential performance increase here by caching the player
+            var relevantPlayer = dbContext.Players.SingleOrDefault(npt => npt.ExternalId == row.PlayerID); // potential performance increase here by caching the player
             if (relevantPlayer == null)
             {
                 Console.WriteLine($"Warning: could not find player for ID '{row.PlayerID}', week '{row.Week}', skipping.");
                 continue;
             };
 
-            var newScoring = new NewScoringTest
+            var newScoring = new Scoring
             {
                 SeasonId = seasonId,
                 IsDefense = false,
@@ -96,13 +97,26 @@ public class ScoringImportService : IScoringImportService
                 BlockedKicks = row.BlockedKicks ?? 0
             };
 
+           
+
             if (previousPlayerId != null && previousTeam != null)
             {
                 if (previousPlayerId == row.PlayerID && previousTeam != row.Team)
                 {
-                    // create new PlayerTeam
-                    // only gonna work if I use real teams and not the Test placeholder
-                    Console.WriteLine($"Player '{previousPlayerId}' changed from '{previousTeam}' to '{row.Team}' in week '{weekSanitized}' ");
+
+                    var newTeam = dbContext.Teams.SingleOrDefault(t => t.SeasonId == newScoring.SeasonId && t.Abbreviation == row.Team);
+
+                    if (newTeam != null)
+                    {
+                        playerTeamsToAdd.Add(new PlayerTeam
+                        {
+                            PlayerId = newScoring.PlayerId,
+                            TeamId = newTeam.TeamId,
+                            TeamStartWeek = newScoring.SeasonWeek
+                        });
+                    }
+
+                    Console.WriteLine($"Player '{previousPlayerId}' changed from '{previousTeam}' to '{row.Team}' in week '{newScoring.SeasonWeek}' ");
                 }
             }
 
@@ -118,7 +132,8 @@ public class ScoringImportService : IScoringImportService
 
         }
 
-        dbContext.NewScoringTests.AddRange(scoresToAdd);
+        dbContext.Scorings.AddRange(scoresToAdd);
+        dbContext.PlayerTeams.AddRange(playerTeamsToAdd);
         var result = await dbContext.SaveChangesAsync(cancellationToken);
         return result;
     }
