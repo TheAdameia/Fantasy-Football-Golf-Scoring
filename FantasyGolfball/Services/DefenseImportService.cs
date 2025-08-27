@@ -80,6 +80,7 @@ public class DefenseImportService : IDefenseImportService
         };
 
 
+        // historical name checks start
         if (season.SeasonYear <= 2019)
         {
             var changeTeam = teams.FirstOrDefault(t => t.Abbreviation == "WAS");
@@ -120,6 +121,7 @@ public class DefenseImportService : IDefenseImportService
                 changeTeam.TeamCity = "St. Louis";
             }
         }
+        // historical name checks end
 
         var existingTeams = await dbContext.Teams
              .Where(t => t.SeasonId == seasonId)
@@ -200,14 +202,11 @@ public class DefenseImportService : IDefenseImportService
                     .SingleOrDefaultAsync(p => p.ExternalId == expectedExternalId, cancellationToken);
             }
 
-
             if (relevantPlayer == null)
             {
                 Console.WriteLine($"Warning: could not find defense for team '{teamAbbrev}', week '{row.Week}', season '{season.SeasonYear}', skipping.");
                 continue;
             }
-
-
 
             var newScoring = new Scoring
             {
@@ -254,47 +253,41 @@ public class DefenseImportService : IDefenseImportService
 
         // bye week inference begins
         var groupedByTeam = scoresToAdd
-            .GroupBy(s => s.PlayerId)
-            .ToList();
+            .Where(s => s.Player != null)
+            .GroupBy(s => s.Player.ExternalId);
 
-        foreach (var teamGroup in groupedByTeam)
+        foreach (var group in groupedByTeam)
         {
-            var teamWeeks = teamGroup.Select(s => s.SeasonWeek).Distinct().ToList();
+            var externalId = group.Key;
+            var scoredWeeks = group.Select(s => s.SeasonWeek).Distinct().ToHashSet();
+
             var byeWeek = Enumerable.Range(1, season.SeasonWeeks)
-                                    .Except(teamWeeks)
+                                    .Except(scoredWeeks)
                                     .SingleOrDefault();
 
-            Console.WriteLine($"Weeks '{teamWeeks}', bye week '{byeWeek}'");
-
-            if (byeWeek > 0)
+            if (byeWeek == 0)
             {
-                var playerId = teamGroup.Key;
+                Console.WriteLine($"Warning: No bye week set for '{group.Key}'");
+                continue;
+            }
 
-                // again, db as fallback
-                var player = teamGroup.First().Player ?? await dbContext.Players
-                    .FirstOrDefaultAsync(p => p.PlayerId == playerId, cancellationToken);
+            var parts = externalId.Split('-');
+            if (parts.Length < 3)
+            {
+                Console.WriteLine($"Warning: potential malformed externalId for '{externalId}', '{group}'");
+                continue;
+            }
+            var abbreviation = parts[1];
 
-                if (player != null)
-                {
-                    // ExternalId format: DEF-XXX-YYYY
-                    var abbrev = player.ExternalId.Split('-')[1];
+            var team = newTeams.SingleOrDefault(t => t.Abbreviation.Trim().ToUpper() == abbreviation.Trim().ToUpper());
 
-                    var team = dbContext.Teams.Local    // local is a new one, can't use new teams because fallback might have triggered prior
-                        .FirstOrDefault(t => t.SeasonId == season.SeasonId &&
-                                                t.Abbreviation == abbrev)
-                        ?? await dbContext.Teams
-                            .FirstOrDefaultAsync(t => t.SeasonId == season.SeasonId && t.Abbreviation == abbrev, cancellationToken);
-
-                    if (team != null)
-                    {
-                        team.ByeWeek = byeWeek;
-                        Console.WriteLine($"Set bye week for {team.TeamName} ({season.SeasonYear}) to {byeWeek}");
-                    }
-                }
+            if (team != null)
+            {
+                team.ByeWeek = byeWeek;
             }
             else
             {
-                Console.WriteLine($"Warning: could not determine bye week for PlayerId '{teamGroup.Key}'");
+                Console.WriteLine($"Warning: Team was not found for externalId '{externalId}' despite byeWeek '{byeWeek}' not being null.");
             }
         }
 

@@ -3,6 +3,7 @@ using System;
 using FantasyGolfball.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasyGolfball.Migrations
 {
     [DbContext(typeof(FantasyGolfballDbContext))]
-    partial class FantasyGolfballDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250827214010_AddTouchdownsPassing")]
+    partial class AddTouchdownsPassing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26669,13 +26672,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3429dea8-b847-44e8-8d68-a16a4786ee29",
+                            ConcurrencyStamp = "94d782af-e8aa-4e62-b711-5e12f912d375",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEI8VkZ9UMCcNKYTYkQDVkM6Bi/GJIiFJxIOBIhoLbm36xzWRdsFyOkpRzB4tLch4GA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFjXTJowcn9z/27W+p7VlB2HeM6sN10Cq4u/laI6dk2xN+j+HA1mhTe9SVNFcAU1xA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e062b7d0-7e7a-44e5-bead-2c8b80d38b55",
+                            SecurityStamp = "cf683f32-adb4-40ce-be59-940e5fb01f2e",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

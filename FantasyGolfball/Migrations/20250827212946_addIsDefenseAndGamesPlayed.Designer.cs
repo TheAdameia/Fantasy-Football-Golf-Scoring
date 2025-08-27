@@ -3,6 +3,7 @@ using System;
 using FantasyGolfball.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasyGolfball.Migrations
 {
     [DbContext(typeof(FantasyGolfballDbContext))]
-    partial class FantasyGolfballDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250827212946_addIsDefenseAndGamesPlayed")]
+    partial class addIsDefenseAndGamesPlayed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26669,13 +26672,13 @@ namespace FantasyGolfball.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3429dea8-b847-44e8-8d68-a16a4786ee29",
+                            ConcurrencyStamp = "744de316-039a-48ce-8f72-d42d1ebc9ce7",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEI8VkZ9UMCcNKYTYkQDVkM6Bi/GJIiFJxIOBIhoLbm36xzWRdsFyOkpRzB4tLch4GA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJMRCwpzYAKX+ZgVBIBuJLXAHsqcBRnNDgPvrW60csai61Psp/2z+SJr+vfo4EFdag==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e062b7d0-7e7a-44e5-bead-2c8b80d38b55",
+                            SecurityStamp = "9ac0fd13-1653-467f-b62e-444b94897dd5",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
