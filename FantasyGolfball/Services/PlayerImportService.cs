@@ -37,6 +37,7 @@ public class PlayerImportService : IPlayerImportService
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
         var playersToAdd = new List<Player>();
+        var playerStatusesToAdd = new List<PlayerStatus>();
 
         using var reader = new StreamReader(fileStream);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
@@ -89,9 +90,17 @@ public class PlayerImportService : IPlayerImportService
             };
 
             playersToAdd.Add(newPlayer);
+
+            playerStatusesToAdd.Add(new PlayerStatus
+            {
+                Player = newPlayer,
+                StatusId = 1,
+                StatusStartWeek = 1
+            });
         }
 
         dbContext.Players.AddRange(playersToAdd);
+        dbContext.PlayerStatuses.AddRange(playerStatusesToAdd);
         var result = await dbContext.SaveChangesAsync(cancellationToken);
         return result;
     }

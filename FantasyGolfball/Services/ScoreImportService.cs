@@ -29,6 +29,7 @@ public class ScoringImportService : IScoringImportService
 
         var scoresToAdd = new List<Scoring>();
         var playerTeamsToAdd = new List<PlayerTeam>();
+        // var playerStatusesToAdd = new List<PlayerStatus>();
 
         using var reader = new StreamReader(fileStream);
 
@@ -97,8 +98,12 @@ public class ScoringImportService : IScoringImportService
                 BlockedKicks = row.BlockedKicks ?? 0
             };
 
-           
 
+            // if I wanted to create further invalid designations based on scoring, this would be the place to do it
+            // if I were to do that, would need to edit existing ps for week 1 when called for
+
+           
+            // block that identifies if a player changes teams
             if (previousPlayerId != null && previousTeam != null)
             {
                 if (previousPlayerId == row.PlayerID && previousTeam != row.Team)
@@ -120,9 +125,6 @@ public class ScoringImportService : IScoringImportService
                 }
             }
 
-            // switch case by position of relevant player to check relevant stats
-            //     // create invalid designation for that week
-
             // log scores that don't match, should be an issue for D (no blocked kicks) and QB (no fumble)
 
             previousPlayerId = row.PlayerID;
@@ -134,6 +136,7 @@ public class ScoringImportService : IScoringImportService
 
         dbContext.Scorings.AddRange(scoresToAdd);
         dbContext.PlayerTeams.AddRange(playerTeamsToAdd);
+        // dbContext.PlayerStatuses.AddRange(playerStatusesToAdd);
         var result = await dbContext.SaveChangesAsync(cancellationToken);
         return result;
     }

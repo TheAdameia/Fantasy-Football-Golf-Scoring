@@ -28,6 +28,9 @@ public class DefenseImportService : IDefenseImportService
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
         var scoresToAdd = new List<Scoring>();
+        var playerStatusesToAdd = new List<PlayerStatus>();
+        var defensePlayers = new List<Player>();
+        var playerTeamsToAdd = new List<PlayerTeam>();
 
         using var reader = new StreamReader(fileStream);
 
@@ -132,9 +135,6 @@ public class DefenseImportService : IDefenseImportService
             .Where(t => !existingTeams.Contains(t.Abbreviation))
             .ToList();
 
-        var defensePlayers = new List<Player>();
-        var playerTeamsToAdd = new List<PlayerTeam>();
-
         if (newTeams.Any())
         {
             foreach (var t in newTeams)
@@ -157,6 +157,14 @@ public class DefenseImportService : IDefenseImportService
                     Team = t,
                     TeamStartWeek = 1
                 });
+
+                playerStatusesToAdd.Add(new PlayerStatus
+                {
+                    Player = defensePlayer,
+                    StatusId = 1,
+                    StatusStartWeek = 1
+                });
+                // a defense will never be "injured", so there is never a reason for it to have more than one PS
             }
 
             Console.WriteLine($"'{newTeams.Count()}' new teams were added to SeasonYear '{season.SeasonYear}'.");

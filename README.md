@@ -1,9 +1,7 @@
-# Fantasy Golfball V0.5.0 (Alpha)
-Alternatively, Fantasy Football with Golf Scoring (lowest score wins)
+# Fantasy Golfball (Alpha)
+The trivia-inspired Fantasy Football Game. How well do you remember the bit players of yesteryear? \
+Lowest score wins (golf rules). \
 https://fantasygolfball.org
-
-## But why?
-Fantasy Golfball is a fantasy football webapp for those that want to play fantasy football with a quirky, irreverent ruleset. It is currently in alpha testing following completion of MVP features.
 
 ## Technologies Used
 - React/JS, C#/.NET, CSS
@@ -12,9 +10,6 @@ Fantasy Golfball is a fantasy football webapp for those that want to play fantas
 - SignalR
 - Context API
 - nginx, certbot, cloudflare
-
-## Where is the project at now and where is it going?
-Fantasy Golfball is currently in an alpha state, using fake player and scoring data to test the validity of business logic and user experience. Users have the option of accelerating a season using custom timeframes (i.e., a "week" can pass in a day instead of a real time week). Major beta planned features include the addition of past seasons of real NFL fantasy data so that users can recreate those seasons on their own time. A more complete preview and tracker can be found in task #71 in the issue tracker.
 
 ## MVP statement
 Minimum Viable Product means that users can do the following:
@@ -25,7 +20,6 @@ Minimum Viable Product means that users can do the following:
 5. See their matchups with other users and the results of the matchup after time has passed.
 
 ## Planning links
-
 Task Organizer https://github.com/users/TheAdameia/projects/2/views/1 \
 ERD https://dbdiagram.io/d/FF-Golf-Rules-66d3ac29eef7e08f0e532525
 

@@ -226,6 +226,7 @@ export const MainPage = () => {
                     </div>
                     <div className="mainpage-rules-container">League Settings 
                         <div>Player Limit: {selectedLeague.playerLimit}</div>
+                        <div>Season Year: {selectedLeague.season.seasonYear}</div>
                         {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                         {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}
                         {selectedLeague.requiredFullToStart ? <div>League must be full to start</div> : <div>League does not need to be full to start</div>}
@@ -306,6 +307,7 @@ export const MainPage = () => {
                 
                 <div className="mainpage-rules-container">
                     <div className="mainpage-rules-announcer">League Settings</div>
+                    <div>Season Year: {selectedLeague.season.seasonYear}</div>
                     <div>Player Limit: {selectedLeague.playerLimit}</div>
                     {selectedLeague.randomizedDraftOrder ? <div>Randomized Draft Order</div> : <div>Draft Order Not Randomized</div>}
                     {selectedLeague.usersVetoTrades ? <div>Users can veto trades</div> : <div>Users cannot veto trades</div>}

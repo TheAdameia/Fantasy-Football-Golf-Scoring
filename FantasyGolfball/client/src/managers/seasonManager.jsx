@@ -6,7 +6,7 @@ export const PostNewSeason = (seasonYear, seasonWeeks) => {
     })
 }
 
-export const GetAllSeasons =() => {
+export const GetAllSeasons = () => {
     return fetch(_apiUrl + `/all-seasons`)
         .then((res) => res.json())
 
