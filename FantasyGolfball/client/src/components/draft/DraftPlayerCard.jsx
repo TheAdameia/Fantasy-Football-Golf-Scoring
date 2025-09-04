@@ -56,10 +56,7 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer, confirmCheck }) => 
                 {player.playerStatuses[0].status.statusType}
             </td>
             <td>
-                
-            </td>
-            <td>
-                NYI
+                {player.playerTeams[0].team.abbreviation}
             </td>
             <td>
                 <button onClick={() => setSelectedPlayer(player)}>View</button>

@@ -38,6 +38,7 @@ public class PlayerImportService : IPlayerImportService
 
         var playersToAdd = new List<Player>();
         var playerStatusesToAdd = new List<PlayerStatus>();
+        var playerTeamsToAdd = new List<PlayerTeam>();
 
         using var reader = new StreamReader(fileStream);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
@@ -89,6 +90,14 @@ public class PlayerImportService : IPlayerImportService
                 ExternalId = row.PlayerID
             };
 
+            var startingTeam = dbContext.Teams.SingleOrDefault(t => t.SeasonId == newPlayer.SeasonId && t.Abbreviation == row.Team);
+
+            if (startingTeam == null)
+            {
+                Console.WriteLine($"Warning: Player '{newPlayer.ExternalId}' did not find team in db for '{row.Team}', skipping.");
+                continue;
+            }
+
             playersToAdd.Add(newPlayer);
 
             playerStatusesToAdd.Add(new PlayerStatus
@@ -97,10 +106,18 @@ public class PlayerImportService : IPlayerImportService
                 StatusId = 1,
                 StatusStartWeek = 1
             });
+
+            playerTeamsToAdd.Add(new PlayerTeam
+            {
+                Player = newPlayer,
+                TeamStartWeek = 1,
+                TeamId = startingTeam.TeamId
+            });
         }
 
         dbContext.Players.AddRange(playersToAdd);
         dbContext.PlayerStatuses.AddRange(playerStatusesToAdd);
+        dbContext.PlayerTeams.AddRange(playerTeamsToAdd);
         var result = await dbContext.SaveChangesAsync(cancellationToken);
         return result;
     }

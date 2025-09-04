@@ -114,9 +114,6 @@ export const DraftPlayerList = ({ setSelectedPlayer, confirmCheck }) => {
                             <th>
                                 Team
                             </th>
-                            <th>
-                                Expected Points
-                            </th>
                         </tr>
                     </thead>
                     <tbody>

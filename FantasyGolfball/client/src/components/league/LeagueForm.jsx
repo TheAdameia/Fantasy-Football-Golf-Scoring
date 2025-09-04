@@ -232,6 +232,7 @@ export const LeagueForm = () => {
                                 setLeagueObject(objectCopy)
                             }}
                         >
+                            <option disabled>Random</option>
                             {seasons && seasons.length > 0 
                                 ? seasons.map(s => 
                                     <option value={s.seasonYear} key={s.seasonYear}>{s.seasonYear}</option>

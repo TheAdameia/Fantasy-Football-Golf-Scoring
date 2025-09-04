@@ -8,4 +8,5 @@ public class TeamDTO
     public string TeamName { get; set; }
     public string TeamCity { get; set; }
     public int? ByeWeek { get; set; }
+    public string Abbreviation { get; set; }
 }

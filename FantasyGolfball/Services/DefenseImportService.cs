@@ -303,6 +303,7 @@ public class DefenseImportService : IDefenseImportService
         dbContext.Teams.AddRange(newTeams);
         dbContext.Players.AddRange(defensePlayers);
         dbContext.PlayerTeams.AddRange(playerTeamsToAdd);
+        dbContext.PlayerStatuses.AddRange(playerStatusesToAdd);
         dbContext.Scorings.AddRange(scoresToAdd);
 
         var result = await dbContext.SaveChangesAsync(cancellationToken);

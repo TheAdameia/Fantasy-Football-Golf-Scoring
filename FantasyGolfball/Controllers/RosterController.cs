@@ -117,7 +117,8 @@ public class RosterController : ControllerBase
                                 TeamId = pt.Team.TeamId,
                                 TeamName = pt.Team.TeamName,
                                 TeamCity = pt.Team.TeamCity,
-                                ByeWeek = pt.Team.ByeWeek
+                                ByeWeek = pt.Team.ByeWeek,
+                                Abbreviation = pt.Team.Abbreviation
                             }
                     }).ToList()
                 }
