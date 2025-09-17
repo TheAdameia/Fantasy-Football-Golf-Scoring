@@ -49,13 +49,8 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
                 <div className="top-row">
                     <div>None Pinned</div>
                 </div>
-                <div className="bottom-row">
-                    <div>Position</div>
-                    <div>Team (NYI)</div>
-                    <div>Bye Week (NYI)</div>
-                    <div>Last season total</div>
-                    <div>Projected points</div>
-                </div>
+            <div className="bottom-row">
+            </div>
             </div>
         )
     }
@@ -70,10 +65,8 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
             </div>
             <div className="bottom-row">
                 <div>{selectedPlayer.position.positionShort}</div>
-                <div>Team (NYI)</div>
-                <div>Bye Week (NYI)</div>
-                <div>Last season total</div>
-                <div>Projected points</div>
+                <div>{selectedPlayer.playerTeams[0].team.abbreviation}</div>
+                <div>Bye Week: {selectedPlayer.playerTeams[0].team.abbreviation}</div>
             </div>
         </div>
     )

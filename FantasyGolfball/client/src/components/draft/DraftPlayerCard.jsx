@@ -44,7 +44,7 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer, confirmCheck }) => 
     return (
         <tr>
             <td>
-                {player.playerFirstName} {player.playerLastName}
+                {player.playerFullName}
             </td>
             <td>
                 {player.position.positionShort}
