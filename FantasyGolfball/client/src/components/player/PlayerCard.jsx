@@ -81,10 +81,15 @@ export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
 
         const playerScores = allScores.filter(s => s.playerId == player.playerId)
 
+        // current week score
         const thisWeekScore = playerScores.find(s => s.seasonWeek === selectedLeague.currentWeek)
-        setWeekScore(thisWeekScore)
+        setWeekScore(rosterLock ? thisWeekScore : undefined)
 
-        const total = playerScores.reduce((sum, s) => sum + s.points, 0)
+        // season total
+        const total = playerScores
+            .filter(s => s.seasonWeek <= selectedLeague.currentWeek || (s.seasonWeek === selectedLeague.currentWeek && rosterLock))
+            .reduce((sum, s) => sum + s.points, 0)
+
         setSeasonTotal(total.toFixed(1))
         
     }, [allScores, selectedLeague?.currentWeek, player])
@@ -115,6 +120,7 @@ export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
             <td>{player.position.positionShort}</td>
             <td>{player.playerStatuses[0].status.statusType}</td>
             <td>{player.playerTeams[0].team.teamName}</td>
+            <td>{player.playerTeams[0].team.byeWeek}</td>
             <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
             <td>{seasonTotal ?? "-"}</td>
             <td>{playerRosterCondition}</td>

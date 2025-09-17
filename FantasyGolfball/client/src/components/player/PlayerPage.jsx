@@ -214,6 +214,9 @@ export const PlayerPage = () => {
                             Team
                         </th>
                         <th>
+                            Bye
+                        </th>
+                        <th>
                             Week {selectedLeague?.currentWeek != null ? selectedLeague.currentWeek : "Preseason"} Points
                         </th>
                         <th>

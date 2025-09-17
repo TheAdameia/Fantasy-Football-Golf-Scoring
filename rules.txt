@@ -4,8 +4,15 @@
 2. Pick types remain the same: QB, WR, RB, TE, DEF, K.
 ✔ Implemented.
 
-3. A pick must have accumulated a non-zero number of fantasy points (positive or negative, fractions allowed) in the previous week to be valid for the next week.
--- rule needs consideration on how it could be implemented.
+3. Players must have accumulated stats to not get penalized.
+✔ Implemented.
+Specifically, they must have a non-zero amount in any of these stats:
+QB passing yards, rushing yards
+WR receiving yards, rushing yards
+RB receiving yards, rushing yards
+TE receiving yards, rushing yards
+K field goal attempts, extra point attempts
+Defense is always valid for obvious reasons unless on a bye.
 
 4. Players need a minimum of 10 games played to be available to users.
 ✔ Implemented, but may want to increment upwards based on player testing.

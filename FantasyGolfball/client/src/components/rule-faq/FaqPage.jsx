@@ -9,7 +9,7 @@ export const FaqPage = () => {
                 <div className="faq-item">
                     <h5 className="faq-question">What is this?</h5>
                     <article className="faq-answer">
-                        This is Fantasy Golfball. It is a fantasy football webapp with the twist that you're trying to get the lowest possible score instead of the highest possible score. This project is currently in alpha, meaning that some features are missing or unavailable and that all players and related data on the site are either fake or user-created.
+                        This is Fantasy Golfball. It is a fantasy football webapp with the twist that you&apos;re trying to get the lowest possible score instead of the highest possible score. This project is currently in alpha, meaning that some features are missing or unavailable and that all players and related data on the site are either fake or user-created.
                     </article>
                 </div>
                 <div className="faq-item">
@@ -24,6 +24,12 @@ export const FaqPage = () => {
                     <h5 className="faq-question">Where can I find documentation and additional information about this website?</h5>
                     <article className="faq-answer">
                         <a href="github.com/TheAdameia/Fantasy-Football-Golf-Scoring" target="_blank" rel="noopener noreferrer">https://github.com/TheAdameia/Fantasy-Football-Golf-Scoring</a>
+                    </article>
+                </div>
+                <div className="faq-item">
+                    <h5 className="faq-question">What is &quot;DNP&quot; on a player&apos;s status?</h5>
+                    <article className="faq-answer">
+                        DNP is short for Does Not Play. Since historical data for injuries is sparse and deeply difficult to integrate, any time a player does not record stats they are recorded as DNP.
                     </article>
                 </div>
             </div>

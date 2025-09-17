@@ -39,19 +39,25 @@ export const RosterPlayerCard = ({ rp, rosterLock }) => {
     }
 
     useEffect(() => {
-            if (selectedLeague.currentWeek == null) {
-                setWeekScore(0)
-            }
-            if (allScores) {
-                const playerScores = allScores.filter(s => s.playerId == rp.player.playerId)
-                let thisWeekScore = playerScores.find(s => s.seasonWeek == selectedLeague.currentWeek)
-                setWeekScore(thisWeekScore)
-    
-                let total = playerScores.reduce((sum, s) => sum + s.points, 0)
-                let fixedTotal = total.toFixed(1)
-                setSeasonTotal(fixedTotal)
-            }
-        }, [allScores, rp, selectedLeague])
+        if (!allScores || selectedLeague?.currentWeek == null) {
+            setWeekScore(undefined)
+            setSeasonTotal("-")
+            return
+        }
+
+        const playerScores = allScores.filter(s => s.playerId === rp.player.playerId)
+
+        // current week
+        const thisWeekScore = playerScores.find(s => s.seasonWeek === selectedLeague.currentWeek)
+        setWeekScore(rosterLock ? thisWeekScore : undefined)
+
+        // season total
+        const total = playerScores
+            .filter(s => s.seasonWeek < selectedLeague.currentWeek || (s.seasonWeek === selectedLeague.currentWeek && rosterLock))
+            .reduce((sum, s) => sum + s.points, 0)
+
+        setSeasonTotal(total.toFixed(1))
+    }, [allScores, rp, selectedLeague?.currentWeek, rosterLock])
     
 
     return (
@@ -80,7 +86,10 @@ export const RosterPlayerCard = ({ rp, rosterLock }) => {
                 {rp.player.playerTeams[0].team.byeWeek}
             </td>
             <td>
-                {weekScore ? weekScore.points : "-"}
+                {weekScore ? weekScore.points.toFixed(2) : "-"}
+            </td>
+            <td>
+                {seasonTotal ? seasonTotal : "-" }
             </td>
             <td>
                 <button onClick={() => ConfirmDrop(rp.rosterPlayerId)}>-</button>

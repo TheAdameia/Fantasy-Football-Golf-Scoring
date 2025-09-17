@@ -66,6 +66,7 @@ public class Scoring
                 totalPoints += (YardsRushing ?? 0) * 0.1f;
                 totalPoints += (TouchdownsRushing ?? 0) * 6;
                 totalPoints += (FumbleLost ?? 0) * -2;
+                totalPoints += (Interceptions ?? 0) * -2;
             }
             else // Defense
             {
