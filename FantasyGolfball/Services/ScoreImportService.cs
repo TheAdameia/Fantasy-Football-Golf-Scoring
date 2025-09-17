@@ -27,6 +27,13 @@ public class ScoringImportService : IScoringImportService
         using var scope = _scopeFactory.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<FantasyGolfballDbContext>();
 
+        var season = dbContext.Seasons.SingleOrDefault(s => s.SeasonId == seasonId);
+        if (season == null)
+        {
+            Console.WriteLine($"Warning: No Season found for seasonId '{seasonId}', aborting.");
+            return -1;
+        }
+
         var scoresToAdd = new List<Scoring>();
         var playerTeamsToAdd = new List<PlayerTeam>();
         var playerStatusesToAdd = new List<PlayerStatus>();
@@ -171,6 +178,47 @@ public class ScoringImportService : IScoringImportService
             scoresToAdd.Add(newScoring);
 
         }
+
+        // this block adds inactive PS for players that have no scoring in a week
+        var scoringWeeksByPlayer = scoresToAdd
+            .GroupBy(s => s.PlayerId)
+            .ToDictionary(
+                g => g.Key,
+                g => g.Select(s => s.SeasonWeek).Distinct().ToList()
+            );
+
+        var allWeeks = Enumerable.Range(1, season.SeasonWeeks);
+
+        foreach (var kvp in scoringWeeksByPlayer)
+        {
+            var playerId = kvp.Key;
+            var existingWeeks = kvp.Value;
+
+            // find weeks that are missing for this player
+            var missingWeeks = allWeeks.Except(existingWeeks);
+
+            foreach (var week in missingWeeks)
+            {
+                var existingStatus = await dbContext.PlayerStatuses
+                    .SingleOrDefaultAsync(ps => ps.PlayerId == playerId && ps.StatusStartWeek == week);
+
+                // edits if existing, creates if not existing
+                if (existingStatus != null)
+                {
+                    existingStatus.StatusId = 7;
+                }
+                else
+                {
+                    playerStatusesToAdd.Add(new PlayerStatus
+                    {
+                        PlayerId = playerId,
+                        StatusStartWeek = week,
+                        StatusId = 7
+                    });
+                }
+            }
+        }
+        // inactive PS block ends
 
         dbContext.Scorings.AddRange(scoresToAdd);
         dbContext.PlayerTeams.AddRange(playerTeamsToAdd);

@@ -9,14 +9,14 @@ export const MatchupPage = () => {
     const { matchups, selectedLeague, loggedInUser } = useAppContext()
     const getInitialWeek = () => {
         const currentWeek = selectedLeague?.currentWeek ?? 1
-        return Math.min(currentWeek, 4)
+        return Math.min(currentWeek, selectedLeague?.season.seasonWeeks ?? 18)
     }
     const [week, setWeek] = useState(getInitialWeek)
     const [filteredMatchups, setFilteredMatchups] = useState()
     const [revealCountdownText, setRevealCountdownText] = useState("")
 
     const handleWeekChange = (arg) => {
-        if (arg == true && (week + 1) > 4) {
+        if (arg == true && (week + 1) > selectedLeague.season.seasonWeeks) {
             return
         } else if (arg) {
             let newWeek = week + 1
@@ -43,7 +43,7 @@ export const MatchupPage = () => {
 
     useEffect(() => {
         const currentWeek = selectedLeague?.currentWeek ?? 1
-        const clampedWeek = Math.min(currentWeek, 4)
+        const clampedWeek = Math.min(currentWeek, selectedLeague?.season.seasonWeeks ?? 18)
         setWeek(clampedWeek)
     }, [selectedLeague?.currentWeek])
 

@@ -207,7 +207,8 @@ public class LeagueController : ControllerBase
             Season = new SeasonDTO
             {
                 SeasonId = l.Season.SeasonId,
-                SeasonYear = l.Season.SeasonYear
+                SeasonYear = l.Season.SeasonYear,
+                SeasonWeeks = l.Season.SeasonWeeks
             },
             LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
             {

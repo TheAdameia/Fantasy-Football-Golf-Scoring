@@ -47,7 +47,7 @@ export const DraftSelectedPlayerView = ({ selectedPlayer, setSelectedPlayer, set
         return (
             <div className="selected-player-view-grid">
                 <div className="top-row">
-                    <div>None Selected</div>
+                    <div>None Pinned</div>
                 </div>
                 <div className="bottom-row">
                     <div>Position</div>

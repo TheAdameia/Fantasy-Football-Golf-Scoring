@@ -71,7 +71,7 @@ public class WeekAdvancementListenerService
         {
             if (matchup.MatchupUsers.Count != 2)
             {
-                throw new Exception($"matchup {matchup.MatchupId} contains a non-2 number of MU");
+                throw new Exception($"Warning: matchup '{matchup.MatchupId}' contains a non-2 number of MU");
             }
 
             var scores = new Dictionary<int, float>(); // key: userprofileid, value: sum score
@@ -127,7 +127,8 @@ public class WeekAdvancementListenerService
                             {
                                 MatchupUserId = matchupUser.MatchupUserId,
                                 PlayerId = rp.PlayerId,
-                                ScoringId = 1, 
+                                ScoringId = 1,
+                                RosterPlayerPosition = rp.RosterPosition
                             };
                         }
 

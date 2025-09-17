@@ -39,15 +39,15 @@ public class MatchupService : IMatchupService
 
         League league = await dbContext.Leagues
             .Include(l => l.Season)
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync(l => l.LeagueId == leagueId);
 
         if (league == null)
         {
-            Console.WriteLine($"Error: No League found for {leagueId}. Aborting Matchup Generation.");
+            Console.WriteLine($"Warning: No League found for LeagueId '{leagueId}'. Aborting Matchup Generation.");
             return;
         }
 
-        Console.WriteLine($"Generation matchups for {leagueId} with {league.Season.SeasonWeeks} total weeks...");
+        Console.WriteLine($"Generation matchups for LeagueId '{leagueId}' with '{league.Season.SeasonWeeks}' total weeks...");
 
         int totalWeeks = league.Season.SeasonWeeks; 
         int gamesPerPlayer = league.Season.SeasonWeeks; // these should normally be the same but if you wanted something funky you could make them different.

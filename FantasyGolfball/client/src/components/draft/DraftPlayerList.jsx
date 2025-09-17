@@ -81,7 +81,7 @@ export const DraftPlayerList = ({ setSelectedPlayer, confirmCheck }) => {
                             <option value="DEF">DEF</option>
                         </select>
                     </div>
-                    <div>
+                    {/* <div>
                         <label className="draft-playerlist-widget">Stats</label>
                         <select 
                             className="draft-playerlist-widget"
@@ -92,16 +92,13 @@ export const DraftPlayerList = ({ setSelectedPlayer, confirmCheck }) => {
                             <option value="Season Total">Last Season Total</option>
                             <option value="Season Average">Last Season Average</option>
                         </select>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="draft-table-container">
                 <Table>
                     <thead>
                         <tr>
-                            <th>
-                                Rank (NYI)
-                            </th>
                             <th>
                                 Player
                             </th>

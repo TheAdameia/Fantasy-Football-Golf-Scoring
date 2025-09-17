@@ -16,7 +16,7 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
                     {musp.player.playerStatuses[0].status.statusType}
                 </td>
                 <td>
-                    {musp.scoring.points}
+                    {musp.scoring.points.toFixed(2)}
                 </td>
             </tr>
         )
@@ -24,7 +24,7 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
         return (
             <tr>
                 <td>
-                    {musp.scoring.points}
+                    {musp.scoring.points.toFixed(2)}
                 </td>
                 <td>
                     {musp.player.playerStatuses[0].status.statusType}

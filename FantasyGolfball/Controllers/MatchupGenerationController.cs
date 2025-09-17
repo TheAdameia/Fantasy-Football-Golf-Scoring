@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
+// frankly, I have no idea why this is an endpoint. Probably because I wrote this a long time ago
+// before I got more familiar with services.
+
 [ApiController]
 [Route("api/matchup-generation")]
 public class MatchupGenerationController : ControllerBase
