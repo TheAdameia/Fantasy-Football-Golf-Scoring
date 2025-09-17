@@ -121,14 +121,13 @@ public class WeekAdvancementListenerService
 
                         if (scoring == null)
                         {
-                            Console.WriteLine($"Warning: Player {rp.PlayerId} in MatchupUser {matchupUser.MatchupUserId} did not have a scoring entry for Week {previousWeek}. Using fallback scoring ID -1.");
+                            Console.WriteLine($"Warning: Player {rp.PlayerId} in MatchupUser {matchupUser.MatchupUserId} did not have a scoring entry for Week {previousWeek}. Using fallback scoring ID 1.");
 
                             return new MatchupUserSavedPlayer
                             {
                                 MatchupUserId = matchupUser.MatchupUserId,
                                 PlayerId = rp.PlayerId,
-                                ScoringId = -1, // this isn't better than an unhandled exception because it'll crash and I need to figure out something better
-                                RosterPlayerPosition = rp.RosterPosition
+                                ScoringId = 1, 
                             };
                         }
 

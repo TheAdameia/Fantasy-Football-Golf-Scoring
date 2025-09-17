@@ -29,7 +29,7 @@ public class ScoringImportService : IScoringImportService
 
         var scoresToAdd = new List<Scoring>();
         var playerTeamsToAdd = new List<PlayerTeam>();
-        // var playerStatusesToAdd = new List<PlayerStatus>();
+        var playerStatusesToAdd = new List<PlayerStatus>();
 
         using var reader = new StreamReader(fileStream);
 
@@ -99,10 +99,48 @@ public class ScoringImportService : IScoringImportService
             };
 
 
-            // if I wanted to create further invalid designations based on scoring, this would be the place to do it
-            // if I were to do that, would need to edit existing ps for week 1 when called for
+            // block that deals with PlayerStatus begins here
+            // iterating through positions to check if there is any activity on the score
+            bool isScoreValid = relevantPlayer.PositionId switch
+            {
+                // no need for ternaries since these statements resolve to bools
+                1 => newScoring.AttemptsPassing != 0 || newScoring.AttemptsRushing != 0, 
+                2 => newScoring.Receptions != 0 || newScoring.AttemptsRushing != 0 || newScoring.YardsReceiving != 0, 
+                3 => newScoring.Receptions != 0 || newScoring.AttemptsRushing != 0 || newScoring.YardsRushing != 0,
+                4 => newScoring.Receptions != 0 || newScoring.AttemptsRushing != 0 || newScoring.YardsReceiving != 0, 
+                5 => newScoring.FieldGoalAttempts != 0 || newScoring.FieldGoalsMade != 0 || newScoring.ExtraPointAttempts != 0 || newScoring.ExtraPointMade != 0,
+                6 => true,
+                _ => false
+            };
 
-           
+            var relevantPlayerStatus = dbContext.PlayerStatuses
+                .SingleOrDefault(rps => rps.PlayerId == relevantPlayer.PlayerId && rps.StatusStartWeek == newScoring.SeasonWeek);
+
+            if (relevantPlayerStatus == null && isScoreValid == false)
+            {
+                playerStatusesToAdd.Add(new PlayerStatus
+                {
+                    PlayerId = relevantPlayer.PlayerId,
+                    StatusStartWeek = newScoring.SeasonWeek,
+                    StatusId = 7
+                });
+            }
+            else if (relevantPlayerStatus == null && isScoreValid)
+            {
+                playerStatusesToAdd.Add(new PlayerStatus
+                {
+                    PlayerId = relevantPlayer.PlayerId,
+                    StatusStartWeek = newScoring.SeasonWeek,
+                    StatusId = 1
+                });
+            }
+            else if (relevantPlayerStatus != null && isScoreValid == false)
+            {
+                relevantPlayerStatus.StatusId = 7;
+            }
+            // block that deals with PlayerStatus ends here
+
+
             // block that identifies if a player changes teams
             if (previousPlayerId != null && previousTeam != null)
             {
@@ -136,7 +174,7 @@ public class ScoringImportService : IScoringImportService
 
         dbContext.Scorings.AddRange(scoresToAdd);
         dbContext.PlayerTeams.AddRange(playerTeamsToAdd);
-        // dbContext.PlayerStatuses.AddRange(playerStatusesToAdd);
+        dbContext.PlayerStatuses.AddRange(playerStatusesToAdd);
         var result = await dbContext.SaveChangesAsync(cancellationToken);
         return result;
     }

@@ -13,7 +13,11 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
         if (!allScores) {
             return
         }
-        return allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
+        return (
+            allScores.find(
+                s => s.playerId === rp.playerId && s.seasonWeek === displayWeekPoints.week
+            ) || { points: 0, playerId: rp.playerId, seasonWeek: displayWeekPoints.week }
+        )
     }, [allScores, displayWeekPoints.week, rp.playerId])
 
     const playerTeamFiltered = useMemo(() => {
