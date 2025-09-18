@@ -15,6 +15,7 @@ import { RecapDraft } from "./draft/RecapDraft"
 import { TradeForm } from "./trades/TradeForm"
 import { TradePage } from "./trades/TradePage"
 import { MatchupPageOuter } from "./matchups/MatchupPageOuter"
+import { DataImportPage } from "./admin/DataImportPage"
 
 
 export default function ApplicationViews() {
@@ -107,6 +108,14 @@ export default function ApplicationViews() {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <TradePage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route 
+          path="data-import"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <DataImportPage />
             </AuthorizedRoute>
           }
         />

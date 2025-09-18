@@ -160,7 +160,7 @@ export const PlayerPage = () => {
                 </div>
                 <div>
                     <label className="playerpage-label">Stats</label>
-                    <select name="stats" id="stats">
+                    <select name="stats" id="stats" disabled>
                         <option value="This week">This Week</option>
                         <option value="Season Total">Season Total</option>
                         <option value="Season Average">Season Average</option>
@@ -212,6 +212,9 @@ export const PlayerPage = () => {
                         </th>
                         <th>
                             Team
+                        </th>
+                        <th>
+                            Bye
                         </th>
                         <th>
                             Week {selectedLeague?.currentWeek != null ? selectedLeague.currentWeek : "Preseason"} Points

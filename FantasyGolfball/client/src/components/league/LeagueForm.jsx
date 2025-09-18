@@ -1,9 +1,10 @@
 import { Form, FormGroup, Input, Label } from "reactstrap"
 import { useAppContext } from "../../contexts/AppContext"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PostLeague } from "../../managers/leagueManager"
 import { useNavigate } from "react-router-dom"
 import "./League.css"
+import { GetAllSeasons } from "../../managers/seasonManager"
 
 
 export const LeagueForm = () => {
@@ -23,6 +24,7 @@ export const LeagueForm = () => {
         joinPassword: "",
         requiresPassword: false
     })
+    const [seasons, setSeasons] = useState()
     const navigate = useNavigate()
 
     const toLocalInputValue = (utcString) => {
@@ -84,6 +86,14 @@ export const LeagueForm = () => {
             return
         }
     }
+
+    const getAndSetSeasons = () => {
+        GetAllSeasons().then(setSeasons)
+    }
+
+    useEffect(() => {
+        getAndSetSeasons()
+    }, [])
 
     return (
         <div>
@@ -215,7 +225,6 @@ export const LeagueForm = () => {
                     <div>
                         <Label>Season Year:</Label>
                         <Input
-                            disabled
                             type="select"
                             onChange={(e) => {
                                 const objectCopy = { ...leagueObject }
@@ -223,7 +232,12 @@ export const LeagueForm = () => {
                                 setLeagueObject(objectCopy)
                             }}
                         >
-                            <option value={2025}>Current Season</option>
+                            <option disabled>Random</option>
+                            {seasons && seasons.length > 0 
+                                ? seasons.map(s => 
+                                    <option value={s.seasonYear} key={s.seasonYear}>{s.seasonYear}</option>
+                                ) : <option></option>
+                            }
                         </Input>
                     </div>
 

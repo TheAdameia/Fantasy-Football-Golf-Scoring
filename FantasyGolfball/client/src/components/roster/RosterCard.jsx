@@ -6,7 +6,7 @@ import { BlankRosterPlayerCard } from "./BlankRosterPlayerCard";
 
 
 export const RosterCard = ({ rosterLock }) => {
-    const { roster } = useAppContext()
+    const { roster, selectedLeague } = useAppContext()
     
     if (!roster || !Array.isArray(roster.rosterPlayers)) {
         return <div>Roster not created</div>;
@@ -36,7 +36,10 @@ export const RosterCard = ({ rosterLock }) => {
                             Bye Week
                         </th>
                         <th>
-                            Points
+                            Week {selectedLeague.currentWeek} Points
+                        </th>
+                        <th>
+                            Season Total Points
                         </th>
                         <th>
                             drop

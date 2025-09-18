@@ -13,7 +13,11 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
         if (!allScores) {
             return
         }
-        return allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
+        return (
+            allScores.find(
+                s => s.playerId === rp.playerId && s.seasonWeek === displayWeekPoints.week
+            ) || { points: 0, playerId: rp.playerId, seasonWeek: displayWeekPoints.week }
+        )
     }, [allScores, displayWeekPoints.week, rp.playerId])
 
     const playerTeamFiltered = useMemo(() => {
@@ -44,7 +48,7 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
                 {playerStatusFiltered.status.statusType}
             </td>
             <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in" : ""}>
-                {revealedPositions?.includes(rp.rosterPosition) ? playerScore.points : 0}
+                {revealedPositions?.includes(rp.rosterPosition) ? playerScore.points.toFixed(2) : 0}
             </td>
         </tr>
     )
@@ -52,7 +56,7 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
     return (
         <tr>
             <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in" : ""}>
-                {revealedPositions?.includes(rp.rosterPosition) ? playerScore.points : 0}
+                {revealedPositions?.includes(rp.rosterPosition) ? playerScore.points.toFixed(2) : 0}
             </td>
             <td>
                 {playerStatusFiltered.status.statusType}

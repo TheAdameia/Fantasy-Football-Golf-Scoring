@@ -42,6 +42,9 @@ builder.Services.AddHostedService<WeekAdvancementService>(); // cronjob to see w
 builder.Services.AddSingleton<WeekAdvancementListenerService>(); // listens for week change
 builder.Services.AddSingleton<TradeEffectuationService>(); // checks for trades after WALS calculations
 builder.Services.AddSingleton<ScoreRevealService>(); // handles score reveal for matchups
+builder.Services.AddScoped<IPlayerImportService, PlayerImportService>(); // handles admin data upload
+builder.Services.AddScoped<IScoringImportService, ScoringImportService>(); // ditto
+builder.Services.AddScoped<IDefenseImportService, DefenseImportService>(); // ditto 2
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -92,7 +95,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
- // app.UseHttpsRedirection(); // commented out for server config
 // these two calls are required to add auth to the pipeline for a request
 app.UseAuthentication();
 app.UseAuthorization();

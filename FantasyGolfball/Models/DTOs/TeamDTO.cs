@@ -8,15 +8,5 @@ public class TeamDTO
     public string TeamName { get; set; }
     public string TeamCity { get; set; }
     public int? ByeWeek { get; set; }
-    public List<ActivePeriodDTO> ActivePeriods { get; set; } = new();
-
-    public bool PlayerMovePossible
-    {
-        get
-        {
-            DateTime now = DateTime.UtcNow;
-            return ActivePeriods.Any(period => now >= period.Start && now <= period.End);
-        }
-    }
-
+    public string Abbreviation { get; set; }
 }

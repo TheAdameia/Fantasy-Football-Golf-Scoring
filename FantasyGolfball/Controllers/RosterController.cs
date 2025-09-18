@@ -54,7 +54,6 @@ public class RosterController : ControllerBase
                     .ThenInclude(rp => rp.Player)
                         .ThenInclude(p => p.PlayerTeams)
                             .ThenInclude(pt => pt.Team)
-                                .ThenInclude(t => t.ActivePeriods)
             .SingleOrDefault(r => r.UserId == userId && r.LeagueId == leagueId);
 
         if (roster == null)
@@ -119,12 +118,7 @@ public class RosterController : ControllerBase
                                 TeamName = pt.Team.TeamName,
                                 TeamCity = pt.Team.TeamCity,
                                 ByeWeek = pt.Team.ByeWeek,
-                                ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
-                                {
-                                    ActivePeriodId = ap.ActivePeriodId,
-                                    Start = ap.Start,
-                                    End = ap.End
-                                }).ToList()
+                                Abbreviation = pt.Team.Abbreviation
                             }
                     }).ToList()
                 }

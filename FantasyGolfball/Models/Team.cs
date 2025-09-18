@@ -5,18 +5,9 @@ namespace FantasyGolfball.Models;
 public class Team
 {
     public int TeamId { get; set; }
-    public string TeamName { get; set; }
-    public string TeamCity { get; set; }
+    public required string TeamName { get; set; }
+    public required string TeamCity { get; set; }
+    public required string Abbreviation { get; set; }
     public int? ByeWeek { get; set; }
-    public List<ActivePeriod> ActivePeriods { get; set; } = new();
-
-    public bool PlayerMovePossible
-    {
-        get
-        {
-            DateTime now = DateTime.UtcNow;
-            return ActivePeriods.Any(period => now >= period.Start && now <= period.End);
-        }
-    }
-
+    public int SeasonId { get; set; }
 }

@@ -93,12 +93,7 @@ public class MatchupController : ControllerBase
                                     TeamName = pt.Team.TeamName,
                                     TeamCity = pt.Team.TeamCity,
                                     ByeWeek = pt.Team.ByeWeek,
-                                    ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
-                                    {
-                                        ActivePeriodId = ap.ActivePeriodId,
-                                        Start = ap.Start,
-                                        End = ap.End
-                                    }).ToList()
+                                    Abbreviation = pt.Team.Abbreviation
                                 }
                             }).ToList()
                         }

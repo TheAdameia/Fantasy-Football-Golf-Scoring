@@ -207,7 +207,8 @@ public class LeagueController : ControllerBase
             Season = new SeasonDTO
             {
                 SeasonId = l.Season.SeasonId,
-                SeasonYear = l.Season.SeasonYear
+                SeasonYear = l.Season.SeasonYear,
+                SeasonWeeks = l.Season.SeasonWeeks
             },
             LeagueUsers = l.LeagueUsers.Select(lu => new LeagueUserFullExpandDTO
             {
@@ -269,12 +270,7 @@ public class LeagueController : ControllerBase
                                     TeamName = pt.Team.TeamName,
                                     TeamCity = pt.Team.TeamCity,
                                     ByeWeek = pt.Team.ByeWeek,
-                                    ActivePeriods = pt.Team.ActivePeriods.Select(ap => new ActivePeriodDTO
-                                    {
-                                        ActivePeriodId = ap.ActivePeriodId,
-                                        Start = ap.Start,
-                                        End = ap.End
-                                    }).ToList()
+                                    Abbreviation = pt.Team.Abbreviation
                                 }
                             }).ToList()
                         }

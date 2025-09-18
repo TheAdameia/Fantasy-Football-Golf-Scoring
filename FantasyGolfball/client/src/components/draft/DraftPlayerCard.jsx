@@ -43,11 +43,8 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer, confirmCheck }) => 
 
     return (
         <tr>
-            <th>
-                
-            </th>
             <td>
-                {player.playerFirstName} {player.playerLastName}
+                {player.playerFullName}
             </td>
             <td>
                 {player.position.positionShort}
@@ -56,13 +53,10 @@ export const DraftPlayerCard = ({ player, setSelectedPlayer, confirmCheck }) => 
                 {player.playerStatuses[0].status.statusType}
             </td>
             <td>
-                
+                {player.playerTeams[0].team.abbreviation}
             </td>
             <td>
-                NYI
-            </td>
-            <td>
-                <button onClick={() => setSelectedPlayer(player)}>View</button>
+                <button onClick={() => setSelectedPlayer(player)}>Pin</button>
             </td>
             <td>
                 <button onClick={() => ConfirmDraft(player.playerId)}>Draft</button>

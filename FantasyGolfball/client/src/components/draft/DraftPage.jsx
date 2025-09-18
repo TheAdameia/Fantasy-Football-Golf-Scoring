@@ -37,10 +37,10 @@ export const DraftPage = () => {
     // handles differences between test environment and deployment environment
     const getSignalRUrl = () => {
         if (window.location.hostname === "localhost") {
-            return "https://localhost:5001/draftHub";
+            return "https://localhost:5001/draftHub"
         }
-        return "https://fantasygolfball.org/draftHub";
-    };
+        return "https://fantasygolfball.org/draftHub"
+    }
     
 
     useEffect(() => {
@@ -55,12 +55,12 @@ export const DraftPage = () => {
             return
         }
 
-        const draftStart = new Date(selectedLeague?.draftStartTime);
-        const now = new Date();
+        const draftStart = new Date(selectedLeague?.draftStartTime)
+        const now = new Date()
         if (draftStart > now) {
-            alert("It's too early to start the draft!");
-            navigate("/");
-            return;
+            alert("It's too early to start the draft!")
+            navigate("/")
+            return
         }
         
         const connect = async () => {
@@ -68,17 +68,17 @@ export const DraftPage = () => {
             const newConnection = new HubConnectionBuilder()
                 .withUrl(getSignalRUrl()) // Backend URL
                 .withAutomaticReconnect()
-                .build();
+                .build()
     
             newConnection.on("DraftStateUpdated", (updatedDraftState) => {
-                // console.log("Draft State Updated:", updatedDraftState);
-                setDraftState(updatedDraftState);
-            });
+                // console.log("Draft State Updated:", updatedDraftState)
+                setDraftState(updatedDraftState)
+            })
     
             newConnection.on("TurnUpdated", (userId) => {
-                console.log("User turn:", userId);
-                setCurrentTurn(userId);
-            });
+                console.log("User turn:", userId)
+                setCurrentTurn(userId)
+            })
 
             newConnection.on("DraftCompleted", () => {
                 getAndSetLeagues() //
@@ -89,35 +89,35 @@ export const DraftPage = () => {
             })
     
             newConnection.on("Error", (error) => {
-                console.error("Error from SignalR Hub:", error);
-            });
+                console.error("Error from SignalR Hub:", error)
+            })
     
             try {
-                await newConnection.start();
-                console.log("Connected to draft hub");
+                await newConnection.start()
+                console.log("Connected to draft hub")
     
                 await newConnection.invoke("JoinDraft", leagueId)
                     .catch(error => {
-                        console.error("Error during JoinDraft invocation:", error);
-                        alert("Error while joining the draft.");
-                    });
+                        console.error("Error during JoinDraft invocation:", error)
+                        alert("Error while joining the draft.")
+                    })
     
-                setConnection(newConnection);
+                setConnection(newConnection)
             } catch (error) {
-                console.error("Connection failed:", error);
-                alert("Connection failed: " + error.message);
+                console.error("Connection failed:", error)
+                alert("Connection failed: " + error.message)
             }
-        };
+        }
     
-        connect();
+        connect()
     
         return () => {
             if (connection) {
                 // stop connection on unmount
-                connection.stop().catch(error => console.error("Error stopping connection:", error));
+                connection.stop().catch(error => console.error("Error stopping connection:", error))
             }
-        };
-    }, [leagueId]); // only runs once on purpose, ignore the siren song of the "missing dependency"
+        }
+    }, [leagueId]) // only runs once on purpose, ignore the siren song of the "missing dependency"
     
     
     useEffect(() => {

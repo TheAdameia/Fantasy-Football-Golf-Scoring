@@ -53,12 +53,14 @@ public class DraftService : IDraftService
             // grabs league from db
             var league = await dbContext.Leagues
                 .Include(l => l.LeagueUsers)
+                .Include(l => l.Season)
                 .FirstOrDefaultAsync(l => l.LeagueId == leagueId);
 
             if (league == null)
                 throw new Exception($"League {leagueId} not found");
 
             var availablePlayers = await dbContext.Players
+                .Where(p => p.SeasonId == league.Season.SeasonId)
                 .Where(p => !p.RosterPlayers.Any(rp => rp.Roster.LeagueId == leagueId))
                 .Select(p => new PlayerFullExpandDTO
                 {
@@ -86,6 +88,21 @@ public class DraftService : IDraftService
                             RequiresBackup = ps.Status.RequiresBackup
                         }
                     }).ToList(),
+                    PlayerTeams = p.PlayerTeams.Select(pt => new PlayerTeamDTO
+                    {
+                        PlayerTeamId = pt.PlayerTeamId,
+                        PlayerId = pt.PlayerId,
+                        TeamId = pt.TeamId,
+                        TeamStartWeek = pt.TeamStartWeek,
+                        Team = new TeamDTO
+                        {
+                            TeamId = pt.Team.TeamId,
+                            TeamCity = pt.Team.TeamCity,
+                            TeamName = pt.Team.TeamName,
+                            ByeWeek = pt.Team.ByeWeek,
+                            Abbreviation = pt.Team.Abbreviation
+                        }
+                    }).ToList()
                 })
                 .ToListAsync();
             

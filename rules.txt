@@ -1,11 +1,27 @@
 1. Golf rules: lowest score wins.
+✔ Implemented.
+
 2. Pick types remain the same: QB, WR, RB, TE, DEF, K.
-3. A pick must have accumulated a non-zero number of fantasy points (positive or negative, fractions allowed) in the previous week to be valid for the next week. For the first week, the pick must be in the top Z ranking.
-4. To prevent this from becoming a hunt for rookies who get subbed in once and then don't get any play the following week and to keep things interesting, users will still have the same roster size (15 picks) and will only be able to select from the top Z players as determined by the fantasy rankings among their position type. Z is determined by the position type (the amount of active slots on the roster for that position) and the number of players in a league.
+✔ Implemented.
+
+3. Players must have accumulated stats to not get penalized.
+✔ Implemented.
+Specifically, they must have a non-zero amount in any of these stats:
+QB passing yards, rushing yards
+WR receiving yards, rushing yards
+RB receiving yards, rushing yards
+TE receiving yards, rushing yards
+K field goal attempts, extra point attempts
+Defense is always valid for obvious reasons unless on a bye.
+
+4. Players need a minimum of 10 games played to be available to users.
+✔ Implemented, but may want to increment upwards based on player testing.
+
 5. Suspended, Out players, or Bye Week players will incur a penalty for the user if set as active.
-6. Questionable players can be played with a backup to sub in for them if they don't play. If neither the starting player nor the backup player can play, a penalty is incurred.
-7. Users will incur a penalty if any of their pick slots cannot be filled.
+-- good rule, but not implemented.
+
+7. Users will incur a penalty if any of their active roster slots cannot be filled.
+-- good rule, but not implemented.
+
 8. Roster/Bench structure remains the same as normal fantasy football (QB, 2 WR, 2 RB, 1 TE, 1 W/R/T("FLEX"), K, DEF).
-9. Injury slots remain the same as normal fantasy football (2 slots for injured/unavailable picks).
-10. After the league begins, the pool of non-rostered, available picks will be C players sorted by fantasy points from highest to lowest, where C = Z - (total number of rostered picks, including picks in injury roster slots).
-11. All defense will be included in available picks at all times (draft and free agency during the league). Defense is exempt from Rule 3.
+✔ Implemented.
