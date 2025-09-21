@@ -16,7 +16,7 @@ import { LeagueDropdownSwap } from "./league/LeagueDropdownSwap";
 
 export default function NavBar() {
 const [open, setOpen] = useState(false);
-const { loggedInUser, setLoggedInUser } = useAppContext();
+const { loggedInUser, setLoggedInUser, matchups } = useAppContext();
 
 const toggleNavbar = () => setOpen(!open);
 
@@ -46,16 +46,20 @@ return (
                         Leagues
                     </NavLink>
                 </NavItem>
-                <NavItem>
-                    <NavLink tag={RRNavLink} to="/matchups">
-                        Matchups
-                    </NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink tag={RRNavLink} to="/trades">
-                        Trades
-                    </NavLink>
-                </NavItem>
+                {matchups ? (
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/matchups">
+                            Matchups
+                        </NavLink>
+                    </NavItem>
+                ) : (<></>)}
+                {matchups ? (
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/trades">
+                            Trades
+                        </NavLink>
+                    </NavItem>
+                ) : (<></>)}
                 <NavItem>
                     <NavLink tag={RRNavLink} to="/faq">
                         FAQ
