@@ -9,7 +9,7 @@ export const FaqPage = () => {
                 <div className="faq-item">
                     <h5 className="faq-question">What is this?</h5>
                     <article className="faq-answer">
-                        This is Fantasy Golfball. It is a fantasy football webapp with the twist that you&apos;re trying to get the lowest possible score instead of the highest possible score. This project is currently in alpha, meaning that some features are missing or unavailable and that all players and related data on the site are either fake or user-created.
+                        This is Fantasy Golfball. It is a fantasy football webapp with the twist that you&apos;re trying to get the lowest possible score instead of the highest possible score. This project is currently in development, meaning that some features may be missing or unavailable.
                     </article>
                 </div>
                 <div className="faq-item">
@@ -23,7 +23,7 @@ export const FaqPage = () => {
                 <div className="faq-item">
                     <h5 className="faq-question">Where can I find documentation and additional information about this website?</h5>
                     <article className="faq-answer">
-                        <a href="github.com/TheAdameia/Fantasy-Football-Golf-Scoring" target="_blank" rel="noopener noreferrer">https://github.com/TheAdameia/Fantasy-Football-Golf-Scoring</a>
+                        <a href="https://github.com/TheAdameia/Fantasy-Football-Golf-Scoring" target="_blank" rel="noopener noreferrer">Fantasy Golfball Github</a>
                     </article>
                 </div>
                 <div className="faq-item">
