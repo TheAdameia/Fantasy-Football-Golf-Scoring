@@ -43,6 +43,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                     <thead>
                         <tr>
                             <th>
+                                stats
+                            </th>
+                            <th>
                                 position
                             </th>
                             <th>
@@ -202,6 +205,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                             </th>
                             <th>
                                 position
+                            </th>
+                            <th>
+                                stats
                             </th>
                         </tr>
                     </thead>

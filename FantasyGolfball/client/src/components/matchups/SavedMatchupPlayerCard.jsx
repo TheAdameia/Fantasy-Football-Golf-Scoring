@@ -2,8 +2,8 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
 
     if (slot) {
         return (
-            <tr>
-                <td>
+            <tr className="player-table-row">
+                <td className="stats-no-fade">
                     {[
                         musp.scoring.yardsPassing && `${musp.scoring.yardsPassing} passing yards`,
                         musp.scoring.touchdownsPassing && `${musp.scoring.touchdownsPassing} passing touchdowns`,
@@ -16,7 +16,7 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
                         musp.scoring.fumblesLost && `${musp.scoring.fumblesLost} fumbles lost`,
                         musp.scoring.twoExtraPoints && `${musp.scoring.twoExtraPoints} two extra points`,
                         musp.scoring.fieldGoalsMade && `${musp.scoring.fieldGoalsMade} field goals made`,
-                        musp.scoring.extraPointsMade && `${musp.scoring.extraPointsMade} extra points made`,
+                        musp.scoring.extraPointMade && `${musp.scoring.extraPointMade} extra points made`,
                         musp.scoring.sacks && `${musp.scoring.sacks} sacks`,
                         musp.scoring.interceptionDefense && `${musp.scoring.interceptionDefense} interceptions`,
                         musp.scoring.defenseFumbleRecovery && `${musp.scoring.defenseFumbleRecovery} fumble recoveries`,
@@ -29,16 +29,16 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
                     .filter(Boolean)
                     .join(", ")} 
                 </td> {/* this array display goes crazy, got to use this again */}
-                <td>
+                <td className="player-table-font">
                     {musp.rosterPlayerPosition}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerFullName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerTeams[0].team.teamName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerStatuses[0].status.statusType}
                 </td>
                 <td>
@@ -48,23 +48,23 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
         )
        } else if (slot == false) {
         return (
-            <tr>
+            <tr className="player-table-row">
                 <td>
                     {musp.scoring.points.toFixed(2)}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerStatuses[0].status.statusType}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerTeams[0].team.teamName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerFullName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.rosterPlayerPosition}
                 </td>
-                <td>
+                <td className="stats-no-fade">
                     {[
                         musp.scoring.yardsPassing && `${musp.scoring.yardsPassing} passing yards`,
                         musp.scoring.touchdownsPassing && `${musp.scoring.touchdownsPassing} passing touchdowns`,
@@ -77,7 +77,7 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
                         musp.scoring.fumblesLost && `${musp.scoring.fumblesLost} fumbles lost`,
                         musp.scoring.twoExtraPoints && `${musp.scoring.twoExtraPoints} two extra points`,
                         musp.scoring.fieldGoalsMade && `${musp.scoring.fieldGoalsMade} field goals made`,
-                        musp.scoring.extraPointsMade && `${musp.scoring.extraPointsMade} extra points made`,
+                        musp.scoring.extraPointMade && `${musp.scoring.extraPointMade} extra points made`,
                         musp.scoring.sacks && `${musp.scoring.sacks} sacks`,
                         musp.scoring.interceptionDefense && `${musp.scoring.interceptionDefense} interceptions`,
                         musp.scoring.defenseFumbleRecovery && `${musp.scoring.defenseFumbleRecovery} fumble recoveries`,
