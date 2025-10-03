@@ -74,13 +74,18 @@ public class MatchupService : IMatchupService
 
         var matchups = new List<Matchup>();
 
-        var baseSchedule = GenerateRoundRobin(users);
+        var baseSchedule = GenerateRoundRobin(new List<int>(users));
+        int roundsPerCycle = baseSchedule.Count;
 
         int weekId = 1;
-        for (int cycle = 0; cycle < gamesPerPlayer; cycle++)
-        {
+        while (weekId <= totalWeeks)
             foreach (var round in baseSchedule)
             {
+                if (weekId > totalWeeks)
+                {
+                    break;
+                }
+
                 foreach (var (userA, userB) in round)
                 {
                     var matchup = new Matchup
@@ -89,17 +94,17 @@ public class MatchupService : IMatchupService
                         WeekId = weekId,
                         MatchupUsers = new List<MatchupUser>
                         {
-                            new MatchupUser { UserProfileId = userA },
-                            new MatchupUser { UserProfileId = userB }
+                            new MatchupUser { UserProfileId = userA},
+                            new MatchupUser { UserProfileId = userB}
                         }
                     };
                     matchups.Add(matchup);
                 }
-                weekId = (weekId % totalWeeks) + 1;
+                weekId++;
             }
-        }
+        
 
-        context.Matchups.AddRange(matchups); //AddRange is a new one
+        context.Matchups.AddRange(matchups);
         await context.SaveChangesAsync();
     }
 

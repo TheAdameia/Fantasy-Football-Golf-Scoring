@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useMemo, useContext } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupRevealContext } from "./MatchupRevealContext"
 import "./matchups.css"
+import { FormatStats } from "../widgets/FormatStats"
 
 
 export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
@@ -36,32 +38,7 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
     return (
         <tr className="player-table-row">
             <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in-stats" : ""}>
-                {revealedPositions?.includes(rp.rosterPosition) ?
-                    [
-                        playerScore.yardsPassing && `${playerScore.yardsPassing} passing yards`,
-                        playerScore.touchdownsPassing && `${playerScore.touchdownsPassing} passing touchdowns`,
-                        playerScore.interceptions && `${playerScore.interceptions} interceptions`,
-                        playerScore.receptions && `${playerScore.receptions} receptions`,
-                        playerScore.yardsReceiving && `${playerScore.yardsReceiving} receiving yards`,
-                        playerScore.touchdownsReceiving && `${playerScore.touchdownsReceiving} receiving touchdowns`,
-                        playerScore.yardsRushing && `${playerScore.yardsRushing} rushing yards`,
-                        playerScore.touchdownsRushing && `${playerScore.touchdownsRushing} rushing touchdowns`,
-                        playerScore.fumblesLost && `${playerScore.fumblesLost} fumbles lost`,
-                        playerScore.twoExtraPoints && `${playerScore.twoExtraPoints} two extra points`,
-                        playerScore.fieldGoalsMade && `${playerScore.fieldGoalsMade} field goals made`,
-                        playerScore.extraPointMade && `${playerScore.extraPointMade} extra points made`,
-                        playerScore.sacks && `${playerScore.sacks} sacks`,
-                        playerScore.interceptionDefense && `${playerScore.interceptionDefense} interceptions`,
-                        playerScore.defenseFumbleRecovery && `${playerScore.defenseFumbleRecovery} fumble recoveries`,
-                        playerScore.safety && `${playerScore.safety} safety`,
-                        playerScore.touchdownsDefense && `${playerScore.touchdownsDefense} defense touchdowns`,
-                        playerScore.touchdownsReturn && `${playerScore.touchdownsReturn} return touchdowns`,
-                        playerScore.blockedKicks && `${playerScore.blockedKicks} blocked kicks`,
-                        playerScore.isDefense && `${playerScore.pointsAgainst} points against`
-                    ]
-                    .filter(Boolean)
-                    .join(", ")
-                : ""} 
+                {revealedPositions?.includes(rp.rosterPosition) ? FormatStats(playerScore): ""} 
             </td>
             <td>
                 {rp.rosterPosition}
@@ -99,32 +76,7 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
                 {rp.rosterPosition}
             </td>
             <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in-stats" : ""}>
-                {revealedPositions?.includes(rp.rosterPosition) ?
-                    [
-                        playerScore.yardsPassing && `${playerScore.yardsPassing} passing yards`,
-                        playerScore.touchdownsPassing && `${playerScore.touchdownsPassing} passing touchdowns`,
-                        playerScore.interceptions && `${playerScore.interceptions} interceptions`,
-                        playerScore.receptions && `${playerScore.receptions} receptions`,
-                        playerScore.yardsReceiving && `${playerScore.yardsReceiving} receiving yards`,
-                        playerScore.touchdownsReceiving && `${playerScore.touchdownsReceiving} receiving touchdowns`,
-                        playerScore.yardsRushing && `${playerScore.yardsRushing} rushing yards`,
-                        playerScore.touchdownsRushing && `${playerScore.touchdownsRushing} rushing touchdowns`,
-                        playerScore.fumblesLost && `${playerScore.fumblesLost} fumbles lost`,
-                        playerScore.twoExtraPoints && `${playerScore.twoExtraPoints} two extra points`,
-                        playerScore.fieldGoalsMade && `${playerScore.fieldGoalsMade} field goals made`,
-                        playerScore.extraPointMade && `${playerScore.extraPointMade} extra points made`,
-                        playerScore.sacks && `${playerScore.sacks} sacks`,
-                        playerScore.interceptionDefense && `${playerScore.interceptionDefense} interceptions`,
-                        playerScore.defenseFumbleRecovery && `${playerScore.defenseFumbleRecovery} fumble recoveries`,
-                        playerScore.safety && `${playerScore.safety} safety`,
-                        playerScore.touchdownsDefense && `${playerScore.touchdownsDefense} defense touchdowns`,
-                        playerScore.touchdownsReturn && `${playerScore.touchdownsReturn} return touchdowns`,
-                        playerScore.blockedKicks && `${playerScore.blockedKicks} blocked kicks`,
-                        playerScore.isDefense && `${playerScore.pointsAgainst} points against`
-                    ]
-                    .filter(Boolean)
-                    .join(", ")
-                : ""} 
+                {revealedPositions?.includes(rp.rosterPosition) ? FormatStats(playerScore): ""} 
             </td>
         </tr>
     )
