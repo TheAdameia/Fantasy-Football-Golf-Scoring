@@ -31,6 +31,9 @@ export const StatsWindow = (player, rosterLock) => {
             .reduce((sum, s) => sum + s.points, 0)
 
         setSeasonTotal(total.toFixed(1))
+
+        // the thing is, this will also need to store the actual scoring objects in state so that it can access
+        // the rest of the data. So I will have to change it.
         
     }, [allScores, selectedLeague?.currentWeek, player])
 
