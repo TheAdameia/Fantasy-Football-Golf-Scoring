@@ -111,6 +111,11 @@ public class WeekAdvancementListenerService
                         return scoring?.Points ?? 0f; // resorts to 0 if missing
                     });
 
+                    // this is where penalties would be added to total score.
+
+                    // logic for that would probably be liked ARP, where not bench, where the points are zero or null,
+                    // add (10? 15? dependant on position? increasing each time?)
+
                 scores[matchupUser.UserProfileId] = totalScore;
 
                 // saves what the roster was so it can be excavated for past matchups display

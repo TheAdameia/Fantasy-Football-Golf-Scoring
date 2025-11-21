@@ -5,8 +5,9 @@
 
 import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
+import "./widgets.css"
 
-export const StatsWindow = (player, rosterLock) => {
+export const StatsWindow = ({player, rosterLock, onClose}) => {
     const { selectedLeague, allScores } = useAppContext()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
@@ -38,7 +39,13 @@ export const StatsWindow = (player, rosterLock) => {
     }, [allScores, selectedLeague?.currentWeek, player])
 
     return (
-        <div>return a popup? different styles for different positions</div>
+        <div className="modal-overlay">
+            <div className="modal-content">return a popup? different styles for different positions
+                <button onClick={onClose}>
+                    close
+                </button>
+            </div>
+        </div>
     )
 
 }
