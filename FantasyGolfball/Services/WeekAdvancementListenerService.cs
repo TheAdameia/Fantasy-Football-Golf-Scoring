@@ -113,8 +113,11 @@ public class WeekAdvancementListenerService
 
                     // this is where penalties would be added to total score.
 
-                    // logic for that would probably be liked ARP, where not bench, where the points are zero or null,
-                    // add (10? 15? dependant on position? increasing each time?)
+                    // logic for that would probably be like ARP, where not bench, where the points are zero or null,
+                    // where *the relevant scoring* does not meet certain saving conditions (summing to zero, 0 yards
+                    // on nonzero attempts rushing type stuff),
+                    // multiply number of penalty players times penalty
+                    // or add penalty dependant on position
 
                 scores[matchupUser.UserProfileId] = totalScore;
 
