@@ -225,6 +225,9 @@ export const PlayerPage = () => {
                         <th>
                             Actions
                         </th>
+                        <th>
+                            Click Me
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

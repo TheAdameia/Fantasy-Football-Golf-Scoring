@@ -10,128 +10,90 @@ import { Table } from "reactstrap"
 
 export const StatsWindow = ({player, rosterLock, onClose}) => {
     const { selectedLeague, allScores } = useAppContext()
+    const [scoringArray, setScoringArray] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
+    const [statKeys, setStatKeys] = useState(null)
+    const formatHeader = key =>
+        key.replace(/([A-Z])/g, " $1").replace(/^./, c => c.toUpperCase())
 
+    
     useEffect(() => {
+        if (allScores == null) {
+            return
+        }
+        const playerScores = allScores.filter(s => s.playerId == player.playerId)
         // season total
         const total = playerScores
             .filter(s => s.seasonWeek <= selectedLeague.currentWeek || (s.seasonWeek === selectedLeague.currentWeek && rosterLock))
             .reduce((sum, s) => sum + s.points, 0)
 
-        setSeasonTotal(total.toFixed(1))
+        setSeasonTotal(total.toFixed(2))
+
+        const array = playerScores.filter(s => s.seasonWeek <= selectedLeague.currentWeek || (s.seasonWeek === selectedLeague.currentWeek && rosterLock))
+        setScoringArray(array)
 
     }, [allScores, selectedLeague?.currentWeek, player])
 
-    // create a list of weeks where stats should be displayed using scores from AppContext and filtered using
-    // selectedLeague and rosterLock.
+    useEffect(() => {
+        // the idea is that this will dynamically display relevant stats, based on whether
+        // any of the key value pairs have a non-trivial value.
+        if (scoringArray) {
+            const excludedKeys = ["scoringId", "playerId", "player", "seasonId", "seasonWeek", "isDefense", "points"]
+
+            const keys = Object.keys(scoringArray[0]).filter(
+                key => !excludedKeys.includes(key)
+            )
+
+            const visibleStats = keys.filter(k =>
+                scoringArray.some(s => s[k] != 0 && s[k] != null)
+            )
+
+            setStatKeys(visibleStats)
+        }
+    },[scoringArray])
 
     // I'll also have to handle bye weeks intelligently. Perhaps I could insert them into the map somehow?
 
-    if (player.position.positionId != 6 && player.position.positionId != 5) {
+    if (scoringArray == null || statKeys == null) {
+        return (
+            <div>loading...</div>
+        )
+    }
+
+    if (scoringArray && statKeys) {
         return (
             <div className="modal-overlay">
                 <div className="modal-content">
                     <button onClick={onClose}>Close</button>
                     <div>
-                        <div>{player.playerFullName}</div>
-                        <div>Week # Score</div>
-                        <div>Season Total Score</div>
+                        <div>{player.playerFullName}, {player.position.positionShort}, {player.playerTeams[0].team.teamName}. {selectedLeague.season.seasonYear} Season Total: {seasonTotal}</div>
                         <Table>
                             <thead>
                                 <tr>
                                     <th>
                                         Week
                                     </th>
-                                    <th>
-                                        Stat 1
-                                    </th>
-                                    <th>
-                                        Stat 2
-                                    </th>
-                                    <th>
-                                        Stat 3
-                                    </th>
+                                    {statKeys.map(key => (
+                                        <th key={key}>{formatHeader(key)}</th>
+                                    ))}
+                                    <th>Points</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* .map the thing out here */}
+                                {scoringArray.map((scoring, index) => (
+                                    <tr key={index}>
+                                        <td>{scoring.seasonWeek}</td>
+                                        {statKeys.map(key => (
+                                            <td key={key}>{scoring[key] || "-"}</td>
+                                        ))}
+                                        <td>{scoring.points.toFixed(2)}</td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                     </div>
                 </div>
             </div>
         )
-    } else if (player.position.positionId == 5) {
-        // kickers
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <button onClick={onClose}>Close</button>
-                <div>
-                    <div>{player.playerFullName}</div>
-                    <div>Week # Score</div>
-                    <div>Season Total Score</div>
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    Week
-                                </th>
-                                <th>
-                                    Points
-                                </th>
-                                <th>
-                                    Extra Point Attempts
-                                </th>
-                                <th>
-                                    Extra Points Made
-                                </th>
-                                <th>
-                                    Field Goal Attempts
-                                </th>
-                                <th>
-                                    Field Goals Made
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* .map the thing out here */}
-                        </tbody>
-                    </Table>
-                </div>
-            </div>
-        </div>
-    } else if (player.position.positionId == 6) {
-        // Defense
-        <div className="modal-overlay">
-                <div className="modal-content">
-                    <button onClick={onClose}>Close</button>
-                    <div>
-                        <div>{player.playerFullName}</div>
-                        <div>Week # Score</div>
-                        <div>Season Total Score</div>
-                        <Table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Week
-                                    </th>
-                                    <th>
-                                        Stat 1
-                                    </th>
-                                    <th>
-                                        Stat 2
-                                    </th>
-                                    <th>
-                                        Stat 3
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* .map the thing out here */}
-                            </tbody>
-                        </Table>
-                    </div>
-                </div>
-            </div>
-    }
+    } 
 }

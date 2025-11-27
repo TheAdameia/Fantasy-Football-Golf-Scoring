@@ -2,12 +2,15 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 import { RosterPositionDropdown } from "./RosterPositionDropdown"
+import { StatsWindow } from "../widgets/StatsWindow"
 
 
 export const RosterPlayerCard = ({ rp, rosterLock }) => {
     const  { getAndSetRoster, allScores, selectedLeague, getAndSetPlayers, activeTrades } = useAppContext()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState() // might want to fit this in later
+    const [popUp, setPopUp] = useState()
+
 
 
     const HandleDropPlayer = (rosterPlayerId) => {
@@ -61,39 +64,44 @@ export const RosterPlayerCard = ({ rp, rosterLock }) => {
     
 
     return (
-        <tr>
-            <th scope="row">
-                <RosterPositionDropdown
-                    rp={rp}
-                    rosterLock={rosterLock}
-                >
-
-                </RosterPositionDropdown>
-            </th>
-            <td>
-                {rp.player.playerStatuses[0].status.statusType}
-            </td>
-            <td>
-                {rp.player.position.positionShort}
-            </td>
-            <td>
-                {rp.player.playerFullName}
-            </td>
-            <td>
-                {rp.player.playerTeams[0].team.teamName}
-            </td>
-            <td>
-                {rp.player.playerTeams[0].team.byeWeek}
-            </td>
-            <td>
-                {weekScore ? weekScore.points.toFixed(2) : "-"}
-            </td>
-            <td>
-                {seasonTotal ? seasonTotal : "-" }
-            </td>
-            <td>
-                <button onClick={() => ConfirmDrop(rp.rosterPlayerId)}>-</button>
-            </td>
-        </tr>
+        <>
+            <tr>
+                <th scope="row">
+                    <RosterPositionDropdown
+                        rp={rp}
+                        rosterLock={rosterLock}
+                    >
+                    </RosterPositionDropdown>
+                </th>
+                <td>
+                    {rp.player.playerStatuses[0].status.statusType}
+                </td>
+                <td>
+                    {rp.player.position.positionShort}
+                </td>
+                <td>
+                    {rp.player.playerFullName}
+                </td>
+                <td>
+                    {rp.player.playerTeams[0].team.teamName}
+                </td>
+                <td>
+                    {rp.player.playerTeams[0].team.byeWeek}
+                </td>
+                <td>
+                    {weekScore ? weekScore.points.toFixed(2) : "-"}
+                </td>
+                <td>
+                    {seasonTotal ? seasonTotal : "-" }
+                </td>
+                <td>
+                    <button onClick={() => ConfirmDrop(rp.rosterPlayerId)}>-</button>
+                </td>
+                <td onClick={() => setPopUp(true)}>Advanced Stats</td>
+            </tr>
+            {popUp && (
+                <StatsWindow player={rp.player} rosterLock={rosterLock} onClose={() => setPopUp(false)} />
+            )}
+        </>
     )
 }
