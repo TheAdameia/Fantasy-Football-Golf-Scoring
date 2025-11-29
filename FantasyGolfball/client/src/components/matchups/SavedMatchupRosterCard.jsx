@@ -4,9 +4,8 @@ import { SavedMatchupPlayerCard } from "./SavedMatchupPlayerCard"
 
 
 export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
+    const positions = ["QB1", "WR1", "WR2", "RB1", "RB2", "TE1", "FLEX", "K", "DEF"]
 
-
-    
     const getTotalPoints = (matchupUser) => {
         return matchupUser.matchupUserSavedPlayers
         ?.filter((musp) => musp.rosterPlayerPosition?.toLowerCase() != "bench")
@@ -15,9 +14,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
         }, 0) ?? 0
     }
 
-    // return (<div>bubkis</div>)
-
-    if (slot == true) {
+    if (slot == true && matchupUser) {
         return ( //position, name, team, injury status, points
             <div>
                 <h5>{getTotalPoints(matchupUser).toFixed(2)}</h5>
@@ -45,128 +42,27 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "QB1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "QB1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="QB1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "WR1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "WR1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "WR2") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "WR2")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR2"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "RB1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "RB1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "RB2") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "RB2")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB2"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "TE1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "TE1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="TE1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "FLEX") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "FLEX")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="FLEX"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "K") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "K")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="K"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "DEF") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "DEF")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="DEF"/>
-                        )}
+                        {positions.map((pos) => {
+                            const playerAtPos = matchupUser.matchupUserSavedPlayers.filter((musp) => musp.rosterPlayerPosition == pos)
+
+                            return playerAtPos.length > 0 ? (
+                                playerAtPos.map(pap => (
+                                    <SavedMatchupPlayerCard
+                                        musp={pap}
+                                        key={pap.matchupUserSavedPlayerId}
+                                        slot={slot}
+                                        week={week}
+                                    />
+                                ))
+                            ) : (
+                                <BlankPlayerCard slot={slot} position={pos} key={`blank-${pos}`}/>
+                            )
+                        })}
                     </tbody>
                 </Table>
             </div>
         )
-    } else if (slot == false) {
+    } else if (slot == false && matchupUser) {
         return (
             <div>
                 <h5>{getTotalPoints(matchupUser).toFixed(2)}</h5>
@@ -193,124 +89,24 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
                             </th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "QB1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "QB1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="QB1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "WR1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "WR1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "WR2") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "WR2")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR2"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "RB1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "RB1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "RB2") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "RB2")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB2"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "TE1") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "TE1")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="TE1"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "FLEX") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "FLEX")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="FLEX"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "K") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "K")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="K"/>
-                        )}
-                        {matchupUser.matchupUserSavedPlayers.some((musp) => musp.rosterPlayerPosition === "DEF") ? ( matchupUser.matchupUserSavedPlayers
-                            .filter((musp) => musp.rosterPlayerPosition === "DEF")
-                            .map((musp) => (
-                                <SavedMatchupPlayerCard
-                                    musp={musp}
-                                    key={`musp-${musp.playerId}`}
-                                    slot={slot}
-                                    week={week}
-                                ></SavedMatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="DEF"/>
-                        )}
+                        {positions.map((pos) => {
+                            const playerAtPos = matchupUser.matchupUserSavedPlayers.filter((musp) => musp.rosterPlayerPosition == pos)
+
+                            return playerAtPos.length > 0 ? (
+                                playerAtPos.map(pap => (
+                                    <SavedMatchupPlayerCard
+                                        musp={pap}
+                                        key={pap.matchupUserSavedPlayerId}
+                                        slot={slot}
+                                        week={week}
+                                    />
+                                ))
+                            ) : (
+                                <BlankPlayerCard slot={slot} position={pos} key={`blank-${pos}`}/>
+                            )
+                        })}
                     </tbody>
                 </Table>
             </div>

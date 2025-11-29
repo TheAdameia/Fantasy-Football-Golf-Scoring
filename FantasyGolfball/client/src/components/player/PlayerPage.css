@@ -20,3 +20,7 @@
 .playerpage-label {
     margin: .5em;
 }
+
+.playerCard-mouseover-button {
+    cursor: pointer;
+}

@@ -2,14 +2,13 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { AddRosterPlayer, DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 import "./PlayerPage.css"
-import { StatsWindow } from "../widgets/StatsWindow"
 
-export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
+
+export const PlayerCard = ({ player, isPreseason, rosterLock, setSelectedPlayerForStats }) => {
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
     const [playerRosterCondition, setPlayerRosterCondition] = useState(<></>)
     const { roster, getAndSetRoster, selectedLeague, loggedInUser, allScores, getAndSetPlayers, activeTrades } = useAppContext()
-    const [popUp, setPopUp] = useState()
 
     const HandleDropPlayer = () => {
         let rosterPlayer = roster.rosterPlayers.find(rp => rp.player.playerId === player.playerId)
@@ -117,22 +116,19 @@ export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
     }
     
     return (
-        <>
-            <tr>
-                <td>{player.playerFullName}</td>
-                <td>{player.position.positionShort}</td>
-                <td>{player.playerStatuses[0].status.statusType}</td>
-                <td>{player.playerTeams[0].team.teamName}</td>
-                <td>{player.playerTeams[0].team.byeWeek}</td>
-                <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
-                <td>{seasonTotal ?? "-"}</td>
-                <td>{playerRosterCondition}</td>
-                <td onClick={() => setPopUp(true)}>Advanced Stats</td>
-                
-            </tr>
-            {popUp && (
-                <StatsWindow player={player} rosterLock={rosterLock} onClose={() => setPopUp(false)} />
-            )}
-        </>
+        <tr>
+            <td>{player.playerFullName}</td>
+            <td>{player.position.positionShort}</td>
+            <td>{player.playerStatuses[0].status.statusType}</td>
+            <td>{player.playerTeams[0].team.teamName}</td>
+            <td>{player.playerTeams[0].team.byeWeek}</td>
+            <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
+            <td>{seasonTotal ?? "-"}</td>
+            <td>{playerRosterCondition}</td>
+            <td 
+                className="playerCard-mouseover-button"
+                onClick={() => setSelectedPlayerForStats(player)} 
+            >Advanced Stats</td>
+        </tr>   
     )
 }

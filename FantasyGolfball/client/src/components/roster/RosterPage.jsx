@@ -3,6 +3,7 @@ import { useAppContext } from "../../contexts/AppContext"
 import { Button } from "reactstrap"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { StatsWindow } from "../widgets/StatsWindow"
 
 
 export const RosterPage = () => {
@@ -10,6 +11,8 @@ export const RosterPage = () => {
     const navigate = useNavigate()
     const [timeUntilReveals, setTimeUntilReveals] = useState("")
     const [rosterLock, setRosterLock] = useState(false)
+    const [selectedPlayerForStats, setSelectedPlayerForStats] = useState(null);
+
 
     useEffect(() => {
         if (!selectedLeague || selectedLeague.currentWeek < 1 || !selectedLeague.seasonStartDate) return
@@ -88,7 +91,14 @@ export const RosterPage = () => {
                     <Button onClick={() => navigate(`/create-trade`)}>Create a trade</Button>
                 </div>
             </div>
-            <RosterCard rosterLock={rosterLock}/>
+            <RosterCard rosterLock={rosterLock} setSelectedPlayerForStats={setSelectedPlayerForStats}/>
+            {selectedPlayerForStats && (
+                <StatsWindow
+                    player={selectedPlayerForStats}
+                    rosterLock={rosterLock}
+                    onClose={() => setSelectedPlayerForStats(null)}
+                />
+            )}
         </div>
     )
 }

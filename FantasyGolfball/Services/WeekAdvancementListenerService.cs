@@ -61,6 +61,7 @@ public class WeekAdvancementListenerService
 
         // league finish code ends here
 
+        // matchup resolution begins here
         var matchups = await dbContext.Matchups
             .Where(m => m.LeagueId == league.LeagueId && m.WeekId == previousWeek)
             .Include(m => m.MatchupUsers)
@@ -85,7 +86,7 @@ public class WeekAdvancementListenerService
 
                 if (roster == null)
                 {
-                    throw new Exception($"user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
+                    throw new Exception($"In WALS, user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
                 }
 
                 // for the SavedPlayers
@@ -102,7 +103,12 @@ public class WeekAdvancementListenerService
                                 AllPlayerIds.Contains(s.PlayerId))
                     .ToListAsync();
 
-                // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC
+
+
+
+
+
+                // RosterPlayers filtered in memory instead of in the query because the .where doesn't translate into EFC
                 float totalScore = AllRosterPlayers
                     .Where(rp => rp.RosterPosition != "bench")
                     .Sum(rp =>
@@ -111,13 +117,52 @@ public class WeekAdvancementListenerService
                         return scoring?.Points ?? 0f; // resorts to 0 if missing
                     });
 
-                    // this is where penalties would be added to total score.
+                // this is where penalties would be added to total score.
 
-                    // logic for that would probably be like ARP, where not bench, where the points are zero or null,
-                    // where *the relevant scoring* does not meet certain saving conditions (summing to zero, 0 yards
-                    // on nonzero attempts rushing type stuff),
-                    // multiply number of penalty players times penalty
-                    // or add penalty dependant on position
+                // logic for that would probably be like ARP, where not bench, where the points are zero or null,
+                // where *the relevant scoring* does not meet certain saving conditions (summing to zero, 0 yards
+                // on nonzero attempts rushing type stuff),
+                // multiply number of penalty players times penalty
+                // or add penalty dependant on position
+
+                // var ActiveRosterPlayers = AllRosterPlayers
+                //     .Where(rp => rp.RosterPosition != "bench")
+                //     .ToList();
+
+                // float newTotalScore = 0;
+                // foreach (var arp in ActiveRosterPlayers)
+                // {
+                //     var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == arp.PlayerId);
+                //     var effectivePoints = 0;
+
+                //     if (scoring == null)
+                //     {
+                //         newTotalScore = newTotalScore + 10;
+                //         continue;
+                //     }
+                //     if (scoring.Points == 0)
+                //     {
+                //         switch (arp.Player.Position.PositionId) //IF YOU DO THIS YOU NEED TO .INCLUDE
+                //         {
+                //             case 1:
+                //             // DO WHATEVER
+                //             break;
+                //         }
+                //     }
+                // }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 scores[matchupUser.UserProfileId] = totalScore;
 
@@ -154,7 +199,7 @@ public class WeekAdvancementListenerService
             {
                 var winner = scores.OrderBy(kv => kv.Value).First(); // sorts lowest to highest score, lowest wins
                 matchup.WinnerId = winner.Key;
-            }
+            } // the reason this if is here is it allows for the possibility of more than 2 player MUs.
         }
 
         await dbContext.SaveChangesAsync();
@@ -165,5 +210,7 @@ public class WeekAdvancementListenerService
 
         await _eventBus.Publish(new ScoreRevealEvent(league.LeagueId, eventData.NewWeek));
         Console.WriteLine($"SRE fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
+        
+        // matchup resolution ends here
     }
 }

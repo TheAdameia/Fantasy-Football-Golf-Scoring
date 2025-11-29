@@ -53,6 +53,7 @@ export const StatsWindow = ({player, rosterLock, onClose}) => {
     },[scoringArray])
 
     // I'll also have to handle bye weeks intelligently. Perhaps I could insert them into the map somehow?
+    // a better way might be to have a int++ weeks loop until it increments to the selectedLeague season week maximum.
 
     if (scoringArray == null || statKeys == null) {
         return (
