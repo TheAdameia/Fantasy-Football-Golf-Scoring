@@ -119,37 +119,96 @@ public class WeekAdvancementListenerService
 
                 // this is where penalties would be added to total score.
 
-                // logic for that would probably be like ARP, where not bench, where the points are zero or null,
-                // where *the relevant scoring* does not meet certain saving conditions (summing to zero, 0 yards
-                // on nonzero attempts rushing type stuff),
-                // multiply number of penalty players times penalty
-                // or add penalty dependant on position
+                var ActiveRosterPlayers = AllRosterPlayers
+                    .Where(rp => rp.RosterPosition != "bench")
+                    .ToList();
 
-                // var ActiveRosterPlayers = AllRosterPlayers
-                //     .Where(rp => rp.RosterPosition != "bench")
-                //     .ToList();
+                float newTotalScore = 0;
 
-                // float newTotalScore = 0;
-                // foreach (var arp in ActiveRosterPlayers)
-                // {
-                //     var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == arp.PlayerId);
-                //     var effectivePoints = 0;
+                foreach (var arp in ActiveRosterPlayers)
+                {
+                    var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == arp.PlayerId);
+                    float pointsPlusPenalty = 0;
 
-                //     if (scoring == null)
-                //     {
-                //         newTotalScore = newTotalScore + 10;
-                //         continue;
-                //     }
-                //     if (scoring.Points == 0)
-                //     {
-                //         switch (arp.Player.Position.PositionId) //IF YOU DO THIS YOU NEED TO .INCLUDE
-                //         {
-                //             case 1:
-                //             // DO WHATEVER
-                //             break;
-                //         }
-                //     }
-                // }
+                    // eliminates bye weeks and no-Scoring weeks
+                    if (scoring == null)
+                    {
+                        pointsPlusPenalty = pointsPlusPenalty + 10;
+                        continue;
+                    }
+
+                    // adds points
+                    if (scoring.Points != 0)
+                    {
+                        pointsPlusPenalty = pointsPlusPenalty + scoring.Points;
+                    }
+
+                    // adds penalty points if conditions are met
+                    if (scoring.Points == 0 && pointsPlusPenalty == 0) 
+                    {
+                        switch (arp.Player.Position.PositionId) //IF YOU DO THIS YOU NEED TO .INCLUDE
+                        {
+                            case 1: // QB
+                                if ()
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                }
+                                break;
+                            case 2: // WR
+                                if ()
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                }
+                                break;
+                            case 3: // RB
+                                if ()
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                }
+                                break;
+                            case 4: // TE
+                                if ()
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                }
+                                break;
+                            case 5: // K
+                                if (scoring.FieldGoalAttempts == 0 && 
+                                    scoring.FieldGoalsMade == 0 &&
+                                    scoring.ExtraPointAttempts == 0 &&
+                                    scoring.ExtraPointMade == 0)
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                }
+                                break;
+                            case 6: // DEF
+                                // no checks needed: this should never trigger. Def only don't play on bye weeks,
+                                // which are covered before.
+                                break ;
+                            default:
+                                break;
+                        }
+                    }
+
+                    // adds to the total
+                    newTotalScore = newTotalScore + pointsPlusPenalty;
+                }
+
+                // penalizes users who don't start players
+                if (ActiveRosterPlayers.Count() < 9)
+                {
+                    if (ActiveRosterPlayers.Count() == 8)
+                    {
+                        newTotalScore = newTotalScore + 20;
+                    } else if (ActiveRosterPlayers.Count() == 7)
+                    {
+                        newTotalScore =  newTotalScore + 50;
+                    } else
+                    {
+                        newTotalScore = newTotalScore + 150;
+                    }
+
+                }
 
 
 
