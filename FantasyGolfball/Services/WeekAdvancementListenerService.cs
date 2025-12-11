@@ -117,10 +117,18 @@ public class WeekAdvancementListenerService
                     float pointsPlusPenalty = 0;
 
                     // eliminates bye weeks and no-Scoring weeks
+                    // penalizes QBs harder than other positions
                     if (scoring == null)
                     {
-                        pointsPlusPenalty = pointsPlusPenalty + 15;
-                        continue;
+                        if (arp.Player.Position.PositionId == 1)
+                        {
+                            pointsPlusPenalty = pointsPlusPenalty + 15;
+                            continue;
+                        } else
+                        {
+                            pointsPlusPenalty = pointsPlusPenalty + 10;
+                            continue;
+                        }
                     }
 
                     // adds points
@@ -151,6 +159,7 @@ public class WeekAdvancementListenerService
                                 if (scoring.YardsReceiving == 0 &&
                                     scoring.YardsRushing == 0 &&
                                     scoring.Targets == 0 &&
+                                    scoring.Receptions == 0 &&
                                     scoring.AttemptsRushing == 0 &&
                                     scoring.FumbleLost == 0)
                                 {
@@ -181,21 +190,10 @@ public class WeekAdvancementListenerService
                 }
 
                 // penalizes users who don't start players
-                // would need modification is alternate roster structures ever existed
+                // would need modification if alternate roster structures ever existed
                 if (ActiveRosterPlayers.Count() < 9)
                 {
-                    if (ActiveRosterPlayers.Count() == 8)
-                    {
-                        totalScore = totalScore + 20;
-                    } 
-                    else if (ActiveRosterPlayers.Count() == 7)
-                    {
-                        totalScore =  totalScore + 50;
-                    } 
-                    else
-                    {
-                        totalScore = totalScore + 150;
-                    }
+                    totalScore = totalScore + ((9 - ActiveRosterPlayers.Count()) * 15);
                 }
 
                 scores[matchupUser.UserProfileId] = totalScore;

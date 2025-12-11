@@ -22,27 +22,45 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
         let penaltyPoints = 0
         let totalPoints = 0
 
+        // check and penalize for missing positions
+        const rosterPositions = rosterPlayers.map(rp => rp.rosterPosition)
+
+        const missingPositionCount = positions.filter(pos => 
+            !rosterPositions.includes(pos)
+        ).length
+
+        if (missingPositionCount != 0) {
+            penaltyPoints = penaltyPoints + (15 * missingPositionCount)
+        }
+
+        // checks existing players for penalty conditions (no score/bye, no stats)
         for (const rp of rosterPlayers) {
             if (rp.rosterPosition !== "bench" && revealedPositions.includes(rp.rosterPosition)) {
                 const playerScore = allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
 
                 let playerPenalty = 0
-                totalPoints += playerScore ? playerScore.points : 0
 
-                // this is very similar to the code for checking penalties in WALS
-
+                // penalizes no-scoring/bye weeks
                 if (!playerScore) {
-                    playerPenalty += 15
+                    if (rp.player.position.positionId == 1) {
+                        playerPenalty += 15
+                    } else {
+                        playerPenalty += 10
+                    }
                 }
 
-                if (playerPenalty == 0 && playerScore.points == 0) {
-                    switch (rp.position.positionId) {
+                totalPoints += playerScore ? playerScore.points : 0
+
+                // a spelling error generated much annoyance when testing the switch block
+                // Penalizes 0 score IF NOT stats (difference between 2 - 2 = 0 and just 0)
+                if (playerPenalty == 0 && playerScore?.points == 0) {
+                    switch (rp.player.position.positionId) {
                         case 1: // QB
                             if (playerScore.yardsPassing == 0 &&
                                 playerScore.yardsRushing == 0 &&
                                 playerScore.attemptsPassing == 0 &&
                                 playerScore.attemptsRushing == 0 &&
-                                playerScore.fumblesLost == 0 &&
+                                playerScore.fumbleLost == 0 &&
                                 playerScore.interceptions == 0) {
                                     playerPenalty += 15
                                 }
@@ -54,7 +72,8 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                                 playerScore.yardsRushing == 0 &&
                                 playerScore.targets == 0 &&
                                 playerScore.attemptsRushing == 0 &&
-                                playerScore.fumblesLost == 0) {
+                                playerScore.receptions == 0 &&
+                                playerScore.fumbleLost == 0) {
                                     playerPenalty += 10
                                 }
                             break
@@ -69,6 +88,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                         case 6: // DEF
                             break
                         default:
+                            console.log("default player case")
                             break
                     }
                 }
@@ -85,7 +105,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
 
     const result = useMemo(() => 
         activeRoster ? calculateTotalPoints(activeRoster.rosterPlayers) 
-        : { totalPoints: 0, penalties: 0 }, 
+        : { totalPoints: 0, penaltyPoints: 0 }, 
         [activeRoster, allScores, displayWeekPoints.week, revealedPositions]
     )
 
@@ -94,8 +114,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
         return ( //position, name, team, injury status, points
             <div>
                 <h5>
-                    {result.totalPoints.toFixed(2)}
-                    {result.penalties}
+                    {result.totalPoints.toFixed(2)} + {result.penaltyPoints}
                 </h5>
 
                 <Table striped>
@@ -147,8 +166,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
         return (
             <div>
                 <h5>
-                    {result.totalPoints.toFixed(2)}
-                    {result.penalties}
+                    {result.totalPoints.toFixed(2)} + {result.penaltyPoints}
                 </h5>
                 <Table striped>
                     <thead>

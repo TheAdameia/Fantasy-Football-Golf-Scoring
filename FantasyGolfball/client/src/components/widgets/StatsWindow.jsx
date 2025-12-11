@@ -37,6 +37,10 @@ export const StatsWindow = ({player, rosterLock, onClose}) => {
     useEffect(() => {
         // the idea is that this will dynamically display relevant stats, based on whether
         // any of the key value pairs have a non-trivial value.
+        if (selectedLeague.currentWeek < 1) {
+            return
+        }
+
         if (scoringArray) {
             const excludedKeys = ["scoringId", "playerId", "player", "seasonId", "seasonWeek", "isDefense", "points"]
 
@@ -60,6 +64,15 @@ export const StatsWindow = ({player, rosterLock, onClose}) => {
             <div>loading...</div>
         )
     }
+
+    if (selectedLeague.currentWeek == 0) {
+            return (
+                <div className="modal-overlay">
+                    <div className="modal-content">No stats yet! Come back when Week 1 Starts</div>
+                    <button onClick={onClose}>Close</button>
+                </div>
+            )
+        }
 
     if (scoringArray && statKeys) {
         return (

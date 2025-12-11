@@ -5,9 +5,12 @@ export const BlankPlayerCard = ({ slot, position}) => {
     if (slot) {
         return (
             <tr>
-                <th>
+                <td>
+                    
+                </td>
+                <td>
                     {position}
-                </th>
+                </td>
                 <td>
                     -
                 </td>
@@ -39,6 +42,9 @@ export const BlankPlayerCard = ({ slot, position}) => {
                 </td>
                 <td>
                     {position}
+                </td>
+                <td>
+
                 </td>
             </tr>
         )
