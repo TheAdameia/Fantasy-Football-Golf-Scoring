@@ -3,6 +3,7 @@ import { Table } from "reactstrap"
 import { useAppContext } from "../../contexts/AppContext"
 import { SearchBar } from "../SearchBar"
 import { PlayerCard } from "./PlayerCard"
+import { StatsWindow } from "../widgets/StatsWindow"
 
 export const PlayerPage = () => {
     const [filteredPlayers, setFilteredPlayers] = useState()
@@ -13,6 +14,7 @@ export const PlayerPage = () => {
     const [showOtherTeam, setShowOtherTeam] = useState(false)
     const [rosterLock, setRosterLock] = useState(false)
     const { players, selectedLeague, loggedInUser } = useAppContext()
+    const [selectedPlayerForStats, setSelectedPlayerForStats] = useState(null);
 
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
@@ -225,6 +227,9 @@ export const PlayerPage = () => {
                         <th>
                             Actions
                         </th>
+                        <th>
+                            Click Me
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -235,6 +240,7 @@ export const PlayerPage = () => {
                                     key={`player-${player.playerId}`}
                                     isPreseason={selectedLeague?.currentWeek == null}
                                     rosterLock={rosterLock}
+                                    setSelectedPlayerForStats={setSelectedPlayerForStats}
                                 />
                     ) : (
                     <tr>
@@ -243,6 +249,13 @@ export const PlayerPage = () => {
                     )}
                 </tbody>
             </Table>
+            {selectedPlayerForStats && (
+                <StatsWindow
+                    player={selectedPlayerForStats}
+                    rosterLock={rosterLock}
+                    onClose={() => setSelectedPlayerForStats(null)}
+                />
+            )}
         </div>
     )
 }

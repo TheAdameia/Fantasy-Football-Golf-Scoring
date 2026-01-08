@@ -2,12 +2,14 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 import { RosterPositionDropdown } from "./RosterPositionDropdown"
+import { StatsWindow } from "../widgets/StatsWindow"
 
 
-export const RosterPlayerCard = ({ rp, rosterLock }) => {
+export const RosterPlayerCard = ({ rp, rosterLock, setSelectedPlayerForStats }) => {
     const  { getAndSetRoster, allScores, selectedLeague, getAndSetPlayers, activeTrades } = useAppContext()
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState() // might want to fit this in later
+
 
 
     const HandleDropPlayer = (rosterPlayerId) => {
@@ -67,7 +69,6 @@ export const RosterPlayerCard = ({ rp, rosterLock }) => {
                     rp={rp}
                     rosterLock={rosterLock}
                 >
-
                 </RosterPositionDropdown>
             </th>
             <td>
@@ -94,6 +95,10 @@ export const RosterPlayerCard = ({ rp, rosterLock }) => {
             <td>
                 <button onClick={() => ConfirmDrop(rp.rosterPlayerId)}>-</button>
             </td>
+            <td 
+                className="rosterPlayerCard-mouseover-button"
+                onClick={() => setSelectedPlayerForStats(rp.player)} 
+            >Advanced Stats</td>
         </tr>
     )
 }

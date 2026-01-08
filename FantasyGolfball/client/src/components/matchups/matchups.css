@@ -53,3 +53,24 @@
 .fade-in {
   animation: fadeIn 0.6s ease-out;
 }
+
+.fade-in-stats {
+  animation: fadeIn 0.6s ease-out;
+  font-size: small;
+}
+
+.stats-no-fade {
+    font-size: .8rem;
+}
+
+.matchup-roster-card-container {
+    width: 50%;
+}
+
+.player-table-row {
+    height: 4rem;
+}
+
+.player-table-font {
+    font-size: 1em;
+}

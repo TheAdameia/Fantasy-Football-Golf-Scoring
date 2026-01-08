@@ -55,12 +55,12 @@ public class WeekAdvancementListenerService
         }
         if (league.IsLeagueFinished)
         {
-            Console.WriteLine($"League {league.LeagueId} skipped in WALS due to already being done. This shouldn't happen due to WAS filters.");
+            Console.WriteLine($"Warning: League {league.LeagueId} skipped in WALS due to already being done. This shouldn't happen due to WAS filters.");
             return;
         }
-
         // league finish code ends here
 
+        // matchup resolution begins here
         var matchups = await dbContext.Matchups
             .Where(m => m.LeagueId == league.LeagueId && m.WeekId == previousWeek)
             .Include(m => m.MatchupUsers)
@@ -81,11 +81,13 @@ public class WeekAdvancementListenerService
                 var roster = await dbContext.Rosters
                     .Where(r => r.UserId == matchupUser.UserProfileId && r.LeagueId == league.LeagueId)
                     .Include(r => r.RosterPlayers)
+                        .ThenInclude(rp => rp.Player)
+                            .ThenInclude(p => p.Position)
                     .FirstOrDefaultAsync();
 
                 if (roster == null)
                 {
-                    throw new Exception($"user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
+                    throw new Exception($"In WALS, user {matchupUser.UserProfileId} in league {league.LeagueId} did not return a roster");
                 }
 
                 // for the SavedPlayers
@@ -102,14 +104,97 @@ public class WeekAdvancementListenerService
                                 AllPlayerIds.Contains(s.PlayerId))
                     .ToListAsync();
 
-                // rosterplayers filtered in memory instead of in the query because the .where doesn't translate into EFC
-                float totalScore = AllRosterPlayers
+                // RosterPlayers filtered in memory instead of in the query because the .where doesn't translate into EFC
+                var ActiveRosterPlayers = AllRosterPlayers
                     .Where(rp => rp.RosterPosition != "bench")
-                    .Sum(rp =>
+                    .ToList();
+
+                float totalScore = 0;
+
+                foreach (var arp in ActiveRosterPlayers)
+                {
+                    var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == arp.PlayerId);
+                    float pointsPlusPenalty = 0;
+
+                    // eliminates bye weeks and no-Scoring weeks
+                    // penalizes QBs harder than other positions
+                    if (scoring == null)
                     {
-                        var scoring = scoringEntries.FirstOrDefault(s => s.PlayerId == rp.PlayerId);
-                        return scoring?.Points ?? 0f; // resorts to 0 if missing
-                    });
+                        if (arp.Player.Position.PositionId == 1)
+                        {
+                            pointsPlusPenalty = pointsPlusPenalty + 15;
+                            continue;
+                        } else
+                        {
+                            pointsPlusPenalty = pointsPlusPenalty + 10;
+                            continue;
+                        }
+                    }
+
+                    // adds points
+                    if (scoring.Points != 0)
+                    {
+                        pointsPlusPenalty = pointsPlusPenalty + scoring.Points;
+                    }
+
+                    // adds penalty points if conditions are met
+                    if (scoring.Points == 0 && pointsPlusPenalty == 0) 
+                    {
+                        switch (arp.Player.Position.PositionId)
+                        {
+                            case 1: // QB
+                                if (scoring.YardsPassing == 0 &&
+                                    scoring.YardsRushing == 0 &&
+                                    scoring.AttemptsPassing == 0 &&
+                                    scoring.AttemptsRushing == 0 &&
+                                    scoring.FumbleLost == 0 &&
+                                    scoring.Interceptions == 0)
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 15;
+                                }
+                                break;
+                            case 2: // WR
+                            case 3: // RB
+                            case 4: // TE
+                                if (scoring.YardsReceiving == 0 &&
+                                    scoring.YardsRushing == 0 &&
+                                    scoring.Targets == 0 &&
+                                    scoring.Receptions == 0 &&
+                                    scoring.AttemptsRushing == 0 &&
+                                    scoring.FumbleLost == 0)
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                }
+                                break;
+                            case 5: // K
+                                if (scoring.FieldGoalAttempts == 0 && 
+                                    scoring.FieldGoalsMade == 0 &&
+                                    scoring.ExtraPointAttempts == 0 &&
+                                    scoring.ExtraPointMade == 0)
+                                {
+                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                }
+                                break;
+                            case 6: // DEF
+                                // no checks needed: this should never trigger. DEF only doesn't play on bye weeks,
+                                // which are covered before.
+                                break ;
+                            default:
+                                Console.WriteLine($"Warning: In WALS, an invalid PositionId was found for RosterPlayer {arp.RosterPlayerId}in League {eventData.LeagueId}");
+                                break;
+                        }
+                    }
+
+                    // adds to the total
+                    totalScore = totalScore + pointsPlusPenalty;
+                }
+
+                // penalizes users who don't start players
+                // would need modification if alternate roster structures ever existed
+                if (ActiveRosterPlayers.Count() < 9)
+                {
+                    totalScore = totalScore + ((9 - ActiveRosterPlayers.Count()) * 15);
+                }
 
                 scores[matchupUser.UserProfileId] = totalScore;
 
@@ -141,13 +226,15 @@ public class WeekAdvancementListenerService
                         };
                     }).ToList();
             }
-
+            
+            // the reason this if is here is it allows for the possibility of more than 2 player MUs.
             if (scores.Count == 2)
             {
                 var winner = scores.OrderBy(kv => kv.Value).First(); // sorts lowest to highest score, lowest wins
                 matchup.WinnerId = winner.Key;
-            }
-        }
+            } 
+        } 
+        // matchup resolution ends here
 
         await dbContext.SaveChangesAsync();
         Console.WriteLine($"Completed Week Advancement matchup processing for League {league.LeagueId}.");
@@ -157,5 +244,6 @@ public class WeekAdvancementListenerService
 
         await _eventBus.Publish(new ScoreRevealEvent(league.LeagueId, eventData.NewWeek));
         Console.WriteLine($"SRE fired for League {league.LeagueId}, Week {eventData.NewWeek}.");
+        
     }
 }

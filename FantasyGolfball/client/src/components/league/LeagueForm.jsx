@@ -34,17 +34,11 @@ export const LeagueForm = () => {
         return local.toISOString().slice(0, 16)
     }
 
-    const roundToNearest30Minutes = (date) => {
+    const roundToNearest5Minutes = (date) => {
         const rounded = new Date(date)
         const minutes = rounded.getMinutes()
-        if (minutes < 15) {
-            rounded.setMinutes(0)
-        } else if (minutes < 45) {
-            rounded.setMinutes(30)
-        } else {
-            rounded.setHours(rounded.getHours() + 1)
-            rounded.setMinutes(0)
-        }
+        const roundedMinutes = Math.round(minutes / 5) * 5 // rounds to 5 minute interval
+        rounded.setMinutes(roundedMinutes)
         rounded.setSeconds(0)
         rounded.setMilliseconds(0)
         return rounded
@@ -53,7 +47,7 @@ export const LeagueForm = () => {
 
     const handleDateChange = (key) => (e) => {
         const localDate = new Date(e.target.value)
-        const roundedDate = roundToNearest30Minutes(localDate)
+        const roundedDate = roundToNearest5Minutes(localDate)
         const utcDateString = roundedDate.toISOString()
 
         setLeagueObject((prev) => ({
@@ -214,7 +208,7 @@ export const LeagueForm = () => {
                     </div>
 
                     <div>
-                        <Label>Draft Start Time (Rounds to 30 minute interval):</Label>
+                        <Label>Draft Start Time (Rounds to 5 minute interval):</Label>
                         <Input
                             type="datetime-local"
                             value={toLocalInputValue(leagueObject.draftStartTime)}

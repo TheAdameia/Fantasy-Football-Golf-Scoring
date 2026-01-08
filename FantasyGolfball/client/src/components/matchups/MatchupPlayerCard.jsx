@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useMemo, useContext } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { MatchupRevealContext } from "./MatchupRevealContext"
 import "./matchups.css"
+import { FormatStats } from "../widgets/FormatStats"
 
 
 export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
@@ -32,12 +34,15 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             .sort((a, b) => b.statusStartWeek - a.statusStartWeek)[0] || null
     }, [displayWeekPoints.week, rp.player.playerStatuses])
 
-   if (slot && rp) {
+   if (slot && rp && playerScore) {
     return (
-        <tr>
-            <th>
+        <tr className="player-table-row">
+            <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in-stats" : ""}>
+                {revealedPositions?.includes(rp.rosterPosition) ? FormatStats(playerScore): ""} 
+            </td>
+            <td>
                 {rp.rosterPosition}
-            </th>
+            </td>
             <td>
                 {rp.player.playerFullName}
             </td>
@@ -52,9 +57,9 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             </td>
         </tr>
     )
-   } else if (slot == false && rp) {
+   } else if (slot == false && rp && playerScore) {
     return (
-        <tr>
+        <tr className="player-table-row">
             <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in" : ""}>
                 {revealedPositions?.includes(rp.rosterPosition) ? playerScore.points.toFixed(2) : 0}
             </td>
@@ -69,6 +74,9 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
             </td>
             <td>
                 {rp.rosterPosition}
+            </td>
+            <td className={revealedPositions?.includes(rp.rosterPosition) ? "fade-in-stats" : ""}>
+                {revealedPositions?.includes(rp.rosterPosition) ? FormatStats(playerScore): ""} 
             </td>
         </tr>
     )

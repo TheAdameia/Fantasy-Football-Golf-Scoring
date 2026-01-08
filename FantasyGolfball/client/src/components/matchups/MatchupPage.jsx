@@ -143,7 +143,7 @@ export const MatchupPage = () => {
                 </div>
             
                 <div>
-                    {matchups
+                    {filteredMatchups ? filteredMatchups
                     .filter((matchup) => matchup.weekId === week)
                     .map((matchup) => {
                         return (
@@ -153,7 +153,7 @@ export const MatchupPage = () => {
                                 week={week}
                             />
                         )
-                    })}
+                    }) : <></>}
                 </div>
             </div>
         )

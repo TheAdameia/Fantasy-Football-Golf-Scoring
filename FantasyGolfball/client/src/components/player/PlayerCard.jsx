@@ -3,7 +3,8 @@ import { useAppContext } from "../../contexts/AppContext"
 import { AddRosterPlayer, DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 import "./PlayerPage.css"
 
-export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
+
+export const PlayerCard = ({ player, isPreseason, rosterLock, setSelectedPlayerForStats }) => {
     const [weekScore, setWeekScore] = useState()
     const [seasonTotal, setSeasonTotal] = useState()
     const [playerRosterCondition, setPlayerRosterCondition] = useState(<></>)
@@ -124,6 +125,10 @@ export const PlayerCard = ({ player, isPreseason, rosterLock }) => {
             <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
             <td>{seasonTotal ?? "-"}</td>
             <td>{playerRosterCondition}</td>
-        </tr>
+            <td 
+                className="playerCard-mouseover-button"
+                onClick={() => setSelectedPlayerForStats(player)} 
+            >Advanced Stats</td>
+        </tr>   
     )
 }

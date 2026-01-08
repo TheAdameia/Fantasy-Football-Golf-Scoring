@@ -5,8 +5,10 @@ import "./Roster.css"
 import { BlankRosterPlayerCard } from "./BlankRosterPlayerCard";
 
 
-export const RosterCard = ({ rosterLock }) => {
+export const RosterCard = ({ rosterLock, setSelectedPlayerForStats }) => {
     const { roster, selectedLeague } = useAppContext()
+    const positions = ["QB1", "WR1", "WR2", "RB1", "RB2", "TE1", "FLEX", "K", "DEF"]
+
     
     if (!roster || !Array.isArray(roster.rosterPlayers)) {
         return <div>Roster not created</div>;
@@ -47,132 +49,22 @@ export const RosterCard = ({ rosterLock }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "QB1") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "QB1")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"QB1"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "WR1") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "WR1")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"WR1"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "WR2") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "WR2")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"WR2"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "RB1") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "RB1")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"RB1"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "RB2") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "RB2")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"RB2"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "TE1") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "TE1")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"TE1"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "FLEX") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "FLEX")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"FLEX"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "K") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "K")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"K"}/>
-                    }
-                    {roster.rosterPlayers.some((rp) => rp.rosterPosition === "DEF") ?
-                        roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "DEF")
-                            .map((rp) => {
-                                return (
-                                    <RosterPlayerCard
-                                        rp={rp}
-                                        key={`rp-${rp.rosterPlayerId}`}
-                                        rosterLock={rosterLock}
-                                    ></RosterPlayerCard>
-                                )
-                        }) : 
-                        <BlankRosterPlayerCard position={"DEF"}/>
-                    }
+                    {positions.map((pos) => {
+                        const playerAtPos = roster.rosterPlayers.filter((rp) => rp.rosterPosition == pos)
+
+                        return playerAtPos.length > 0 ? (
+                            playerAtPos.map(pap => (
+                                <RosterPlayerCard 
+                                    rp={pap}
+                                    key={`rp-${pap.rosterPlayerId}`}
+                                    rosterLock={rosterLock}
+                                    setSelectedPlayerForStats={setSelectedPlayerForStats}
+                                />
+                            ))
+                        ) : (
+                            <BlankRosterPlayerCard position={pos} key={`blank-${pos}`}/>
+                        )
+                    })}
                 </tbody>
                 <tbody className="table-divider">
                     {roster.rosterPlayers
@@ -182,6 +74,8 @@ export const RosterCard = ({ rosterLock }) => {
                             <RosterPlayerCard
                                 rp={rp}
                                 key={`rp-${rp.rosterPlayerId}`}
+                                rosterLock={rosterLock}
+                                setSelectedPlayerForStats={setSelectedPlayerForStats}
                             ></RosterPlayerCard>
                         )
                     })}

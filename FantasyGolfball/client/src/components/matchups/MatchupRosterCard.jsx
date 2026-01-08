@@ -8,40 +8,121 @@ import { MatchupRevealContext } from "./MatchupRevealContext"
 
 
 export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) => {
-    const { roster, allScores, selectedLeague } = useAppContext()
+    const { roster, allScores } = useAppContext()
     const { revealedPositions } = useContext(MatchupRevealContext)
+    const positions = ["QB1", "WR1", "WR2", "RB1", "RB2", "TE1", "FLEX", "K", "DEF"]
+    const activeRoster  = slot ? roster : opponentRoster
 
 
     const calculateTotalPoints = (rosterPlayers) => {
         if (!allScores || !revealedPositions) {
-            return 
+            return { totalPoints: 0, penaltyPoints: 0}
         }
-        return rosterPlayers.reduce((total, rp) => {
-            if (rp.rosterPosition != "bench" && revealedPositions.includes(rp.rosterPosition)) {
+
+        let penaltyPoints = 0
+        let totalPoints = 0
+
+        // check and penalize for missing positions
+        const rosterPositions = rosterPlayers.map(rp => rp.rosterPosition)
+
+        const missingPositionCount = positions.filter(pos => 
+            !rosterPositions.includes(pos)
+        ).length
+
+        if (missingPositionCount != 0) {
+            penaltyPoints = penaltyPoints + (15 * missingPositionCount)
+        }
+
+        // checks existing players for penalty conditions (no score/bye, no stats)
+        for (const rp of rosterPlayers) {
+            if (rp.rosterPosition !== "bench" && revealedPositions.includes(rp.rosterPosition)) {
                 const playerScore = allScores.find(s => s.playerId == rp.playerId && s.seasonWeek == displayWeekPoints.week)
-            return total + (playerScore ? playerScore.points : 0)
+
+                let playerPenalty = 0
+
+                // penalizes no-scoring/bye weeks
+                if (!playerScore) {
+                    if (rp.player.position.positionId == 1) {
+                        playerPenalty += 15
+                    } else {
+                        playerPenalty += 10
+                    }
+                }
+
+                totalPoints += playerScore ? playerScore.points : 0
+
+                // a spelling error generated much annoyance when testing the switch block
+                // Penalizes 0 score IF NOT stats (difference between 2 - 2 = 0 and just 0)
+                if (playerPenalty == 0 && playerScore?.points == 0) {
+                    switch (rp.player.position.positionId) {
+                        case 1: // QB
+                            if (playerScore.yardsPassing == 0 &&
+                                playerScore.yardsRushing == 0 &&
+                                playerScore.attemptsPassing == 0 &&
+                                playerScore.attemptsRushing == 0 &&
+                                playerScore.fumbleLost == 0 &&
+                                playerScore.interceptions == 0) {
+                                    playerPenalty += 15
+                                }
+                            break
+                        case 2: // WR
+                        case 3: // RB
+                        case 4: // TE
+                            if (playerScore.yardsReceiving == 0 &&
+                                playerScore.yardsRushing == 0 &&
+                                playerScore.targets == 0 &&
+                                playerScore.attemptsRushing == 0 &&
+                                playerScore.receptions == 0 &&
+                                playerScore.fumbleLost == 0) {
+                                    playerPenalty += 10
+                                }
+                            break
+                        case 5: // K
+                            if (playerScore.fieldGoalAttempts == 0 &&
+                                playerScore.fieldGoalsMade == 0 &&
+                                playerScore.extraPointAttempts == 0 &&
+                                playerScore.extraPointMade == 0) {
+                                    playerPenalty += 10
+                            }
+                            break
+                        case 6: // DEF
+                            break
+                        default:
+                            console.log("default player case")
+                            break
+                    }
+                }
+                penaltyPoints += playerPenalty
+
             }
-            return total
-        }, 0)
+        }
+
+        return {
+            totalPoints: totalPoints,
+            penaltyPoints: penaltyPoints
+        }
     }
 
-    const userTotalPoints = useMemo(() => 
-                                slot && roster ? 
-                                calculateTotalPoints(roster.rosterPlayers) 
-                                : 0, [roster, allScores, displayWeekPoints.week, revealedPositions])
-    const opponentTotalPoints = useMemo(() => 
-                                !slot && opponentRoster ? 
-                                calculateTotalPoints(opponentRoster.rosterPlayers) 
-                                : 0, [opponentRoster, allScores, displayWeekPoints.week, revealedPositions])
+    const result = useMemo(() => 
+        activeRoster ? calculateTotalPoints(activeRoster.rosterPlayers) 
+        : { totalPoints: 0, penaltyPoints: 0 }, 
+        [activeRoster, allScores, displayWeekPoints.week, revealedPositions]
+    )
 
-    
-    if (slot == true && roster) {
+    // Don't look at the github history for this component. Yikes.
+    if (activeRoster && slot == true) {
         return ( //position, name, team, injury status, points
             <div>
-                <h5>{userTotalPoints?.toFixed(2)}</h5>
+                <h5>
+                    {result.totalPoints.toFixed(2)} + {result.penaltyPoints}
+                </h5>
+
                 <Table striped>
                     <thead>
                         <tr>
+                            <th>
+                                stats
+                            </th>
                             <th>
                                 position
                             </th>
@@ -59,132 +140,34 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                             </th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "QB1") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "QB1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="QB1"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "WR1") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "WR1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR1"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "WR2") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "WR2")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR2"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "RB1") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "RB1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB1"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "RB2") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "RB2")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB2"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "TE1") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "TE1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="TE1"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "FLEX") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "FLEX")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="FLEX"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "K") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "K")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="K"/>
-                        )}
-                        {roster.rosterPlayers.some((rp) => rp.rosterPosition === "DEF") ? ( roster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "DEF")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="DEF"/>
-                        )}
+                        {positions.map((pos) => {
+                            const playerAtPos = activeRoster.rosterPlayers.filter((rp) => rp.rosterPosition == pos)
+
+                            return playerAtPos.length > 0 ? (
+                                playerAtPos.map(pap => (
+                                    <MatchupPlayerCard
+                                        rp={pap}
+                                        key={pap.rosterPlayerId}
+                                        slot={slot}
+                                        displayWeekPoints={displayWeekPoints}
+                                    />
+                                ))
+                            ) : (
+                                <BlankPlayerCard slot={slot} position={pos} key={`blank-${pos}`}/>
+                            )
+                        })}
                     </tbody>
                 </Table>
             </div>
         )
-    } else if (slot == false && opponentRoster) {
+    } else if (slot == false) {
         return (
             <div>
-                <h5>{opponentTotalPoints?.toFixed(2)}</h5>
+                <h5>
+                    {result.totalPoints.toFixed(2)} + {result.penaltyPoints}
+                </h5>
                 <Table striped>
                     <thead>
                         <tr>
@@ -203,131 +186,32 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
                             <th>
                                 position
                             </th>
+                            <th>
+                                stats
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "QB1") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "QB1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="QB1"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "WR1") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "WR1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR1"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "WR2") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "WR2")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="WR2"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "RB1") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "RB1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB1"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "RB2") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "RB2")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="RB2"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "TE1") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "TE1")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="TE1"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "FLEX") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "FLEX")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="FLEX"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "K") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "K")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="K"/>
-                        )}
-                        {opponentRoster.rosterPlayers.some((rp) => rp.rosterPosition === "DEF") ? ( opponentRoster.rosterPlayers
-                            .filter((rp) => rp.rosterPosition === "DEF")
-                            .map((rp) => (
-                                <MatchupPlayerCard
-                                    rp={rp}
-                                    key={`rp-${rp.rosterPlayerId}`}
-                                    slot={slot}
-                                    displayWeekPoints={displayWeekPoints}
-                                ></MatchupPlayerCard>
-                            ))
-                        ) : (
-                            <BlankPlayerCard slot={slot} position="DEF"/>
-                        )}
+                        {positions.map((pos) => {
+                            const playerAtPos = activeRoster.rosterPlayers.filter((rp) => rp.rosterPosition == pos)
+
+                            return playerAtPos.length > 0 ? (
+                                playerAtPos.map(pap => (
+                                    <MatchupPlayerCard
+                                        rp={pap}
+                                        key={pap.rosterPlayerId}
+                                        slot={slot}
+                                        displayWeekPoints={displayWeekPoints}
+                                    />
+                                ))
+                            ) : (
+                                <BlankPlayerCard slot={slot} position={pos} key={`blank-${pos}`}/>
+                            )
+                        })}
                     </tbody>
                 </Table>
             </div>
-        )
-    } else {
+        )} else {
         return (
             <div>loading...</div>
         )

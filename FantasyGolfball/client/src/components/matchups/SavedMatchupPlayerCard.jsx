@@ -1,18 +1,23 @@
+import { FormatStats } from "../widgets/FormatStats"
+
 export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
 
     if (slot) {
         return (
-            <tr>
-                <th>
+            <tr className="player-table-row">
+                <td className="stats-no-fade">
+                    {FormatStats(musp.scoring)}
+                </td>
+                <td className="player-table-font">
                     {musp.rosterPlayerPosition}
-                </th>
-                <td>
+                </td>
+                <td className="player-table-font">
                     {musp.player.playerFullName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerTeams[0].team.teamName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerStatuses[0].status.statusType}
                 </td>
                 <td>
@@ -22,21 +27,24 @@ export const SavedMatchupPlayerCard = ({ musp, slot, week }) => {
         )
        } else if (slot == false) {
         return (
-            <tr>
+            <tr className="player-table-row">
                 <td>
                     {musp.scoring.points.toFixed(2)}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerStatuses[0].status.statusType}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerTeams[0].team.teamName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.player.playerFullName}
                 </td>
-                <td>
+                <td className="player-table-font">
                     {musp.rosterPlayerPosition}
+                </td>
+                <td className="stats-no-fade">
+                    {FormatStats(musp.scoring)}
                 </td>
             </tr>
         )

@@ -34,11 +34,11 @@ export const MatchupCard = ({ matchup, week }) => {
     return (
         <div className="parent-container">
             <div className="matchup-container">
-                <div>{loggedInUser.userName}'s team
+                <div className="matchup-roster-card-container">{loggedInUser.userName}'s team
                     <MatchupRosterCard slot={true} displayWeekPoints={displayWeekPoints}/>
                 </div>
                 <div className="vertical-divider"></div>
-                <div>{opponentLeagueUser.userProfile.userName}'s team
+                <div className="matchup-roster-card-container">{opponentLeagueUser.userProfile.userName}'s team
                     <MatchupRosterCard slot={false} opponentRoster={opponentRoster} displayWeekPoints={displayWeekPoints}/>
                 </div>
             </div>
