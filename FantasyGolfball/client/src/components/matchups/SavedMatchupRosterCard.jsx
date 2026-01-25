@@ -7,14 +7,6 @@ import { useMemo } from "react"
 export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
     const positions = ["QB1", "WR1", "WR2", "RB1", "RB2", "TE1", "FLEX", "K", "DEF"]
 
-    const getTotalPoints = (matchupUser) => {
-        return matchupUser.matchupUserSavedPlayers
-        ?.filter((musp) => musp.rosterPlayerPosition?.toLowerCase() != "bench")
-        .reduce((total, musp) => {
-            return total + (musp.scoring?.points ?? 0)
-        }, 0) ?? 0
-    }
-
     const calculateTotalPoints = (matchupUser) => {
         if (!matchupUser) {
             return { totalPoints : 0, penaltyPoints : 0 }
