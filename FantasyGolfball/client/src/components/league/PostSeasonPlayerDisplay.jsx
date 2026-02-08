@@ -3,8 +3,10 @@ import { useAppContext } from "../../contexts/AppContext"
 
 
 export const PostSeasonPlayerDisplay = ({user, index, playerId}) => {
-    const { players } = useAppContext()
+    const { selectedLeague, players } = useAppContext()
     const [player, setPlayer] = useState()
+    const drafter = selectedLeague.leagueUsers.find(lu => lu.userProfileId == user)
+
 
     useEffect(() => {
         if (players && playerId) {
@@ -17,8 +19,8 @@ export const PostSeasonPlayerDisplay = ({user, index, playerId}) => {
         return (
             <tr>
                 <td># {index + 1}</td>
-                <td>User {user}</td>
-                <td>{player.playerFullName}</td>
+                <td>{drafter.userProfile.userName}</td>
+                <td>{player.playerFullName}, {player.position.positionShort}, {player.playerTeams[0].team.teamName}</td>
             </tr>
         )
     }

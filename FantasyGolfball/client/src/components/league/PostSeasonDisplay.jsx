@@ -24,8 +24,6 @@ export const PostSeasonDisplay = () => {
     
     // I will need to include IsLeagueFinished in the export DTO so it can be checked
 
-    // I need an intelligent way to iterate through userRosters using PDO
-
     if (historicalDraftState) {
         return (
             <div>
@@ -33,10 +31,10 @@ export const PostSeasonDisplay = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>User</th>
+                            <th>Team</th>
                             <th>Pick</th>
                             <th>Average Points (All games, with penalties)</th>
-                            <th>Average (Valid Games)</th>
+                            <th>Average Points (Valid Games)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +67,8 @@ export const PostSeasonDisplay = () => {
                 {/* <div>Biggest blowout? draft grade?</div> */}
             </div>
         )
+    } else if (selectedLeague.isLeagueFinished == false) {
+        <div>Come back when the season ends!</div>
     } else {
         <div>Loading...</div>
     }
