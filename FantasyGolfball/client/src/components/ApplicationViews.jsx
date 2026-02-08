@@ -16,6 +16,7 @@ import { TradeForm } from "./trades/TradeForm"
 import { TradePage } from "./trades/TradePage"
 import { MatchupPageOuter } from "./matchups/MatchupPageOuter"
 import { DataImportPage } from "./admin/DataImportPage"
+import { PostSeasonDisplay } from "./league/PostSeasonDisplay"
 
 
 export default function ApplicationViews() {
@@ -108,6 +109,14 @@ export default function ApplicationViews() {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <TradePage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route 
+          path="postseason"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <PostSeasonDisplay />
             </AuthorizedRoute>
           }
         />
