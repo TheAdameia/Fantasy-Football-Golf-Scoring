@@ -67,7 +67,7 @@ export const PostSeasonDisplay = () => {
                 {/* <div>Biggest blowout? draft grade?</div> */}
             </div>
         )
-    } else if (selectedLeague.isLeagueFinished == false) {
+    } else if (selectedLeague && selectedLeague.isLeagueFinished == false) {
         <div>Come back when the season ends!</div>
     } else {
         <div>Loading...</div>

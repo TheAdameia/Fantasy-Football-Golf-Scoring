@@ -4,6 +4,7 @@ import { MatchupPlayerCard } from "./MatchupPlayerCard"
 import { BlankPlayerCard } from "./BlankPlayerCard"
 import { useMemo, useContext } from "react"
 import { MatchupRevealContext } from "./MatchupRevealContext"
+import { CheckPenalty } from "../widgets/CheckPenalty"
 
 
 
@@ -51,46 +52,9 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
 
                 totalPoints += playerScore ? playerScore.points : 0
 
-                // a spelling error generated much annoyance when testing the switch block
                 // Penalizes 0 score IF NOT stats (difference between 2 - 2 = 0 and just 0)
-                if (playerPenalty == 0 && playerScore?.points == 0) {
-                    switch (rp.player.position.positionId) {
-                        case 1: // QB
-                            if (playerScore.yardsPassing == 0 &&
-                                playerScore.yardsRushing == 0 &&
-                                playerScore.attemptsPassing == 0 &&
-                                playerScore.attemptsRushing == 0 &&
-                                playerScore.fumbleLost == 0 &&
-                                playerScore.interceptions == 0) {
-                                    playerPenalty += 15
-                                }
-                            break
-                        case 2: // WR
-                        case 3: // RB
-                        case 4: // TE
-                            if (playerScore.yardsReceiving == 0 &&
-                                playerScore.yardsRushing == 0 &&
-                                playerScore.targets == 0 &&
-                                playerScore.attemptsRushing == 0 &&
-                                playerScore.receptions == 0 &&
-                                playerScore.fumbleLost == 0) {
-                                    playerPenalty += 10
-                                }
-                            break
-                        case 5: // K
-                            if (playerScore.fieldGoalAttempts == 0 &&
-                                playerScore.fieldGoalsMade == 0 &&
-                                playerScore.extraPointAttempts == 0 &&
-                                playerScore.extraPointMade == 0) {
-                                    playerPenalty += 10
-                            }
-                            break
-                        case 6: // DEF
-                            break
-                        default:
-                            console.log("default player case")
-                            break
-                    }
+                if (playerPenalty == 0 && playerScore && playerScore?.points == 0) {
+                    playerPenalty + CheckPenalty(rp.player, playerScore)
                 }
                 penaltyPoints += playerPenalty
 
