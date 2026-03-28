@@ -17,6 +17,8 @@ export const AppProvider = ({ children }) => {
   const [matchups, setMatchups] = useState(null)
   const [allScores, setAllScores] = useState()
   const [activeTrades, setActiveTrades] = useState()
+  // state for triggering refreshes
+  const [lastMatchupFetchTime, setLastMatchupFetchTime] = useState(null)
 
   const getAndSetAllScores = () => {
     if (loggedInUser && selectedLeague) {
@@ -26,7 +28,9 @@ export const AppProvider = ({ children }) => {
 
   const getAndSetLeagues = () => {
     if (loggedInUser) {
-      fetch(`/api/league/by-user/${loggedInUser.id}`) // I hate writing out calls somewhere that's not a manager, but importing context to a manager causes initialization issues and the league states need to be set before anything else happens
+      // I hate writing out calls somewhere that's not a manager, but importing context to a manager 
+      // causes initialization issues and the league states need to be set before anything else happens
+      fetch(`/api/league/by-user/${loggedInUser.id}`)
         .then((res) => res.json())
         .then((data) => {
           setUserLeagues(data)
@@ -44,7 +48,10 @@ export const AppProvider = ({ children }) => {
   const getAndSetMatchups = () => {
     if (loggedInUser != null && selectedLeague != null) {
       if (selectedLeague.isDraftComplete) {
-        GetMatchupsByLeague(selectedLeague.leagueId, loggedInUser.id).then(setMatchups)
+        GetMatchupsByLeague(selectedLeague.leagueId, loggedInUser.id).then((data) => {
+          setMatchups(data)
+          setLastMatchupFetchTime(Date.now())
+        })
       }
     }
   }
@@ -132,7 +139,8 @@ export const AppProvider = ({ children }) => {
       activeTrades,
       getAndSetTrades,
       getAndSetLeagues,
-      getAndSetMatchups }}>
+      getAndSetMatchups,
+      lastMatchupFetchTime }}>
       {children}
     </AppContext.Provider>
   )

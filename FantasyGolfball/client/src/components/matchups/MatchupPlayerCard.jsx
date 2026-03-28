@@ -82,9 +82,9 @@ export const MatchupPlayerCard = ({ rp, slot, displayWeekPoints }) => {
     )
    } else {
     return (
-        <div>
-            loading...
-        </div>
+        <tr>
+            <td>loading...</td>
+        </tr>
     )
    }
 }

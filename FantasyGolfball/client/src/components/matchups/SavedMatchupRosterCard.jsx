@@ -45,7 +45,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
                 totalPoints += musp.scoring.points
 
                 // penalizes 0 score IF NOT stats (difference between 2 - 2 = 0 and just 0)
-                playerPenalty + CheckPenalty(musp.player, musp.scoring)
+                playerPenalty += CheckPenalty(musp.player, musp.scoring)
                 
                 // adds the resultant total to the return value
                 penaltyPoints += playerPenalty

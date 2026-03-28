@@ -122,11 +122,11 @@ public class WeekAdvancementListenerService
                     {
                         if (arp.Player.Position.PositionId == 1)
                         {
-                            pointsPlusPenalty = pointsPlusPenalty + 15;
+                            pointsPlusPenalty += 15;
                             continue;
                         } else
                         {
-                            pointsPlusPenalty = pointsPlusPenalty + 10;
+                            pointsPlusPenalty += 10;
                             continue;
                         }
                     }
@@ -134,7 +134,7 @@ public class WeekAdvancementListenerService
                     // adds points
                     if (scoring.Points != 0)
                     {
-                        pointsPlusPenalty = pointsPlusPenalty + scoring.Points;
+                        pointsPlusPenalty += scoring.Points;
                     }
 
                     // adds penalty points if conditions are met
@@ -150,7 +150,7 @@ public class WeekAdvancementListenerService
                                     scoring.FumbleLost == 0 &&
                                     scoring.Interceptions == 0)
                                 {
-                                    pointsPlusPenalty = pointsPlusPenalty + 15;
+                                    pointsPlusPenalty += 15;
                                 }
                                 break;
                             case 2: // WR
@@ -163,7 +163,7 @@ public class WeekAdvancementListenerService
                                     scoring.AttemptsRushing == 0 &&
                                     scoring.FumbleLost == 0)
                                 {
-                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                    pointsPlusPenalty += 10;
                                 }
                                 break;
                             case 5: // K
@@ -172,7 +172,7 @@ public class WeekAdvancementListenerService
                                     scoring.ExtraPointAttempts == 0 &&
                                     scoring.ExtraPointMade == 0)
                                 {
-                                    pointsPlusPenalty = pointsPlusPenalty + 10;
+                                    pointsPlusPenalty += 10;
                                 }
                                 break;
                             case 6: // DEF
@@ -186,14 +186,14 @@ public class WeekAdvancementListenerService
                     }
 
                     // adds to the total
-                    totalScore = totalScore + pointsPlusPenalty;
+                    totalScore += pointsPlusPenalty;
                 }
 
                 // penalizes users who don't start players
                 // would need modification if alternate roster structures ever existed
                 if (ActiveRosterPlayers.Count() < 9)
                 {
-                    totalScore = totalScore + ((9 - ActiveRosterPlayers.Count()) * 15);
+                    totalScore += ((9 - ActiveRosterPlayers.Count()) * 15);
                 }
 
                 scores[matchupUser.UserProfileId] = totalScore;

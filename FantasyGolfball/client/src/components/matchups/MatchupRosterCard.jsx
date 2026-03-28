@@ -54,7 +54,7 @@ export const MatchupRosterCard = ({ slot, opponentRoster, displayWeekPoints}) =>
 
                 // Penalizes 0 score IF NOT stats (difference between 2 - 2 = 0 and just 0)
                 if (playerPenalty == 0 && playerScore && playerScore?.points == 0) {
-                    playerPenalty + CheckPenalty(rp.player, playerScore)
+                    playerPenalty += CheckPenalty(rp.player, playerScore)
                 }
                 penaltyPoints += playerPenalty
 

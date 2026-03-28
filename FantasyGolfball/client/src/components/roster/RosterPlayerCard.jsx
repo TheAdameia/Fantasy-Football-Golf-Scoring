@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../../contexts/AppContext"
 import { DeleteRosterPlayer } from "../../managers/rosterPlayerManager"
 import { RosterPositionDropdown } from "./RosterPositionDropdown"
-import { StatsWindow } from "../widgets/StatsWindow"
 
 
 export const RosterPlayerCard = ({ rp, rosterLock, setSelectedPlayerForStats }) => {

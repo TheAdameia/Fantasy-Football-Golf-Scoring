@@ -196,7 +196,7 @@ export const MainPage = () => {
             <div>No leagues joined!</div>
         )
     }
-    // This one will be the league recap
+    // league recap homepage
     if (selectedLeague.isLeagueFinished) {
         return (
             <div className="mainpage-main-container">
@@ -219,10 +219,10 @@ export const MainPage = () => {
                     </div>
                     <div className="mainpage-matchup-container">
                         {/* behooves me to change this but I'll do it later */}
-                        <MatchupRecap weekId={1} /> 
-                        <MatchupRecap weekId={2} />
-                        <MatchupRecap weekId={3} />
-                        <MatchupRecap weekId={4} />
+                        <MatchupRecap weekId={selectedLeague.season.seasonWeeks - 3} />
+                        <MatchupRecap weekId={selectedLeague.season.seasonWeeks - 2} />
+                        <MatchupRecap weekId={selectedLeague.season.seasonWeeks - 1} />
+                        <MatchupRecap weekId={selectedLeague.season.seasonWeeks} />
                     </div>
                     <div className="mainpage-rules-container">League Settings 
                         <div>Player Limit: {selectedLeague.playerLimit}</div>
@@ -237,7 +237,7 @@ export const MainPage = () => {
         )
     }
 
-    // this is what people will see most of the time
+    // mainpage for preseason and during season
     return (
         <div className="mainpage-main-container">
             <div className="mainpage-league-container">
