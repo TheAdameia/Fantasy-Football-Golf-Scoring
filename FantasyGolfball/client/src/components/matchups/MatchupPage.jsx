@@ -6,7 +6,7 @@ import "./matchups.css"
 import { getRevealTimes } from "../widgets/GetRevealTimes"
 
 export const MatchupPage = () => {
-    const { matchups, selectedLeague, loggedInUser, lastMatchupFetchTime, getAndSetMatchups } = useAppContext()
+    const { matchups, selectedLeague, loggedInUser, lastMatchupFetchTime } = useAppContext()
     const getInitialWeek = () => {
         const currentWeek = selectedLeague?.currentWeek ?? 1
         return Math.min(currentWeek, selectedLeague?.season.seasonWeeks ?? 18)
@@ -23,8 +23,9 @@ export const MatchupPage = () => {
             : null
 
         if (minutesSinceFetch > 2) {
-            console.log(minutesSinceFetch)
-            getAndSetMatchups()
+            window.location.reload()
+            // for reasons I don't fully understand, just getting and setting the matchups
+            // doesn't do what I want it to
         }
 
         // handles bounding on week change

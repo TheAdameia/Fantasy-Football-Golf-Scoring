@@ -19,28 +19,30 @@ export const SavedMatchupCard = ({ matchup }) => {
 
             if (timeUntilStart > 0) {
                 const timeout = setTimeout(() => {
-                    getAndSetMatchups()
+                    window.location.reload()
                 }, timeUntilStart)
 
                 return () => clearTimeout(timeout)
             } else {
-                getAndSetMatchups()
+                window.location.reload()
             }
         }
     }, [selectedLeague, seasonStart])
 
     // this is designed to cause a refresh when viewing a stale page, but I'm not sure how to work it
-    // what I really want is for it to refresh ONLY IF there's new data available
-    // useEffect(() => {
-    //     if (!selectedLeague.isLeagueFinished && matchup.winnerId == null) {
-    //         console.log("quack!")
-    //         const timeout = setTimeout(() => {
-    //             getAndSetMatchups()
-    //         }, 5000)
+    // what I really want is for it to refresh ONLY IF there's new data available, but I don't have a
+    // real elegant way to do that. I could hack together something that compares times and Now and
+    // league advancement, but that would be writing like 80 lines of code when the user has no real
+    // reason to look at future matchups.
+    useEffect(() => {
+        if (!selectedLeague.isLeagueFinished && matchup.winnerId == null) {
+            const timeout = setTimeout(() => {
+                window.location.reload()
+            }, 10000)
 
-    //         return () => clearTimeout(timeout)
-    //     }
-    // }, [getAndSetMatchups, matchup.winnerId, selectedLeague.isLeagueFinished])
+            return () => clearTimeout(timeout)
+        }
+    }, [matchup.winnerId, selectedLeague.isLeagueFinished])
 
     return (
         <div>
