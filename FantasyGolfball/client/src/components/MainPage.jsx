@@ -24,6 +24,10 @@ export const MainPage = () => {
         navigate(`/live-draft`)
     }
 
+    const viewPostSeason = () => {
+        navigate(`/postseason`)
+    }
+
     useEffect(() => {
         if (selectedLeague?.advancement)
         switch(selectedLeague.advancement) {
@@ -196,12 +200,15 @@ export const MainPage = () => {
             <div>No leagues joined!</div>
         )
     }
-    // league recap homepage
+    // league finished homepage
     if (selectedLeague.isLeagueFinished) {
         return (
             <div className="mainpage-main-container">
                 <div className="mainpage-league-container">
                     <h4>{selectedLeague.leagueName}</h4>
+                    <button
+                        onClick={() => viewPostSeason()}
+                    >See more postseason stats here!</button>
                     <h6>Final Rankings:</h6>
                     <div className="mainpage-table-container">
                         <PointsForTable

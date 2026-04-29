@@ -3,11 +3,14 @@ import { useAppContext } from "../../contexts/AppContext"
 import { GetHistoricalDraftState } from "../../managers/historicalManager"
 import { Table } from "reactstrap"
 import { PostSeasonPlayerDisplay } from "./PostSeasonPlayerDisplay"
+import { StatsWindow } from "../widgets/StatsWindow"
 
 
 export const PostSeasonDisplay = () => {
     const { selectedLeague } = useAppContext()
     const [historicalDraftState, setHistoricalDraftState] = useState()
+    const [selectedPlayerForStats, setSelectedPlayerForStats] = useState(null);
+
 
     const GetAndSetHistoricalDraftState = () => {
         GetHistoricalDraftState(selectedLeague.leagueId).then(setHistoricalDraftState)
@@ -27,14 +30,16 @@ export const PostSeasonDisplay = () => {
     if (historicalDraftState) {
         return (
             <div>
+                <h3>Draft Recap</h3>
                 <Table>
                     <thead>
                         <tr>
                             <th></th>
                             <th>Team</th>
                             <th>Pick</th>
-                            <th>Average Points (All games, with penalties)</th>
+                            <th>Average Points (All games, # of penalties)</th>
                             <th>Average Points (Valid Games)</th>
+                            <th>Advanced Stats</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +62,7 @@ export const PostSeasonDisplay = () => {
                                     user={user}
                                     index={index}
                                     playerId={playerId}
+                                    setSelectedPlayerForStats={setSelectedPlayerForStats}
                                 />
                             )
                         }
@@ -64,7 +70,16 @@ export const PostSeasonDisplay = () => {
                         )}
                     </tbody>
                 </Table>
+                {selectedPlayerForStats && (
+                                <StatsWindow
+                                    player={selectedPlayerForStats}
+                                    rosterLock={false}
+                                    onClose={() => setSelectedPlayerForStats(null)}
+                                />
+                            )}
                 {/* <div>Biggest blowout? draft grade?</div> */}
+                <div>Least Valuable Player</div>
+                
             </div>
         )
     } else if (selectedLeague && selectedLeague.isLeagueFinished == false) {

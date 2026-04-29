@@ -3,7 +3,7 @@ import { useAppContext } from "../../contexts/AppContext"
 import { CheckPenalty } from "../widgets/CheckPenalty"
 
 
-export const PostSeasonPlayerDisplay = ({user, index, playerId}) => {
+export const PostSeasonPlayerDisplay = ({user, index, playerId, setSelectedPlayerForStats}) => {
     const { selectedLeague, players, allScores } = useAppContext()
     const [player, setPlayer] = useState()
     const [filteredScores, setFilteredSCores] = useState()
@@ -65,6 +65,10 @@ export const PostSeasonPlayerDisplay = ({user, index, playerId}) => {
                 <td>{drafter.userProfile.userName}</td>
                 <td>{player.playerFullName}, {player.position.positionShort}, {player.playerTeams[0].team.teamName}</td>
                 <td>{totalWithPenalties.toFixed(2)}, {numberOfPenalties}</td>
+                <td></td>
+                <td 
+                    onClick={() => setSelectedPlayerForStats(player)} 
+                >+</td>
             </tr>
         )
     }

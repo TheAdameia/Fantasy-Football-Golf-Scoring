@@ -14,7 +14,7 @@ export const PlayerPage = () => {
     const [showOtherTeam, setShowOtherTeam] = useState(false)
     const [rosterLock, setRosterLock] = useState(false)
     const { players, selectedLeague, loggedInUser } = useAppContext()
-    const [selectedPlayerForStats, setSelectedPlayerForStats] = useState(null);
+    const [selectedPlayerForStats, setSelectedPlayerForStats] = useState(null)
 
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
