@@ -122,7 +122,7 @@ export const PlayerCard = ({ player, isPreseason, rosterLock, setSelectedPlayerF
             <td>{player.playerStatuses[0].status.statusType}</td>
             <td>{player.playerTeams[0].team.teamName}</td>
             <td>{player.playerTeams[0].team.byeWeek}</td>
-            <td>{isPreseason ? "-" : weekScore ? weekScore.points : "-"}</td>
+            <td>{isPreseason ? "-" : weekScore ? weekScore.points.toFixed(2) : "-"}</td>
             <td>{seasonTotal ?? "-"}</td>
             <td>{playerRosterCondition}</td>
             <td 

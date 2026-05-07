@@ -80,7 +80,7 @@ export const StatsWindow = ({player, rosterLock, onClose}) => {
                 <div className="modal-content">
                     <button onClick={onClose}>Close</button>
                     <div>
-                        <div>{player.playerFullName}, {player.position.positionShort}, {player.playerTeams[0].team.teamName}. {selectedLeague.season.seasonYear} Season Total: {seasonTotal}</div>
+                        <div>{player.playerFullName}, {player.position.positionShort}, {player.playerTeams[0].team.teamCity} {player.playerTeams[0].team.teamName}. {selectedLeague.season.seasonYear} Season Total: {seasonTotal}</div>
                         <Table>
                             <thead>
                                 <tr>

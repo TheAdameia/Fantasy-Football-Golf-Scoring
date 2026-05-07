@@ -2,18 +2,11 @@ import { Table } from "reactstrap"
 import { BlankPlayerCard } from "./BlankPlayerCard"
 import { SavedMatchupPlayerCard } from "./SavedMatchupPlayerCard"
 import { useMemo } from "react"
+import { CheckPenalty } from "../widgets/CheckPenalty"
 
 
 export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
     const positions = ["QB1", "WR1", "WR2", "RB1", "RB2", "TE1", "FLEX", "K", "DEF"]
-
-    const getTotalPoints = (matchupUser) => {
-        return matchupUser.matchupUserSavedPlayers
-        ?.filter((musp) => musp.rosterPlayerPosition?.toLowerCase() != "bench")
-        .reduce((total, musp) => {
-            return total + (musp.scoring?.points ?? 0)
-        }, 0) ?? 0
-    }
 
     const calculateTotalPoints = (matchupUser) => {
         if (!matchupUser) {
@@ -40,7 +33,7 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
 
                 // penalizes no-scoring/bye weeks
 
-                // checks for fallback ID
+                // checks, penalizes for fallback ID
                 if (musp.scoring.scoringId == 1) {
                     if (musp.player.position.positionId == 1) {
                         playerPenalty += 15
@@ -51,48 +44,11 @@ export const SavedMatchupRosterCard = ({ matchupUser, slot, week }) => {
 
                 totalPoints += musp.scoring.points
 
-                // a spelling error generated much annoyance when testing the switch block
-                // Penalizes 0 score IF NOT stats (difference between 2 - 2 = 0 and just 0)
-                if (playerPenalty == 0 && musp.scoring.points == 0) {
-                    switch (musp.player.position.positionId) {
-                        case 1: // QB
-                            if (musp.scoring.yardsPassing == 0 &&
-                                musp.scoring.yardsRushing == 0 &&
-                                musp.scoring.attemptsPassing == 0 &&
-                                musp.scoring.attemptsRushing == 0 &&
-                                musp.scoring.fumbleLost == 0 &&
-                                musp.scoring.interceptions == 0) {
-                                    playerPenalty += 15
-                                }
-                            break
-                        case 2: // WR
-                        case 3: // RB
-                        case 4: // TE
-                            if (musp.scoring.yardsReceiving == 0 &&
-                                musp.scoring.yardsRushing == 0 &&
-                                musp.scoring.targets == 0 &&
-                                musp.scoring.attemptsRushing == 0 &&
-                                musp.scoring.receptions == 0 &&
-                                musp.scoring.fumbleLost == 0) {
-                                    playerPenalty += 10
-                                }
-                            break
-                        case 5: // K
-                            if (musp.scoring.fieldGoalAttempts == 0 &&
-                                musp.scoring.fieldGoalsMade == 0 &&
-                                musp.scoring.extraPointAttempts == 0 &&
-                                musp.scoring.extraPointMade == 0) {
-                                    playerPenalty += 10
-                            }
-                            break
-                        case 6: // DEF
-                            break
-                        default:
-                            console.log("default player case")
-                            break
-                        }
-                    }
-                    penaltyPoints += playerPenalty
+                // penalizes 0 score IF NOT stats (difference between 2 - 2 = 0 and just 0)
+                playerPenalty += CheckPenalty(musp.player, musp.scoring)
+                
+                // adds the resultant total to the return value
+                penaltyPoints += playerPenalty
 
                 }
             }

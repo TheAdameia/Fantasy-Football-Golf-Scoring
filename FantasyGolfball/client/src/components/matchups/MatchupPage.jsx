@@ -6,7 +6,7 @@ import "./matchups.css"
 import { getRevealTimes } from "../widgets/GetRevealTimes"
 
 export const MatchupPage = () => {
-    const { matchups, selectedLeague, loggedInUser } = useAppContext()
+    const { matchups, selectedLeague, loggedInUser, lastMatchupFetchTime } = useAppContext()
     const getInitialWeek = () => {
         const currentWeek = selectedLeague?.currentWeek ?? 1
         return Math.min(currentWeek, selectedLeague?.season.seasonWeeks ?? 18)
@@ -16,6 +16,19 @@ export const MatchupPage = () => {
     const [revealCountdownText, setRevealCountdownText] = useState("")
 
     const handleWeekChange = (arg) => {
+
+       // avoids stale data showing when the current week changes
+        const minutesSinceFetch = lastMatchupFetchTime
+            ? Math.floor((Date.now() - lastMatchupFetchTime) / 60000)
+            : null
+
+        if (minutesSinceFetch > 2) {
+            window.location.reload()
+            // for reasons I don't fully understand, just getting and setting the matchups
+            // doesn't do what I want it to
+        }
+
+        // handles bounding on week change
         if (arg == true && (week + 1) > selectedLeague.season.seasonWeeks) {
             return
         } else if (arg) {
@@ -45,7 +58,7 @@ export const MatchupPage = () => {
         const currentWeek = selectedLeague?.currentWeek ?? 1
         const clampedWeek = Math.min(currentWeek, selectedLeague?.season.seasonWeeks ?? 18)
         setWeek(clampedWeek)
-    }, [selectedLeague?.currentWeek])
+    }, [selectedLeague?.currentWeek, selectedLeague?.season.seasonWeeks])
 
     useEffect(() => {
         if (matchups) {

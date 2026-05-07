@@ -14,7 +14,7 @@ export const PlayerPage = () => {
     const [showOtherTeam, setShowOtherTeam] = useState(false)
     const [rosterLock, setRosterLock] = useState(false)
     const { players, selectedLeague, loggedInUser } = useAppContext()
-    const [selectedPlayerForStats, setSelectedPlayerForStats] = useState(null);
+    const [selectedPlayerForStats, setSelectedPlayerForStats] = useState(null)
 
     const handlePositionChange = (event) => {
         setPositionFilter(event.target.value)
@@ -160,14 +160,14 @@ export const PlayerPage = () => {
                         <option value="DEF">DEF</option>
                     </select>
                 </div>
-                <div>
+                {/* <div>
                     <label className="playerpage-label">Stats</label>
                     <select name="stats" id="stats" disabled>
                         <option value="This week">This Week</option>
                         <option value="Season Total">Season Total</option>
                         <option value="Season Average">Season Average</option>
                     </select>
-                </div>
+                </div> */}
                 <div> 
                     <div>Include My Team</div>
                     <input 

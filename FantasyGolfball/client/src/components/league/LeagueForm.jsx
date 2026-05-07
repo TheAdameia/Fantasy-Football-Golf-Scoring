@@ -16,7 +16,7 @@ export const LeagueForm = () => {
         randomizedDraftOrder: true,
         usersVetoTrades: false,
         requiredFullToStart: true,
-        seasonYear: 2025,
+        seasonYear: 2007,
         maxRosterSize: 15,
         draftStartTime: "",
         seasonStartDate: "",
@@ -72,6 +72,8 @@ export const LeagueForm = () => {
 
         if (newLeague.leagueName !== "") {
             PostLeague(newLeague).then(() => {
+                // set cookie to new League's value
+                // post must return said value
                 getAndSetLeagues()
                 navigate("/league")
             })
@@ -81,8 +83,10 @@ export const LeagueForm = () => {
         }
     }
 
-    const getAndSetSeasons = () => {
-        GetAllSeasons().then(setSeasons)
+    const getAndSetSeasons = async () => {
+        const allSeasons = await GetAllSeasons()
+        const filteredSeasons = allSeasons.filter(s => s.seasonYear !== 2025)
+        setSeasons(filteredSeasons)
     }
 
     useEffect(() => {

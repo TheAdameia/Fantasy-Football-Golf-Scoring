@@ -24,35 +24,37 @@ export default function Login({ setLoggedInUser }) {
   return (
     <div className="container" style={{ maxWidth: "500px" }}>
       <h3>Login</h3>
-      <FormGroup>
-        <Label>Email</Label>
-        <Input
-          invalid={failedLogin}
-          type="text"
-          value={email}
-          onChange={(e) => {
-            setFailedLogin(false);
-            setEmail(e.target.value);
-          }}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Password</Label>
-        <Input
-          invalid={failedLogin}
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setFailedLogin(false);
-            setPassword(e.target.value);
-          }}
-        />
-        <FormFeedback>Login failed.</FormFeedback>
-      </FormGroup>
+      <form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label>Email</Label>
+          <Input
+            invalid={failedLogin}
+            type="text"
+            value={email}
+            onChange={(e) => {
+              setFailedLogin(false);
+              setEmail(e.target.value);
+            }}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Password</Label>
+          <Input
+            invalid={failedLogin}
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setFailedLogin(false);
+              setPassword(e.target.value);
+            }}
+          />
+          <FormFeedback>Login failed.</FormFeedback>
+        </FormGroup>
 
-      <Button color="primary" onClick={handleSubmit}>
-        Login
-      </Button>
+        <Button color="primary" type="submit">
+          Login
+        </Button>
+      </form>
       <p>
         Not signed up? Register <Link to="/register">here</Link>
       </p>
