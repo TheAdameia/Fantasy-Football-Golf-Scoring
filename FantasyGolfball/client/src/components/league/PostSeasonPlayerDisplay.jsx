@@ -65,10 +65,10 @@ export const PostSeasonPlayerDisplay = ({user, index, playerId, setSelectedPlaye
                 <td>{drafter.userProfile.userName}</td>
                 <td>{player.playerFullName}, {player.position.positionShort}, {player.playerTeams[0].team.teamName}</td>
                 <td>{totalWithPenalties.toFixed(2)}, {numberOfPenalties}</td>
-                <td></td>
-                <td 
-                    onClick={() => setSelectedPlayerForStats(player)} 
-                >+</td>
+                {/* <td></td> */}
+                <td>
+                    <button onClick={() => setSelectedPlayerForStats(player)}>+</button>
+                </td>
             </tr>
         )
     }

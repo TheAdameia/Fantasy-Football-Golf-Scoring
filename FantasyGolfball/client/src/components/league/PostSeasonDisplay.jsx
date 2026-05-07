@@ -38,7 +38,7 @@ export const PostSeasonDisplay = () => {
                             <th>Team</th>
                             <th>Pick</th>
                             <th>Average Points (All games, # of penalties)</th>
-                            <th>Average Points (Valid Games)</th>
+                            {/* <th>Average Points (Valid Games)</th> */}
                             <th>Advanced Stats</th>
                         </tr>
                     </thead>
@@ -78,7 +78,7 @@ export const PostSeasonDisplay = () => {
                                 />
                             )}
                 {/* <div>Biggest blowout? draft grade?</div> */}
-                <div>Least Valuable Player</div>
+                {/* <div>Least Valuable Player</div> */}
                 
             </div>
         )
